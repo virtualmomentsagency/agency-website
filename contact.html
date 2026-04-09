@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0d4a94; color: white; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
         .glass-card:hover { background: white; color: #0d4a94; transform: translateY(-5px); }
         .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
     </style>
 </head>
 <body>
     <div class="social-float">
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-2xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-2xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-2xl"></i></a>
+        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"><i class="fab fa-whatsapp text-2xl"></i></a>
+        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"><i class="fab fa-facebook text-2xl"></i></a>
+        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"><i class="fab fa-linkedin text-2xl"></i></a>
     </div>
 
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-6 border-b border-white/10">
@@ -33,24 +34,43 @@
 
     <main class="py-24 px-6 text-center max-w-7xl mx-auto">
         <h2 class="text-5xl font-extrabold mb-16 uppercase italic">Connect with VMA</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <a href="mailto:virtualmomentsagency1@gmail.com" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10">
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            <a href="mailto:virtualmomentsagency1@gmail.com?subject=Inquiry%20from%20VMA%20Website" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10 flex flex-col items-center">
                 <i class="fas fa-envelope text-4xl mb-4"></i>
-                <h4 class="font-bold">Email Us</h4>
+                <h4 class="font-bold mb-2">Email Us</h4>
+                <p class="text-xs opacity-70">Click to send a message</p>
             </a>
-            <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10">
+
+            <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10 flex flex-col items-center">
                 <i class="fab fa-whatsapp text-4xl mb-4"></i>
-                <h4 class="font-bold">WhatsApp</h4>
+                <h4 class="font-bold mb-2">WhatsApp</h4>
+                <p class="text-xs opacity-70">Message our business line</p>
             </a>
-            <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10">
+
+            <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10 flex flex-col items-center">
                 <i class="fab fa-facebook text-4xl mb-4"></i>
-                <h4 class="font-bold">Facebook</h4>
+                <h4 class="font-bold mb-2">Facebook</h4>
+                <p class="text-xs opacity-70">Visit our careers page</p>
             </a>
-            <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10">
-                <i class="fab fa-linkedin text-4xl mb-4"></i>
-                <h4 class="font-bold">LinkedIn</h4>
+
+            <a href="https://www.google.com/maps/place/Albay,+Philippines" target="_blank" class="glass-card p-12 rounded-3xl transition duration-300 shadow-xl border border-white/10 flex flex-col items-center">
+                <i class="fas fa-location-dot text-4xl mb-4"></i>
+                <h4 class="font-bold mb-2">Location</h4>
+                <p class="text-xs opacity-70">Albay, Philippines</p>
+            </a>
+        </div>
+
+        <div class="flex justify-center">
+            <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="glass-card px-10 py-6 rounded-full inline-flex items-center gap-4 transition duration-300">
+                <i class="fab fa-linkedin text-2xl"></i>
+                <span class="font-bold">Follow our LinkedIn for Updates</span>
             </a>
         </div>
     </main>
+
+    <footer class="py-10 text-center opacity-50 text-xs uppercase tracking-widest">
+        &copy; 2026 Virtual Moments Agency. All Rights Reserved.
+    </footer>
 </body>
 </html>
