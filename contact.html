@@ -9,7 +9,7 @@
     <style>
         body { background-color: #0d4a94; color: white; overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* 3D POP NAVIGATION */
+        /* DRAMATIC NAV POP */
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
         .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
 
@@ -22,7 +22,7 @@
             filter: brightness(1.2); 
         }
 
-        /* 3D POWER-CARDS (Contact Methods) */
+        /* 3D CONTACT POWER-CARDS */
         .contact-card { 
             background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(15px); 
@@ -32,15 +32,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 3rem 1.5rem;
-            border-radius: 2rem;
+            padding: 3.5rem 1.5rem;
+            border-radius: 2.5rem;
             cursor: pointer;
         }
         .contact-card:hover, .contact-card:active { 
-            transform: scale(1.1) translateY(-10px); 
+            transform: scale(1.1) translateY(-15px); 
             background: white; 
             color: #0d4a94; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
         .contact-card i { transition: all 0.5s ease; }
         .contact-card:hover i { transform: scale(1.2); color: #0d4a94; }
@@ -81,10 +81,10 @@
     <main class="py-24 px-6 text-center max-w-7xl mx-auto">
         <div class="reveal active">
             <h2 class="text-5xl font-extrabold mb-4 uppercase italic tracking-widest">Connect with VMA</h2>
-            <p class="text-sky-400 text-xs uppercase tracking-[0.4em] mb-16">Select a Moment to Start</p>
+            <p class="text-sky-400 text-xs uppercase tracking-[0.4em] mb-16">Tap a card to reach our team</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal active">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 reveal active">
             <a href="mailto:virtualmomentsagency1@gmail.com" class="contact-card">
                 <i class="fas fa-envelope text-5xl mb-6"></i>
                 <h4 class="font-bold uppercase tracking-widest text-sm">Direct Email</h4>
@@ -95,7 +95,7 @@
                 <h4 class="font-bold uppercase tracking-widest text-sm">WhatsApp</h4>
             </a>
 
-            <a href="https://www.google.com/maps" target="_blank" class="contact-card">
+            <a href="https://www.google.com/maps/search/Albay,+PH" target="_blank" class="contact-card">
                 <i class="fas fa-location-dot text-5xl mb-6"></i>
                 <h4 class="font-bold uppercase tracking-widest text-sm">Albay, PH</h4>
             </a>
@@ -106,9 +106,9 @@
             </a>
         </div>
 
-        <div class="mt-28 reveal">
-            <h3 class="text-2xl font-bold mb-8 italic uppercase tracking-widest">Ready to start your Virtual Moment?</h3>
-            <a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="inline-block bg-white text-[#0d4a94] px-10 py-5 rounded-full font-black uppercase text-sm tracking-widest hover:scale-110 transition duration-500 shadow-2xl">Book a Discovery Call</a>
+        <div class="mt-32 reveal">
+            <h3 class="text-2xl font-bold mb-8 italic uppercase tracking-widest opacity-80">Ready to start your Virtual Moment?</h3>
+            <a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="inline-block bg-white text-[#0d4a94] px-12 py-5 rounded-full font-black uppercase text-sm tracking-widest hover:scale-110 transition duration-500 shadow-2xl">Book a Discovery Call</a>
         </div>
     </main>
 
@@ -119,11 +119,11 @@
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
         function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 80) { reveals[i].classList.add("active"); }
+            var r = document.querySelectorAll(".reveal");
+            for (var i = 0; i < r.length; i++) {
+                var h = window.innerHeight;
+                var t = r[i].getBoundingClientRect().top;
+                if (t < h - 80) { r[i].classList.add("active"); }
             }
         }
         window.addEventListener("scroll", reveal);
