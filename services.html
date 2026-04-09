@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0d4a94; color: white; overflow-x: hidden; }
+        .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
+        .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
         .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.8s ease; position: relative; min-height: 320px; }
         .service-front { transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; }
-        .service-back { position: absolute; inset: 0; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(13, 74, 148, 0.4); pointer-events: none; }
+        .service-back { position: absolute; inset: 0; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(13, 74, 148, 0.5); pointer-events: none; }
         .service-card:hover .service-front, .service-card.is-tapped .service-front { opacity: 0; filter: blur(8px); }
         .service-card:hover .service-back, .service-card.is-tapped .service-back { opacity: 1; pointer-events: auto; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -27,49 +29,42 @@
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
-            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="hover:text-white transition">Home</a>
-                <a href="services.html" class="border-b-2 border-white pb-1">Services</a>
-                <a href="about.html" class="hover:text-white transition">About Us</a>
-                <a href="faq.html" class="hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest">
+                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
+                <a href="services.html" class="nav-link text-white border-b-2 border-white pb-1">Services</a>
+                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
+                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
+                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
-            <a href="index.html" class="block py-2 text-slate-300">Home</a>
-            <a href="services.html" class="block py-2 text-white">Services</a>
-            <a href="about.html" class="block py-2 text-slate-300">About Us</a>
-            <a href="faq.html" class="block py-2 text-slate-300">FAQ</a>
-            <a href="contact.html" class="block py-2 text-slate-300">Contact</a>
-        </div>
     </nav>
     <main class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="text-4xl text-center font-extrabold mb-16 uppercase italic tracking-[0.2em] reveal active">Expertise</h2>
+        <h2 class="text-4xl text-center font-extrabold mb-16 uppercase italic tracking-[0.2em] reveal active">Specialized Expertise</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div class="service-card glass-card rounded-3xl reveal" onclick="this.classList.toggle('is-tapped')">
                 <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-spa text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold">MEDSPA</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs">Strategic Workflow</h4><p>Qualifying leads, managing bookings, and patient follow-ups.</p></div>
+                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Strategic Workflow</h4><p>Inbound lead qualifying, aesthetic clinic coordination, and customer patient care management.</p></div>
             </div>
             <div class="service-card glass-card rounded-3xl reveal" onclick="this.classList.toggle('is-tapped')">
                 <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-heartbeat text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold">HEALTHCARE</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs">Strategic Workflow</h4><p>HIPAA admin support, medical billing, and scheduling.</p></div>
+                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Strategic Workflow</h4><p>HIPAA-aware administrative support, medical billing coordination, and appointment scheduling.</p></div>
             </div>
             <div class="service-card glass-card rounded-3xl reveal" onclick="this.classList.toggle('is-tapped')">
                 <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-rocket text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold">SAAS & TECH</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs">Strategic Workflow</h4><p>CRM management and back-office optimization.</p></div>
+                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Strategic Workflow</h4><p>Back-office optimization, CRM data management, and automating customer onboarding processes.</p></div>
             </div>
             <div class="service-card glass-card rounded-3xl reveal" onclick="this.classList.toggle('is-tapped')">
                 <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-chart-line text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold">SALES & SDR</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs">Strategic Workflow</h4><p>Cold calling and appointment setting.</p></div>
+                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Strategic Workflow</h4><p>Cold calling, professional appointment setting, and managing lead pipelines to drive revenue growth.</p></div>
             </div>
             <div class="service-card glass-card rounded-3xl reveal" onclick="this.classList.toggle('is-tapped')">
                 <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-home text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold">REAL ESTATE</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs">Strategic Workflow</h4><p>Transaction coordination and listing management.</p></div>
+                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Strategic Workflow</h4><p>Transaction coordination, listing management, and proactive tenant communication support.</p></div>
             </div>
             <div class="service-card glass-card rounded-3xl reveal" onclick="this.classList.toggle('is-tapped')">
                 <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-user-tie text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold">EXECUTIVE</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs">Strategic Workflow</h4><p>Elite calendar and high-level project coordination.</p></div>
+                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Strategic Workflow</h4><p>Elite calendar management, email filtering, and high-level project coordination for visionary leaders.</p></div>
             </div>
         </div>
     </main>
