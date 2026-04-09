@@ -8,60 +8,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0d4a94; color: white; }
-        .step-card { background: white; color: #0d4a94; padding: 20px; rounded: 15px; position: relative; }
-        .step-card::after { content: '↓'; position: absolute; bottom: -25px; left: 50%; color: white; font-weight: bold; }
+        .step-card { background: white; color: #0d4a94; padding: 15px; border-radius: 12px; font-weight: bold; position: relative; font-size: 13px; }
+        .step-card::after { content: '↓'; position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); color: white; }
         .step-card:last-child::after { content: ''; }
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
     </style>
 </head>
 <body>
-    <div class="social-float">
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-2xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-2xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-2xl"></i></a>
-    </div>
-
-    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-6 border-b border-white/10">
+    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-10 md:h-12 w-auto"></a>
-            <div class="space-x-8 hidden lg:block text-slate-200 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
+            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest">
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="services.html" class="hover:text-white transition">Services</a>
                 <a href="about.html" class="text-white border-b-2 border-white pb-1">About Us</a>
                 <a href="contact.html" class="hover:text-white transition">Contact</a>
             </div>
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
+            <a href="index.html" class="block py-2 text-slate-300">Home</a>
+            <a href="services.html" class="block py-2 text-slate-300">Services</a>
+            <a href="about.html" class="block py-2 text-white">About Us</a>
+            <a href="contact.html" class="block py-2 text-slate-300">Contact</a>
         </div>
     </nav>
 
-    <main class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-4xl font-extrabold text-center mb-16 uppercase">Our Vision & Mission</h2>
-        <div class="bg-white/5 p-12 rounded-3xl border border-white/10 text-lg leading-relaxed mb-20">
-            <p class="mb-6">Founded in January 2024, our virtual assistant company was built on the vision of helping businesses focus on what truly matters. With a passion for efficiency and personalized support, we quickly grew into a trusted partner for entrepreneurs, professionals, and small businesses.</p>
-            <p class="mb-6">Our team of skilled professionals is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients achieve their goals. We believe in building lasting relationships, ensuring every task is handled with care and precision.</p>
-            <p class="font-bold text-sky-400 italic italic">"At our core, we are driven by a simple mission: to empower businesses to thrive by taking care of the details so they can focus on growth and success."</p>
+    <main class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-4xl text-center font-extrabold mb-12 uppercase italic">Our Story</h2>
+        <div class="bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10 text-sm md:text-md leading-relaxed mb-20">
+            <p class="mb-6">Founded in January 2024, our virtual assistant company was built on the vision of helping businesses focus on what truly matters. We quickly grew into a trusted partner for entrepreneurs, professionals, and small businesses.</p>
+            <p class="mb-6">Our team is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients streamline their operations. We believe in building lasting relationships, ensuring every task is handled with precision.</p>
+            <p class="font-bold text-sky-400 italic">"At our core, we are driven by a simple mission: to empower businesses to thrive by taking care of the details so they can focus on growth and success."</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-16">
-            <div class="text-center">
-                <h3 class="text-2xl font-bold mb-8 uppercase text-sky-400 tracking-widest">Hiring Process (VA)</h3>
-                <div class="space-y-10 max-w-xs mx-auto">
-                    <div class="step-card rounded-xl font-bold">1. Application Form</div>
-                    <div class="step-card rounded-xl font-bold">2. Initial Screening</div>
-                    <div class="step-card rounded-xl font-bold">3. Skill Test / Interview</div>
-                    <div class="step-card rounded-xl font-bold">4. Final Vetting</div>
-                    <div class="step-card rounded-xl font-bold">5. Client Handshake</div>
-                </div>
-            </div>
-            <div class="text-center">
-                <h3 class="text-2xl font-bold mb-8 uppercase text-sky-400 tracking-widest">Client Journey</h3>
-                <div class="space-y-10 max-w-xs mx-auto">
-                    <div class="step-card rounded-xl font-bold">1. Discovery Call</div>
-                    <div class="step-card rounded-xl font-bold">2. Strategy Alignment</div>
-                    <div class="step-card rounded-xl font-bold">3. Talent Matching</div>
-                    <div class="step-card rounded-xl font-bold">4. Virtual Handshake</div>
-                </div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-center">
+            <div><h3 class="text-xl font-bold mb-10 text-sky-400 tracking-widest uppercase">Hiring Process</h3><div class="space-y-8 max-w-xs mx-auto"><div class="step-card">Application Form</div><div class="step-card">Screening</div><div class="step-card">Skill Test</div><div class="step-card">Final Vetting</div><div class="step-card">Handshake</div></div></div>
+            <div><h3 class="text-xl font-bold mb-10 text-sky-400 tracking-widest uppercase">Client Journey</h3><div class="space-y-8 max-w-xs mx-auto"><div class="step-card">Discovery Call</div><div class="step-card">Strategy Alignment</div><div class="step-card">Talent Matching</div><div class="step-card">Virtual Handshake</div></div></div>
         </div>
     </main>
+    <script>function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }</script>
 </body>
 </html>
