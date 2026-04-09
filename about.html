@@ -38,7 +38,14 @@
                 <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
                 <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
             </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold shadow-2xl">
+            <a href="index.html" class="block py-2">Home</a>
+            <a href="services.html" class="block py-2">Services</a>
+            <a href="about.html" class="block py-2 text-white">About Us</a>
+            <a href="faq.html" class="block py-2">FAQ</a>
+            <a href="contact.html" class="block py-2">Contact</a>
         </div>
     </nav>
     <main class="py-20 px-6 max-w-6xl mx-auto">
