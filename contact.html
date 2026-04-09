@@ -6,12 +6,7 @@
     <title>Contact | Virtual Moments Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { background-color: #0d4a94; color: white; overflow-x: hidden; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .glass-card:hover { background: white; color: #0d4a94; transform: translateY(-5px); }
-    </style>
+    <style>body { background-color: #0d4a94; color: white; overflow-x: hidden; } .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; } .reveal.active { opacity: 1; transform: translateY(0); } .glass-card:hover { background: white; color: #0d4a94; transform: translateY(-5px); }</style>
 </head>
 <body>
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
@@ -21,20 +16,14 @@
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="services.html" class="hover:text-white transition">Services</a>
                 <a href="about.html" class="hover:text-white transition">About Us</a>
+                <a href="faq.html" class="hover:text-white transition">FAQ</a>
                 <a href="contact.html" class="border-b-2 border-white pb-1">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
-            <a href="index.html" class="block py-2 text-slate-300">Home</a>
-            <a href="services.html" class="block py-2 text-slate-300">Services</a>
-            <a href="about.html" class="block py-2 text-slate-300">About Us</a>
-            <a href="contact.html" class="block py-2 text-white">Contact</a>
-        </div>
     </nav>
-
     <main class="py-24 px-6 text-center max-w-7xl mx-auto reveal active">
-        <h2 class="text-5xl font-extrabold mb-16 uppercase italic">Connect</h2>
+        <h2 class="text-4xl font-extrabold mb-16 uppercase italic">Connect</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
             <a href="mailto:virtualmomentsagency1@gmail.com" class="glass-card p-10 rounded-3xl transition border border-white/10 flex flex-col items-center"><i class="fas fa-envelope text-4xl mb-4"></i><h4 class="font-bold">Email</h4></a>
             <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="glass-card p-10 rounded-3xl transition border border-white/10 flex flex-col items-center"><i class="fab fa-whatsapp text-4xl mb-4"></i><h4 class="font-bold">WhatsApp</h4></a>
@@ -42,19 +31,8 @@
             <a href="https://www.google.com/maps/place/Albay,+Philippines" target="_blank" class="glass-card p-10 rounded-3xl transition border border-white/10 flex flex-col items-center"><i class="fas fa-location-dot text-4xl mb-4"></i><h4 class="font-bold">Albay, PH</h4></a>
         </div>
     </main>
-
-    <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
-    </script>
+    <script>function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+    function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
+    window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);</script>
 </body>
 </html>
