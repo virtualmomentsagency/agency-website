@@ -23,9 +23,9 @@
 </head>
 <body>
     <div class="social-float">
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl md:text-2xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl md:text-2xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl md:text-2xl"></i></a>
+        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
+        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl"></i></a>
+        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl"></i></a>
     </div>
 
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
@@ -38,14 +38,14 @@
                 <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
                 <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
             </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold shadow-2xl">
             <a href="index.html" class="block py-2 text-white">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
+            <a href="services.html" class="block py-2 text-slate-300">Services</a>
+            <a href="about.html" class="block py-2 text-slate-300">About Us</a>
+            <a href="faq.html" class="block py-2 text-slate-300">FAQ</a>
+            <a href="contact.html" class="block py-2 text-slate-300">Contact</a>
         </div>
     </nav>
 
@@ -59,65 +59,51 @@
     </header>
 
     <section class="py-20 bg-white text-[#0d4a94] px-6 reveal">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase italic tracking-widest">Client Success Stories</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-slate-600 italic leading-relaxed text-sm md:text-base">
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
-                    <p class="mb-6">"Virtual Moments Agency really helped me save more time for other important work and not worry about other stuff since my VA is the one who takes care of those things. I really recommend VMA if you want to save time and have everything organized."</p>
-                    <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Tabitha C.</h4>
-                </div>
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
-                    <p class="mb-6">"It has been a great experience working with VMA. My VA was able to create my visions into reality and it helped make everything efficient. The company is easy to talk to if there are any concerns or requests; they answer promptly and provide the best possible options."</p>
-                    <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Lorraine C.</h4>
-                </div>
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
-                    <p class="mb-6">"I can’t speak highly enough of VMA's contributions. They are incredibly prompt, knowledgeable, and always go above and beyond. Their ability to anticipate our needs and keep everything running smoothly has been invaluable."</p>
-                    <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Taren J.</h4>
-                </div>
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
-                    <p class="mb-6">"My VA's dedication to learning makes her a valuable asset to any team. I recommend Virtual Moments Agency for anyone that requires a quick learner and a proactive individual."</p>
-                    <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Tonya R.</h4>
-                </div>
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-16 uppercase italic tracking-widest">Client Success Stories</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-slate-600 italic leading-relaxed text-left text-sm md:text-base">
+                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"Virtual Moments Agency really helped me save more time..."</p><h4 class="font-bold text-[#0d4a94] not-italic">— Tabitha C.</h4></div>
+                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"It has been a great experience working with VMA..."</p><h4 class="font-bold text-[#0d4a94] not-italic">— Lorraine C.</h4></div>
+                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"I can’t speak highly enough of VMA's contributions..."</p><h4 class="font-bold text-[#0d4a94] not-italic">— Taren J.</h4></div>
+                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"My VA's dedication to learning makes her a valuable asset..."</p><h4 class="font-bold text-[#0d4a94] not-italic">— Tonya R.</h4></div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-slate-50 text-slate-900 px-6 reveal">
+    <section class="py-24 bg-slate-50 text-slate-900 px-6 reveal text-center lg:text-left">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-16 text-[#0d4a94] text-center uppercase italic">VMA Leadership</h2>
-            <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-center lg:text-left mb-24">
-                <div class="reveal">
-                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank">
-                        <img src="founder.png" class="photo-bubble w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white">
-                    </a>
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20">
+                <div>
+                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" class="photo-bubble w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Vener Marion Andres</h4>
-                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Founder & CEO</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships and fostering sustainable business development.</p>
+                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm">Founder & CEO</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships.</p>
                 </div>
-                <div class="reveal">
-                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank">
-                        <img src="director.png" class="photo-bubble w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white">
-                    </a>
+                <div>
+                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" class="photo-bubble w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
-                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Director of Operations</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners, coaches, and entrepreneurs. With a knack for organization, I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
+                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm">Director of Operations</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners. With a knack for organization, I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
                 </div>
             </div>
-            <div class="max-w-5xl mx-auto bg-white p-10 rounded-3xl shadow-xl text-center reveal">
+            <div class="max-w-5xl mx-auto bg-white p-10 rounded-3xl shadow-xl text-center mt-20 reveal">
                 <h3 class="text-xl font-bold mb-10 text-[#0d4a94] uppercase tracking-widest italic">Our Trusted Partners</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-[#0d4a94]">
                     <div><h4 class="text-lg font-black">scriptishrx</h4><p class="text-[10px] uppercase text-slate-400 font-bold">B2B SaaS / Consulting</p></div>
-                    <div class="border-y md:border-y-0 md:border-x border-slate-100 py-6 md:py-0"><h4 class="text-lg font-black">The Women's Challenge</h4><p class="text-[10px] uppercase text-slate-400 font-bold">Program & Community Support</p></div>
-                    <div><h4 class="text-lg font-black">Destination Aesthetic</h4><p class="text-[10px] uppercase text-slate-400 font-bold">Healthcare & Aesthetic Services</p></div>
+                    <div class="border-y md:border-y-0 md:border-x border-slate-100 py-6 md:py-0"><h4 class="text-lg font-black">The Women's Challenge</h4><p class="text-[10px] uppercase text-slate-400 font-bold">Program Support</p></div>
+                    <div><h4 class="text-lg font-black">Destination Aesthetic</h4><p class="text-[10px] uppercase text-slate-400 font-bold">Healthcare Services</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center opacity-50 text-[10px] uppercase tracking-widest border-t border-white/10">© 2026 Virtual Moments Agency. All Rights Reserved.</footer>
-
     <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
         function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 100) { r[i].classList.add("active"); } } }
         window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
     </script>
