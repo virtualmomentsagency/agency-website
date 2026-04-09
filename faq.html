@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Virtual Moments Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #0d4a94; color: white; overflow-x: hidden; scroll-behavior: smooth; }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: pointer;
+        }
+
+        /* FAQ Reveal Logic */
+        .faq-question { 
+            transition: all 0.8s ease; 
+            opacity: 1; 
+            text-align: center;
+            font-weight: 700;
+        }
+        .faq-answer { 
+            position: absolute; 
+            inset: 0; 
+            padding: 1.5rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center;
+            opacity: 0; 
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            background: rgba(13, 74, 148, 0.95);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Hover & Tap Effects */
+        .glass-card:hover .faq-question, .glass-card.is-tapped .faq-question { opacity: 0; transform: scale(0.95); }
+        .glass-card:hover .faq-answer, .glass-card.is-tapped .faq-answer { opacity: 1; }
+        .glass-card:hover { border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
+    </style>
+</head>
+<body>
+    <div class="social-float">
+        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="bg-green-500 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
+        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="bg-blue-600 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl"></i></a>
+        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="bg-blue-800 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl"></i></a>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
+            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="services.html" class="hover:text-white transition">Services</a>
+                <a href="about.html" class="hover:text-white transition">About Us</a>
+                <a href="faq.html" class="text-white border-b-2 border-white pb-1">FAQ</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </div>
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
+            <a href="index.html" class="block py-2">Home</a>
+            <a href="services.html" class="block py-2">Services</a>
+            <a href="about.html" class="block py-2">About Us</a>
+            <a href="faq.html" class="block py-2 text-white">FAQ</a>
+            <a href="contact.html" class="block py-2">Contact</a>
+        </div>
+    </nav>
+
+    <main class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal active">
+            <h2 class="text-5xl font-extrabold uppercase italic tracking-widest mb-4">Common Inquiries</h2>
+            <p class="text-sky-400 text-xs uppercase tracking-[0.4em]">Hover or tap to reveal the answer</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            <div class="glass-card rounded-2xl reveal active" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">Do you accept Virtual Partners without experience?</div>
+                <div class="faq-answer">Yes! Experience is a plus, but we value a "can-do" attitude, openness to new knowledge, and strong work ethics above all else.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal active" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">Do you provide training for new partners?</div>
+                <div class="faq-answer">Training is subject to the specific client role, but we provide 100% support along the way to ensure any confusion is quickly resolved.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">What industries do you primarily support?</div>
+                <div class="faq-answer">We specialize in Healthcare (Medspa/Aesthetics), B2B Sales, SaaS, and Real Estate industries.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">How fast can I be matched with a Virtual Partner?</div>
+                <div class="faq-answer">Our discovery and talent matching process typically takes 3 to 7 business days to ensure the perfect strategy alignment.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">Are the Virtual Partners working full-time?</div>
+                <div class="faq-answer">We offer both part-time and full-time arrangements tailored to the specific operational needs of your business.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">How do we communicate with our Partner?</div>
+                <div class="faq-answer">We encourage using professional tools like Slack, WhatsApp Business, or Email, depending on your preferred internal workflow.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">What is the "Virtual Handshake"?</div>
+                <div class="faq-answer">This is the final step where you meet your matched partner via video call to confirm chemistry and start the partnership.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">Do you handle the payroll for the VAs?</div>
+                <div class="faq-answer">Yes, VMA handles all administrative back-office tasks, including payroll, so you can focus solely on your business growth.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">Is there a long-term contract requirement?</div>
+                <div class="faq-answer">We maintain a select network of partners and offer flexible terms that focus on value and results rather than restrictive lock-ins.</div>
+            </div>
+
+            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
+                <div class="faq-question">How do you ensure the quality of work?</div>
+                <div class="faq-answer">Through our multi-stage vetting process and ongoing operational support from our Director of Operations.</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 text-center opacity-40 text-[10px] uppercase tracking-[0.5em]">
+        © 2026 Virtual Moments Agency. All Rights Reserved.
+    </footer>
+
+    <script>
+        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 80) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+    </script>
+</body>
+</html>
