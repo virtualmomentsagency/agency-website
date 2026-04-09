@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Start Your Virtual Moment</title>
     <meta name="description" content="Ready to scale? Contact Virtual Moments Agency via Email, WhatsApp, or LinkedIn. Book your discovery call today.">
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -26,6 +27,7 @@
         <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl md:text-2xl"></i></a>
         <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl md:text-2xl"></i></a>
     </div>
+
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
@@ -46,21 +48,22 @@
             <a href="contact.html" class="block py-2 text-white">Contact</a>
         </div>
     </nav>
+
     <main class="py-24 px-6 text-center max-w-7xl mx-auto">
-        <div class="reveal active">
-            <h2 class="text-5xl font-extrabold mb-4 uppercase italic tracking-widest">Connect with VMA</h2>
-            <p class="text-sky-400 text-xs uppercase tracking-[0.4em] mb-16">Tap a card to reach our team</p>
-        </div>
+        <h2 class="text-5xl font-extrabold mb-16 uppercase italic tracking-widest reveal active">Connect with VMA</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 reveal active">
             <a href="mailto:virtualmomentsagency1@gmail.com" class="contact-card"><i class="fas fa-envelope text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">Direct Email</h4></a>
             <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="contact-card"><i class="fab fa-whatsapp text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">WhatsApp</h4></a>
-            <a href="https://www.google.com/maps" target="_blank" class="contact-card"><i class="fas fa-location-dot text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">Albay, PH</h4></a>
+            <a href="http://google.com/maps" target="_blank" class="contact-card"><i class="fas fa-location-dot text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">Albay, PH</h4></a>
             <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="contact-card"><i class="fab fa-linkedin text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">LinkedIn</h4></a>
         </div>
         <div class="mt-32 reveal"><h3 class="text-2xl font-bold mb-8 italic uppercase tracking-widest opacity-80">Ready to start your Virtual Moment?</h3><a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="inline-block bg-white text-[#0d4a94] px-12 py-5 rounded-full font-black uppercase text-sm tracking-widest hover:scale-110 transition shadow-2xl">Book a Discovery Call</a></div>
     </main>
-    <script>function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-    function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
-    window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);</script>
+
+    <script>
+        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+        function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
+        window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
+    </script>
 </body>
 </html>
