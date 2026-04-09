@@ -8,160 +8,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0d4a94; color: white; overflow-x: hidden; scroll-behavior: smooth; }
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            cursor: pointer;
-            position: relative;
-        }
-
-        /* FAQ Reveal Logic */
-        .faq-question { 
-            transition: all 0.8s ease; 
-            opacity: 1; 
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-        .faq-answer { 
-            position: absolute; 
-            inset: 0; 
-            padding: 1.5rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center;
-            opacity: 0; 
-            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); 
-            background: rgba(13, 74, 148, 0.98);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #e2e8f0;
-        }
-
-        /* Hover & Tap Effects */
+        .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
+        .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); min-height: 200px; display: flex; align-items: center; justify-content: center; padding: 2rem; cursor: pointer; position: relative; }
+        .faq-question { transition: all 0.8s ease; opacity: 1; text-align: center; font-weight: 700; font-size: 1.1rem; }
+        .faq-answer { position: absolute; inset: 0; padding: 1.5rem; display: flex; align-items: center; justify-content: center; text-align: center; opacity: 0; transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(13, 74, 148, 0.98); font-size: 0.95rem; line-height: 1.6; }
         .glass-card:hover .faq-question, .glass-card.is-tapped .faq-question { opacity: 0; transform: scale(0.95) blur(5px); }
         .glass-card:hover .faq-answer, .glass-card.is-tapped .faq-answer { opacity: 1; }
-        .glass-card:hover { border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
-
-        /* SCROLL REVEAL */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
     </style>
 </head>
 <body>
-    <div class="social-float">
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="bg-green-500 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"><i class="fab fa-whatsapp text-xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="bg-blue-600 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"><i class="fab fa-facebook text-xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="bg-blue-800 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"><i class="fab fa-linkedin text-xl"></i></a>
-    </div>
-
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
             <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="hover:text-white transition">Home</a>
-                <a href="services.html" class="hover:text-white transition">Services</a>
-                <a href="about.html" class="hover:text-white transition">About Us</a>
-                <a href="faq.html" class="border-b-2 border-white pb-1">FAQ</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
+                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
+                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
+                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
+                <a href="faq.html" class="nav-link text-white border-b-2 border-white pb-1">FAQ</a>
+                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2 text-white">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
-        </div>
     </nav>
-
     <main class="py-20 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-16 reveal active">
-            <h2 class="text-5xl font-extrabold uppercase italic tracking-widest mb-4">Common Inquiries</h2>
-            <p class="text-sky-400 text-xs uppercase tracking-[0.4em]">Experience the reveal: Hover or tap for answers</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">Do you accept Virtual Partners without experience?</div>
-                <div class="faq-answer">Yes! Experience is a plus, but we believe in "can-do" attitudes, openness to knowledge, and strong work ethics above all.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">Do you provide training for new partners?</div>
-                <div class="faq-answer">Training is subject to the client's specific needs, but we provide 100% support along the way to handle any confusion.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">What industries do you specialize in?</div>
-                <div class="faq-answer">We primarily focus on Healthcare (Medspa/Aesthetics), B2B Sales, SaaS, and Real Estate industries.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">How does the "Virtual Handshake" work?</div>
-                <div class="faq-answer">This is a final video meeting where you meet your matched partner to confirm strategy and personal chemistry before starting.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">Are there long-term contract lock-ins?</div>
-                <div class="faq-answer">We believe in partnerships based on value. Our terms are flexible and designed to scale with your business growth.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">How do you ensure the quality of work?</div>
-                <div class="faq-answer">Through our multi-stage vetting process and continuous oversight from our Director of Operations.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">Can I hire a partner for a part-time role?</div>
-                <div class="faq-answer">Absolutely. We offer customized talent solutions ranging from part-time support to dedicated full-time virtual ecosystems.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">Who handles the payroll and admin tasks?</div>
-                <div class="faq-answer">VMA handles all back-office logistics, including payroll and compliance, so you can focus solely on your core operations.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">What communication tools do you use?</div>
-                <div class="faq-answer">We integrate with your preferred tools, typically Slack, WhatsApp Business, or professional email suites.</div>
-            </div>
-
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="faq-question">How do I start my journey as a Partner?</div>
-                <div class="faq-answer">Simply use the "Become a Virtual Partner" button on our home page to access the application form and start vetting.</div>
-            </div>
+        <h2 class="text-4xl text-center font-extrabold mb-16 uppercase italic reveal active">Common Inquiries</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal active">
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Do you accept partners without experience?</div><div class="faq-answer">Yes! We value a "can-do" attitude and strong work ethics above all else.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Do you provide trainings?</div><div class="faq-answer">Training is subject to role requirements, but we provide 100% operational support.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">What industries do you support?</div><div class="faq-answer">Healthcare (Medspa), B2B Sales, SaaS, and Real Estate.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">How does matching work?</div><div class="faq-answer">We align talent based on strategy, industry expertise, and personal chemistry.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">What is the "Virtual Handshake"?</div><div class="faq-answer">A final video call to confirm the partnership before the project starts.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Who handles payroll?</div><div class="faq-answer">VMA handles all back-office logistics so you can focus on growth.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Can I hire part-time?</div><div class="faq-answer">Yes, we offer both part-time and dedicated full-time talent solutions.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">What tools do we use?</div><div class="faq-answer">We integrate with Slack, WhatsApp Business, and your existing CRM suites.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">How fast is the matching?</div><div class="faq-answer">Typically 3-7 business days depending on specific industry requirements.</div></div>
+            <div class="glass-card rounded-2xl" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">How do I apply?</div><div class="faq-answer">Use the "Become a Partner" button on our home page to start vetting.</div></div>
         </div>
     </main>
-
-    <footer class="py-12 text-center opacity-40 text-[10px] uppercase tracking-[0.5em]">
-        © 2026 Virtual Moments Agency. All Rights Reserved.
-    </footer>
-
-    <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 80) { reveals[i].classList.add("active"); }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
-    </script>
+    <script>function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+    function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
+    window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);</script>
 </body>
 </html>
