@@ -8,10 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0d4a94; color: white; overflow-x: hidden; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .step-card { background: white; color: #0d4a94; padding: 15px; border-radius: 12px; font-weight: bold; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .step-card::after { content: '↓'; position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); color: white; }
+        
+        /* SLOW PREMIUM REVEAL */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(50px) scale(0.98); 
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+        .step-card { 
+            background: white; 
+            color: #0d4a94; 
+            padding: 20px; 
+            border-radius: 16px; 
+            font-weight: bold; 
+            position: relative; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            transition: all 0.3s ease;
+        }
+        .step-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
+        .step-card::after { content: '↓'; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); color: white; font-size: 20px; font-weight: bold; opacity: 0.6; }
         .step-card:last-child::after { content: ''; }
         .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
     </style>
@@ -26,39 +43,41 @@
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
-            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
+            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest">
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="services.html" class="hover:text-white transition">Services</a>
-                <a href="about.html" class="border-b-2 border-white pb-1">About Us</a>
+                <a href="about.html" class="text-white border-b-2 border-white pb-1">About Us</a>
                 <a href="contact.html" class="hover:text-white transition">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
-            <a href="index.html" class="block py-2 text-slate-300">Home</a>
-            <a href="services.html" class="block py-2 text-slate-300">Services</a>
+            <a href="index.html" class="block py-2">Home</a>
+            <a href="services.html" class="block py-2">Services</a>
             <a href="about.html" class="block py-2 text-white">About Us</a>
-            <a href="contact.html" class="block py-2 text-slate-300">Contact</a>
+            <a href="contact.html" class="block py-2">Contact</a>
         </div>
     </nav>
 
     <main class="py-20 px-6 max-w-5xl mx-auto">
-        <h2 class="text-4xl text-center font-extrabold mb-12 uppercase italic reveal active">Our Story</h2>
-        <div class="bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10 text-sm md:text-md leading-relaxed mb-20 reveal">
-            <p class="mb-6">Founded in January 2024, our virtual assistant company was built on the vision of helping businesses focus on what truly matters...</p>
-            <p class="font-bold text-sky-400 italic">"At our core, we are driven by a simple mission: to empower businesses to thrive..."</p>
+        <h2 class="text-5xl text-center font-extrabold mb-12 uppercase italic tracking-widest reveal active">Our Story</h2>
+        
+        <div class="bg-white/5 p-10 md:p-16 rounded-[2rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 reveal shadow-2xl">
+            <p class="mb-8 opacity-90">Founded in January 2024, our virtual assistant company was built on the vision of helping businesses focus on what truly matters. We maintain a select network of partners who share our core values, delivering high-quality virtual assistance services tailored to each unique need.</p>
+            <p class="mb-8 opacity-90">Our team is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients achieve their goals. We believe in building lasting relationships, ensuring every task is handled with precision.</p>
+            <p class="font-bold text-sky-400 text-2xl italic border-l-4 border-sky-400 pl-6">"At our core, we are driven by a simple mission: to empower businesses to thrive by taking care of the details so they can focus on growth and success."</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 text-center">
             <div class="reveal">
-                <h3 class="text-xl font-bold mb-10 text-sky-400 tracking-widest uppercase italic">Hiring Process</h3>
-                <div class="space-y-8 max-w-xs mx-auto">
-                    <div class="step-card">Application Form</div><div class="step-card">Initial Screening</div><div class="step-card">Skill Test</div><div class="step-card">Final Vetting</div><div class="step-card">Handshake</div>
+                <h3 class="text-2xl font-bold mb-12 text-sky-400 tracking-[0.2em] uppercase italic">Hiring Process</h3>
+                <div class="space-y-12 max-w-xs mx-auto">
+                    <div class="step-card">Application Form</div><div class="step-card">Initial Screening</div><div class="step-card">Skill Test & Interview</div><div class="step-card">Final Vetting</div><div class="step-card">Virtual Handshake</div>
                 </div>
             </div>
             <div class="reveal">
-                <h3 class="text-xl font-bold mb-10 text-sky-400 tracking-widest uppercase italic">Client Journey</h3>
-                <div class="space-y-8 max-w-xs mx-auto">
+                <h3 class="text-2xl font-bold mb-12 text-sky-400 tracking-[0.2em] uppercase italic">Client Journey</h3>
+                <div class="space-y-12 max-w-xs mx-auto">
                     <div class="step-card">Discovery Call</div><div class="step-card">Strategy Alignment</div><div class="step-card">Talent Matching</div><div class="step-card">Virtual Handshake</div>
                 </div>
             </div>
@@ -72,7 +91,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+                if (elementTop < windowHeight - 80) { reveals[i].classList.add("active"); }
             }
         }
         window.addEventListener("scroll", reveal);
