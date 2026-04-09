@@ -11,7 +11,6 @@
         .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
         .btn-glow:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); transform: translateY(-2px); transition: all 0.3s ease; }
         .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
-        #mobile-menu { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
 <body>
@@ -24,44 +23,38 @@
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12 w-auto"></a>
-            
             <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest">
                 <a href="index.html" class="text-white border-b-2 border-white pb-1">Home</a>
                 <a href="services.html" class="hover:text-white transition">Services</a>
                 <a href="about.html" class="hover:text-white transition">About Us</a>
                 <a href="contact.html" class="hover:text-white transition">Contact</a>
             </div>
-
             <div class="flex items-center space-x-4">
                 <a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="hidden sm:block bg-white text-[#0d4a94] px-4 py-2 rounded-full font-bold text-xs md:text-sm">Book a Call</a>
-                <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-xs tracking-widest font-bold">
+        <div id="mobile-menu" class="hidden lg:hidden flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4 uppercase text-[10px] tracking-widest font-bold">
             <a href="index.html" class="block py-2 text-white">Home</a>
             <a href="services.html" class="block py-2 text-slate-300">Services</a>
             <a href="about.html" class="block py-2 text-slate-300">About Us</a>
             <a href="contact.html" class="block py-2 text-slate-300">Contact</a>
-            <a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="block py-2 text-sky-400">Book a Call</a>
         </div>
     </nav>
 
     <header class="hero-gradient pt-20 pb-28 md:pt-32 md:pb-40 px-6 text-center">
-        <h1 class="text-4xl md:text-8xl font-extrabold mb-7 leading-tight italic text-white uppercase">Where Strategy Meets <br><span class="border-b-4 border-white pb-1 not-italic">Specialized Support.</span></h1>
-        <p class="text-md md:text-xl text-slate-100 max-w-4xl mx-auto mb-12 font-light">Virtual Moments Agency (VMA) connects visionary leaders with exceptional global talent. Focused on Healthcare, Sales, and SaaS, we refine your operations so you can stay focused on winning.</p>
+        <h1 class="text-4xl md:text-8xl font-extrabold mb-7 leading-tight italic text-white uppercase tracking-tighter">Where Strategy Meets <br><span class="border-b-4 border-white pb-1 not-italic">Specialized Support.</span></h1>
+        <p class="text-md md:text-xl text-slate-100 max-w-4xl mx-auto mb-12 font-light">Virtual Moments Agency (VMA) connects visionary leaders with exceptional global talent. Stay focused on winning.</p>
         <div class="flex flex-col md:flex-row justify-center gap-5">
-            <a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="btn-glow bg-white text-[#0d4a94] px-8 py-4 md:px-10 md:py-5 rounded-lg font-bold text-md md:text-xl shadow-2xl transition-all">Hire your Virtual Partner</a>
-            <a href="https://forms.gle/XGMu99PxXjjWLMG5A" target="_blank" class="border border-white/30 text-white px-8 py-4 md:px-10 md:py-5 rounded-lg font-bold text-md md:text-lg hover:bg-white/10 transition">Become a Virtual Partner</a>
+            <a href="https://calendar.app.google/3Qfbxb7mtnTSCehE9" target="_blank" class="btn-glow bg-white text-[#0d4a94] px-8 py-4 md:px-10 md:py-5 rounded-lg font-bold text-sm md:text-xl shadow-2xl">Hire your Virtual Partner</a>
+            <a href="https://forms.gle/XGMu99PxXjjWLMG5A" target="_blank" class="border border-white/30 text-white px-8 py-4 md:px-10 md:py-5 rounded-lg font-bold text-sm md:text-lg hover:bg-white/10">Become a Virtual Partner</a>
         </div>
     </header>
 
     <section class="py-20 bg-white text-[#0d4a94] px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-16 uppercase tracking-tighter">Client Success Stories</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-slate-600 italic leading-relaxed text-sm md:text-base">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 uppercase">Client Success Stories</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-slate-600 italic leading-relaxed text-sm">
                 <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
                     <p class="mb-6">"Virtual Moments Agency really helped me save more time for other important work. I really recommend VMA if you want to save time and have everything organized."</p>
                     <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Tabitha C.</h4>
@@ -71,7 +64,7 @@
                     <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Lorraine C.</h4>
                 </div>
                 <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
-                    <p class="mb-6">"They are incredibly prompt, knowledgeable, and always go above and beyond. I highly recommend Virtual Moments Agency to anyone looking for efficient support."</p>
+                    <p class="mb-6">"They are incredibly prompt, knowledgeable, and always go above and beyond. I highly recommend VMA to anyone looking for efficient support."</p>
                     <h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Taren J.</h4>
                 </div>
                 <div class="p-8 border border-slate-100 rounded-3xl shadow-sm">
@@ -84,36 +77,34 @@
 
     <section class="py-24 bg-slate-50 text-slate-900 px-6">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-[#0d4a94] text-center">Meet Our Leadership</h2>
-            <div class="grid md:grid-cols-2 gap-12 md:gap-20 mb-20 text-center lg:text-left">
+            <h2 class="text-3xl font-bold mb-16 text-[#0d4a94] text-center">VMA Leadership</h2>
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-center lg:text-left">
                 <div>
-                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank">
-                        <img src="founder.png" class="w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white">
-                    </a>
+                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" class="w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Vener Marion Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 tracking-widest text-sm">Founder & CEO</p>
-                    <p class="text-slate-600 leading-relaxed text-sm">I lead VMA to drive business growth through tailored strategies, building strong client relationships and sustainable development.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">I lead VMA to drive business growth through tailored strategies, building strong client relationships and sustainable development.</p>
                 </div>
                 <div>
-                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank">
-                        <img src="director.png" class="w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white">
-                    </a>
+                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" class="w-48 h-48 md:w-56 md:h-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 tracking-widest text-sm">Director of Operations</p>
-                    <p class="text-slate-600 leading-relaxed text-sm">With a knack for organization, I master streamlining operations and managing high-performance VA ecosystems.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">With a knack for organization, I master streamlining operations and managing high-performance VA ecosystems.</p>
+                </div>
+            </div>
+            <div class="max-w-5xl mx-auto bg-white p-10 rounded-3xl shadow-xl mt-20 text-center">
+                <h3 class="text-xl font-bold mb-8 text-[#0d4a94] uppercase tracking-widest">Our Trusted Partners</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div><h4 class="text-lg font-black text-[#0d4a94]">scriptishrx</h4><p class="text-[10px] uppercase text-slate-400 font-bold">B2B SaaS / Consulting</p></div>
+                    <div class="border-y md:border-y-0 md:border-x border-slate-100 py-4 md:py-0"><h4 class="text-lg font-black text-[#0d4a94]">The Women's Challenge</h4><p class="text-[10px] uppercase text-slate-400 font-bold">Community Support</p></div>
+                    <div><h4 class="text-lg font-black text-[#0d4a94]">Destination Aesthetic</h4><p class="text-[10px] uppercase text-slate-400 font-bold">Healthcare & Aesthetics</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center opacity-50 text-[10px] md:text-xs uppercase tracking-widest">&copy; 2026 Virtual Moments Agency. All Rights Reserved.</footer>
+    <footer class="py-10 text-center opacity-50 text-[10px] uppercase tracking-widest">&copy; 2026 Virtual Moments Agency.</footer>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        }
-    </script>
+    <script>function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }</script>
 </body>
 </html>
