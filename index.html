@@ -11,9 +11,17 @@
         .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
         .btn-glow:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); transform: translateY(-2px); transition: all 0.3s ease; }
         .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; }
-        /* The "Bubbling" effect for photos */
-        .photo-bubble { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .photo-bubble:hover { transform: scale(1.1); filter: brightness(1.1); }
+        
+        /* Interactive 3D/Movement Hover Effect */
+        .photo-bubble {
+            transition: transform 0.3s ease-out, filter 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .photo-bubble:hover {
+            transform: scale(1.05) rotateX(3deg) rotateY(3deg) translateY(-5px);
+            filter: brightness(1.1);
+        }
     </style>
 </head>
 <body>
@@ -88,7 +96,7 @@
                     </a>
                     <h4 class="font-bold text-2xl">Vener Marion Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 tracking-widest text-sm">Founder & CEO</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships and sustainable development.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships and fostering development.</p>
                 </div>
                 <div>
                     <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank">
@@ -96,7 +104,7 @@
                     </a>
                     <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 tracking-widest text-sm">Director of Operations</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners and entrepreneurs. With a knack for organization, I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners. I master streamlining operations and managing high-performance VA ecosystems.</p>
                 </div>
             </div>
 
