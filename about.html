@@ -25,18 +25,18 @@
         .step-card:last-child::after { content: ''; }
         .safari-nav-fix { background-color: rgba(13, 74, 148, 0.95) !important; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
 
-        /* ─── PURE NATIVE SCROLL-ANIMATION LAYER (IPHONE BUG-FREE) ─── */
-        @keyframes scrollFadeSlide {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
+        /* ─── OPTIMIZED SMOOTH SCROLL FADE-IN STYLING ─── */
         .reveal {
-            animation: scrollFadeSlide linear both;
-            animation-timeline: view();
-            animation-range: entry 10% cover 35%;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            will-change: transform, opacity;
+        }
+        .reveal.active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
     </style>
 </head>
@@ -69,7 +69,7 @@
         </div>
     </nav>
     <main class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest">The VMA Story</h2>
+        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest reveal active">The VMA Story</h2>
         <div class="bg-white/5 p-10 md:p-16 rounded-[2.5rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 reveal shadow-2xl">
             <p class="mb-8 opacity-90">Founded in January 2024, our virtual assistant company was built on a vision: to help businesses focus on what truly matters. With a passion for efficiency and personalized support, we quickly grew into a trusted partner for entrepreneurs, professionals, and small businesses.</p>
             <p class="mb-8 opacity-90">We maintain a select network of partners who share our core values, delivering high-quality virtual assistance services tailored to each unique need. Our team of skilled professionals is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients achieve their goals.</p>
@@ -88,10 +88,23 @@
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
 
-        // Hard reset baseline safety for back navigation execution
+        /* ─── PREMIUM SCROLL OBSERVER MECHANICS ─── */
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal:not(.active)').forEach(el => scrollObserver.observe(el));
+
         window.addEventListener("pageshow", function(event) {
             if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-                window.location.reload();
+                document.querySelectorAll('.reveal').forEach(el => {
+                    el.classList.add('active');
+                });
             }
         });
     </script>
