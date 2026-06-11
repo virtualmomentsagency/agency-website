@@ -27,7 +27,7 @@
             backface-visibility: hidden;
             will-change: transform, opacity;
         }
-        .reveal.active { opacity: 1; transform: translateY(0) translateZ(0); -webkit-transform: translateY(0) translateZ(0); }
+        .reveal.active { opacity: 1 !important; transform: translateY(0) translateZ(0) !important; -webkit-transform: translateY(0) translateZ(0) !important; }
         
         .step-card { background: white; color: #0d4a94; padding: 24px; border-radius: 24px; font-weight: 800; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; text-transform: uppercase; font-size: 14px; letter-spacing: 1.5px; transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
         .step-card:hover { transform: scale(1.15) translateY(-10px); -webkit-transform: scale(1.15) translateY(-10px); color: #1665b1; }
@@ -87,19 +87,28 @@
         function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
         window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
         
-        /* Anti-flicker stack reset sequence */
-        window.addEventListener("pageshow", function(event) {
+        /* Bulletproof historical architecture bypass loop */
+        function clearSafariFreeze() {
             var elements = document.querySelectorAll(".reveal");
             for (var i = 0; i < elements.length; i++) {
+                elements[i].style.opacity = "1";
+                elements[i].style.transform = "none";
+                elements[i].style.webkitTransform = "none";
                 elements[i].classList.add("active");
             }
+        }
+
+        // Catch navigation changes instantly before frame updates
+        window.addEventListener("pageshow", function(event) {
+            clearSafariFreeze();
             if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
                 document.body.style.display = 'none';
                 document.body.offsetHeight;
                 document.body.style.display = 'block';
-                setTimeout(reveal, 10);
+                setTimeout(clearSafariFreeze, 1);
             }
         });
+        window.addEventListener("popstate", clearSafariFreeze);
     </script>
 </body>
 </html>
