@@ -9,28 +9,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Strict global override ensuring Safari baseline background never turns black */
         html, body { background-color: #0d4a94 !important; color: white; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
         .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; }
         
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; transform: translateZ(0); -webkit-transform: translateZ(0); }
-        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; transform: translateZ(0); -webkit-transform: translateZ(0); }
-        .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); -webkit-transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); -webkit-filter: brightness(1.2); }
+        /* Side Navigation Floating Fixes */
+        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; }
+        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
+        .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); }
         
-        /* Bypassed initial animation properties on historical elements to force full loading visibility */
-        .reveal { 
-            opacity: 1 !important; 
-            transform: none !important; 
-            -webkit-transform: none !important;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-        
-        .step-card { background: white; color: #0d4a94; padding: 24px; border-radius: 24px; font-weight: 800; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; text-transform: uppercase; font-size: 14px; letter-spacing: 1.5px; transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-        .step-card:hover { transform: scale(1.15) translateY(-10px); -webkit-transform: scale(1.15) translateY(-10px); color: #1665b1; }
+        /* Interactive Process Cards */
+        .step-card { background: white; color: #0d4a94; padding: 24px; border-radius: 24px; font-weight: 800; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; text-transform: uppercase; font-size: 14px; letter-spacing: 1.5px; }
+        .step-card:hover { transform: scale(1.15) translateY(-10px); color: #1665b1; }
         .step-card::after { content: '↓'; position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 26px; font-weight: 900; }
         .step-card:last-child::after { content: ''; }
-        .safari-nav-fix { -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); transform: translateZ(0); -webkit-transform: translateZ(0); }
+        .safari-nav-fix { -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
     </style>
 </head>
 <body>
@@ -43,27 +37,27 @@
     </div>
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 safari-nav-fix p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="safari-route"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
+            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
             <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="safari-route hover:text-white transition">Home</a>
-                <a href="services.html" class="safari-route hover:text-white transition">Services</a>
-                <a href="about.html" class="safari-route text-white border-b-2 border-white pb-1">About Us</a>
-                <a href="faq.html" class="safari-route hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="safari-route hover:text-white transition">Contact</a>
+                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
+                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
+                <a href="about.html" class="nav-link text-white border-b-2 border-white pb-1">About Us</a>
+                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
+                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="safari-route block py-2">Home</a>
-            <a href="services.html" class="safari-route block py-2">Services</a>
-            <a href="about.html" class="safari-route block py-2 text-white border-b-2 border-white mx-auto w-fit">About Us</a>
-            <a href="faq.html" class="safari-route block py-2">FAQ</a>
-            <a href="contact.html" class="safari-route block py-2">Contact</a>
+            <a href="index.html" class="block py-2">Home</a>
+            <a href="services.html" class="block py-2">Services</a>
+            <a href="about.html" class="block py-2 text-white border-b-2 border-white mx-auto w-fit">About Us</a>
+            <a href="faq.html" class="block py-2">FAQ</a>
+            <a href="contact.html" class="block py-2">Contact</a>
         </div>
     </nav>
     <main class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest reveal active">The VMA Story</h2>
-        <div class="bg-white/5 p-10 md:p-16 rounded-[2.5rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 reveal shadow-2xl">
+        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest">The VMA Story</h2>
+        <div class="bg-white/5 p-10 md:p-16 rounded-[2.5rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 shadow-2xl">
             <p class="mb-8 opacity-90">Founded in January 2024, our virtual assistant company was built on a vision: to help businesses focus on what truly matters. With a passion for efficiency and personalized support, we quickly grew into a trusted partner for entrepreneurs, professionals, and small businesses.</p>
             <p class="mb-8 opacity-90">We maintain a select network of partners who share our core values, delivering high-quality virtual assistance services tailored to each unique need. Our team of skilled professionals is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients achieve their goals.</p>
             <p class="mb-8 opacity-90">We believe in building lasting relationships, ensuring every task is handled with care and precision. Whether it's managing your calendar, handling customer inquiries, or streamlining your workflow, we are here to support you every step of the way.</p>
@@ -72,30 +66,14 @@
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-20 text-center mb-20">
-            <div class="reveal"><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Hiring Process (VA)</h3>
+            <div><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Hiring Process (VA)</h3>
                 <div class="space-y-14 max-w-xs mx-auto"><div class="step-card">Application Form</div><div class="step-card">Initial Screening</div><div class="step-card">Skill Test & Interview</div><div class="step-card">Final Internal Vetting</div><div class="step-card">Virtual Handshake</div></div></div>
-            <div class="reveal"><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Client Journey</h3>
+            <div><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Client Journey</h3>
                 <div class="space-y-14 max-w-xs mx-auto"><div class="step-card">Booking & Discovery Call</div><div class="step-card">Strategy Alignment</div><div class="step-card">Talent Matching</div><div class="step-card">Virtual Handshake</div></div></div>
         </div>
     </main>
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        
-        /* Anti-freeze Link Route Interceptor System */
-        document.querySelectorAll('.safari-route').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                var destination = this.getAttribute('href');
-                window.location.replace(destination);
-            });
-        });
-
-        // Forced background flush loop
-        window.onpageshow = function(event) {
-            if (event.persisted) {
-                window.location.reload();
-            }
-        };
     </script>
 </body>
 </html>
