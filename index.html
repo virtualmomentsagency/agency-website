@@ -10,18 +10,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Force Safari to keep background baseline color during layout recalculations */
         html, body { background-color: #0d4a94 !important; color: white; overflow-x: hidden; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
         .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
         
-        /* Safari Isolation Fixes for Fixed and Layered Components */
         .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; transform: translateZ(0); -webkit-transform: translateZ(0); }
         .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; transform: translateZ(0); -webkit-transform: translateZ(0); }
         .social-icon-btn:hover, .social-icon-btn:active { transform: scale(1.3) translate3d(-5px, -5px, 0); -webkit-transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); -webkit-filter: brightness(1.2); }
         
-        /* GPU Hardware Acceleration to Lock Down Safari Layout Shifts */
         .photo-bubble { 
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
             -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
@@ -37,7 +34,6 @@
         }
         .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); -webkit-transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
         
-        /* Fixed Safari rendering stack crashes on page return transitions */
         .reveal { 
             opacity: 0; 
             transform: translateY(30px) translateZ(0); 
@@ -143,19 +139,17 @@
         window.addEventListener("scroll", reveal); 
         window.addEventListener("load", reveal);
         
-        /* Complete execution re-trigger tailored for longer scrollable pages like index/about */
+        /* Anti-flicker stack reset sequence */
         window.addEventListener("pageshow", function(event) {
-            // Force calculations instantly
-            reveal();
-            // Re-trigger scroll event internally to ensure coordinates align correctly
-            window.scrollTo(window.scrollX, window.scrollY + 1);
-            window.scrollTo(window.scrollX, window.scrollY - 1);
-            
-            if (event.persisted) {
+            var elements = document.querySelectorAll(".reveal");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].classList.add("active");
+            }
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
                 document.body.style.display = 'none';
-                document.body.offsetHeight; // Force layout recalculation line
+                document.body.offsetHeight;
                 document.body.style.display = 'block';
-                setTimeout(reveal, 50); // Small timeout buffer safety sequence for elements down the fold
+                setTimeout(reveal, 10);
             }
         });
     </script>
