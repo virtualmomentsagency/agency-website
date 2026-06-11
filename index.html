@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Force Safari to preserve the core background color during cache reloads */
+        /* Force Safari to keep background baseline color during layout recalculations */
         html, body { background-color: #0d4a94 !important; color: white; overflow-x: hidden; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
@@ -128,16 +128,34 @@
     </section>
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 100) { r[i].classList.add("active"); } } }
-        window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
         
-        /* Core layout recalculation sequence forced immediately when navigating from history stack (Safari Fix) */
+        function reveal() { 
+            var r = document.querySelectorAll(".reveal"); 
+            for (var i = 0; i < r.length; i++) { 
+                var h = window.innerHeight; 
+                var t = r[i].getBoundingClientRect().top; 
+                if (t < h - 100) { 
+                    r[i].classList.add("active"); 
+                } 
+            } 
+        }
+        
+        window.addEventListener("scroll", reveal); 
+        window.addEventListener("load", reveal);
+        
+        /* Complete execution re-trigger tailored for longer scrollable pages like index/about */
         window.addEventListener("pageshow", function(event) {
+            // Force calculations instantly
+            reveal();
+            // Re-trigger scroll event internally to ensure coordinates align correctly
+            window.scrollTo(window.scrollX, window.scrollY + 1);
+            window.scrollTo(window.scrollX, window.scrollY - 1);
+            
             if (event.persisted) {
-                reveal();
                 document.body.style.display = 'none';
-                document.body.offsetHeight;
+                document.body.offsetHeight; // Force layout recalculation line
                 document.body.style.display = 'block';
+                setTimeout(reveal, 50); // Small timeout buffer safety sequence for elements down the fold
             }
         });
     </script>
