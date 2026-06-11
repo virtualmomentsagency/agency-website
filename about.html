@@ -83,15 +83,21 @@
     </main>
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+        
         function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
         window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
         
+        /* Complete execution re-trigger tailored for longer scrollable pages like index/about */
         window.addEventListener("pageshow", function(event) {
+            reveal();
+            window.scrollTo(window.scrollX, window.scrollY + 1);
+            window.scrollTo(window.scrollX, window.scrollY - 1);
+            
             if (event.persisted) {
-                reveal();
                 document.body.style.display = 'none';
                 document.body.offsetHeight;
                 document.body.style.display = 'block';
+                setTimeout(reveal, 50);
             }
         });
     </script>
