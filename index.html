@@ -130,6 +130,16 @@
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
         function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 100) { r[i].classList.add("active"); } } }
         window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
+        
+        /* Core layout recalculation sequence forced immediately when navigating from history stack (Safari Fix) */
+        window.addEventListener("pageshow", function(event) {
+            if (event.persisted) {
+                reveal();
+                document.body.style.display = 'none';
+                document.body.offsetHeight;
+                document.body.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>
