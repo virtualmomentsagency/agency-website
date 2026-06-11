@@ -5,8 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Moments Agency | Elite Virtual Assistants for Healthcare & Sales</title>
     <meta name="description" content="Virtual Moments Agency (VMA) provides specialized virtual assistant support for Healthcare, Sales, and SaaS. Scale your business with our elite virtual partners.">
+    <meta name="keywords" content="Virtual Moments Agency, VMA, Vener Marion Andres, Hemer Joy Andres, Virtual Assistant, Healthcare VA, Sales VA, SaaS Virtual Assistant, Medical Billing">
+    <meta name="author" content="Vener Marion Andres">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="canonical" href="https://virtualmomentsagency.com/">
+    
+    <!-- SEO Schema Markup for Google & Safari Search Rankings -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Virtual Moments Agency",
+      "url": "https://virtualmomentsagency.com/",
+      "logo": "https://virtualmomentsagency.com/logo.png",
+      "description": "Specialized virtual assistant support for Healthcare, Sales, and SaaS setups.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Albay",
+        "addressCountry": "PH"
+      },
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Vener Marion Andres",
+          "jobTitle": "Founder & CEO"
+        },
+        {
+          "@type": "Person",
+          "name": "Hemer Joy Andres",
+          "jobTitle": "Co-Founder & COO"
+        }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -14,13 +47,25 @@
         .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
         .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 12px; }
-        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-        .social-icon-btn:hover, .social-icon-btn:active { transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); }
-        .photo-bubble { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); transform-style: preserve-3d; perspective: 1000px; cursor: pointer; }
-        .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Safari isolation fixes for fixed elements */
+        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; transform: translateZ(0); -webkit-transform: translateZ(0); }
+        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; transform: translateZ(0); -webkit-transform: translateZ(0); }
+        .social-icon-btn:hover, .social-icon-btn:active { transform: scale(1.3) translate3d(-5px, -5px, 0); -webkit-transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); -webkit-filter: brightness(1.2); }
+        
+        /* Hardware acceleration styling for Safari interactive cards */
+        .photo-bubble { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); transform-style: preserve-3d; -webkit-transform-style: preserve-3d; perspective: 1000px; -webkit-perspective: 1000px; cursor: pointer; transform: translateZ(0); -webkit-transform: translateZ(0); }
+        .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); -webkit-transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
+        
+        .reveal { opacity: 0; transform: translateY(30px); -webkit-transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; -webkit-transition: opacity 1s ease-out, -webkit-transform 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); -webkit-transform: translateY(0); }
+        
+        /* Safari navbar backdrop rendering fix */
+        .safari-nav-fix { -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); transform: translateZ(0); -webkit-transform: translateZ(0); }
+        
+        /* Custom Button Glow effects added seamlessly */
+        .glow-btn:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+        .glow-btn-blue:hover { box-shadow: 0 0 20px rgba(13, 74, 148, 0.4); }
     </style>
 </head>
 <body>
@@ -30,9 +75,9 @@
         <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl md:text-2xl"></i></a>
         <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl md:text-2xl"></i></a>
     </div>
-    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
+    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 safari-nav-fix p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
+            <a href="index.html"><img src="logo.png" alt="Virtual Moments Agency Logo" class="h-8 md:h-12"></a>
             <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
                 <a href="index.html" class="nav-link text-white border-b-2 border-white pb-1">Home</a>
                 <a href="services.html" class="nav-link hover:text-white transition">Services</a>
@@ -54,8 +99,8 @@
         <h1 class="text-4xl md:text-8xl font-extrabold mb-7 leading-tight italic uppercase tracking-tighter">Where Strategy Meets <br><span class="border-b-4 border-white pb-1 not-italic">Specialized Support.</span></h1>
         <p class="text-md md:text-xl text-slate-100 max-w-4xl mx-auto mb-12 font-light italic">Virtual Moments Agency (VMA) connects visionary leaders with exceptional global talent. Focused on Healthcare, Sales, and SaaS, we refine your operations so you can stay focused on winning.</p>
         <div class="flex flex-col md:flex-row justify-center gap-5">
-            <a href="https://calendar.app.google/pK7vJvwTqniXihTJ8" target="_blank" class="bg-white text-[#0d4a94] px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-xl shadow-2xl hover:scale-105 transition">Hire your Virtual Partner</a>
-            <a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" class="border border-white/30 text-white px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-lg hover:bg-white/10 transition">Become a Virtual Partner</a>
+            <a href="https://calendar.app.google/nc4RsK13Bs1XBS918" target="_blank" class="glow-btn bg-white text-[#0d4a94] px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-xl shadow-2xl hover:scale-105 transition">Hire your Virtual Partner</a>
+            <a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" class="glow-btn border border-white/30 text-white px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-lg hover:bg-white/10 transition">Become a Virtual Partner</a>
         </div>
     </header>
     <section class="py-20 bg-white text-[#0d4a94] px-6 reveal">
@@ -74,13 +119,13 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-16 text-[#0d4a94] text-center uppercase italic">VMA Leadership</h2>
             <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-center lg:text-left mb-24">
                 <div class="reveal">
-                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
+                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" alt="Vener Marion Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Vener Marion Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Founder & CEO</p>
                     <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships.</p>
                 </div>
                 <div class="reveal">
-                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
+                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" alt="Hemer Joy Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Co-Founder & COO</p>
                     <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners, coaches, and entrepreneurs. I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
