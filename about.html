@@ -25,13 +25,16 @@
         .step-card:last-child::after { content: ''; }
         .safari-nav-fix { background-color: rgba(13, 74, 148, 0.95) !important; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
 
-        /* ─── PREMIUM SMOOTH SLIDE-UP ANIMATION LAYER ─── */
-        @keyframes premiumSlideUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
+        /* ─── PURE NATIVE SCROLL-ANIMATION LAYER (IPHONE BUG-FREE) ─── */
+        @keyframes scrollFadeSlide {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        
         .reveal {
-            animation: premiumSlideUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: scrollFadeSlide linear both;
+            animation-timeline: view();
+            animation-range: entry 10% cover 35%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -42,8 +45,8 @@
         <a href="mailto:info@virtualmomentsagency.com" class="social-icon-btn bg-red-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-envelope text-xl"></i></a>
         <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
         <a href="tel:9853150262" class="social-icon-btn bg-sky-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone text-xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl"></i></a>
+        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl md:text-2xl"></i></a>
+        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl md:text-2xl"></i></a>
     </div>
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 safari-nav-fix p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -66,7 +69,7 @@
         </div>
     </nav>
     <main class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest reveal">The VMA Story</h2>
+        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest">The VMA Story</h2>
         <div class="bg-white/5 p-10 md:p-16 rounded-[2.5rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 reveal shadow-2xl">
             <p class="mb-8 opacity-90">Founded in January 2024, our virtual assistant company was built on a vision: to help businesses focus on what truly matters. With a passion for efficiency and personalized support, we quickly grew into a trusted partner for entrepreneurs, professionals, and small businesses.</p>
             <p class="mb-8 opacity-90">We maintain a select network of partners who share our core values, delivering high-quality virtual assistance services tailored to each unique need. Our team of skilled professionals is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients achieve their goals.</p>
@@ -85,7 +88,7 @@
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
 
-        // Core script forcing complete cache resets on iPhone back navigation
+        // Hard reset baseline safety for back navigation execution
         window.addEventListener("pageshow", function(event) {
             if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
                 window.location.reload();
