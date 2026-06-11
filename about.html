@@ -9,14 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Force iOS Safari layout engine to hold position against mobile viewport resizes */
         html { background-color: #0d4a94 !important; height: -webkit-fill-available; }
         body { background-color: #0d4a94 !important; color: white; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; min-height: 100vh; min-height: -webkit-fill-available; }
         
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
         .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; }
         
-        /* Strict floating layer adjustments for iOS rendering context */
         .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; transform: translateZ(0); -webkit-transform: translateZ(0); }
         .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
         .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); }
@@ -25,9 +23,18 @@
         .step-card:hover { transform: scale(1.15) translateY(-10px); color: #1665b1; }
         .step-card::after { content: '↓'; position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 26px; font-weight: 900; }
         .step-card:last-child::after { content: ''; }
-        
-        /* Direct navigation fix for iOS back/forward transitions */
         .safari-nav-fix { background-color: rgba(13, 74, 148, 0.95) !important; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
+
+        /* ─── PREMIUM SMOOTH SLIDE-UP ANIMATION LAYER ─── */
+        @keyframes premiumSlideUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            animation: premiumSlideUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -59,8 +66,8 @@
         </div>
     </nav>
     <main class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest">The VMA Story</h2>
-        <div class="bg-white/5 p-10 md:p-16 rounded-[2.5rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 shadow-2xl">
+        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest reveal">The VMA Story</h2>
+        <div class="bg-white/5 p-10 md:p-16 rounded-[2.5rem] border border-white/10 text-md md:text-lg leading-relaxed mb-24 reveal shadow-2xl">
             <p class="mb-8 opacity-90">Founded in January 2024, our virtual assistant company was built on a vision: to help businesses focus on what truly matters. With a passion for efficiency and personalized support, we quickly grew into a trusted partner for entrepreneurs, professionals, and small businesses.</p>
             <p class="mb-8 opacity-90">We maintain a select network of partners who share our core values, delivering high-quality virtual assistance services tailored to each unique need. Our team of skilled professionals is dedicated to providing exceptional customer service, administrative support, and innovative solutions that help our clients achieve their goals.</p>
             <p class="mb-8 opacity-90">We believe in building lasting relationships, ensuring every task is handled with care and precision. Whether it's managing your calendar, handling customer inquiries, or streamlining your workflow, we are here to support you every step of the way.</p>
@@ -69,14 +76,21 @@
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-20 text-center mb-20">
-            <div><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Hiring Process (VA)</h3>
+            <div class="reveal"><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Hiring Process (VA)</h3>
                 <div class="space-y-14 max-w-xs mx-auto"><div class="step-card">Application Form</div><div class="step-card">Initial Screening</div><div class="step-card">Skill Test & Interview</div><div class="step-card">Final Internal Vetting</div><div class="step-card">Virtual Handshake</div></div></div>
-            <div><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Client Journey</h3>
+            <div class="reveal"><h3 class="text-2xl font-bold mb-14 text-sky-400 tracking-[0.3em] uppercase italic">Client Journey</h3>
                 <div class="space-y-14 max-w-xs mx-auto"><div class="step-card">Booking & Discovery Call</div><div class="step-card">Strategy Alignment</div><div class="step-card">Talent Matching</div><div class="step-card">Virtual Handshake</div></div></div>
         </div>
     </main>
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+
+        // Core script forcing complete cache resets on iPhone back navigation
+        window.addEventListener("pageshow", function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
     </script>
 </body>
 </html>
