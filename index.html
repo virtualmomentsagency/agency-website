@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Force Safari layout engines to stay bound to the brand base hex color */
         html, body { background-color: #0d4a94 !important; color: white; overflow-x: hidden; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
         .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
@@ -34,6 +35,7 @@
         }
         .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); -webkit-transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
         
+        /* High-efficiency transitions using strict backface-visibility gates */
         .reveal { 
             opacity: 0; 
             transform: translateY(30px) translateZ(0); 
@@ -44,7 +46,7 @@
             backface-visibility: hidden;
             will-change: transform, opacity;
         }
-        .reveal.active { opacity: 1; transform: translateY(0) translateZ(0); -webkit-transform: translateY(0) translateZ(0); }
+        .reveal.active { opacity: 1 !important; transform: translateY(0) translateZ(0) !important; -webkit-transform: translateY(0) translateZ(0) !important; }
         .safari-nav-fix { -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); transform: translateZ(0); -webkit-transform: translateZ(0); }
     </style>
 </head>
@@ -139,19 +141,28 @@
         window.addEventListener("scroll", reveal); 
         window.addEventListener("load", reveal);
         
-        /* Anti-flicker stack reset sequence */
-        window.addEventListener("pageshow", function(event) {
+        /* Bulletproof historical architecture bypass loop */
+        function clearSafariFreeze() {
             var elements = document.querySelectorAll(".reveal");
             for (var i = 0; i < elements.length; i++) {
+                elements[i].style.opacity = "1";
+                elements[i].style.transform = "none";
+                elements[i].style.webkitTransform = "none";
                 elements[i].classList.add("active");
             }
+        }
+
+        // Catch navigation changes instantly before frame updates
+        window.addEventListener("pageshow", function(event) {
+            clearSafariFreeze();
             if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
                 document.body.style.display = 'none';
-                document.body.offsetHeight;
+                document.body.offsetHeight; // Forces absolute browser pipeline reload
                 document.body.style.display = 'block';
-                setTimeout(reveal, 10);
+                setTimeout(clearSafariFreeze, 1);
             }
         });
+        window.addEventListener("popstate", clearSafariFreeze);
     </script>
 </body>
 </html>
