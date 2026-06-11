@@ -17,17 +17,14 @@
         .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; transform: translateZ(0); -webkit-transform: translateZ(0); }
         .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); -webkit-transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); -webkit-filter: brightness(1.2); }
         
+        /* Bypassed initial animation properties on historical elements to force full loading visibility */
         .reveal { 
-            opacity: 0; 
-            transform: translateY(50px) translateZ(0); 
-            -webkit-transform: translateY(50px) translateZ(0); 
-            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
-            -webkit-transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            opacity: 1 !important; 
+            transform: none !important; 
+            -webkit-transform: none !important;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            will-change: transform, opacity;
         }
-        .reveal.active { opacity: 1 !important; transform: translateY(0) translateZ(0) !important; -webkit-transform: translateY(0) translateZ(0) !important; }
         
         .step-card { background: white; color: #0d4a94; padding: 24px; border-radius: 24px; font-weight: 800; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); -webkit-transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; text-transform: uppercase; font-size: 14px; letter-spacing: 1.5px; transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
         .step-card:hover { transform: scale(1.15) translateY(-10px); -webkit-transform: scale(1.15) translateY(-10px); color: #1665b1; }
@@ -46,22 +43,22 @@
     </div>
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 safari-nav-fix p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
+            <a href="index.html" class="safari-route"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
             <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
-                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
-                <a href="about.html" class="nav-link text-white border-b-2 border-white pb-1">About Us</a>
-                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
+                <a href="index.html" class="safari-route hover:text-white transition">Home</a>
+                <a href="services.html" class="safari-route hover:text-white transition">Services</a>
+                <a href="about.html" class="safari-route text-white border-b-2 border-white pb-1">About Us</a>
+                <a href="faq.html" class="safari-route hover:text-white transition">FAQ</a>
+                <a href="contact.html" class="safari-route hover:text-white transition">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2 text-white border-b-2 border-white mx-auto w-fit">About Us</a>
-            <a href="faq.html" class="block py-2">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
+            <a href="index.html" class="safari-route block py-2">Home</a>
+            <a href="services.html" class="safari-route block py-2">Services</a>
+            <a href="about.html" class="safari-route block py-2 text-white border-b-2 border-white mx-auto w-fit">About Us</a>
+            <a href="faq.html" class="safari-route block py-2">FAQ</a>
+            <a href="contact.html" class="safari-route block py-2">Contact</a>
         </div>
     </nav>
     <main class="py-20 px-6 max-w-6xl mx-auto">
@@ -84,31 +81,21 @@
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
         
-        function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
-        window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
-        
-        /* Bulletproof historical architecture bypass loop */
-        function clearSafariFreeze() {
-            var elements = document.querySelectorAll(".reveal");
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].style.opacity = "1";
-                elements[i].style.transform = "none";
-                elements[i].style.webkitTransform = "none";
-                elements[i].classList.add("active");
-            }
-        }
-
-        // Catch navigation changes instantly before frame updates
-        window.addEventListener("pageshow", function(event) {
-            clearSafariFreeze();
-            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-                document.body.style.display = 'none';
-                document.body.offsetHeight;
-                document.body.style.display = 'block';
-                setTimeout(clearSafariFreeze, 1);
-            }
+        /* Anti-freeze Link Route Interceptor System */
+        document.querySelectorAll('.safari-route').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var destination = this.getAttribute('href');
+                window.location.replace(destination);
+            });
         });
-        window.addEventListener("popstate", clearSafariFreeze);
+
+        // Forced background flush loop
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
     </script>
 </body>
 </html>
