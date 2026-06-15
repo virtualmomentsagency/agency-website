@@ -30,7 +30,6 @@
         .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
         .safari-nav-fix { background-color: rgba(13, 74, 148, 0.95) !important; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
 
-        /* ─── OPTIMIZED SMOOTH SCROLL FADE-IN STYLING ─── */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -39,7 +38,6 @@
             backface-visibility: hidden;
             will-change: transform, opacity;
         }
-        /* When class active is applied, it slides up and clears beautifully */
         .reveal.active {
             opacity: 1 !important;
             transform: translateY(0) !important;
@@ -106,7 +104,7 @@
                 <div>
                     <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" alt="Hemer Joy Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
-                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Director of Operations</p>
+                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Co-Founder & COO</p>
                     <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners, coaches, and entrepreneurs. I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
                 </div>
             </div>
@@ -123,7 +121,6 @@
     <script>
         function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
 
-        /* ─── PREMIUM SCROLL OBSERVER MECHANICS ─── */
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -133,10 +130,8 @@
             });
         }, observerOptions);
 
-        // Bind scroll elements on fresh load
         document.querySelectorAll('.reveal:not(.active)').forEach(el => scrollObserver.observe(el));
 
-        // Wipe out historical freeze sequences instantly if hitting iPhone back arrow
         window.addEventListener("pageshow", function(event) {
             if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
                 document.querySelectorAll('.reveal').forEach(el => {
