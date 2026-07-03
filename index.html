@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Virtual Moments Agency | Elite Virtual Assistants for Healthcare & Sales</title>
     <meta name="description" content="Virtual Moments Agency (VMA) provides specialized virtual assistant support for Healthcare, Sales, and SaaS. Scale your business with our elite virtual partners.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link class="safari-route-link" rel="icon" type="image/png" href="favicon.png">
+    <link class="safari-route-link" rel="apple-touch-icon" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -21,13 +21,18 @@
         .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
         .social-icon-btn:hover, .social-icon-btn:active { transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); }
         
-        .photo-bubble { 
+        /* Premium Interactive Elements Scaling System */
+        .photo-bubble, .brand-card-pop { 
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
             transform-style: preserve-3d; 
             perspective: 1000px; 
             cursor: pointer; 
         }
         .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
+        
+        /* New Logo Pop-Out Card Effect */
+        .brand-card-pop:hover, .brand-card-pop:active { transform: scale(1.05) translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.3); }
+        
         .safari-nav-fix { background-color: rgba(13, 74, 148, 0.95) !important; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
 
         .reveal {
@@ -54,30 +59,30 @@
     </div>
     <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 safari-nav-fix p-4 md:p-6 border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
+            <a class="safari-route-link" href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
             <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="text-white border-b-2 border-white pb-1">Home</a>
-                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
-                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
-                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
+                <a class="safari-route-link" href="index.html" class="text-white border-b-2 border-white pb-1">Home</a>
+                <a class="safari-route-link" href="services.html" class="nav-link hover:text-white transition">Services</a>
+                <a class="safari-route-link" href="about.html" class="nav-link hover:text-white transition">About Us</a>
+                <a class="safari-route-link" href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
+                <a class="safari-route-link" href="contact.html" class="nav-link hover:text-white transition">Contact</a>
             </div>
             <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold shadow-2xl">
-            <a href="index.html" class="block py-2 text-white">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
+            <a class="safari-route-link" href="index.html" class="block py-2 text-white">Home</a>
+            <a class="safari-route-link" href="services.html" class="block py-2">Services</a>
+            <a class="safari-route-link" href="about.html" class="block py-2">About Us</a>
+            <a class="safari-route-link" href="faq.html" class="block py-2">FAQ</a>
+            <a class="safari-route-link" href="contact.html" class="block py-2">Contact</a>
         </div>
     </nav>
     <header class="hero-gradient pt-24 pb-32 px-6 text-center reveal">
         <h1 class="text-4xl md:text-8xl font-extrabold mb-7 leading-tight italic uppercase tracking-tighter">Where Strategy Meets <br><span class="border-b-4 border-white pb-1 not-italic">Specialized Support.</span></h1>
         <p class="text-md md:text-xl text-slate-100 max-w-4xl mx-auto mb-12 font-light italic">Virtual Moments Agency (VMA) connects visionary leaders with exceptional global talent. Focused on Healthcare, Sales, and SaaS, we refine your operations so you can stay focused on winning.</p>
         <div class="flex flex-col md:flex-row justify-center gap-5">
-            <a href="https://calendar.app.google/pK7vJvwTqniXihTJ8" target="_blank" class="bg-white text-[#0d4a94] px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-xl shadow-2xl hover:scale-105 transition">Hire your Virtual Partner</a>
-            <a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" class="border border-white/30 text-white px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-lg hover:bg-white/10 transition">Become a Virtual Partner</a>
+            <a class="safari-route-link" href="https://calendar.app.google/pK7vJvwTqniXihTJ8" target="_blank" class="bg-white text-[#0d4a94] px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-xl shadow-2xl hover:scale-105 transition">Hire your Virtual Partner</a>
+            <a class="safari-route-link" href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" class="border border-white/30 text-white px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-lg hover:bg-white/10 transition">Become a Virtual Partner</a>
         </div>
     </header>
     <section class="py-20 bg-white text-[#0d4a94] px-6 reveal">
@@ -94,19 +99,28 @@
     <section class="py-24 bg-slate-50 text-slate-900 px-6 reveal">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-16 text-[#0d4a94] text-center uppercase italic">VMA Leadership</h2>
-            <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-center lg:text-left">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-center lg:text-left mb-24">
                 <div>
-                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" alt="Vener Marion Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
+                    <a class="safari-route-link" href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" alt="Vener Marion Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Vener Marion Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Founder & CEO</p>
                     <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships.</p>
                 </div>
                 <div>
-                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" alt="Hemer Joy Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
+                    <a class="safari-route-link" href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" alt="Hemer Joy Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
                     <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
                     <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Co-Founder & COO</p>
                     <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners, coaches, and entrepreneurs. I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
                 </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-[#0d4a94] to-[#1665b1] p-12 rounded-[2.5rem] shadow-2xl text-center border border-white/10 reveal">
+                <div class="brand-card-pop inline-block bg-white/10 p-6 rounded-3xl border border-white/20 mb-8 backdrop-blur-md">
+                    <img src="logo.png" alt="VMA Logo Burst" class="h-14 md:h-20 object-contain mx-auto brightness-0 invert">
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-white uppercase tracking-wider italic mb-4">Ready to Unlock Your Efficiency?</h3>
+                <p class="text-slate-200 text-sm md:text-md max-w-xl mx-auto mb-8 italic font-light">Align your operations with elite support. Schedule an alignment strategy session directly with our executive partners today.</p>
+                <a class="safari-route-link" href="https://calendar.app.google/pK7vJvwTqniXihTJ8" target="_blank" class="inline-block bg-white text-[#0d4a94] px-10 py-5 rounded-full font-black text-xs md:text-sm uppercase tracking-widest hover:scale-105 transition-transform duration-300 shadow-xl">Book a Free Strategy Call</a>
             </div>
         </div>
     </section>
