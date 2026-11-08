@@ -1,69 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Virtual Moments Agency</title>
-    <meta name="description" content="Ready to scale? Contact Virtual Moments Agency.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { background-color: #0d4a94; color: white; overflow-x: hidden; scroll-behavior: smooth; }
-        .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
-        .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; }
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 12px; }
-        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-        .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); }
-        .contact-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3.5rem 1.5rem; border-radius: 2.5rem; cursor: pointer; }
-        .contact-card:hover { transform: scale(1.1) translateY(-15px); background: white; color: #0d4a94; box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06173A">
+<title>Contact | Virtual Moments Agency</title>
+<meta name="description" content="Book a free strategy call or reach Virtual Moments Agency by email, WhatsApp or phone.">
+<meta property="og:title" content="Contact | Virtual Moments Agency">
+<meta property="og:description" content="Book a free strategy call or reach Virtual Moments Agency by email, WhatsApp or phone.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-    <div class="social-float">
-        <a href="mailto:info@virtualmomentsagency.com" class="social-icon-btn bg-red-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-envelope text-xl"></i></a>
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
-        <a href="tel:9853150262" class="social-icon-btn bg-sky-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone text-xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl"></i></a>
-    </div>
-    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
-            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
-                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
-                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
-                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="nav-link text-white border-b-2 border-white pb-1">Contact</a>
-            </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
-        </div>
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2">FAQ</a>
-            <a href="contact.html" class="block py-2 text-white border-b-2 border-white mx-auto w-fit">Contact</a>
-        </div>
+<body data-page="contact">
+<div class="curtain" aria-hidden="true"><img src="img/logo.png" alt=""></div>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Virtual Moments Agency home"><img src="img/logo.png" alt="Virtual Moments Agency" width="600" height="229"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a><a class="nav__link" href="services.html">Services</a><a class="nav__link" href="about.html">About</a><a class="nav__link" href="faq.html">FAQ</a><a class="nav__link" href="contact.html" aria-current="page">Contact</a>
+      <a class="btn btn--white btn--sm nav__cta" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </nav>
-    <main class="py-24 px-6 text-center max-w-7xl mx-auto">
-        <h2 class="text-5xl font-extrabold mb-16 uppercase italic tracking-widest reveal active">Connect with VMA</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 reveal active">
-            <a href="mailto:info@virtualmomentsagency.com" class="contact-card"><i class="fas fa-envelope text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">Direct Email</h4></a>
-            <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="contact-card"><i class="fab fa-whatsapp text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">WhatsApp</h4></a>
-            <a href="tel:9853150262" class="contact-card"><i class="fas fa-phone text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">Direct Call</h4></a>
-            <a href="https://www.google.com/maps" target="_blank" class="contact-card"><i class="fas fa-location-dot text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">Albay, PH</h4></a>
-            <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="contact-card"><i class="fab fa-linkedin text-5xl mb-6"></i><h4 class="font-bold uppercase tracking-widest text-sm">LinkedIn</h4></a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile"><a href="index.html">Home<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="services.html">Services<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="about.html">About<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="faq.html">FAQ<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="contact.html" aria-current="page">Contact<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--white btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <span>info@virtualmomentsagency.com</span>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-lines" aria-hidden="true"></div>
+  <div class="container">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+    <span class="eyebrow reveal" data-delay="1">Contact</span>
+    <h1 class="h-xl reveal" data-delay="2">Let's talk about your front desk.</h1>
+    <p class="lead reveal" data-delay="3">The fastest way to start is a free strategy call. You can also reach us by email, WhatsApp or phone.</p>
+  </div>
+</section>
+
+<main>
+<section class="section">
+  <div class="container contact-grid">
+    <div class="contact-cards">
+      <a class="ccard spot reveal" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener" style="background:linear-gradient(135deg,var(--light),var(--deep));border-color:transparent;color:#fff">
+        <span class="ic" style="background:rgba(255,255,255,.14);color:#fff"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+        <span><b style="color:#fff">Book a free strategy call</b><small style="color:#CFE0F7">Pick a time that works for you</small></span>
+        <svg class="i go" style="color:#fff" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+      <a class="ccard spot reveal" data-delay="1" href="mailto:info@virtualmomentsagency.com"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>Email</b><small>info@virtualmomentsagency.com</small></span><svg class="i go" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="ccard spot reveal" data-delay="2" href="https://wa.me/message/63AN23BO226RG1" target="_blank" rel="noopener"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg></span><span><b>WhatsApp</b><small>Message us anytime</small></span><svg class="i go" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="ccard spot reveal" data-delay="3" href="tel:+19853150262"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span><span><b>Phone</b><small>+1 (985) 315-0262</small></span><svg class="i go" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="ccard spot reveal" data-delay="4" href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" rel="noopener"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></span><span><b>LinkedIn</b><small>Virtual Moments Agency</small></span><svg class="i go" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="ccard reveal" data-delay="5"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span><span><b>Albay, Philippines</b><small>Serving clients in the US and beyond</small></span></div>
+    </div>
+
+    <form class="form reveal" data-delay="1" data-contact-form>
+      <h3>Send us a message</h3>
+      <p>Tell us a little about your business and we'll get back to you.</p>
+      <div class="field-row">
+        <div class="field"><input id="f-name" name="name" placeholder=" " required autocomplete="name"><label for="f-name">Your name</label></div>
+        <div class="field"><input id="f-email" name="email" type="email" placeholder=" " required autocomplete="email" inputmode="email"><label for="f-email">Email</label></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><input id="f-biz" name="biz" placeholder=" " autocomplete="organization"><label for="f-biz">Clinic or business name</label></div>
+        <div class="field">
+          <select id="f-industry" name="industry">
+            <option>Medspa</option><option>Healthcare</option><option>Sales &amp; SDR</option><option>Real estate</option><option>Construction</option><option>SaaS &amp; tech</option><option>Executive support</option><option>Other</option>
+          </select><label for="f-industry">Industry</label>
         </div>
-        <div class="mt-32 reveal"><h3 class="text-2xl font-bold mb-8 italic uppercase tracking-widest opacity-80">Ready to start your Virtual Moment?</h3><a href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" class="inline-block bg-white text-[#0d4a94] px-12 py-5 rounded-full font-black uppercase text-sm tracking-widest hover:scale-110 transition shadow-2xl">Book a Discovery Call</a></div>
-    </main>
-    <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
-        window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
-    </script>
+      </div>
+      <div class="field"><textarea id="f-msg" name="message" placeholder=" " rows="4"></textarea><label for="f-msg">What would you like help with?</label></div>
+      <button class="btn btn--primary btn--block" type="submit">Send message <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <p class="form-msg" role="status">Your email app should open with your message ready to send. If it doesn't, email us at info@virtualmomentsagency.com.</p>
+      <div style="display:flex;justify-content:center;margin-top:14px">
+        <button type="button" class="link-arrow" data-copy="info@virtualmomentsagency.com" style="font-size:14.5px"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg> <span>Copy our email address</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta spot reveal">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <img class="cta__logo" src="img/logo.png" alt="Virtual Moments Agency">
+      <h2 class="h-lg">Ready to stop losing bookings to slow replies?</h2>
+      <p class="lead">In a free strategy call, we map how inquiries and bookings move through your business and show you exactly what a virtual partner would take off your plate.</p>
+      <div class="cta__actions">
+        <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="services.html">Explore services</a>
+      </div>
+      <p class="cta__note">Prefer email? <a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <img class="footer__logo" src="img/logo.png" alt="Virtual Moments Agency">
+        <p>Trained virtual partners for medspas and growing businesses, managed by a founder-led team in the Philippines.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a href="https://www.instagram.com/marionandres20" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="services.html#packages">Packages</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" rel="noopener">Become a virtual partner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="services.html#medspa">Medspas</a></li>
+          <li><a href="services.html#healthcare">Healthcare</a></li>
+          <li><a href="services.html#sales">Sales &amp; SDR</a></li>
+          <li><a href="services.html#real-estate">Real estate</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#saas">SaaS &amp; tech</a></li>
+          <li><a href="services.html#executive">Executive support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></li>
+          <li><a href="tel:+19853150262">+1 (985) 315-0262</a></li>
+          <li><a href="https://wa.me/message/63AN23BO226RG1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>virtualmomentsagency.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Virtual Moments Agency. All rights reserved.</span>
+      <span>Albay, Philippines &middot; Serving clients in the US and beyond</span>
+    </div>
+  </div>
+  <div class="footer__big" aria-hidden="true">Virtual Moments</div>
+</footer>
+<div class="mbar">
+  <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener" data-no-magnet>Book a free strategy call</a>
+  <a class="mbar__mail" href="contact.html" aria-label="Contact VMA"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+</div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>

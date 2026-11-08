@@ -1,76 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ | Virtual Moments Agency</title>
-    <meta name="description" content="Find answers to common questions about hiring a Virtual Partner.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { background-color: #0d4a94; color: white; overflow-x: hidden; scroll-behavior: smooth; }
-        .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
-        .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; }
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 12px; }
-        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-        .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); }
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); min-height: 200px; display: flex; align-items: center; justify-content: center; padding: 2rem; cursor: pointer; position: relative; overflow: hidden; }
-        .faq-question { transition: all 0.8s ease; opacity: 1; text-align: center; font-weight: 700; font-size: 1.1rem; }
-        .faq-answer { position: absolute; inset: 0; padding: 1.5rem; display: flex; align-items: center; justify-content: center; text-align: center; opacity: 0; transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(13, 74, 148, 0.98); font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; pointer-events: none; }
-        .glass-card:hover .faq-question, .glass-card.is-tapped .faq-question { opacity: 0; transform: scale(0.95) blur(5px); }
-        .glass-card:hover .faq-answer, .glass-card.is-tapped .faq-answer { opacity: 1; pointer-events: auto; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06173A">
+<title>FAQ | Virtual Moments Agency</title>
+<meta name="description" content="Answers to common questions about working with Virtual Moments Agency: matching time, contracts, payroll, quality and more.">
+<meta property="og:title" content="FAQ | Virtual Moments Agency">
+<meta property="og:description" content="Answers to common questions about working with Virtual Moments Agency: matching time, contracts, payroll, quality and more.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-    <div class="social-float">
-        <a href="mailto:info@virtualmomentsagency.com" class="social-icon-btn bg-red-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-envelope text-xl"></i></a>
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
-        <a href="tel:9853150262" class="social-icon-btn bg-sky-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone text-xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl"></i></a>
-    </div>
-    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
-            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
-                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
-                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
-                <a href="faq.html" class="nav-link text-white border-b-2 border-white pb-1">FAQ</a>
-                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
-            </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
-        </div>
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2 text-white border-b-2 border-white mx-auto w-fit">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
-        </div>
+<body data-page="faq">
+<div class="curtain" aria-hidden="true"><img src="img/logo.png" alt=""></div>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Virtual Moments Agency home"><img src="img/logo.png" alt="Virtual Moments Agency" width="600" height="229"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a><a class="nav__link" href="services.html">Services</a><a class="nav__link" href="about.html">About</a><a class="nav__link" href="faq.html" aria-current="page">FAQ</a><a class="nav__link" href="contact.html">Contact</a>
+      <a class="btn btn--white btn--sm nav__cta" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </nav>
-    <main class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-4xl text-center font-extrabold mb-16 uppercase italic reveal active">Common Inquiries</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div class="glass-card rounded-2xl reveal active" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Do you accept partners without experience?</div><div class="faq-answer">Yes! We value a "can-do" attitude and strong work ethics above all else.</div></div>
-            <div class="glass-card rounded-2xl reveal active" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Do you provide trainings?</div><div class="faq-answer">Training is subject to role requirements, but we provide 100% operational support.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">What industries do you support?</div><div class="faq-answer">Healthcare (Medspa), B2B Sales, SaaS, and Real Estate.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">How fast is the matching?</div><div class="faq-answer">Typically 3-7 business days to ensure perfect strategy alignment.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Are there contract lock-ins?</div><div class="faq-answer">We focus on value over restrictive lock-ins. Terms are flexible.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">How do you ensure quality?</div><div class="faq-answer">Multi-stage vetting and ongoing support from our Director of Operations.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Can I hire part-time?</div><div class="faq-answer">Yes, we offer both part-time and dedicated full-time talent solutions.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">Who handles the payroll and admin?</div><div class="faq-answer">VMA handles all payroll and compliance so you can focus on growth.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">What tools do we use?</div><div class="faq-answer">Slack, WhatsApp Business, and your existing professional suites.</div></div>
-            <div class="glass-card rounded-2xl reveal" onclick="this.classList.toggle('is-tapped')"><div class="faq-question">What is the "Virtual Handshake"?</div><div class="faq-answer">A final video call to meet your partner and confirm chemistry.</div></div>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile"><a href="index.html">Home<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="services.html">Services<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="about.html">About<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="faq.html" aria-current="page">FAQ<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="contact.html">Contact<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--white btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <span>info@virtualmomentsagency.com</span>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-lines" aria-hidden="true"></div>
+  <div class="container">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span><span>FAQ</span></div>
+    <span class="eyebrow reveal" data-delay="1">FAQ</span>
+    <h1 class="h-xl reveal" data-delay="2">Answers before you book.</h1>
+    <p class="lead reveal" data-delay="3">Everything owners usually ask us before a strategy call. Can't find yours? Ask us directly.</p>
+  </div>
+</section>
+
+<main>
+<section class="section">
+  <div class="container" style="max-width:900px" data-faq>
+    <div class="faq-tools reveal">
+      <label class="search"><span class="sr" style="position:absolute;left:-9999px">Search questions</span><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="Search questions" autocomplete="off"></label>
+      <div class="chips"><button class="chip" data-cat="all" aria-pressed="true">All</button><button class="chip" data-cat="work" aria-pressed="false">Working with VMA</button><button class="chip" data-cat="quality" aria-pressed="false">Quality &amp; process</button><button class="chip" data-cat="join" aria-pressed="false">Join VMA</button></div>
+    </div>
+    <div class="reveal" data-delay="1" data-acc-single>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">How fast can I get a virtual partner?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Vetting and matching typically takes 7–10 days, depending on the role. We take the time to make sure you get the right fit.</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">Can I start part-time?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Yes. We offer both part-time and dedicated full-time virtual partners, and you can adjust as your business grows.</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">What packages do you offer?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>We offer three packages: Standard (core admin like email, calendar and data management), Advanced (front desk, social media, design, customer service, content and lead generation) and Premium (a dedicated virtual partner for end-to-end operations, including medical, executive, bookkeeping and real estate roles).</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">How much does it cost?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Pricing depends on the package and role. We'll walk you through it on your free strategy call.</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">Is there a lock-in period?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Yes, but it's short: a 3-month initial term. That gives your virtual partner time to learn your business and show real results.</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">Who handles payroll and admin?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>VMA handles your virtual partner's payroll and compliance, so you can focus on the work and on growth.</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">What industries do you support?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Medspas are our specialty. We also support healthcare practices, B2B sales teams, real estate, construction, SaaS and tech companies, and executives.</p></div></div>
+      </div>
+      <div class="acc" data-cat="work">
+        <button class="acc__q" aria-expanded="false">What tools do you work with?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Slack, WhatsApp Business and your existing professional tools. Your partner works inside the systems you already use.</p></div></div>
+      </div>
+      <div class="acc" data-cat="quality">
+        <button class="acc__q" aria-expanded="false">How do you ensure quality?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Every partner goes through multi-stage vetting, and a dedicated VMA virtual manager oversees and supports them after placement.</p></div></div>
+      </div>
+      <div class="acc" data-cat="quality">
+        <button class="acc__q" aria-expanded="false">Do you provide training?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Training depends on the role's requirements, and we provide full operational support throughout the placement.</p></div></div>
+      </div>
+      <div class="acc" data-cat="quality">
+        <button class="acc__q" aria-expanded="false">What is the “Virtual Handshake”?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>A collaborative session with your virtual partner to define success metrics, set milestones and make sure everything is aligned before launch.</p></div></div>
+      </div>
+      <div class="acc" data-cat="quality">
+        <button class="acc__q" aria-expanded="false">How do you track performance?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>We run performance reviews at 30, 60 and 90 days, with ongoing monitoring and feedback from your virtual manager.</p></div></div>
+      </div>
+      <div class="acc" data-cat="join">
+        <button class="acc__q" aria-expanded="false">Do you accept virtual partners without experience?<span class="acc__plus" aria-hidden="true"></span></button>
+        <div class="acc__a"><div><p>Yes. We value a can-do attitude and a strong work ethic above all else. Apply through our careers form.</p></div></div>
+      </div>
+      <p class="faq-empty">No questions match that search. <a class="link-arrow" href="contact.html">Ask us directly <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta spot reveal">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <img class="cta__logo" src="img/logo.png" alt="Virtual Moments Agency">
+      <h2 class="h-lg">Ready to stop losing bookings to slow replies?</h2>
+      <p class="lead">In a free strategy call, we map how inquiries and bookings move through your business and show you exactly what a virtual partner would take off your plate.</p>
+      <div class="cta__actions">
+        <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="services.html">Explore services</a>
+      </div>
+      <p class="cta__note">Prefer email? <a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <img class="footer__logo" src="img/logo.png" alt="Virtual Moments Agency">
+        <p>Trained virtual partners for medspas and growing businesses, managed by a founder-led team in the Philippines.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a href="https://www.instagram.com/marionandres20" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
         </div>
-    </main>
-    <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
-        window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
-    </script>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="services.html#packages">Packages</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" rel="noopener">Become a virtual partner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="services.html#medspa">Medspas</a></li>
+          <li><a href="services.html#healthcare">Healthcare</a></li>
+          <li><a href="services.html#sales">Sales &amp; SDR</a></li>
+          <li><a href="services.html#real-estate">Real estate</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#saas">SaaS &amp; tech</a></li>
+          <li><a href="services.html#executive">Executive support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></li>
+          <li><a href="tel:+19853150262">+1 (985) 315-0262</a></li>
+          <li><a href="https://wa.me/message/63AN23BO226RG1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>virtualmomentsagency.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Virtual Moments Agency. All rights reserved.</span>
+      <span>Albay, Philippines &middot; Serving clients in the US and beyond</span>
+    </div>
+  </div>
+  <div class="footer__big" aria-hidden="true">Virtual Moments</div>
+</footer>
+<div class="mbar">
+  <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener" data-no-magnet>Book a free strategy call</a>
+  <a class="mbar__mail" href="contact.html" aria-label="Contact VMA"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+</div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>

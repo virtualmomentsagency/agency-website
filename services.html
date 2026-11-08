@@ -1,90 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Virtual Moments Agency</title>
-    <meta name="description" content="Explore VMA's specialized workflows for Medspa, Healthcare, SaaS, and Sales.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { background-color: #0d4a94; color: white; overflow-x: hidden; scroll-behavior: smooth; }
-        .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
-        .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; }
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 12px; }
-        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-        .social-icon-btn:hover { transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); }
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.8s ease; position: relative; min-height: 320px; border-radius: 2rem; overflow: hidden; }
-        .service-front { transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; }
-        .service-back { position: absolute; inset: 0; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(13, 74, 148, 0.7); pointer-events: none; }
-        .service-card:hover .service-front, .service-card.is-tapped .service-front { opacity: 0; filter: blur(8px); }
-        .service-card:hover .service-back, .service-card.is-tapped .service-back { opacity: 1; pointer-events: auto; }
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06173A">
+<title>Services | Virtual Moments Agency</title>
+<meta name="description" content="Virtual partner support for medspas, healthcare, sales, real estate, construction, SaaS and executives. See what your virtual partner can take off your plate.">
+<meta property="og:title" content="Services | Virtual Moments Agency">
+<meta property="og:description" content="Virtual partner support for medspas, healthcare, sales, real estate, construction, SaaS and executives. See what your virtual partner can take off your plate.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-    <div class="social-float">
-        <a href="mailto:info@virtualmomentsagency.com" class="social-icon-btn bg-red-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-envelope text-xl"></i></a>
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
-        <a href="tel:9853150262" class="social-icon-btn bg-sky-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone text-xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl"></i></a>
-    </div>
-    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 backdrop-blur-md p-4 md:p-6 border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
-            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="nav-link hover:text-white transition">Home</a>
-                <a href="services.html" class="nav-link text-white border-b-2 border-white pb-1">Services</a>
-                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
-                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
-            </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
-        </div>
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold">
-            <a href="index.html" class="block py-2">Home</a>
-            <a href="services.html" class="block py-2 text-white border-b-2 border-white mx-auto w-fit">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
-        </div>
+<body data-page="services">
+<div class="curtain" aria-hidden="true"><img src="img/logo.png" alt=""></div>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Virtual Moments Agency home"><img src="img/logo.png" alt="Virtual Moments Agency" width="600" height="229"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html">Home</a><a class="nav__link" href="services.html" aria-current="page">Services</a><a class="nav__link" href="about.html">About</a><a class="nav__link" href="faq.html">FAQ</a><a class="nav__link" href="contact.html">Contact</a>
+      <a class="btn btn--white btn--sm nav__cta" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </nav>
-    <main class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="text-5xl text-center font-extrabold mb-16 uppercase italic tracking-widest reveal active">Specialized Expertise</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div class="service-card glass-card reveal active" onclick="this.classList.toggle('is-tapped')">
-                <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-spa text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold tracking-widest uppercase">Medspa</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Workflow</h4><p class="text-md opacity-90">Qualifying leads, managing aesthetic clinic bookings, and providing seamless patient care follow-ups.</p></div>
-            </div>
-            <div class="service-card glass-card reveal active" onclick="this.classList.toggle('is-tapped')">
-                <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-heartbeat text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold tracking-widest uppercase">Healthcare</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Workflow</h4><p class="text-md opacity-90">HIPAA-compliant administrative support, medical billing coordination, and secure patient scheduling.</p></div>
-            </div>
-            <div class="service-card glass-card reveal active" onclick="this.classList.toggle('is-tapped')">
-                <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-rocket text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold tracking-widest uppercase">SaaS & Tech</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Workflow</h4><p class="text-md opacity-90">Back-office optimization, CRM data management, and automating customer onboarding processes.</p></div>
-            </div>
-            <div class="service-card glass-card reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-chart-line text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold tracking-widest uppercase">Sales & SDR</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Workflow</h4><p class="text-md opacity-90">Cold calling, professional appointment setting, and managing lead pipelines to drive revenue growth.</p></div>
-            </div>
-            <div class="service-card glass-card reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-home text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold tracking-widest uppercase">Real Estate</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Workflow</h4><p class="text-md opacity-90">Transaction coordination, listing management, and proactive tenant communication support.</p></div>
-            </div>
-            <div class="service-card glass-card reveal" onclick="this.classList.toggle('is-tapped')">
-                <div class="service-front flex flex-col items-center justify-center h-full p-10"><i class="fas fa-user-tie text-6xl mb-6 text-sky-400"></i><h3 class="text-2xl font-bold tracking-widest uppercase">Executive</h3></div>
-                <div class="service-back"><h4 class="font-bold text-sky-300 mb-4 uppercase text-xs tracking-widest">Workflow</h4><p class="text-md opacity-90">Elite calendar management, email filtering, and high-level project coordination for visionary leaders.</p></div>
-            </div>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile"><a href="index.html">Home<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="services.html" aria-current="page">Services<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="about.html">About<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="faq.html">FAQ<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="contact.html">Contact<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--white btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <span>info@virtualmomentsagency.com</span>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-lines" aria-hidden="true"></div>
+  <div class="container">
+    <div class="crumbs reveal"><a href="index.html">Home</a><span>/</span><span>Services</span></div>
+    <span class="eyebrow reveal" data-delay="1">Services</span>
+    <h1 class="h-xl reveal" data-delay="2">Support that fits the way your business runs.</h1>
+    <p class="lead reveal" data-delay="3">Medspas are our specialty. We also place trained virtual partners with healthcare practices, sales teams, real estate professionals, construction companies, tech companies and executives.</p>
+  </div>
+</section>
+
+<main>
+<section class="section section--mist">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Choose your industry</span>
+      <h2 class="h-lg">What your virtual partner handles</h2>
+    </div>
+    <div class="reveal" data-delay="1">
+    <div data-tabs data-hash>
+      <div class="tabs__list" role="tablist" aria-label="Industries">
+        <span class="tabs__ind" aria-hidden="true"></span>
+        <button class="tabs__btn" role="tab" id="tab-medspa" data-key="medspa" aria-controls="panel-medspa" aria-selected="true">Medspas <span class="star">Focus</span></button><button class="tabs__btn" role="tab" id="tab-healthcare" data-key="healthcare" aria-controls="panel-healthcare" aria-selected="false">Healthcare</button><button class="tabs__btn" role="tab" id="tab-sales" data-key="sales" aria-controls="panel-sales" aria-selected="false">Sales &amp; SDR</button><button class="tabs__btn" role="tab" id="tab-real-estate" data-key="real-estate" aria-controls="panel-real-estate" aria-selected="false">Real estate</button><button class="tabs__btn" role="tab" id="tab-construction" data-key="construction" aria-controls="panel-construction" aria-selected="false">Construction</button><button class="tabs__btn" role="tab" id="tab-saas" data-key="saas" aria-controls="panel-saas" aria-selected="false">SaaS &amp; tech</button><button class="tabs__btn" role="tab" id="tab-executive" data-key="executive" aria-controls="panel-executive" aria-selected="false">Executive</button>
+      </div>
+      
+      <div class="tabs__panel ind" role="tabpanel" id="panel-medspa" aria-labelledby="tab-medspa">
+        <div class="ind__media"><img src="img/treatment.jpg" alt="Medspa treatment in progress"><span class="badge">Our specialty</span></div>
+        <div>
+          <span class="eyebrow">Medspas</span>
+          <h3>A front desk that never lets an inquiry go cold</h3>
+          <p class="lead">Medspa owners are our focus. Your virtual partner learns your treatments, pricing questions and booking rules, then keeps leads, consults and patient follow-ups moving every day.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Replies to website forms, Instagram and Facebook DMs and missed calls</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Answers common treatment and pricing questions using your approved scripts</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Books consultations and treatments, sends confirmations and reminders</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Follows up on no-shows and cancellations to fill open slots</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Sends aftercare check-ins and rebooking prompts after visits</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Reaches out to past patients with your current offers</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-    </main>
-    <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
-        function reveal() { var r = document.querySelectorAll(".reveal"); for (var i = 0; i < r.length; i++) { var h = window.innerHeight; var t = r[i].getBoundingClientRect().top; if (t < h - 80) { r[i].classList.add("active"); } } }
-        window.addEventListener("scroll", reveal); window.addEventListener("load", reveal);
-    </script>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-healthcare" aria-labelledby="tab-healthcare">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-healthcare.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-shield"/></svg></div>
+        <div>
+          <span class="eyebrow">Healthcare</span>
+          <h3>Administrative support that keeps the practice running</h3>
+          <p class="lead">Back-office help for clinics and practices, handled with care for patient privacy.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>HIPAA-compliant administrative support</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Medical billing coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Secure patient scheduling and reminders</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Inbox, fax and records admin</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Insurance and referral follow-ups</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-sales" aria-labelledby="tab-sales">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-sales.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-target"/></svg></div>
+        <div>
+          <span class="eyebrow">Sales &amp; SDR</span>
+          <h3>A pipeline that gets worked every single day</h3>
+          <p class="lead">Outbound and pipeline support for founders and sales teams who need more conversations on the calendar.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Cold calling and professional appointment setting</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Lead list building and qualification</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Follow-up sequences and reminders</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>CRM pipeline updates and reporting</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Calendar coordination for your closers</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-real-estate" aria-labelledby="tab-real-estate">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-real-estate.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-home"/></svg></div>
+        <div>
+          <span class="eyebrow">Real estate</span>
+          <h3>Listings, transactions and tenants, all handled</h3>
+          <p class="lead">Support for agents, teams and property managers so deals and tenants never wait on a reply.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Transaction coordination and deadline tracking</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Listing management and updates</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Proactive tenant communication</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Showing and appointment scheduling</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Inbox and document admin</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-construction" aria-labelledby="tab-construction">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-construction.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-helmet"/></svg></div>
+        <div>
+          <span class="eyebrow">Construction</span>
+          <h3>Projects that stay on schedule, from bid to closeout</h3>
+          <p class="lead">Back-office support for contractors and construction companies, so the office keeps up while your crews are on site.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Job scheduling and calendar coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Subcontractor and supplier communication</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Bid, estimate and proposal admin</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Permit and project document tracking</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Client updates and follow-ups</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Invoicing and records support</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-saas" aria-labelledby="tab-saas">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-saas.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-laptop"/></svg></div>
+        <div>
+          <span class="eyebrow">SaaS &amp; tech</span>
+          <h3>Back-office support for lean tech teams</h3>
+          <p class="lead">Operational help that frees founders and product teams to focus on the product.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Back-office process support</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>CRM data management and cleanup</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Customer onboarding coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Support inbox triage</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Reporting and documentation upkeep</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-executive" aria-labelledby="tab-executive">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-executive.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-brief"/></svg></div>
+        <div>
+          <span class="eyebrow">Executive</span>
+          <h3>Your time, protected</h3>
+          <p class="lead">High-level assistance for owners and leaders who need their calendar and inbox under control.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Calendar management and meeting prep</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Email filtering and inbox triage</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Project and task coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Travel and event logistics</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Personal and business admin</span></li></ul>
+          <a class="btn btn--primary" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The medspa playbook</span>
+      <h2 class="h-lg">The front-desk work that slips when you're busy with patients</h2>
+      <p class="lead">Your partner works inside your existing booking system, inbox and social accounts, following the scripts and policies you approve.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card spot reveal" data-delay="0"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></span><h3>Fast lead follow-up</h3><p>Website forms, DMs and missed calls get a reply while the lead is still interested.</p></div>
+      <div class="card spot reveal" data-delay="1"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-filter"/></svg></span><h3>Lead qualifying</h3><p>Answers common treatment and pricing questions and screens inquiries before they reach your calendar.</p></div>
+      <div class="card spot reveal" data-delay="2"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></span><h3>Booking &amp; reminders</h3><p>Schedules consultations and treatments, confirms appointments and follows up on no-shows.</p></div>
+      <div class="card spot reveal" data-delay="0"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Patient follow-ups</h3><p>Post-treatment check-ins, aftercare reminders and rebooking prompts that bring patients back.</p></div>
+      <div class="card spot reveal" data-delay="1"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg></span><h3>Past-patient reactivation</h3><p>Reaches out to patients who haven't been back in a while with your current offers and openings.</p></div>
+      <div class="card spot reveal" data-delay="2"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-inbox"/></svg></span><h3>Inbox &amp; admin</h3><p>Email triage, CRM updates and the day-to-day admin that keeps your clinic running smoothly.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section section--dark case-sec">
+  <div class="aurora" aria-hidden="true" style="opacity:.3"><span></span><span></span></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Real results</span>
+      <h2 class="h-lg">How a medical practice cut data errors with a virtual partner</h2>
+      <p class="lead">A client case study. Client details are kept private.</p>
+    </div>
+    <div class="case reveal" data-delay="1">
+      <div class="case__stat">
+        <span class="case__num" data-count="95">95%</span>
+        <span class="case__cap">reduction in data discrepancies</span>
+        <span class="case__who"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg> Medical practice &middot; unnamed client</span>
+      </div>
+      <div class="case__body">
+        <div>
+          <h3>What the virtual partner did</h3>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Compiled and organized patient data from multiple sources</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Reviewed patient charts to confirm all required documentation was present</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Ran regular audits of consent-signing procedures and charting notes against regulatory and practice guidelines</span></li></ul>
+        </div>
+        <div>
+          <h3>The results</h3>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>95% reduction in data discrepancies</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Regular compliance audits and training tracking kept the practice proactive on regulations</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>In-house medical staff gained more time for direct patient care</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>A more efficient, structured approach to administration</span></li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section section--mist">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Service packages</span>
+      <h2 class="h-lg">Choose the level of support you need</h2>
+      <p class="lead" style="margin-inline:auto">Every package comes with a vetted virtual partner, a dedicated VMA virtual manager and 30/60/90-day performance reviews. We'll walk you through pricing on your free strategy call.</p>
+    </div>
+    <div class="grid-3 pkgs" id="packages">
+      <div class="pkg spot reveal" data-delay="0">
+        <div class="pkg__top"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-inbox"/></svg></span></div>
+        <h3>Standard <span>package</span></h3>
+        <p>Our baseline tier for businesses that need to free up time from daily administrative work.</p>
+        <p class="pkg__label">What's covered</p>
+        <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Email management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Calendar management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Database management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Data entry</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>File organization</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>And more</span></li></ul>
+        <a class="btn btn--primary btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Ask about Standard <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="pkg spot reveal" data-delay="1">
+        <div class="pkg__top"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span></div>
+        <h3>Advanced <span>package</span></h3>
+        <p>For businesses that need to scale operations and outreach without adding local overhead.</p>
+        <p class="pkg__label">What's covered</p>
+        <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Receptionist / front desk</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Social media management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Graphic &amp; video design</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Customer service / cold calling</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Content writing</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Lead generation</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>And more</span></li></ul>
+        <a class="btn btn--primary btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Ask about Advanced <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="pkg spot reveal pkg--feature" data-delay="2">
+        <div class="pkg__top"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg></span><span class="pkg__tag">Most complete</span></div>
+        <h3>Premium <span>package</span></h3>
+        <p>Full operational support: a dedicated virtual partner embedded in your business to handle end-to-end operations.</p>
+        <p class="pkg__label">What's covered</p>
+        <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Business development specialist</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Executive virtual assistant</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Medical virtual assistant</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Project management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Bookkeeping</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Search engine optimization</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Real estate virtual assistant</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>And more</span></li></ul>
+        <a class="btn btn--white btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Ask about Premium <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section section--mist" id="how-it-works">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="h-lg">From first call to a partner who keeps getting better</h2>
+      <p class="lead">Tap through each step to see what happens, what you do and what we handle. Switch views to see how we choose your virtual partner.</p>
+    </div>
+    <div class="jr reveal" data-delay="1" data-journey>
+      <div class="jr__modes" role="tablist" aria-label="Choose a view">
+        <span class="jr__modeind" aria-hidden="true"></span>
+        <button role="tab" data-mode="client" aria-selected="true"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg> Your journey with VMA</button>
+        <button role="tab" data-mode="vetting" aria-selected="false"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg> How we vet your partner</button>
+      </div>
+      
+      <div class="jr__mode is-active" data-mode="client" role="tabpanel">
+        <ol class="jr__steps"><span class="jr__rail" aria-hidden="true"><i></i></span>
+          <li><button class="jr__step is-active" data-i="0" aria-label="Step 1: Discovery call">
+            <span class="jr__dot"><b>01</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Discovery call</b><small>Week 1</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="1" aria-label="Step 2: Proposal &amp; agreement">
+            <span class="jr__dot"><b>02</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Proposal &amp; agreement</b><small>Week 1</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="2" aria-label="Step 3: Vetting &amp; matching">
+            <span class="jr__dot"><b>03</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Vetting &amp; matching</b><small>7–10 days</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="3" aria-label="Step 4: Virtual handshake">
+            <span class="jr__dot"><b>04</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Virtual handshake</b><small>Week 2</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="4" aria-label="Step 5: Launch &amp; activation">
+            <span class="jr__dot"><b>05</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Launch &amp; activation</b><small>Weeks 2–3</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="5" aria-label="Step 6: Performance reviews">
+            <span class="jr__dot"><b>06</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Performance reviews</b><small>Day 30, 60 &amp; 90</small></span>
+          </button></li>
+        </ol>
+        <div class="jr__panel">
+          <div class="jr__bar" aria-hidden="true"><i></i></div>
+          
+          <article class="jr__detail is-active" data-i="0">
+            <span class="jr__big" aria-hidden="true">01</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></span><span>Step 1 of 6<br><b>Week 1</b></span></div>
+            <h3>Discovery call</h3>
+            <p class="jr__desc">A free call to introduce our team and understand your business, your needs and your goals.</p>
+            
+              <div class="jr__cols">
+                <div><p class="jr__lbl">What you do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Walk us through how your business runs</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Share where leads, bookings or admin fall through</span></li></ul></div>
+                <div><p class="jr__lbl">What we do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Map your current workflows</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Recommend the right role and package</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span><small>Outcome</small>A clear picture of the support you need</span></div>
+          </article>
+          <article class="jr__detail" data-i="1">
+            <span class="jr__big" aria-hidden="true">02</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-brief"/></svg></span><span>Step 2 of 6<br><b>Week 1</b></span></div>
+            <h3>Proposal &amp; agreement</h3>
+            <p class="jr__desc">We send a detailed proposal outlining the agreed services and terms. A sourcing deposit starts recruitment and is credited toward your package.</p>
+            
+              <div class="jr__cols">
+                <div><p class="jr__lbl">What you do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Review the proposal and terms</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Confirm your package and role</span></li></ul></div>
+                <div><p class="jr__lbl">What we do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Put the agreed scope in writing</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Start sourcing candidates for your role</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span><small>Outcome</small>Agreed scope with a short 3-month initial term</span></div>
+          </article>
+          <article class="jr__detail" data-i="2">
+            <span class="jr__big" aria-hidden="true">03</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span><span>Step 3 of 6<br><b>7–10 days</b></span></div>
+            <h3>Vetting &amp; matching</h3>
+            <p class="jr__desc">We run every candidate through our five-stage vetting process and match you with the partner who fits your role best.</p>
+            
+              <div class="jr__cols">
+                <div><p class="jr__lbl">What you do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Share any must-haves for the role</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Nothing else, we handle the search</span></li></ul></div>
+                <div><p class="jr__lbl">What we do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Screen, test and interview candidates</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Shortlist and match the best fit</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span><small>Outcome</small>A vetted virtual partner matched to your role</span></div><button class="link-arrow jr__jump" data-goto="vetting">See our 5-stage vetting <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </article>
+          <article class="jr__detail" data-i="3">
+            <span class="jr__big" aria-hidden="true">04</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></span><span>Step 4 of 6<br><b>Week 2</b></span></div>
+            <h3>Virtual handshake</h3>
+            <p class="jr__desc">A collaborative session with your virtual partner to define success metrics, set milestones and make sure every requirement is aligned.</p>
+            
+              <div class="jr__cols">
+                <div><p class="jr__lbl">What you do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Meet your virtual partner</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Agree on goals and milestones</span></li></ul></div>
+                <div><p class="jr__lbl">What we do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Set up success metrics</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Align tools, access and expectations</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span><small>Outcome</small>Everyone aligned before day one</span></div>
+          </article>
+          <article class="jr__detail" data-i="4">
+            <span class="jr__big" aria-hidden="true">05</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></span><span>Step 5 of 6<br><b>Weeks 2–3</b></span></div>
+            <h3>Launch &amp; activation</h3>
+            <p class="jr__desc">Your virtual partner begins daily operations. We build and customize your SOPs and set up a feedback loop from the start.</p>
+            
+              <div class="jr__cols">
+                <div><p class="jr__lbl">What you do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Give access to your tools</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Share feedback in the first weeks</span></li></ul></div>
+                <div><p class="jr__lbl">What we do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Develop and customize SOPs</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Delegate tasks and monitor execution</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span><small>Outcome</small>Daily operations running with your partner</span></div>
+          </article>
+          <article class="jr__detail" data-i="5">
+            <span class="jr__big" aria-hidden="true">06</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span><span>Step 6 of 6<br><b>Day 30, 60 &amp; 90</b></span></div>
+            <h3>Performance reviews</h3>
+            <p class="jr__desc">Your dedicated virtual manager checks in at 30, 60 and 90 days, then keeps monitoring and refining as you grow.</p>
+            
+              <div class="jr__cols">
+                <div><p class="jr__lbl">What you do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Join short review check-ins</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Tell us what to adjust or add</span></li></ul></div>
+                <div><p class="jr__lbl">What we do</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Track performance against your goals</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Refine processes and plan for scaling</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span><small>Outcome</small>Support that keeps improving over time</span></div>
+          </article>
+          <div class="jr__nav">
+            <button class="arrowbtn dark" data-jr-prev aria-label="Previous step"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <span class="jr__count"><b>1</b> / 6</span>
+            <button class="arrowbtn dark" data-jr-next aria-label="Next step"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="jr__mode" data-mode="vetting" role="tabpanel">
+        <ol class="jr__steps"><span class="jr__rail" aria-hidden="true"><i></i></span>
+          <li><button class="jr__step is-active" data-i="0" aria-label="Step 1: Application form">
+            <span class="jr__dot"><b>01</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Application form</b><small>Stage 1</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="1" aria-label="Step 2: Initial screening">
+            <span class="jr__dot"><b>02</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Initial screening</b><small>Stage 2</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="2" aria-label="Step 3: Skill test &amp; interview">
+            <span class="jr__dot"><b>03</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Skill test &amp; interview</b><small>Stage 3</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="3" aria-label="Step 4: Final internal vetting">
+            <span class="jr__dot"><b>04</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Final internal vetting</b><small>Stage 4</small></span>
+          </button></li>
+          <li><button class="jr__step" data-i="4" aria-label="Step 5: Virtual handshake">
+            <span class="jr__dot"><b>05</b><svg class="i ok" aria-hidden="true"><use href="#i-tick"/></svg></span>
+            <span class="jr__txt"><b>Virtual handshake</b><small>Stage 5</small></span>
+          </button></li>
+        </ol>
+        <div class="jr__panel">
+          <div class="jr__bar" aria-hidden="true"><i></i></div>
+          
+          <article class="jr__detail is-active" data-i="0">
+            <span class="jr__big" aria-hidden="true">01</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-inbox"/></svg></span><span>Step 1 of 5<br><b>Stage 1</b></span></div>
+            <h3>Application form</h3>
+            <p class="jr__desc">Candidates apply with their experience, skills and the roles they want to grow in.</p>
+            
+              <div class="jr__cols one">
+                <div><p class="jr__lbl">What we look for</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Relevant experience and skills</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Clear, professional written communication</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span><small>Why it matters to you</small>Only candidates who match the type of roles we place move forward.</span></div>
+          </article>
+          <article class="jr__detail" data-i="1">
+            <span class="jr__big" aria-hidden="true">02</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-filter"/></svg></span><span>Step 2 of 5<br><b>Stage 2</b></span></div>
+            <h3>Initial screening</h3>
+            <p class="jr__desc">Our team reviews every application and speaks with promising candidates.</p>
+            
+              <div class="jr__cols one">
+                <div><p class="jr__lbl">What we look for</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Communication and attitude</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Availability and work setup</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span><small>Why it matters to you</small>We value a can-do attitude and strong work ethic above all else.</span></div>
+          </article>
+          <article class="jr__detail" data-i="2">
+            <span class="jr__big" aria-hidden="true">03</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg></span><span>Step 3 of 5<br><b>Stage 3</b></span></div>
+            <h3>Skill test &amp; interview</h3>
+            <p class="jr__desc">Candidates complete role-specific tasks and an interview so we can see how they work and think.</p>
+            
+              <div class="jr__cols one">
+                <div><p class="jr__lbl">What we look for</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Role-specific skills in action</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Problem-solving and initiative</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span><small>Why it matters to you</small>You get a partner who has already shown they can do the work.</span></div>
+          </article>
+          <article class="jr__detail" data-i="3">
+            <span class="jr__big" aria-hidden="true">04</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><span>Step 4 of 5<br><b>Stage 4</b></span></div>
+            <h3>Final internal vetting</h3>
+            <p class="jr__desc">Our team reviews each finalist before anyone is presented to you.</p>
+            
+              <div class="jr__cols one">
+                <div><p class="jr__lbl">What we look for</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Fit with your role and business</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Reliability and professionalism</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span><small>Why it matters to you</small>Every partner we introduce has passed a full internal review.</span></div>
+          </article>
+          <article class="jr__detail" data-i="4">
+            <span class="jr__big" aria-hidden="true">05</span>
+            <div class="jr__meta"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></span><span>Step 5 of 5<br><b>Stage 5</b></span></div>
+            <h3>Virtual handshake</h3>
+            <p class="jr__desc">You meet your matched partner on a video call to confirm the fit before launch.</p>
+            
+              <div class="jr__cols one">
+                <div><p class="jr__lbl">What we look for</p><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Chemistry with you and your team</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Shared understanding of goals</span></li></ul></div>
+              </div>
+              <div class="jr__out"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span><small>Why it matters to you</small>You confirm the match yourself before day one.</span></div>
+          </article>
+          <div class="jr__nav">
+            <button class="arrowbtn dark" data-jr-prev aria-label="Previous step"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <span class="jr__count"><b>1</b> / 5</span>
+            <button class="arrowbtn dark" data-jr-next aria-label="Next step"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta spot reveal">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <img class="cta__logo" src="img/logo.png" alt="Virtual Moments Agency">
+      <h2 class="h-lg">Ready to stop losing bookings to slow replies?</h2>
+      <p class="lead">In a free strategy call, we map how inquiries and bookings move through your business and show you exactly what a virtual partner would take off your plate.</p>
+      <div class="cta__actions">
+        <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="services.html">Explore services</a>
+      </div>
+      <p class="cta__note">Prefer email? <a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <img class="footer__logo" src="img/logo.png" alt="Virtual Moments Agency">
+        <p>Trained virtual partners for medspas and growing businesses, managed by a founder-led team in the Philippines.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a href="https://www.instagram.com/marionandres20" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="services.html#packages">Packages</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" rel="noopener">Become a virtual partner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="services.html#medspa">Medspas</a></li>
+          <li><a href="services.html#healthcare">Healthcare</a></li>
+          <li><a href="services.html#sales">Sales &amp; SDR</a></li>
+          <li><a href="services.html#real-estate">Real estate</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#saas">SaaS &amp; tech</a></li>
+          <li><a href="services.html#executive">Executive support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></li>
+          <li><a href="tel:+19853150262">+1 (985) 315-0262</a></li>
+          <li><a href="https://wa.me/message/63AN23BO226RG1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>virtualmomentsagency.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Virtual Moments Agency. All rights reserved.</span>
+      <span>Albay, Philippines &middot; Serving clients in the US and beyond</span>
+    </div>
+  </div>
+  <div class="footer__big" aria-hidden="true">Virtual Moments</div>
+</footer>
+<div class="mbar">
+  <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener" data-no-magnet>Book a free strategy call</a>
+  <a class="mbar__mail" href="contact.html" aria-label="Contact VMA"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+</div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>

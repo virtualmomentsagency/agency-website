@@ -1,163 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Virtual Moments Agency | Elite Virtual Assistants for Healthcare & Sales</title>
-    <meta name="description" content="Virtual Moments Agency (VMA) provides specialized virtual assistant support for Healthcare, Sales, and SaaS. Scale your business with our elite virtual partners.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        html { background-color: #0d4a94 !important; height: -webkit-fill-available; }
-        body { background-color: #0d4a94 !important; color: white; overflow-x: hidden; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; min-height: 100vh; min-height: -webkit-fill-available; }
-        
-        .hero-gradient { background: linear-gradient(135deg, #0d4a94 0%, #1665b1 100%); }
-        .nav-link { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
-        .nav-link:hover { transform: scale(1.2) translateY(-2px); color: white; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
-        
-        .social-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; transform: translateZ(0); -webkit-transform: translateZ(0); }
-        .social-icon-btn { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
-        .social-icon-btn:hover, .social-icon-btn:active { transform: scale(1.3) translate3d(-5px, -5px, 0); filter: brightness(1.2); }
-        
-        /* Unified Touch & Hover Premium Scaling Systems */
-        .photo-bubble, .brand-card-pop, .button-pop-out { 
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
-            -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-style: preserve-3d; 
-            -webkit-transform-style: preserve-3d;
-            perspective: 1000px; 
-            -webkit-perspective: 1000px;
-            cursor: pointer; 
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-        }
-        
-        .photo-bubble:hover, .photo-bubble:active { transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); -webkit-transform: scale(1.1) rotateX(3deg) rotateY(3deg) translateY(-10px); box-shadow: 0 20px 40px rgba(125, 211, 252, 0.4); }
-        
-        /* Brand Card & CTA Button Interactivity Layer */
-        .brand-card-pop:hover, .brand-card-pop:active { transform: scale(1.08) translateY(-12px); -webkit-transform: scale(1.08) translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.4); }
-        .button-pop-out:hover, .button-pop-out:active { transform: scale(1.1) translateY(-6px); -webkit-transform: scale(1.1) translateY(-6px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); filter: brightness(1.05); }
-        
-        .safari-nav-fix { background-color: rgba(13, 74, 148, 0.95) !important; -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            will-change: transform, opacity;
-        }
-        .reveal.active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06173A">
+<title>Virtual Moments Agency | Virtual Partners for Medspas & Growing Businesses</title>
+<meta name="description" content="VMA places trained virtual partners with medspas and growing businesses: fast lead follow-up, consultation booking, patient follow-ups and admin. Book a free strategy call.">
+<meta property="og:title" content="Virtual Moments Agency | Virtual Partners for Medspas & Growing Businesses">
+<meta property="og:description" content="VMA places trained virtual partners with medspas and growing businesses: fast lead follow-up, consultation booking, patient follow-ups and admin. Book a free strategy call.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-    <div class="social-float">
-        <a href="mailto:info@virtualmomentsagency.com" class="social-icon-btn bg-red-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-envelope text-xl md:text-2xl"></i></a>
-        <a href="https://wa.me/message/63AN23BO226RG1" target="_blank" class="social-icon-btn bg-green-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-whatsapp text-xl md:text-2xl"></i></a>
-        <a href="tel:9853150262" class="social-icon-btn bg-sky-500 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone text-xl md:text-2xl"></i></a>
-        <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" class="social-icon-btn bg-blue-600 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-facebook text-xl md:text-2xl"></i></a>
-        <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="social-icon-btn bg-blue-800 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-linkedin text-xl md:text-2xl"></i></a>
-    </div>
-    <nav class="sticky top-0 z-50 bg-[#0d4a94]/95 safari-nav-fix p-4 md:p-6 border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"><img src="logo.png" alt="VMA Logo" class="h-8 md:h-12"></a>
-            <div class="space-x-8 hidden lg:flex text-slate-200 font-medium text-xs uppercase tracking-widest text-white">
-                <a href="index.html" class="text-white border-b-2 border-white pb-1">Home</a>
-                <a href="services.html" class="nav-link hover:text-white transition">Services</a>
-                <a href="about.html" class="nav-link hover:text-white transition">About Us</a>
-                <a href="faq.html" class="nav-link hover:text-white transition">FAQ</a>
-                <a href="contact.html" class="nav-link hover:text-white transition">Contact</a>
-            </div>
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl relative z-[60]"><i class="fas fa-bars"></i></button>
-        </div>
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0d4a94] flex-col space-y-4 pt-6 pb-8 text-center border-t border-white/10 uppercase text-xs tracking-widest font-bold shadow-2xl">
-            <a href="index.html" class="block py-2 text-white">Home</a>
-            <a href="services.html" class="block py-2">Services</a>
-            <a href="about.html" class="block py-2">About Us</a>
-            <a href="faq.html" class="block py-2">FAQ</a>
-            <a href="contact.html" class="block py-2">Contact</a>
-        </div>
+<body data-page="home">
+<div class="curtain" aria-hidden="true"><img src="img/logo.png" alt=""></div>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Virtual Moments Agency home"><img src="img/logo.png" alt="Virtual Moments Agency" width="600" height="229"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="index.html" aria-current="page">Home</a><a class="nav__link" href="services.html">Services</a><a class="nav__link" href="about.html">About</a><a class="nav__link" href="faq.html">FAQ</a><a class="nav__link" href="contact.html">Contact</a>
+      <a class="btn btn--white btn--sm nav__cta" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </nav>
-    <header class="hero-gradient pt-24 pb-32 px-6 text-center reveal">
-        <h1 class="text-4xl md:text-8xl font-extrabold mb-7 leading-tight italic uppercase tracking-tighter">Where Strategy Meets <br><span class="border-b-4 border-white pb-1 not-italic">Specialized Support.</span></h1>
-        <p class="text-md md:text-xl text-slate-100 max-w-4xl mx-auto mb-12 font-light italic">Virtual Moments Agency (VMA) connects visionary leaders with exceptional global talent. Focused on Healthcare, Sales, and SaaS, we refine your operations so you can stay focused on winning.</p>
-        <div class="flex flex-col md:flex-row justify-center gap-5">
-            <a href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" class="bg-white text-[#0d4a94] px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-xl shadow-2xl hover:scale-105 transition">Hire your Virtual Partner</a>
-            <a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" class="border border-white/30 text-white px-8 py-4 md:px-10 rounded-lg font-bold text-sm md:text-lg hover:bg-white/10 transition">Become a Virtual Partner</a>
-        </div>
-    </header>
-    <section class="py-20 bg-white text-[#0d4a94] px-6 reveal">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase italic">Client Success Stories</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-slate-600 italic text-sm md:text-base">
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"Virtual Moments Agency really helped me save more time for other important work and not worry about other stuff since my VA is the one who takes care of those things. I really recommend VMA if you want to save time and have everything organized."</p><h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Tabitha C.</h4></div>
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"It has been a great experience working with VMA. My VA was able to create my visions into reality and it helped make everything efficient. The company is easy to talk to if there are any concerns or requests; they answer promptly and provide the best possible options."</p><h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Lorraine C.</h4></div>
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"I can’t speak highly enough of VMA's contributions. They are incredibly prompt, knowledgeable, and always go above and beyond. Their ability to anticipate our needs and keep everything running smoothly has been invaluable."</p><h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Taren J.</h4></div>
-                <div class="p-8 border border-slate-100 rounded-3xl shadow-sm"><p class="mb-6">"My VA's dedication to learning makes her a valuable asset to any team. I recommend Virtual Moments Agency for anyone that requires a quick learner and a proactive individual."</p><h4 class="font-bold text-[#0d4a94] not-italic text-lg">— Tonya R.</h4></div>
-            </div>
-        </div>
-    </section>
-    <section class="py-24 bg-slate-50 text-slate-900 px-6 reveal">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-[#0d4a94] text-center uppercase italic">VMA Leadership</h2>
-            <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-center lg:text-left mb-24">
-                <div>
-                    <a href="https://www.linkedin.com/in/vener-marion-andres-5893a4287/" target="_blank"><img src="founder.png" alt="Vener Marion Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
-                    <h4 class="font-bold text-2xl">Vener Marion Andres</h4>
-                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Founder & CEO</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">I lead Virtual Moments Agency to drive business growth through tailored strategies. My expertise in sales, account management, and cold calling is instrumental in building strong client relationships.</p>
-                </div>
-                <div>
-                    <a href="https://www.linkedin.com/in/hemer-joy-andres-440a67122/" target="_blank"><img src="director.png" alt="Hemer Joy Andres" class="photo-bubble w-48 h-48 md:w-56 rounded-3xl mx-auto lg:mx-0 mb-6 object-cover shadow-2xl border-4 border-white"></a>
-                    <h4 class="font-bold text-2xl">Hemer Joy Andres</h4>
-                    <p class="text-sky-600 font-bold uppercase mb-4 text-sm tracking-widest">Co-Founder & COO</p>
-                    <p class="text-slate-600 text-sm leading-relaxed">For nearly a decade, I've been the trusted right hand to business owners, coaches, and entrepreneurs. I specialize in streamlining operations and managing high-performance VA ecosystems.</p>
-                </div>
-            </div>
-            
-            <!-- BRAND SPOTLIGHT ZONE -->
-            <div class="max-w-4xl mx-auto bg-gradient-to-br from-[#0d4a94] to-[#1665b1] p-12 rounded-[2.5rem] shadow-2xl text-center border border-white/10 reveal">
-                <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" class="brand-card-pop inline-block bg-white/10 p-6 rounded-3xl border border-white/20 mb-8 backdrop-blur-md">
-                    <img src="logo.png" alt="VMA Logo Burst" class="h-14 md:h-20 object-contain mx-auto brightness-0 invert">
-                </a>
-                <h3 class="text-2xl md:text-3xl font-black text-white uppercase tracking-wider italic mb-4">Ready to Unlock Your Efficiency?</h3>
-                <p class="text-slate-200 text-sm md:text-md max-w-xl mx-auto mb-10 italic font-light">Align your operations with elite support. Schedule an alignment strategy session directly with our executive partners today.</p>
-                
-                <div class="inline-block">
-                    <a href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" class="button-pop-out inline-block bg-white text-[#0d4a94] px-12 py-5 rounded-full font-black text-xs md:text-sm uppercase tracking-widest shadow-xl border border-transparent hover:border-white/20">
-                        Book a Free Strategy Call
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-        function toggleMenu() { const m = document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); }
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <nav aria-label="Mobile"><a href="index.html" aria-current="page">Home<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="services.html">Services<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="about.html">About<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="faq.html">FAQ<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="contact.html">Contact<svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></nav>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--white btn--block" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <span>info@virtualmomentsagency.com</span>
+  </div>
+</div>
 
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+<main>
+<section class="hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid-lines" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div>
+      <span class="eyebrow">Virtual partners for medspas &amp; growing businesses</span>
+      <h1 class="h-xl"><span class="line"><span>The clinic that answers first,</span></span><span class="line"><span class="grad-text">books first.</span></span></h1>
+      <p class="lead">VMA places trained virtual partners who reply to every inquiry, fill your calendar and follow up with patients, so you can stay with the client in the chair.</p>
+      <p class="rotator-line">Your virtual partner handles
+        <span class="rotator" aria-live="off"><span>lead follow-up.</span><span>consult booking.</span><span>patient check-ins.</span><span>past-patient outreach.</span><span>your inbox and admin.</span></span>
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="services.html">See what we handle</a>
+      </div>
+      <ul class="clean hero__facts">
+        <li><svg class="i" aria-hidden="true"><use href="#i-tick"/></svg> Vetted &amp; matched in 7–10 days</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-tick"/></svg> Short 3-month initial term</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-tick"/></svg> Payroll &amp; admin handled by VMA</li>
+      </ul>
+    </div>
+    <div class="hero__visual">
+      <svg class="hero__tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 23 21H1L12 2Z" fill="#1A67B2" opacity=".55"/></svg>
+      <div class="hero__photo"><img src="img/facial.jpg" alt="Client receiving a facial treatment at a medspa" fetchpriority="high"></div>
+      <div class="toast toast--1"><span class="tag">Example</span><span class="toast__ic"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></span><span><b>New inquiry via Instagram</b><small>“Do you have openings this week?”</small></span></div>
+      <div class="toast toast--2"><span class="toast__ic"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg></span><span><b>Consultation booked</b><small>Confirmation &amp; intake form sent</small></span></div>
+      <div class="toast toast--3"><span class="toast__ic ok"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span><span><b>Aftercare check-in sent</b><small>Rebooking reminder scheduled</small></span></div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
 
-        document.querySelectorAll('.reveal:not(.active)').forEach(el => scrollObserver.observe(el));
+<div class="marquee" aria-label="Tasks our virtual partners handle"><div class="marquee__track"><div class="marquee__group"><span class="marquee__item">Lead follow-up</span><span class="marquee__item">Consultation booking</span><span class="marquee__item">Appointment reminders</span><span class="marquee__item">Patient check-ins</span><span class="marquee__item">Past-patient reactivation</span><span class="marquee__item">Admin assistance</span><span class="marquee__item">Executive assistance</span><span class="marquee__item">Project management</span><span class="marquee__item">Outreach</span><span class="marquee__item">Business development</span><span class="marquee__item">Social media management</span><span class="marquee__item">Sales development</span><span class="marquee__item">Video editing</span><span class="marquee__item">Graphic design</span><span class="marquee__item">Content creation</span><span class="marquee__item">DM &amp; inbox management</span><span class="marquee__item">Cold calling</span><span class="marquee__item">CRM upkeep</span><span class="marquee__item">Calendar management</span><span class="marquee__item">Transaction coordination</span><span class="marquee__item">Job scheduling</span><span class="marquee__item">Subcontractor coordination</span></div><div class="marquee__group" aria-hidden="true"><span class="marquee__item">Lead follow-up</span><span class="marquee__item">Consultation booking</span><span class="marquee__item">Appointment reminders</span><span class="marquee__item">Patient check-ins</span><span class="marquee__item">Past-patient reactivation</span><span class="marquee__item">Admin assistance</span><span class="marquee__item">Executive assistance</span><span class="marquee__item">Project management</span><span class="marquee__item">Outreach</span><span class="marquee__item">Business development</span><span class="marquee__item">Social media management</span><span class="marquee__item">Sales development</span><span class="marquee__item">Video editing</span><span class="marquee__item">Graphic design</span><span class="marquee__item">Content creation</span><span class="marquee__item">DM &amp; inbox management</span><span class="marquee__item">Cold calling</span><span class="marquee__item">CRM upkeep</span><span class="marquee__item">Calendar management</span><span class="marquee__item">Transaction coordination</span><span class="marquee__item">Job scheduling</span><span class="marquee__item">Subcontractor coordination</span></div></div></div>
 
-        window.addEventListener("pageshow", function(event) {
-            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-                document.querySelectorAll('.reveal').forEach(el => {
-                    el.classList.add('active');
-                });
-            }
-        });
-    </script>
+<section class="section">
+  <div class="container split">
+    <div class="split__media reveal">
+      <img src="img/partner.jpg" alt="Virtual partner working on a laptop">
+      <div class="float"><img src="img/founder.jpg" alt=""><span><b>Your strategy call is with Marion</b><small>Founder &amp; CEO, VMA</small></span></div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Why VMA</span>
+      <h2 class="h-lg reveal" data-delay="1" style="margin:16px 0 18px">Most bookings aren't lost to competitors. They're lost to slow replies.</h2>
+      <p class="lead reveal" data-delay="2">When the front desk is busy with patients, inquiries wait, missed calls go unreturned and past clients quietly drift away. A dedicated virtual partner keeps all of it moving, in your voice and on your schedule.</p>
+      <div class="reveal" data-delay="3"><ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Works inside your booking system, inbox and social accounts</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Follows the scripts and policies you approve</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Supported by a dedicated VMA virtual manager</span></li></ul></div>
+      <div class="stat-row reveal" data-delay="4">
+        <div class="stat"><b>7–10</b><span>days to vet &amp; match</span></div>
+        <div class="stat"><b>Flexible</b><span>part- or full-time</span></div>
+        <div class="stat"><b>30/60/90</b><span>day performance reviews</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Who we support</span>
+      <h2 class="h-lg">Built for medspas. Trusted by growing businesses.</h2>
+      <p class="lead">Medspas are our specialty, and the same trained, managed support works for healthcare practices, sales teams, real estate, construction, tech companies and busy executives.</p>
+    </div>
+    <div class="reveal" data-delay="1">
+    <div data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="Industries">
+        <span class="tabs__ind" aria-hidden="true"></span>
+        <button class="tabs__btn" role="tab" id="tab-medspa" data-key="medspa" aria-controls="panel-medspa" aria-selected="true">Medspas <span class="star">Focus</span></button><button class="tabs__btn" role="tab" id="tab-healthcare" data-key="healthcare" aria-controls="panel-healthcare" aria-selected="false">Healthcare</button><button class="tabs__btn" role="tab" id="tab-sales" data-key="sales" aria-controls="panel-sales" aria-selected="false">Sales &amp; SDR</button><button class="tabs__btn" role="tab" id="tab-real-estate" data-key="real-estate" aria-controls="panel-real-estate" aria-selected="false">Real estate</button><button class="tabs__btn" role="tab" id="tab-construction" data-key="construction" aria-controls="panel-construction" aria-selected="false">Construction</button><button class="tabs__btn" role="tab" id="tab-saas" data-key="saas" aria-controls="panel-saas" aria-selected="false">SaaS &amp; tech</button><button class="tabs__btn" role="tab" id="tab-executive" data-key="executive" aria-controls="panel-executive" aria-selected="false">Executive</button>
+      </div>
+      
+      <div class="tabs__panel ind" role="tabpanel" id="panel-medspa" aria-labelledby="tab-medspa">
+        <div class="ind__media"><img src="img/treatment.jpg" alt="Medspa treatment in progress"><span class="badge">Our specialty</span></div>
+        <div>
+          <span class="eyebrow">Medspas</span>
+          <h3>A front desk that never lets an inquiry go cold</h3>
+          <p class="lead">Medspa owners are our focus. Your virtual partner learns your treatments, pricing questions and booking rules, then keeps leads, consults and patient follow-ups moving every day.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Replies to web forms, DMs and missed calls quickly</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Books consultations and sends confirmations and reminders</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Follows up after treatments and prompts rebooking</span></li></ul>
+          <a class="link-arrow" href="services.html#medspa">See medspas services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-healthcare" aria-labelledby="tab-healthcare">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-healthcare.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-shield"/></svg></div>
+        <div>
+          <span class="eyebrow">Healthcare</span>
+          <h3>Administrative support that keeps the practice running</h3>
+          <p class="lead">Back-office help for clinics and practices, handled with care for patient privacy.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>HIPAA-compliant administrative support</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Medical billing coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Secure patient scheduling</span></li></ul>
+          <a class="link-arrow" href="services.html#healthcare">See healthcare services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-sales" aria-labelledby="tab-sales">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-sales.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-target"/></svg></div>
+        <div>
+          <span class="eyebrow">Sales &amp; SDR</span>
+          <h3>A pipeline that gets worked every single day</h3>
+          <p class="lead">Outbound and pipeline support for founders and sales teams who need more conversations on the calendar.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Cold calling and appointment setting</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Lead list building and qualification</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>CRM pipeline management</span></li></ul>
+          <a class="link-arrow" href="services.html#sales">See sales &amp; sdr services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-real-estate" aria-labelledby="tab-real-estate">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-real-estate.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-home"/></svg></div>
+        <div>
+          <span class="eyebrow">Real estate</span>
+          <h3>Listings, transactions and tenants, all handled</h3>
+          <p class="lead">Support for agents, teams and property managers so deals and tenants never wait on a reply.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Transaction coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Listing management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Proactive tenant communication</span></li></ul>
+          <a class="link-arrow" href="services.html#real-estate">See real estate services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-construction" aria-labelledby="tab-construction">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-construction.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-helmet"/></svg></div>
+        <div>
+          <span class="eyebrow">Construction</span>
+          <h3>Projects that stay on schedule, from bid to closeout</h3>
+          <p class="lead">Back-office support for contractors and construction companies, so the office keeps up while your crews are on site.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Job scheduling and calendar coordination</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Subcontractor and supplier communication</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Bid, permit and document tracking</span></li></ul>
+          <a class="link-arrow" href="services.html#construction">See construction services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-saas" aria-labelledby="tab-saas">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-saas.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-laptop"/></svg></div>
+        <div>
+          <span class="eyebrow">SaaS &amp; tech</span>
+          <h3>Back-office support for lean tech teams</h3>
+          <p class="lead">Operational help that frees founders and product teams to focus on the product.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Back-office optimization</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>CRM data management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Customer onboarding support</span></li></ul>
+          <a class="link-arrow" href="services.html#saas">See saas &amp; tech services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs__panel ind" role="tabpanel" id="panel-executive" aria-labelledby="tab-executive">
+        <div class="ind__media ind__media--art"><img class="fade" src="img/ind-executive.jpg" alt=""><svg class="big" aria-hidden="true"><use href="#i-brief"/></svg></div>
+        <div>
+          <span class="eyebrow">Executive</span>
+          <h3>Your time, protected</h3>
+          <p class="lead">High-level assistance for owners and leaders who need their calendar and inbox under control.</p>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Calendar management</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Email filtering and triage</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Project coordination</span></li></ul>
+          <a class="link-arrow" href="services.html#executive">See executive services <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="aurora" aria-hidden="true" style="opacity:.35"><span></span><span></span></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="h-lg">From first call to launch, step by step</h2>
+    </div>
+    <div class="steps"><div class="steps__line" aria-hidden="true"><i></i></div>
+        <div class="step reveal" data-delay="0">
+          <span class="step__num">1</span>
+          <div><h3>Discovery call</h3><p>A free call to introduce our team and understand your business, your needs and your goals.</p></div>
+        </div>
+        <div class="step reveal" data-delay="1">
+          <span class="step__num">2</span>
+          <div><h3>Proposal &amp; agreement</h3><p>We send a clear proposal with the agreed services and terms, then begin sourcing your partner.</p></div>
+        </div>
+        <div class="step reveal" data-delay="2">
+          <span class="step__num">3</span>
+          <div><h3>Vetting &amp; matching</h3><p>We vet and match the right virtual partner for your role, typically within 7–10 days.</p></div>
+        </div>
+        <div class="step reveal" data-delay="3">
+          <span class="step__num">4</span>
+          <div><h3>Handshake &amp; launch</h3><p>Meet your partner, align on goals and milestones, and go live. Your virtual manager supports you both from day one.</p></div>
+        </div></div>
+    <div class="reveal" style="margin-top:44px"><a class="btn btn--ghost" href="services.html#how-it-works">See the full journey <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+
+<section class="section section--dark case-sec">
+  <div class="aurora" aria-hidden="true" style="opacity:.3"><span></span><span></span></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Real results</span>
+      <h2 class="h-lg">How a medical practice cut data errors with a virtual partner</h2>
+      <p class="lead">A client case study. Client details are kept private.</p>
+    </div>
+    <div class="case reveal" data-delay="1">
+      <div class="case__stat">
+        <span class="case__num" data-count="95">95%</span>
+        <span class="case__cap">reduction in data discrepancies</span>
+        <span class="case__who"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg> Medical practice &middot; unnamed client</span>
+      </div>
+      <div class="case__body">
+        <div>
+          <h3>What the virtual partner did</h3>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Compiled and organized patient data from multiple sources</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Reviewed patient charts to confirm all required documentation was present</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Ran regular audits of consent-signing procedures and charting notes against regulatory and practice guidelines</span></li></ul>
+        </div>
+        <div>
+          <h3>The results</h3>
+          <ul class="checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>95% reduction in data discrepancies</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Regular compliance audits and training tracking kept the practice proactive on regulations</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>In-house medical staff gained more time for direct patient care</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>A more efficient, structured approach to administration</span></li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container quotes">
+    <div class="reveal">
+      <span class="eyebrow">Client stories</span>
+      <h2 class="h-lg" style="margin:16px 0 18px">What owners say after handing off the busywork</h2>
+      <p class="lead">Real words from VMA clients. Swipe or use the arrows to read more.</p>
+      <div style="margin-top:30px"><a class="link-arrow" href="about.html">Meet the team behind every placement <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    </div>
+    
+      <div class="shield reveal" data-slider data-delay="1" aria-roledescription="carousel" aria-label="Client reviews">
+        <svg class="shield__mark" aria-hidden="true"><use href="#i-quote"/></svg>
+        <div class="slides" aria-live="polite">
+          <figure class="slide is-active">
+            <blockquote>“I can’t speak highly enough of VMA's contributions. They are incredibly prompt, knowledgeable, and always go above and beyond. Their ability to anticipate our needs and keep everything running smoothly has been invaluable.”</blockquote>
+            <figcaption><span class="av">TJ</span><span>Taren J.<small>VMA client</small></span></figcaption>
+          </figure>
+          <figure class="slide">
+            <blockquote>“Virtual Moments Agency really helped me save more time for other important work and not worry about other stuff since my VA is the one who takes care of those things. I really recommend VMA if you want to save time and have everything organized.”</blockquote>
+            <figcaption><span class="av">TC</span><span>Tabitha C.<small>VMA client</small></span></figcaption>
+          </figure>
+          <figure class="slide">
+            <blockquote>“My VA's dedication to learning makes her a valuable asset to any team. I recommend Virtual Moments Agency for anyone that requires a quick learner and a proactive individual.”</blockquote>
+            <figcaption><span class="av">TR</span><span>Tonya R.<small>VMA client</small></span></figcaption>
+          </figure>
+          <figure class="slide">
+            <blockquote>“It has been a great experience working with VMA. My VA was able to create my visions into reality and it helped make everything efficient. The company is easy to talk to if there are any concerns or requests; they answer promptly and provide the best possible options.”</blockquote>
+            <figcaption><span class="av">LC</span><span>Lorraine C.<small>VMA client</small></span></figcaption>
+          </figure>
+        </div>
+        <div class="slider-ctl">
+          <div class="dots"></div>
+          <span class="spacer"></span>
+          <button class="arrowbtn" data-prev aria-label="Previous review"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+          <button class="arrowbtn" data-next aria-label="Next review"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta spot reveal">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <img class="cta__logo" src="img/logo.png" alt="Virtual Moments Agency">
+      <h2 class="h-lg">Ready to stop losing bookings to slow replies?</h2>
+      <p class="lead">In a free strategy call, we map how inquiries and bookings move through your business and show you exactly what a virtual partner would take off your plate.</p>
+      <div class="cta__actions">
+        <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener">Book a free strategy call <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="services.html">Explore services</a>
+      </div>
+      <p class="cta__note">Prefer email? <a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <img class="footer__logo" src="img/logo.png" alt="Virtual Moments Agency">
+        <p>Trained virtual partners for medspas and growing businesses, managed by a founder-led team in the Philippines.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/company/virtual-moments-agency/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a href="https://www.facebook.com/VirtualMomentsAgencyCareers" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a href="https://www.instagram.com/marionandres20" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="services.html#packages">Packages</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://forms.gle/vFNCgNB1fBoum96cA" target="_blank" rel="noopener">Become a virtual partner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="services.html#medspa">Medspas</a></li>
+          <li><a href="services.html#healthcare">Healthcare</a></li>
+          <li><a href="services.html#sales">Sales &amp; SDR</a></li>
+          <li><a href="services.html#real-estate">Real estate</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#saas">SaaS &amp; tech</a></li>
+          <li><a href="services.html#executive">Executive support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:info@virtualmomentsagency.com">info@virtualmomentsagency.com</a></li>
+          <li><a href="tel:+19853150262">+1 (985) 315-0262</a></li>
+          <li><a href="https://wa.me/message/63AN23BO226RG1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>virtualmomentsagency.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Virtual Moments Agency. All rights reserved.</span>
+      <span>Albay, Philippines &middot; Serving clients in the US and beyond</span>
+    </div>
+  </div>
+  <div class="footer__big" aria-hidden="true">Virtual Moments</div>
+</footer>
+<div class="mbar">
+  <a class="btn btn--white" data-book href="https://calendar.app.google/Ckj8rndVta2pJSDK7" target="_blank" rel="noopener" data-no-magnet>Book a free strategy call</a>
+  <a class="mbar__mail" href="contact.html" aria-label="Contact VMA"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></a>
+</div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>
