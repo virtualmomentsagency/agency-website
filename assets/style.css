@@ -778,3 +778,11 @@ html.leaving body > *:not(.curtain) { transition: opacity .35s var(--ease); opac
 .vcard__play:active .vcard__btn { transform: scale(.95); }
 .vcard.is-playing .vcard__play { opacity: 0; pointer-events: none; }
 @media (max-width: 860px) { .vcard { margin: 26px auto 0; } }
+
+/* YouTube links */
+.vcard__more { margin-top: 16px; }
+.vcard__more .link-arrow { font-size: 15px; }
+.vcard__more .link-arrow svg.i:not(.arrow) { width: 20px; height: 20px; }
+.split .vcard__more { text-align: center; }
+.mm-yt { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
+.mm-yt svg { width: 22px; height: 22px; color: var(--cyan); }
