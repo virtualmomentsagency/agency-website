@@ -786,3 +786,6 @@ html.leaving body > *:not(.curtain) { transition: opacity .35s var(--ease); opac
 .split .vcard__more { text-align: center; }
 .mm-yt { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
 .mm-yt svg { width: 22px; height: 22px; color: var(--cyan); }
+.form-msg.is-error { background: #FDF0EE; color: #8A2A1C; }
+.form-msg a { color: inherit; font-weight: 700; text-decoration: underline; }
+.btn[disabled] { opacity: .7; cursor: progress; }

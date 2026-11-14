@@ -55,7 +55,10 @@
   document.body.insertAdjacentHTML("afterbegin", sprite);
 
   /* ---------- Booking links ---------- */
-  $$("[data-book]").forEach(function (a) { a.href = BOOK; a.target = "_blank"; a.rel = "noopener"; });
+  $$("[data-book]").forEach(function (a) {
+    a.href = BOOK; a.target = "_blank"; a.rel = "noopener";
+    a.addEventListener("click", function () { if (window.gtag) window.gtag("event", "book_strategy_call_click", { page: document.body.dataset.page || "" }); });
+  });
 
   /* ---------- Year ---------- */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
@@ -281,16 +284,40 @@
     chips.forEach(function (c) { c.addEventListener("click", function () { cat = c.dataset.cat; chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); }); filter(); }); });
   }
 
-  /* ---------- Contact form: opens an email to VMA, with copy fallback ---------- */
+  /* ---------- Contact form: delivers to info@ via FormSubmit, falls back to email app ---------- */
   var form = $("[data-contact-form]");
   if (form) {
+    var ENDPOINT = "https://formsubmit.co/ajax/info@virtualmomentsagency.com";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var f = new FormData(form), msg = $(".form-msg", form);
-      var body = "Name: " + (f.get("name") || "") + "\nClinic / business: " + (f.get("biz") || "") + "\nIndustry: " + (f.get("industry") || "") + "\nEmail: " + (f.get("email") || "") + "\n\n" + (f.get("message") || "");
-      var href = "mailto:info@virtualmomentsagency.com?subject=" + encodeURIComponent("Website inquiry from " + (f.get("name") || "a visitor")) + "&body=" + encodeURIComponent(body);
-      msg.classList.add("is-on");
-      window.location.href = href;
+      var f = new FormData(form), msg = $(".form-msg", form), btn = $("button[type=submit]", form), label = $(".btn-label", btn);
+      if ((f.get("_honey") || "").trim()) return;
+      if (!form.checkValidity || form.checkValidity()) {
+        var data = {
+          name: f.get("name") || "", email: f.get("email") || "", business: f.get("biz") || "",
+          industry: f.get("industry") || "", message: f.get("message") || "",
+          _subject: "New website inquiry from " + (f.get("name") || "a visitor") + (f.get("biz") ? " (" + f.get("biz") + ")" : ""),
+          _replyto: f.get("email") || "", _template: "table", _captcha: "false"
+        };
+        btn.disabled = true; if (label) label.textContent = "Sending…";
+        msg.classList.remove("is-on", "is-error");
+        var fallback = function () {
+          var body = "Name: " + data.name + "\nBusiness: " + data.business + "\nIndustry: " + data.industry + "\nEmail: " + data.email + "\n\n" + data.message;
+          msg.innerHTML = "We couldn't send that just now. Please email us at <a href=\"mailto:info@virtualmomentsagency.com\">info@virtualmomentsagency.com</a>, or <a href=\"mailto:info@virtualmomentsagency.com?subject=" + encodeURIComponent(data._subject) + "&body=" + encodeURIComponent(body) + "\">open your email app with your message filled in</a>.";
+          msg.classList.add("is-on", "is-error");
+        };
+        fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+          .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            if (res.ok && String(res.j.success) === "true") {
+              msg.textContent = "Thank you, " + (data.name.split(" ")[0] || "") + "! Your message is on its way. We'll get back to you at " + data.email + " soon.";
+              msg.classList.add("is-on"); form.reset();
+              if (window.gtag) window.gtag("event", "generate_lead", { method: "contact_form" });
+            } else { fallback(); }
+          })
+          .catch(fallback)
+          .then(function () { btn.disabled = false; if (label) label.textContent = "Send message"; });
+      } else if (form.reportValidity) { form.reportValidity(); }
     });
   }
   $$("[data-copy]").forEach(function (b) {
