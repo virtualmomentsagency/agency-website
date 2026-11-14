@@ -44,6 +44,7 @@
     whatsapp: '<path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 20.5 11.8Z"/><path d="M9 8.5c.2-.5.5-.6.8-.6h.5c.2 0 .4 0 .5.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.1.1-.2.3 0 .5.5.9 1.3 1.7 2.3 2.2.2.1.4.1.5 0l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.3.1.3.3.3.5 0 .5-.2 1.1-.7 1.4-.5.4-1.4.5-2.5.1-2.2-.8-3.9-2.5-4.7-4.6-.4-1-.2-2 .2-2.6Z"/>',
     quote: '<path d="M9.5 6C6.2 7.2 4 10 4 13.5V18h6v-6H7c0-2.4 1.3-4.1 3.3-4.9L9.5 6Zm10 0C16.2 7.2 14 10 14 13.5V18h6v-6h-3c0-2.4 1.3-4.1 3.3-4.9L19.5 6Z" fill="currentColor" stroke="none"/>',
     helmet: '<path d="M2.5 18h19"/><path d="M4.5 18v-2.5a7.5 7.5 0 0 1 15 0V18"/><path d="M10 8.4V5.5h4v2.9"/><path d="M9 18v-4M15 18v-4"/>',
+    youtube: '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.2v5.6l4.8-2.8-4.8-2.8Z" fill="currentColor"/>',
     tri: '<path d="M12 3 22 20H2L12 3Z"/>'
   };
   var sprite = '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">';
