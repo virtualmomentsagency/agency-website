@@ -341,5 +341,18 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveInd(modeBtns.filter(function (b) { return b.getAttribute("aria-selected") === "true"; })[0]); });
   });
 
+
+  /* ---------- Video testimonial cards ---------- */
+  $$(".vcard").forEach(function (card) {
+    var v = $(".vcard__video", card), btn = $(".vcard__play", card);
+    if (!v || !btn) return;
+    btn.addEventListener("click", function () {
+      $$(".vcard__video").forEach(function (o) { if (o !== v && !o.paused) o.pause(); });
+      v.controls = true; card.classList.add("is-playing");
+      var p = v.play(); if (p && p.catch) p.catch(function () { card.classList.remove("is-playing"); });
+    });
+    v.addEventListener("ended", function () { card.classList.remove("is-playing"); v.controls = false; try { v.currentTime = 0; v.load(); } catch (e) {} });
+  });
+
   onScroll();
 })();
