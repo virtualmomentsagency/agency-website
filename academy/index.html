@@ -191,17 +191,59 @@ div.opt{cursor:default}
 .opt.key{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,var(--bg))}
 .opt .ok{color:var(--good);margin-left:auto;font-size:13px}
 input[type=date]{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font-size:16px;background:var(--bg);color:var(--ink)}
+
+/* ---------- VMA brand layer ---------- */
+.cover{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 100% 0,#1A67B2 0,transparent 55%),linear-gradient(150deg,#06173A 0%,#0A2352 50%,#0D4A94 100%)}
+.cover::before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;background:linear-gradient(135deg,#5CC8F2,#134DA2);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.22}
+.cover::after{content:"";position:absolute;left:-60px;bottom:-60px;width:200px;height:200px;background:#5CC8F2;clip-path:polygon(0 100%,0 0,100% 100%);opacity:.08}
+.cover>*{position:relative;z-index:1}
+.brandrow,.railbrand{display:flex;align-items:center;gap:14px}
+.brandrow .logo{height:46px}
+.pa{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5CC8F2;padding-left:14px;border-left:1.5px solid rgba(168,227,250,.35);line-height:1.2}
+.railbrand{padding:0 8px 22px;margin-bottom:6px;border-bottom:1.5px solid #12306a}
+.railbrand .logo{height:32px}
+.railbrand .word{padding:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5CC8F2;margin-bottom:14px}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.cover h1{max-width:14ch}
+.cover mark{background:linear-gradient(transparent 62%,rgba(92,200,242,.45) 62%);color:#fff;padding:0 .08em}
+.facts{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.facts li{border:1.5px solid rgba(168,227,250,.3);border-radius:999px;padding:7px 14px;font-size:14px;color:#C9D6EC;background:rgba(6,23,58,.35)}
+.facts b{color:#fff;margin-right:4px}
+.formside{position:relative;overflow:hidden}
+.formside::before{content:"";position:absolute;right:0;top:0;width:120px;height:120px;background:linear-gradient(135deg,#5CC8F2,#134DA2);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.9}
+form{position:relative}
+form h2{position:relative;padding-bottom:12px}
+form h2::after{content:"";position:absolute;left:0;bottom:0;width:44px;height:4px;border-radius:4px;background:var(--cyan)}
+form .btn{box-shadow:0 14px 30px -14px rgba(19,77,162,.7);transition:transform .2s,box-shadow .2s,background .2s}
+form .btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(19,77,162,.8)}
+.backsite{display:inline-block;margin-top:22px;font-size:14px;font-weight:700;color:var(--act);text-decoration:none}
+.backsite:hover{text-decoration:underline}
+nav{background:linear-gradient(180deg,#06173A,#081d48)}
+.page h1{position:relative;padding-bottom:16px}
+.page h1::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;border-radius:4px;background:var(--cyan)}
+.crumb{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:800;color:var(--act)}
+.welcome{position:relative;overflow:hidden}
+.welcome::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;background:#5CC8F2;clip-path:polygon(100% 0,0 0,100% 100%);opacity:.18}
+.cert .cb{position:relative;overflow:hidden}
+.cert .tri{position:absolute;width:90px;height:90px;background:linear-gradient(135deg,#5CC8F2,#134DA2)}
+.cert .tri.tl{left:0;top:0;clip-path:polygon(0 0,100% 0,0 100%);opacity:.18}
+.cert .tri.br{right:0;bottom:0;clip-path:polygon(100% 100%,100% 0,0 100%);opacity:.18}
+.cert .ch .logo{height:30px}
+@media(max-width:860px){.cover svg,.facts{display:none}.cover{gap:24px}.cover svg{max-width:340px}.formside::before{width:70px;height:70px}}
 </style>
 </head>
 <body>
 <section id="login">
   <div class="cover">
-    <div class="word" id="brand1"></div>
+    <div class="brandrow"><a href="/" class="word" id="brand1" aria-label="Virtual Moments Agency home"></a><span class="pa">Partner Academy</span></div>
     <div>
-      <h1>The VMA Partner Academy</h1>
+      <span class="eyebrow">For active VMA virtual partners</span>
+      <h1>Learn it once<br><mark>deliver it every day</mark></h1>
       <p>Two weeks of onboarding for every new VMA partner, then a new skill each month: AI, CRMs, automation, content, paid ads, bookkeeping and more, unlocked on your own schedule.</p>
+      <ul class="facts"><li><b>10</b> onboarding modules</li><li><b>13</b> monthly courses</li><li><b>1</b> certificate per course</li></ul>
     </div>
-    <svg viewBox="0 0 440 220" aria-hidden="true">
+    <svg viewBox="0 0 440 200" aria-hidden="true">
       <g id="art"></g>
     </svg>
   </div>
@@ -217,6 +259,7 @@ input[type=date]{width:100%;height:50px;border:1.5px solid var(--line);border-ra
       <button class="btn" type="submit">Log in →</button>
       <p class="err" id="err" role="alert"></p>
       <p class="help">No code yet, or lost it? Ask your VMA virtual manager for a new one.</p>
+      <a class="backsite" href="/">← Back to virtualmomentsagency.com</a>
     </form>
   </div>
 </section>
@@ -508,7 +551,7 @@ const M = [
 
 const LIST=[];M.forEach((m,mi)=>{m.l.forEach((l,li)=>LIST.push({mi,id:m.n+"."+(li+1),t:l.t,b:l.b}));LIST.push({mi,id:m.n+"."+(m.l.length+1),t:m.up?"Quiz & certificate":"Module quiz",quiz:true});});
 const PASS=80;
-const LOGO=`<img class="logo" src="https://virtualmomentsagency.com/img/logo.png" alt="Virtual Moments Agency" onerror="this.nextElementSibling.hidden=false;this.remove()"><span class="word" hidden><i>V</i>Virtual Moments Agency</span>`;
+const LOGO=`<img class="logo" src="/img/logo.png" alt="Virtual Moments Agency" onerror="this.nextElementSibling.hidden=false;this.remove()"><span class="word" hidden><i>V</i>Virtual Moments Agency</span>`;
 
 /* ---------- dates ---------- */
 const parse=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
@@ -546,10 +589,13 @@ function rng(seed){let s=seed%2147483647;if(s<=0)s+=2147483646;return()=>(s=s*16
 function order(n,seed){const r=rng(seed),a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 /* ---------- login art ---------- */
-(function art(){let s='',r=7;const rnd=()=>(r=r*16807%2147483647)/2147483647;
- for(let i=0;i<9;i++){const x=20+i*46,h=50+rnd()*110,c=i==5?'#5CC8F2':(i%3==0?'#A8E3FA':'#1A67B2');
-  s+=`<rect x="${x}" y="${200-h}" width="34" height="${h}" rx="9" fill="${c}" opacity="${i==5?1:.85}"/><rect x="${x}" y="${200-h}" width="34" height="10" rx="5" fill="#fff" opacity=".22"/>`;}
- s+='<line x1="0" y1="201" x2="440" y2="201" stroke="#5CC8F2" stroke-opacity=".4" stroke-width="2"/>';
+(function art(){let s='<defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5CC8F2"/><stop offset="1" stop-color="#1A67B2" stop-opacity=".25"/></linearGradient></defs>',pts=[];
+ const steps=[['00',28],['03',50],['07',74],['09',96],['M1',116],['M6',134],['M13',150]];
+ steps.forEach(([lab,h],i)=>{const cx=40+i*58,base=186,top=base-h,w=22+h*.18;pts.push([cx,top]);
+  s+=`<path d="M${cx-w} ${base} L${cx} ${top} L${cx+w} ${base}Z" fill="url(#tg)" opacity="${.35+i*.09}"/>`;});
+ s+=`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#A8E3FA" stroke-width="2" stroke-dasharray="4 6"/>`;
+ pts.forEach(([x,y],i)=>{const last=i==pts.length-1;s+=`<circle cx="${x}" cy="${y}" r="${last?9:5}" fill="${last?'#5CC8F2':'#fff'}"/>${last?`<circle cx="${x}" cy="${y}" r="16" fill="none" stroke="#5CC8F2" stroke-opacity=".5" stroke-width="2"/>`:''}<text x="${x}" y="${y-14-(last?8:0)}" text-anchor="middle" font-size="11" font-weight="800" fill="#C9D6EC" font-family="Plus Jakarta Sans,sans-serif">${steps[i][0]}</text>`;});
+ s+='<line x1="0" y1="187" x2="440" y2="187" stroke="#5CC8F2" stroke-opacity=".35" stroke-width="2"/>';
  $('art').innerHTML=s;})();
 $('brand1').innerHTML=LOGO;
 
@@ -571,7 +617,7 @@ function modHTML(m,mi){const it=items(mi),n=it.filter(o=>done.has(o.x.id)).lengt
  return `<div class="mod ${st} ${open==mi&&!lk&&view=='lesson'?'open':''}"><button class="mh" data-m="${mi}"><span class="num">${m.n}</span><span>${m.t}${m.up?`<small class="when">${lk?lab:'Month '+m.up+' · '+fmt(opens(m))}</small>`:''}</span><em>${lk?'<svg class="lk" viewBox="0 0 16 16" aria-label="Locked"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>':n+'/'+it.length}</em></button>
  <div class="ls">${it.map(o=>`<button class="lb ${o.i==cur&&view=='lesson'?'cur':''} ${done.has(o.x.id)?'ok':''}" data-i="${o.i}"><small>${o.x.id}</small>${o.x.t}</button>`).join('')}</div></div>`;}
 function navHTML(){const all=M.map((m,mi)=>[m,mi]);
- return `<div class="word" id="brand2">${LOGO}</div>
+ return `<div class="railbrand"><a href="/" class="word" id="brand2" aria-label="Virtual Moments Agency home">${LOGO}</a><span class="pa">Partner Academy</span></div>
  <div class="prog">${pct()}% of open courses complete<div class="bar"><b style="width:${pct()}%"></b></div></div>
  ${U.admin?`<button class="navbtn ${view=='admin'?'on':''}" id="toadmin">Admin dashboard <span>Admin</span></button>`:''}
  <button class="navbtn ${view=='plan'?'on':''}" id="toplan">Learning plan</button>
@@ -619,7 +665,7 @@ function coreDone(q){const n=corePassed(),t=coreMods().length;return `<div class
 
 /* ---------- certificates ---------- */
 const seal=`<svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#134DA2"/><circle cx="32" cy="32" r="24" fill="none" stroke="#5CC8F2" stroke-width="2" stroke-dasharray="3 3"/><path d="M21 33l7 7 15-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-function certHTML(title,what,date,score,id,key){return `<div class="cert" data-key="${key}"><div class="ch">${LOGO}<span>VMA Partner Academy</span></div><div class="cb">${seal}<div class="k">Certificate of completion</div><h2>${title}</h2><p>This certifies that</p><div class="who">${esc(P.name||U.email)}</div><p>has successfully completed <span class="cm">${what}</span>${score!=null?(key=='prog'?' with an average score of ':' with a score of ')+score+'%':''}.</p></div><div class="cf"><div><b>${fmtL(parse(date))}</b>Date awarded</div><div><b>${id}</b>Certificate ID</div><div><b>Virtual Moments Agency</b>Issued by</div></div></div>
+function certHTML(title,what,date,score,id,key){return `<div class="cert" data-key="${key}"><div class="ch">${LOGO}<span>VMA Partner Academy</span></div><div class="cb"><i class="tri tl"></i><i class="tri br"></i>${seal}<div class="k">Certificate of completion</div><h2>${title}</h2><p>This certifies that</p><div class="who">${esc(P.name||U.email)}</div><p>has successfully completed <span class="cm">${what}</span>${score!=null?(key=='prog'?' with an average score of ':' with a score of ')+score+'%':''}.</p></div><div class="cf"><div><b>${fmtL(parse(date))}</b>Date awarded</div><div><b>${id}</b>Certificate ID</div><div><b>Virtual Moments Agency</b>Issued by</div></div></div>
  <div class="tools" style="margin-top:-6px"><button class="btn ghost" data-print="${key}">Print or save as PDF</button></div>`;}
 function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi);}
 function programCert(){const c=coreMods();if(!c.every(mi=>P.quiz[M[mi].n]&&P.quiz[M[mi].n].pass))return '';const d=c.map(mi=>P.quiz[M[mi].n].pass.date).sort().pop(),avg=Math.round(c.reduce((s,mi)=>s+P.quiz[M[mi].n].pass.score,0)/c.length);

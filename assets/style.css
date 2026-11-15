@@ -803,3 +803,4 @@ html.leaving body > *:not(.curtain) { transition: opacity .35s var(--ease); opac
 .acad-chips li { font-size: 14px; font-weight: 600; color: #fff; border: 1.5px solid rgba(92,200,242,.45); border-radius: 999px; padding: 7px 14px; transition: background .25s, border-color .25s; }
 .acad-chips li:hover { background: rgba(92,200,242,.15); border-color: #5CC8F2; }
 @media (max-width: 860px) { .academy { grid-template-columns: minmax(0, 1fr); } }
+.acad-login { margin-top: 28px; }
