@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>VMA Partner Academy</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE everyday learning, professional: VMA's own site look
+   IDEA the partner handbook VMA would print: navy cover, numbered chapters, a certificate at each chapter's end
+   PICTURE the course itself: chapter rail, lesson page, dated learning plan, certificates
+   COLOUR VMA ink #06173A rail, white page, royal #134DA2 actions, cyan #5CC8F2 progress, mist #EEF4FB panels
+   TYPE Plus Jakarta Sans, as on virtualmomentsagency.com
+   LAYOUT laptop: navy rail left, lesson right; phone: top bar, rail as a drawer */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#061330);--ink:light-dark(#06173A,#eef4fb);--txt:light-dark(#33415C,#c9d6ec);--mut:light-dark(#64748B,#9fb2d2);--line:light-dark(#DCE5F2,#16305f);--soft:light-dark(#EEF4FB,#0A2352);--rail:#06173A;--rail2:#0A2352;--royal:#134DA2;--deep:#0D4A94;--cyan:#5CC8F2;--cyans:#A8E3FA;--act:light-dark(#134DA2,#5CC8F2);--good:#1c8a5e;--bad:#c2410c}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:clip}
+h1,h2,h3{color:var(--ink);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0}
+button,input{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.hide{display:none!important}
+.logo{height:34px;width:auto;display:block}
+.word{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;color:#fff}
+.word i{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--royal),var(--cyan));display:grid;place-items:center;font-style:normal;font-size:14px}
+/* login */
+#login{min-height:100%;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.cover{background:linear-gradient(140deg,#06173A 0%,#0A2352 55%,#134DA2 100%);color:#fff;padding:clamp(28px,5vw,64px) max(5vw,16px);display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.cover h1{color:#fff;font-size:clamp(32px,4.4vw,52px);max-width:12ch}
+.cover p{color:#c9d6ec;max-width:44ch;margin:14px 0 0}
+.cover svg{width:100%;max-width:440px;height:auto}
+.formside{display:grid;place-items:center;padding:clamp(28px,5vw,64px) max(5vw,16px)}
+form{width:100%;max-width:400px}
+form h2{font-size:30px;margin-bottom:6px}
+.sub{color:var(--mut);margin:0 0 24px}
+label{display:block;font-weight:700;font-size:14px;margin:16px 0 6px;color:var(--ink)}
+input[type=email],input[type=text]{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font-size:16px;background:var(--bg);color:var(--ink)}
+input:focus{border-color:var(--royal);outline:none}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500}
+.chk input{width:18px;height:18px;accent-color:var(--royal)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--royal);color:#fff;font-weight:700}
+.btn:hover{background:var(--deep)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--royal)}
+form .btn{width:100%;margin-top:22px}
+.err{color:var(--bad);font-size:14px;min-height:22px;margin:10px 0 0}
+.help{font-size:14px;color:var(--mut);margin-top:18px}
+/* app shell */
+#app{height:100%;display:grid;grid-template-columns:320px minmax(0,1fr)}
+nav{background:var(--rail);color:#e3ecfa;overflow-y:auto;padding:24px 16px 32px}
+nav .word{padding:0 8px 20px}
+.prog{margin:0 8px 14px;font-size:13px;color:#b4c4df}
+.bar{height:8px;border-radius:8px;background:var(--rail2);margin-top:8px;overflow:hidden}
+.bar b{display:block;height:100%;background:var(--cyan);border-radius:8px;transition:width .5s}
+.navbtn{display:flex;justify-content:space-between;align-items:center;width:calc(100% - 16px);margin:0 8px 6px;min-height:44px;padding:0 14px;border-radius:12px;border:1.5px solid #1d3a6e;background:transparent;color:#fff;font-weight:700;font-size:14px}
+.navbtn:hover,.navbtn.on{background:var(--rail2);border-color:var(--cyan)}
+.navbtn span{color:var(--cyan)}
+.grp{margin:22px 8px 8px;font-size:13px;font-weight:700;color:#9fb2d2}
+.mod{margin-bottom:4px}
+.mh{width:100%;display:flex;align-items:center;gap:12px;min-height:48px;padding:8px;border:0;border-radius:14px;background:transparent;color:inherit;text-align:left;font-weight:700}
+.mh:hover,.mod.open .mh{background:var(--rail2)}
+.num{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid #2a4a82;display:grid;place-items:center;font-size:12px;font-weight:800}
+.mod.done .num{background:var(--cyan);border-color:var(--cyan);color:var(--rail)}
+.mod.part .num{border-color:var(--cyan);color:var(--cyan)}
+.mod.late .num{border-color:#fb923c;color:#fb923c}
+.mh>span:not(.num){flex:1}
+.when{display:block;font-size:12px;font-weight:500;color:#9fb2d2;margin-top:2px}
+.mh em{font-style:normal;font-size:12px;color:#9fb2d2;font-weight:600}
+.mod.lock .mh{opacity:.7}
+.lk{width:14px;height:14px;vertical-align:-2px}
+.ls{display:none;margin:4px 0 10px 24px;padding-left:14px;border-left:1.5px solid #1d3a6e}
+.mod.open .ls{display:block}
+.lb{width:100%;display:flex;gap:10px;align-items:flex-start;min-height:44px;padding:10px;border:0;border-radius:10px;background:transparent;color:#c9d6ec;text-align:left;font-size:15px}
+.lb:hover{background:var(--rail2)}
+.lb.cur{background:#fff;color:var(--rail)}
+.lb small{flex:none;font-size:12px;font-weight:700;color:var(--cyan);padding-top:2px;width:46px;white-space:nowrap}
+.lb.cur small{color:var(--royal)}
+.lb.ok small::after{content:" ✓"}
+.out{display:block;margin:20px 8px 0;color:#9fb2d2;background:none;border:0;font-size:14px;padding:8px 0;text-align:left}
+main{overflow-y:auto}
+.top{display:none}
+.page{max-width:800px;padding:clamp(28px,5vw,60px) max(5vw,16px) 80px}
+.crumb{color:var(--mut);font-size:14px;font-weight:600}
+.page h1{font-size:clamp(32px,4.5vw,46px);margin:8px 0 22px;text-wrap:balance}
+.body p,.body li{max-width:66ch}
+.body h3{font-size:20px;margin:28px 0 8px}
+.body ul,.body ol{padding-left:22px}
+.body li{margin:6px 0}
+.body b{color:var(--ink)}
+.note{background:var(--soft);border-left:4px solid var(--royal);border-radius:14px;padding:16px 18px;margin:20px 0}
+.note b{color:var(--act)}
+.tpl{position:relative;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;padding-top:50px;margin:18px 0;white-space:pre-wrap;font-size:15px;color:var(--ink)}
+.tpl button{position:absolute;top:10px;right:10px;min-height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:13px;font-weight:700}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:12px;margin:18px 0}
+.terms div{background:var(--soft);border-radius:16px;padding:14px 16px}
+.terms b{display:block;margin-bottom:4px}
+/* quiz */
+.q{border:1.5px solid var(--line);border-radius:18px;padding:18px;margin:16px 0}
+.q h3{font-size:17px;margin:0 0 12px;letter-spacing:0;line-height:1.4}
+.q.good{border-color:var(--good)}
+.q.badq{border-color:var(--bad)}
+.verdict{font-weight:700;font-size:14px;margin-top:6px}
+.q.good .verdict{color:var(--good)}
+.q.badq .verdict{color:var(--bad)}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;min-height:48px;margin:8px 0;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.opt::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.opt.sel{border-color:var(--royal);background:var(--soft)}
+.opt.sel::before{border:6px solid var(--royal)}
+.opt:disabled{cursor:default}
+.result{border-radius:20px;padding:22px;margin:20px 0;background:var(--soft)}
+.result h2{font-size:24px;margin-bottom:6px}
+.result.fail{border:1.5px solid var(--bad)}
+.result.pass{border:1.5px solid var(--good)}
+.result .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.meta{font-size:14px;color:var(--mut)}
+.gate li button{border:0;background:none;color:var(--act);font-weight:700;padding:4px 0;text-decoration:underline}
+.foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top:1.5px solid var(--line);margin-top:40px;padding-top:24px}
+.foot div{display:flex;gap:10px;flex-wrap:wrap}
+/* welcome + plan */
+.welcome{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;background:linear-gradient(140deg,#06173A,#0A2352 60%,#134DA2);color:#fff;border-radius:28px;padding:26px;margin:8px 0 28px}
+.welcome h2{color:#fff;font-size:24px;margin-bottom:6px}
+.welcome p{margin:0;color:#c9d6ec}
+.welcome .btn{margin-top:14px;background:var(--cyan);color:var(--rail)}
+.welcome .stats{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px;font-size:14px;color:#c9d6ec}
+.welcome .stats b{color:#fff}
+.ring{width:132px;height:132px}
+.ring text{font-weight:800;fill:#fff}
+.ph{font-size:24px;margin:0 0 6px}
+.pp{color:var(--mut);margin:0 0 14px}
+.plan{display:grid;gap:6px}
+.row{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content;gap:14px;align-items:center;width:100%;min-height:56px;padding:10px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);text-align:left}
+.row:hover{border-color:var(--royal)}
+.row .dt{font-size:14px;font-weight:600;white-space:nowrap;color:var(--mut)}
+.row .nm{font-weight:700}
+.row .nm small{display:block;font-weight:500;font-size:13px;color:var(--mut)}
+.chip{font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:var(--soft);color:var(--mut);white-space:nowrap}
+.row.done .chip{background:var(--good);color:#fff}
+.row.open .chip,.row.part .chip{background:var(--royal);color:#fff}
+.row.late .chip{background:var(--bad);color:#fff}
+.row.lock{opacity:.7}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sep{border:0;border-top:1.5px solid var(--line);margin:32px 0}
+/* certificates */
+.cert{background:#fff;color:#33415C;border-radius:22px;overflow:hidden;border:1.5px solid #DCE5F2;margin:18px 0;box-shadow:0 18px 40px -24px rgba(6,23,58,.35)}
+.cert .ch{background:linear-gradient(120deg,#06173A,#0A2352 60%,#134DA2);padding:18px 26px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff}
+.cert .ch span{font-size:13px;font-weight:600;color:#A8E3FA}
+.cert .cb{padding:clamp(22px,4vw,40px) clamp(20px,4vw,44px);text-align:center;background:radial-gradient(circle at 50% 0,#EEF4FB,#fff 70%)}
+.cert .k{font-size:13px;font-weight:700;color:#134DA2}
+.cert h2{color:#06173A;font-size:clamp(24px,3.6vw,34px);margin:6px 0 16px}
+.cert .who{font-size:clamp(26px,4.6vw,40px);font-weight:800;color:#06173A;border-bottom:2px solid #5CC8F2;display:inline-block;padding:0 12px 4px;margin:6px 0 14px;letter-spacing:-.02em}
+.cert p{margin:6px auto;max-width:52ch}
+.cert .cm{font-weight:800;color:#06173A}
+.cert .cf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:1.5px solid #DCE5F2;padding:16px 26px;font-size:13px}
+.cert .cf b{display:block;color:#06173A;font-size:14px}
+.cert .seal{width:64px;height:64px;margin:4px auto 0}
+.certs-empty{background:var(--soft);border-radius:18px;padding:20px}
+.ver{border:1.5px solid var(--line);border-radius:18px;padding:18px;margin-top:24px}
+.ver .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:10px}
+.ver label{margin-top:0}
+#scrim{display:none}
+@media(prefers-reduced-motion:reduce){.bar b{transition:none}}
+@media(max-width:860px){
+#login{grid-template-columns:minmax(0,1fr)}
+.cover svg{max-width:300px}
+#app{display:block;height:auto}
+.top{display:flex;position:sticky;top:0;z-index:5;align-items:center;justify-content:space-between;gap:12px;background:var(--rail);color:#fff;padding:10px 16px}
+.top button{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid #2a4a82;background:transparent;color:#fff;font-weight:700}
+.top .mini{flex:1;height:6px;border-radius:6px;background:var(--rail2);overflow:hidden}
+.top .mini b{display:block;height:100%;background:var(--cyan)}
+nav{position:fixed;inset:0 auto 0 0;width:min(340px,88vw);z-index:20;transform:translateX(-100%);transition:transform .25s}
+body.drawer nav{transform:none}
+body.drawer #scrim{display:block;position:fixed;inset:0;background:#0008;z-index:15}
+.welcome{grid-template-columns:minmax(0,1fr);justify-items:start}
+}
+@media(max-width:560px){.row{grid-template-columns:minmax(0,1fr) max-content}.row .dt{grid-column:1/-1;font-size:13px}.cert .cf{grid-template-columns:minmax(0,1fr)}}
+@media print{
+body.printing *{visibility:hidden}
+body.printing .cert.pt,body.printing .cert.pt *{visibility:visible}
+body.printing .cert.pt{position:absolute;left:0;top:0;width:100%;margin:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:landscape;margin:12mm}
+}
+
+[hidden]{display:none!important}
+div.opt{cursor:default}
+.opt.key{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,var(--bg))}
+.opt .ok{color:var(--good);margin-left:auto;font-size:13px}
+input[type=date]{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font-size:16px;background:var(--bg);color:var(--ink)}
+</style>
+</head>
+<body>
+<section id="login">
+  <div class="cover">
+    <div class="word" id="brand1"></div>
+    <div>
+      <h1>The VMA Partner Academy</h1>
+      <p>Two weeks of onboarding for every new VMA partner, then a new skill each month: AI, CRMs, automation, content, paid ads, bookkeeping and more, unlocked on your own schedule.</p>
+    </div>
+    <svg viewBox="0 0 440 220" aria-hidden="true">
+      <g id="art"></g>
+    </svg>
+  </div>
+  <div class="formside">
+    <form id="f" novalidate>
+      <h2>Welcome back</h2>
+      <p class="sub">Log in with the email VMA has on file and the access code you were given.</p>
+      <label for="em">Email address</label>
+      <input id="em" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <label for="cd">Access code</label>
+      <input id="cd" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="VMA-XXXXXX" required>
+      <label class="chk"><input id="rm" type="checkbox" checked>Remember me on this device</label>
+      <button class="btn" type="submit">Log in →</button>
+      <p class="err" id="err" role="alert"></p>
+      <p class="help">No code yet, or lost it? Ask your VMA virtual manager for a new one.</p>
+    </form>
+  </div>
+</section>
+
+<section id="app" class="hide">
+  <div class="top"><button id="menu" type="button">Modules</button><div class="mini"><b id="mini"></b></div><span id="pct2">0%</span></div>
+  <nav id="nav" aria-label="Course modules"></nav>
+  <div id="scrim"></div>
+  <main id="main"><div class="page" id="page"></div></main>
+</section>
+
+<script>
+{
+const ACCESS = {
+  /* sha256(lowercase email + "|" + CODE): start date (YYYY-MM-DD), admin sees every course */
+  "6f4bcb6dd33fccfa6e5bd9971c265685c5d50e00fbbc5cec006d2e083aade627": {start:"2026-11-16", admin:true},
+  "54a5665c8d243a064b1f50597d574cc8257b5625f2e9e65a84a12e37c1290eee": {start:"2026-11-16", admin:true},
+  "44f544da72a07f1005b7556948c24d2a0bdc7fbad031321e46998c03a239d160": {start:"2026-09-01"}
+};
+function sha256(ascii){
+  function rr(v,a){return (v>>>a)|(v<<(32-a))}
+  var mp=Math.pow,maxWord=mp(2,32),result='',words=[],bitLen=ascii.length*8,hash=[],k=[],pc=0,comp={},i,j;
+  for(var c=2;pc<64;c++){if(!comp[c]){for(i=0;i<313;i+=c)comp[i]=c;hash[pc]=(mp(c,.5)*maxWord)|0;k[pc++]=(mp(c,1/3)*maxWord)|0;}}
+  ascii+='\x80';while(ascii.length%64-56)ascii+='\x00';
+  for(i=0;i<ascii.length;i++){j=ascii.charCodeAt(i);if(j>>8)return '';words[i>>2]|=j<<((3-i)%4)*8;}
+  words[words.length]=((bitLen/maxWord)|0);words[words.length]=bitLen;
+  for(j=0;j<words.length;){var w=words.slice(j,j+=16),old=hash;hash=hash.slice(0,8);
+    for(i=0;i<64;i++){var w15=w[i-15],w2=w[i-2],a=hash[0],e=hash[4];
+      var t1=hash[7]+(rr(e,6)^rr(e,11)^rr(e,25))+((e&hash[5])^((~e)&hash[6]))+k[i]+(w[i]=(i<16)?w[i]:(w[i-16]+(rr(w15,7)^rr(w15,18)^(w15>>>3))+w[i-7]+(rr(w2,17)^rr(w2,19)^(w2>>>10)))|0);
+      var t2=(rr(a,2)^rr(a,13)^rr(a,22))+((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));
+      hash=[(t1+t2)|0].concat(hash);hash[4]=(hash[4]+t1)|0;}
+    for(i=0;i<8;i++)hash[i]=(hash[i]+old[i])|0;}
+  for(i=0;i<8;i++)for(j=3;j+1;j--){var b=(hash[i]>>(j*8))&255;result+=((b<16)?0:'')+b.toString(16);}
+  return result;
+}
+
+
+/* ---------- course content ---------- */
+const T = s => '<div class="tpl"><button type="button" class="cp">Copy</button>'+s+'</div>';
+const M = [
+{n:"00",t:"Welcome",l:[
+ {t:"Start here",b:`<p>Welcome to Virtual Moments Agency. You have been selected to be paired with a VMA client, and this academy is how we make sure every client gets the same reliable, professional experience no matter which partner they work with.</p>
+ <p>Go through the modules in order. Each one ends with a short quick check. Most partners finish in two to three sittings.</p>
+ <div class="note"><b>Before your first client day,</b> you should have completed the full onboarding (modules 00 to 09) within your first two weeks, starting with 00 to 04 and 07 (Security &amp; Privacy). Your virtual manager will check your progress before the pairing goes live.</div>`},
+ {t:"How the program works",b:`<p>VMA places trained virtual partners with growing businesses: medspas and healthcare practices, sales teams, real estate, construction, SaaS and tech companies, and busy executives. Each client gets one dedicated partner, and a VMA virtual manager supports both of you from day one.</p>
+ <p>The basics in this onboarding work for every niche. Niche-specific skills come later, in your monthly upskilling.</p>
+ <h3>How a pairing starts</h3>
+ <ol><li>The client has a discovery call with VMA and signs an agreement.</li><li>VMA vets and matches a partner, usually within 7 to 10 days.</li><li>You meet the client at a handshake meeting, then launch.</li><li>The first term is three months, with reviews at 30, 60 and 90 days.</li></ol>
+ <h3>Who does what</h3>
+ <ul><li><b>You</b> work inside the client's own booking system, inbox and social accounts, follow their approved scripts and policies, and keep your trackers and SOPs current.</li>
+ <li><b>Your VMA virtual manager</b> handles the pairing, payroll, admin and anything you escalate.</li>
+ <li><b>The client</b> sets priorities and approves anything involving money, access or public posts.</li></ul>
+ <h3>How you'll be measured</h3>
+ <ul><li>Reliability: on time, every time, with an end-of-day report.</li><li>Communication: the client never has to wonder what you're doing.</li><li>Care with access and data: zero security slips.</li></ul>`},
+ {t:"Words we use",b:`<p>You'll see these terms throughout the academy and in your client work.</p>
+ <div class="terms">
+ <div><b>Pairing</b>The match between one VMA partner and one client account.</div>
+ <div><b>Handshake meeting</b>Your first meeting with a new client to agree priorities, tools and working hours.</div>
+ <div><b>EOD report</b>End-of-day report: what you did, what's next, and what you need.</div>
+ <div><b>SOP</b>Standard operating procedure: step-by-step notes for a recurring task.</div>
+ <div><b>Escalation</b>Bringing an issue to your VMA virtual manager instead of handling it alone.</div>
+ <div><b>Retainer hours</b>The hours per week or month the client has booked with VMA.</div>
+ </div>`}],
+ q:[{q:"Who approves anything involving the client's money or account access?",o:["You, if it seems urgent","The client","Any VMA partner"],a:1,w:"Money, access and public posts always need the client's own approval, in writing."},
+    {q:"Which modules must be complete before your first client day?",o:["Only module 00","00 to 04 plus 07 (Security & Privacy)","All modules"],a:1,w:"Security is non-negotiable before you touch a client's accounts."}]},
+{n:"01",t:"The VMA Standard",l:[
+ {t:"You represent two names",b:`<p>Every email you send carries the client's name and VMA's reputation. Clients don't judge an agency by its website; they judge it by how their partner shows up on a Tuesday afternoon.</p>
+ <ul><li>Write as if the client's own customer might read it, because sometimes they will.</li><li>Use the client's tone in their channels, and VMA's professional tone with VMA.</li><li>Never discuss one client's business with another client.</li></ul>`},
+ {t:"Reliability beats brilliance",b:`<p>Clients rarely leave because a partner wasn't brilliant. They leave because they couldn't count on them. Reliability is a habit, not a talent.</p>
+ <ul><li>Log in at your agreed time. If you'll be late, message before, not after.</li><li>Finish what you start, or say clearly what's left and when it will be done.</li><li>Send your EOD report every working day, even on quiet days.</li></ul>
+ <div class="note"><b>The rule of no surprises:</b> bad news shared early is a small problem; bad news discovered by the client is a trust problem.</div>`},
+ {t:"Ownership and initiative",b:`<p>Owning your work means you don't wait to be chased. When you see something that could be better, you suggest it. When you're stuck, you ask with a proposed answer.</p>
+ <h3>Instead of this</h3><p>"What should I do about the late invoices?"</p>
+ <h3>Say this</h3><p>"Three invoices are 30+ days late. I'd like to send the attached reminder today. OK to send?"</p>`}],
+ q:[{q:"You'll be 20 minutes late logging in. What do you do?",o:["Log in and explain later if asked","Message the client before your start time","Work 20 minutes extra and say nothing"],a:1,w:"No surprises: tell them before it happens."},
+    {q:"Which is the better way to ask for direction?",o:["Ask an open question and wait","Bring the problem with a proposed solution","Decide alone to save their time"],a:1,w:"Clients want a decision to approve, not a problem to solve."}]},
+{n:"02",t:"Your First Week",l:[
+ {t:"Before day one",b:`<p>Your virtual manager will send you a pairing brief. Read it twice. Before the handshake meeting, you should know:</p>
+ <ul><li>What the client's business does and who their customers are.</li><li>Their time zone and the hours you've agreed to cover.</li><li>The top three tasks they want help with first.</li><li>Which tools they use, and how access will be shared (see module 07).</li></ul>`},
+ {t:"The handshake meeting",b:`<p>The handshake meeting sets the tone for the whole pairing. Bring these questions and take notes in a shared doc the client can see.</p>
+ ${T("1. What would make the next 30 days a success for you?\n2. What are the three tasks you most want off your plate?\n3. How do you prefer updates: email, chat, or a daily report?\n4. What hours should I be reachable, and how fast do you expect replies?\n5. What should I never do without asking you first?\n6. Who else will I work with (team, vendors, customers)?\n7. Which tools and logins will I need, and how will you share them?")}`},
+ {t:"Your 7-day plan",b:`<ol><li><b>Day 1:</b> Confirm access to every tool. Send your first EOD report.</li>
+ <li><b>Days 2–3:</b> Complete the first priority task; write its SOP while you do it.</li>
+ <li><b>Day 4:</b> Share a short "what I've learned so far" note with any questions.</li>
+ <li><b>Day 5:</b> Start the second priority task.</li>
+ <li><b>End of week:</b> Send a one-week summary to the client and copy your VMA virtual manager.</li></ol>`}],
+ q:[{q:"Where should your handshake meeting notes go?",o:["Your private notebook","A shared doc the client can see","Nowhere, you'll remember"],a:1,w:"Shared notes let the client correct misunderstandings early."},
+    {q:"What do you send at the end of week one?",o:["Nothing until the monthly review","A one-week summary to the client, copying VMA","An invoice"],a:1,w:"It shows progress and keeps your virtual manager in the loop."}]},
+{n:"03",t:"Communication",l:[
+ {t:"Response times",b:`<p>Unless your client agrees otherwise, VMA's standard is:</p>
+ <ul><li>Replies to client messages within 1 hour during your working hours.</li><li>Urgent items acknowledged within 15 minutes, even if the full answer takes longer.</li><li>An away message or status whenever you step out for more than 30 minutes.</li></ul>
+ <p>Acknowledging is not the same as answering. "Got it, I'll have this to you by 3 PM your time" is a complete, professional reply.</p>`},
+ {t:"The EOD report",b:`<p>Send it at the end of every working day, in the channel the client chose. Keep it scannable.</p>
+ ${T("EOD — [Date]\n\nDone today\n• \n• \n\nIn progress (and when it'll be done)\n• \n\nNeed from you\n• \n\nTomorrow\n• \n\nHours today: ")}
+ <p>If you need nothing, write "Nothing needed today." It tells the client you checked.</p>`},
+ {t:"Asking good questions",b:`<p>Batch non-urgent questions into one message instead of sending them one by one. Number them so the client can answer quickly, and suggest your best guess for each.</p>
+ <p>Always check the SOP and past messages before asking. A question you could have answered yourself costs the client time.</p>`},
+ {t:"Working across time zones",b:`<ul><li>Write every time with its zone, for example "3 PM EST / 4 AM PHT".</li><li>Keep a world clock with the client's zone pinned.</li><li>Schedule messages to land during the client's morning when you finish late your time.</li><li>Confirm holidays in both countries at the start of each month.</li></ul>`}],
+ q:[{q:"An urgent message arrives. What's the standard?",o:["Reply when the task is finished","Acknowledge within 15 minutes","Wait for the EOD report"],a:1,w:"Acknowledge fast, then give a time for the full answer."},
+    {q:"Nothing is needed from the client today. What goes in that EOD section?",o:["Leave it out","\"Nothing needed today.\"","Ask for more work"],a:1,w:"It shows you checked."}]},
+{n:"04",t:"Phone Basics: Inbound & Outbound",l:[
+ {t:"Your phone setup and voice",b:`<p>On the phone, your voice is the client's business. Callers can't see you, so everything rides on sound, pace and preparation.</p>
+ <ul><li>Use a wired or noise-cancelling headset and a quiet room. Test your mic before every shift.</li><li>Have the client's caller ID, script, booking or CRM tool and FAQ open before you dial or pick up.</li><li>Smile while you talk; it really does change your tone. Speak a little slower than feels natural.</li><li>Use the caller's name, and never eat, type loudly or put someone on speaker.</li></ul>`},
+ {t:"Answering inbound calls",b:`<p>Answer within three rings using the client's approved greeting, then follow the same five steps on every call.</p>
+ <ol><li><b>Greet:</b> business name, your name, an offer to help.</li><li><b>Listen:</b> let them finish; take notes as they talk.</li><li><b>Confirm:</b> repeat their need back in one sentence, and verify their name and number.</li><li><b>Help:</b> answer from the approved FAQ, book, or take a message.</li><li><b>Close:</b> confirm what happens next and when.</li></ol>
+ ${T("Thank you for calling Brightside Realty, this is Ana. How can I help you today?")}
+ <p class="crumb">Sample business and partner names.</p>`},
+ {t:"Holds, transfers and messages",b:`<ul><li><b>Hold:</b> ask first ("May I place you on a brief hold while I check?"), and come back every 60 seconds.</li><li><b>Transfer:</b> tell the caller who you're transferring them to and why. Brief the person you transfer to so the caller doesn't repeat themselves.</li><li><b>Messages:</b> capture all six details, then read them back.</li></ul>
+ ${T("Message for: \nFrom (name, company): \nCallback number: \nBest time to call back: \nReason for call: \nUrgency: \nTaken by / time: ")}`},
+ {t:"Making outbound calls",b:`<p>Outbound calls include lead follow-up, appointment confirmations, past-customer check-ins and cold calls. Prepare before every block of calls: know who you're calling, why, and the one outcome you want.</p>
+ <ol><li><b>Open:</b> your name, the business, and a reason they'll recognise.</li><li><b>Permission:</b> ask if now is a good time.</li><li><b>Purpose:</b> one or two sentences, in their terms.</li><li><b>Question:</b> ask, then listen more than you talk.</li><li><b>Next step:</b> a specific booking, callback time or send-info, confirmed before you hang up.</li></ol>
+ ${T("Hi Mark, this is Ana calling from Brightside Realty. You asked about the Maple Street listing last week. Do you have two minutes? Great. Are you still looking in that area, or has anything changed?")}`},
+ {t:"Objections and voicemail",b:`<p>Objections are usually a request for more information or better timing. Acknowledge, ask, then offer one option.</p>
+ ${T("\"I'm busy right now.\"\nTotally understand. When would be a better time for a two-minute call, later today or tomorrow morning?\n\n\"Just send me an email.\"\nHappy to. So I send the right thing, is it pricing or availability you'd like to see?\n\n\"Not interested.\"\nThanks for being upfront. May I ask if it's the timing, or it's just not a fit? Either way, I won't take more of your time.")}
+ <p>Voicemails: under 20 seconds, name, business, one reason to call back, and your number said slowly twice.</p>`},
+ {t:"Logging calls and calling rules",b:`<p>A call that isn't logged didn't happen. After every call, record the outcome, notes and next step in the client's CRM or tracker before you dial again.</p>
+ <div class="note"><b>Calling rules:</b> follow the client's approved scripts and call lists only. For US contacts, sales calls should generally stay between 8 AM and 9 PM in the contact's local time, numbers on Do Not Call lists must be skipped, and some states require everyone's consent before a call is recorded. When unsure, ask your virtual manager before you dial.</div>
+ <ul><li>Never pretend to be someone else, or promise prices, discounts or results that aren't in the script.</li><li>If someone asks to stop being called, mark it in the CRM straight away.</li><li>Track your daily numbers: dials, conversations, bookings. They show your work in the EOD report.</li></ul>`}],
+ q:[{q:"You need to check something mid-call. What do you do?",o:["Mute and look it up","Ask permission to hold and return within 60 seconds","Hang up and call back"],a:1,w:"Always ask first and check back often."},
+    {q:"What's the most important part of an outbound call's ending?",o:["Thanking them","A specific, confirmed next step","Reading the full script"],a:1,w:"Every call should end with a booking, callback time or clear next action."},
+    {q:"A contact asks you to stop calling. What do you do?",o:["Call back next month","Mark it in the CRM straight away","Ask a colleague to call instead"],a:1,w:"Honour opt-outs immediately and record them."}]},
+{n:"05",t:"Tools & Workspace",l:[
+ {t:"Your core setup",b:`<p>Every VMA partner works from the same base setup, so any virtual manager can support you.</p>
+ <ul><li>A dedicated work browser profile for each client.</li><li>A password manager (see module 07) for every client login.</li><li>A time tracker running whenever you work on client tasks.</li><li>The client's own tools for their work: their email, drive and task board.</li></ul>`},
+ {t:"Time tracking",b:`<p>Clients pay for retainer hours, so your timesheet is part of the product.</p>
+ <ul><li>Track every task with a short, clear description ("Replied to 14 customer emails"), not "admin".</li><li>Stop the timer for breaks.</li><li>Tell your virtual manager when you reach 80% of the client's hours for the period.</li></ul>`},
+ {t:"Keeping files findable",b:`<p>Keep everything in the client's shared drive, never your personal drive. Use one simple folder structure for every client:</p>
+ ${T("01 Admin & Access\n02 SOPs\n03 Trackers\n04 Projects\n05 Reports (EOD & weekly)\n06 Archive")}`}],
+ q:[{q:"Where should client files live?",o:["Your personal drive","The client's shared drive","Your desktop"],a:1,w:"The client owns their work, and it stays with them if the pairing changes."},
+    {q:"When do you alert your virtual manager about hours?",o:["When you hit 80% of the period's hours","After the hours run out","Never"],a:0,w:"80% gives time to plan, not apologise."}]},
+{n:"06",t:"SOPs & Task Management",l:[
+ {t:"Write it down once",b:`<p>Any task you do twice gets an SOP. It protects the client if you're sick, and it makes you faster.</p>
+ ${T("SOP: [Task name]\nPurpose: why this task matters\nWhen: daily / weekly / when triggered by…\nTools & access needed:\nSteps:\n1.\n2.\n3.\nDone looks like:\nLast updated: [date] by [name]")}`},
+ {t:"One task board",b:`<p>Keep all client work in one place the client can see: their board if they have one, or a simple tracker you set up. Each task has an owner, a due date and a status. If it isn't on the board, it isn't happening.</p>`},
+ {t:"Prioritising",b:`<p>When everything feels urgent, sort it this way:</p>
+ <ol><li>Anything that affects the client's customers or money today.</li><li>Anything with a deadline in the next 48 hours.</li><li>The client's stated top priorities from the handshake meeting.</li><li>Everything else, in the order received.</li></ol>
+ <p>If two client requests clash, ask which comes first. Don't guess.</p>`}],
+ q:[{q:"When does a task need an SOP?",o:["When you do it the second time","Only if the client asks","Never, you'll remember"],a:0,w:"Twice means it's recurring."},
+    {q:"Two requests clash and both seem urgent. What do you do?",o:["Pick the easier one","Ask the client which comes first","Do both halfway"],a:1,w:"Priorities are the client's call."}]},
+{n:"07",t:"Security & Privacy",l:[
+ {t:"Access the right way",b:`<ul><li>Logins are shared through a password manager, never in chat, email or a spreadsheet.</li><li>Turn on two-factor authentication everywhere it's offered; agree with the client where codes go.</li><li>Use only the access you need. If you're given more, say so.</li><li>When a pairing ends, hand back access and log out of every session the same day.</li></ul>`},
+ {t:"Client and customer data",b:`<p>You will see your clients' customer lists, contracts, finances and sometimes health records. Treat all of it as confidential. Some data is also regulated: in healthcare, anything that links a patient to their care (name, phone, photos, treatments, appointments) is protected health information under HIPAA, and the client is legally responsible for it. So are you, while you work for them.</p>
+ <ul><li>Keep client and customer information inside the client's approved systems. Never copy it to personal email, your phone's notes, screenshots or outside AI tools.</li><li>Share only the minimum needed for the task.</li><li>Never discuss clients' customers or patients outside work, or post anything about them, even without names.</li><li>Work on a private screen, never in a public place where others can see.</li><li>If private information goes to the wrong person, tell your virtual manager the same day.</li></ul>`},
+ {t:"Money and payments",b:`<div class="note"><b>VMA rule:</b> never send, move, refund or pay money, and never enter card or bank details, without the client's written approval for that specific payment.</div>
+ <ul><li>"Written" means a message you can point to later, not a phone call.</li><li>One approval covers one payment, not the next one.</li><li>If anything about a payment request feels unusual, pause and escalate to VMA.</li></ul>`},
+ {t:"Spotting scams",b:`<p>Partners are a favourite target, because scammers know you can act for the client. Stop and verify through a second channel when you see:</p>
+ <ul><li>A "client" asking for gift cards, crypto or an urgent wire, especially from a new email or number.</li><li>A changed bank account for a vendor or payee.</li><li>A login page reached from a link in an email.</li><li>Anyone asking <b>you</b> to pay a fee or deposit to get a client, a job or "verified" status. VMA will never ask for this.</li></ul>`}],
+ q:[{q:"The client texts from a new number asking you to buy gift cards urgently. What do you do?",o:["Buy them, it's urgent","Verify with the client through a known channel and tell VMA","Ask for the card amounts"],a:1,w:"Urgency plus gift cards plus a new number is the classic pattern."},
+    {q:"A customer list would help a friend with a similar business. Can you share it?",o:["Yes, without phone numbers","No, client data stays in the client's systems","Yes, if the friend pays for it"],a:1,w:"Client data never leaves the client's approved systems, in any form."},
+    {q:"How should a client share a login with you?",o:["Through a password manager","In the team chat","In a spreadsheet"],a:0,w:"Never in chat, email or spreadsheets."},
+    {q:"Does one payment approval cover future payments?",o:["Yes, for the same vendor","No, each payment needs its own approval","Yes, for 30 days"],a:1,w:"One approval, one payment."}]},
+{n:"08",t:"When Things Go Wrong",l:[
+ {t:"Owning a mistake",b:`<p>Everyone makes mistakes. What clients remember is how you handled it. Tell them quickly, in three parts:</p>
+ ${T("What happened: I sent the newsletter to the old list this morning.\nWhat I've done: I've sent a correction to the right list and removed the old list from the tool.\nWhat changes: I've added a list check to the newsletter SOP so it can't happen again.")}`},
+ {t:"When to escalate to VMA",b:`<p>Bring your virtual manager in, the same day, when:</p>
+ <ul><li>A client asks for work outside the agreed scope or beyond their hours.</li><li>Anything involves money you're unsure about, or a possible scam.</li><li>A client is rude, unreasonable, or asks for something you're not comfortable doing.</li><li>You'll miss a deadline or can't work for a day or more.</li><li>You've made a mistake that affects the client's customers or money.</li></ul>
+ <p>Escalating isn't failing. It's how VMA protects you and the client.</p>`},
+ {t:"Scope creep",b:`<p>Small extra asks add up. Stay helpful and keep it visible:</p>
+ ${T("Happy to help with this! It's outside what we set up at the handshake meeting, so I'll loop in VMA to confirm hours. I can start as soon as it's approved.")}`}],
+ q:[{q:"What are the three parts of owning a mistake?",o:["Apology, excuse, promise","What happened, what I've done, what changes","Wait, hope, explain"],a:1,w:"Facts, fix, prevention."},
+    {q:"A client asks for a new, larger project. What's next?",o:["Start immediately","Loop in VMA to confirm scope and hours","Decline it"],a:1,w:"Scope and hours are agreed through VMA."}]},
+{n:"09",t:"Growing the Account",l:[
+ {t:"The monthly check-in",b:`<p>Once a month, ask for 20 minutes with the client. Bring:</p>
+ <ul><li>What you completed, with numbers where you can (emails handled, calls made, hours saved).</li><li>What's slowing you down.</li><li>One or two ideas for next month.</li></ul>`},
+ {t:"Proactive ideas",b:`<p>The partners clients keep are the ones who make the business run better, not just the ones who finish the list. Look for repeated manual work you could template or automate, and propose it with the time it would save.</p>`},
+ {t:"Reviews and growth at VMA",b:`<p>Your virtual manager reviews every pairing at 30, 60 and 90 days, at the end of the three-month first term, using client feedback, your EOD history and your SOP library.</p>
+ <p>Strong reviews lead to more hours, larger accounts and lead-partner roles. Keep a simple "wins" list as you go; it makes these conversations easy.</p>`}],
+ q:[{q:"What should you bring to a monthly check-in?",o:["Only problems","Results, blockers and ideas","Nothing, it's informal"],a:1,w:"Show value, raise issues, look ahead."},
+    {q:"When are pairings reviewed in the first term?",o:["At 30, 60 and 90 days","After one year","Only if there's a complaint"],a:0,w:"Three reviews across the three-month first term."}]}
+,
+{n:"M1",up:1,t:"AI Essentials for Partners",l:[
+ {t:"What AI is good at, and what it isn't",b:`<p>Tools like ChatGPT, Claude and Gemini are now part of everyday VA work, and more clients list them in job requirements. They are fast first-draft machines: emails, summaries, outlines, rewrites, spreadsheet formulas, research starting points.</p>
+ <p>They are not a source of truth. They can sound confident and be wrong, invent links or numbers, and miss the client's context. You stay responsible for every word you send.</p>`},
+ {t:"Writing prompts that work",b:`<p>Good prompts give the tool what a new colleague would need: who it's for, what you want, the format, and an example.</p>
+ ${T("Role: You're helping me, an assistant for a real estate agent.\nTask: Draft a friendly follow-up email to a buyer who viewed a house on Saturday.\nContext: They liked the kitchen but worried about the commute.\nFormat: Under 120 words, one question at the end, no exclamation marks.\nExample of our tone: \"Hi Sam, thanks again for coming by…\"")}
+ <p>Then iterate: "shorter", "warmer", "give me three subject lines". The second and third drafts are usually the good ones.</p>`},
+ {t:"Using AI safely with client work",b:`<div class="note"><b>VMA rule:</b> never paste client or customer personal data, passwords, financial details or health information into an AI tool unless the client has approved that specific tool for that use.</div>
+ <ul><li>Replace real names and numbers with placeholders when you ask for help with a draft.</li><li>Fact-check every number, date, name and link before it goes out.</li><li>Tell the client which AI tools you use and for what.</li></ul>
+ <p><b>This month's practice:</b> pick one recurring writing task, build a reusable prompt for it, and save it in that task's SOP.</p>`}],
+ q:[{q:"Can you paste a client's customer list into a free AI tool to clean it up?",o:["Yes, it saves time","Only if the client approved that tool for that use","Yes, if you delete the chat after"],a:1,w:"Client data only goes into tools the client has approved."},
+    {q:"AI gives you a statistic for a client newsletter. What next?",o:["Use it as is","Verify it from a real source before using it","Round it to sound safer"],a:1,w:"AI can invent numbers. Verify everything."}]},
+{n:"M2",up:2,t:"CRM & Pipeline Management",l:[
+ {t:"What a CRM is for",b:`<p>A CRM (customer relationship management) system such as HubSpot, GoHighLevel, Salesforce or Pipedrive holds every lead and customer, every conversation and every next step. When it's kept clean, nobody falls through the cracks. When it isn't, the client loses money quietly.</p>`},
+ {t:"Pipelines and stages",b:`<p>Most clients track leads through stages, for example: New lead → Contacted → Qualified → Appointment booked → Proposal → Won or Lost. Learn your client's stages and what has to be true for a contact to move to the next one.</p>
+ <ul><li>Every open lead should have a next task with a date.</li><li>Move cards the same day something changes.</li><li>Record why deals are lost; it's some of the most useful data a client has.</li></ul>`},
+ {t:"Data hygiene",b:`<ul><li>Search before you create, to avoid duplicates.</li><li>Fill names, phone and email in the same format every time.</li><li>Log calls, emails and notes on the contact, not in your own notes.</li><li>Run a weekly check: leads with no next task, stuck stages, duplicates.</li></ul>
+ <p><b>This month's practice:</b> run the weekly check on your client's CRM and send them a three-line summary of what you fixed.</p>`}],
+ q:[{q:"What should every open lead have?",o:["A tag","A next task with a date","A note saying 'follow up'"],a:1,w:"A dated next step keeps leads from going cold."},
+    {q:"Before adding a new contact you should…",o:["Search for an existing record","Create it and merge later","Ask the client"],a:0,w:"Search first to avoid duplicates."}]},
+{n:"M3",up:3,t:"No-Code Automation",l:[
+ {t:"Triggers and actions",b:`<p>Tools like Zapier, Make and n8n connect apps without code. Every automation is the same shape: <b>when this happens</b> (trigger) <b>do that</b> (action). For example: when a website form is submitted, add the person to the CRM and send the client a Slack message.</p>`},
+ {t:"Finding what to automate",b:`<p>Look for tasks that are frequent, rule-based and copy-paste heavy: moving form entries into a sheet, sending the same confirmation email, creating a task when a deal moves stage. Estimate minutes saved per week before you build; that's how you'll pitch it to the client.</p>`},
+ {t:"Building safely",b:`<ul><li>Get the client's approval before connecting their accounts to any automation tool.</li><li>Build with test data first, then turn it on.</li><li>Name every automation clearly and document it in an SOP: what it does, which accounts it uses, how to switch it off.</li><li>Check the run history weekly for errors.</li></ul>
+ <p><b>This month's practice:</b> list three automation ideas for your client with time saved per week, and share them at your next check-in.</p>`}],
+ q:[{q:"What are the two parts of every automation?",o:["Input and output","Trigger and action","Start and stop"],a:1,w:"When this happens, do that."},
+    {q:"Before connecting a client's accounts to Zapier you need…",o:["Their approval","A paid plan","Nothing"],a:0,w:"Connections to client accounts always need their approval."}]},
+{n:"M4",up:4,t:"Canva & Visual Content",l:[
+ {t:"Working from a brand kit",b:`<p>Before designing anything, collect the client's logo files, colours, fonts and two or three examples they like. In Canva, save these as a brand kit so every design starts on-brand.</p>`},
+ {t:"Simple design rules",b:`<ul><li>One message per graphic. If it needs a paragraph, it's a carousel or a caption.</li><li>Big, readable text: check it on your phone before sending.</li><li>Plenty of empty space; align everything to a few lines.</li><li>Use licensed images only: the client's own photos, Canva's library, or stock they've paid for.</li></ul>`},
+ {t:"Templates that save hours",b:`<p>Build a small set of templates for what the client posts most: announcements, tips, testimonials, promotions. Then each new post is a five-minute edit, not a new design.</p>
+ <p><b>This month's practice:</b> create three reusable templates for your client and get their feedback.</p>`}],
+ q:[{q:"Where do you start before designing for a client?",o:["Trending templates","Their brand kit: logo, colours, fonts","Your own style"],a:1,w:"Everything starts from the client's brand."},
+    {q:"Which images can you use?",o:["Anything from Google Images","Licensed images or the client's own photos","Screenshots from competitors"],a:1,w:"Only use images you have the right to use."}]},
+{n:"M5",up:5,t:"Social Media Management",l:[
+ {t:"Planning a content calendar",b:`<p>Agree with the client on platforms, posting frequency and three to five recurring themes. Plan two to four weeks ahead in a shared calendar and schedule posts with a tool such as Meta Business Suite, Buffer or the platform's own scheduler.</p>`},
+ {t:"Community management",b:`<ul><li>Reply to comments and DMs during your hours, in the client's voice.</li><li>Use approved answers for prices, policies and bookings; send anything sensitive to the client.</li><li>Never argue in public. Acknowledge, then move the conversation to DM or phone.</li></ul>`},
+ {t:"Reading the numbers",b:`<p>Followers are the least useful number. Track saves, shares, profile visits, link clicks and messages, because those lead to customers. Share a simple monthly report: what worked, what didn't, what you'll try next.</p>
+ <p><b>This month's practice:</b> build next month's content calendar for your client.</p>`}],
+ q:[{q:"An angry comment appears on a client's post. You…",o:["Delete it","Reply politely and move it to DM or phone","Argue the facts"],a:1,w:"Acknowledge publicly, resolve privately."},
+    {q:"Which metric matters most for a business account?",o:["Followers","Actions like messages, clicks and saves","Likes"],a:1,w:"Actions lead to customers."}]},
+{n:"M6",up:6,t:"Short-Form Video Editing",l:[
+ {t:"Why short video",b:`<p>Reels, TikToks and Shorts are where many clients now get discovered, and short-form video editing is one of the most requested specialist VA skills. You don't need to be a filmmaker; you need to cut fast, caption clearly and stay on-brand.</p>`},
+ {t:"The editing basics",b:`<ul><li>Vertical 9:16, 15 to 60 seconds.</li><li>Put the hook in the first two seconds: a question, a result, a bold line.</li><li>Cut every pause and filler word.</li><li>Add captions; many people watch on mute. Check the auto-captions for errors.</li><li>Use only music the platform licenses for business accounts.</li></ul>`},
+ {t:"Repurposing",b:`<p>One long video, webinar or podcast can become five to ten short clips. Tools like CapCut, Descript and Opus Clip help find and cut highlights, but you choose the moments and check every caption.</p>
+ <p><b>This month's practice:</b> turn one piece of the client's existing content into three short clips.</p>`}],
+ q:[{q:"Where should the hook go?",o:["At the end","In the first two seconds","In the caption only"],a:1,w:"Viewers decide almost immediately."},
+    {q:"Why add captions?",o:["Many viewers watch on mute","They're required by law everywhere","They make videos longer"],a:0,w:"Captions keep muted viewers watching."}]},
+{n:"M7",up:7,t:"Email Marketing & Funnels",l:[
+ {t:"How a simple funnel works",b:`<p>A funnel moves someone from first contact to customer: a social post or ad → a landing page or form → a welcome email sequence → a booking or purchase. Your job is often to keep each step working and connected.</p>`},
+ {t:"Writing and sending emails",b:`<ul><li>One goal per email, one clear button or link.</li><li>Short subject lines that say what's inside.</li><li>Always send a test to yourself and check links on a phone.</li><li>Only email people who opted in, and keep the unsubscribe link.</li></ul>`},
+ {t:"Tools and reporting",b:`<p>Common tools include Mailchimp, Klaviyo, Kit, ActiveCampaign and the email features inside CRMs like GoHighLevel and HubSpot. Report open rate, click rate, replies and, most importantly, bookings or sales from each send.</p>
+ <p><b>This month's practice:</b> map your client's current funnel from first contact to sale and note one gap.</p>`}],
+ q:[{q:"Who can you add to a client's email list?",o:["Anyone with a public email","Only people who opted in","Everyone in the CRM"],a:1,w:"Consent first, always."},
+    {q:"Before sending a campaign you should…",o:["Send a test and check links on a phone","Send to everyone at once","Remove the unsubscribe link"],a:0,w:"Test every send."}]},
+{n:"M8",up:8,t:"Paid Ads Basics",l:[
+ {t:"How paid ads work",b:`<p>Every ad platform runs on the same five parts: an <b>objective</b> (what you want people to do), an <b>audience</b>, the <b>creative</b> (image or video plus copy), a <b>budget</b>, and the <b>landing spot</b> (a page, form, DM or call).</p>
+ <h3>The numbers you'll report</h3>
+ <div class="terms">
+ <div><b>CPM</b>Cost per 1,000 times the ad is shown.</div>
+ <div><b>CTR</b>Click-through rate: clicks ÷ impressions.</div>
+ <div><b>CPC</b>Cost per click.</div>
+ <div><b>CPL</b>Cost per lead: spend ÷ leads (forms, calls, bookings).</div>
+ <div><b>ROAS</b>Return on ad spend: revenue ÷ spend.</div>
+ <div><b>Frequency</b>How many times the average person saw the ad.</div>
+ </div>
+ <p>Clients care most about cost per lead or booking, and whether those leads turn into customers.</p>`},
+ {t:"Meta ads (Facebook & Instagram)",b:`<p>In Meta Ads Manager, every campaign has three levels:</p>
+ <ol><li><b>Campaign:</b> the objective, such as Leads, Sales or Traffic.</li><li><b>Ad set:</b> audience, locations, placements, schedule and budget.</li><li><b>Ad:</b> the creative, copy, headline and button.</li></ol>
+ <ul><li>Lead forms inside Facebook and Instagram are common for local businesses. Connect them to the CRM so every lead gets followed up within minutes.</li><li>Test two or three creatives at a time, not ten.</li><li>Give a new ad a few days and enough spend before judging it.</li></ul>`},
+ {t:"Google ads",b:`<p>Google search ads reach people who are already looking: "medspa near me", "property manager Austin". You choose <b>keywords</b>, and the ad shows when searches match them.</p>
+ <ul><li><b>Match types:</b> broad (related searches), phrase (contains the meaning), exact (same meaning).</li><li><b>Negative keywords</b> stop wasted spend, for example "free", "jobs" or "DIY".</li><li>Write ad headlines that repeat the search words and give a reason to click now.</li><li>Check the search terms report every week and add negatives.</li></ul>`},
+ {t:"TikTok ads and creative",b:`<p>On TikTok, ads that look like normal TikToks usually beat polished commercials.</p>
+ <ul><li>Vertical video, a hook in the first two seconds, captions on (see M6).</li><li>Real people talking to camera, demos and before-and-after style stories, within the platform's rules.</li><li>Spark Ads let the client boost one of their own organic posts that's already doing well.</li><li>Creative wears out fast; plan fresh versions every few weeks.</li></ul>`},
+ {t:"Running ads safely",b:`<div class="note"><b>VMA rules for ads:</b> use the client's own ad account and payment method, never yours. Launch or raise a budget only with the client's written approval of the amount. Never change billing details.</div>
+ <ul><li>Ask for access through the platform's business tools (Meta Business Manager, Google Ads account access), not the client's password.</li><li>Check spend daily for the first week of any new campaign, then at least twice a week.</li><li>Some ads have extra rules: housing, jobs, credit and political ads on Meta are special ad categories with limited targeting, and health and beauty ads can't promise results. When unsure, check the platform's ad policies or ask your virtual manager.</li><li>Report weekly: spend, leads, cost per lead, best ad, and one change you'll test next.</li></ul>
+ <p><b>This month's practice:</b> with the client's approval, review one live campaign (or a competitor's ads in the Meta Ad Library) and write three improvement ideas.</p>`}],
+ q:[{q:"Spend is $300 and the campaign brought 15 leads. What's the cost per lead?",o:["$15","$20","$45"],a:1,w:"$300 ÷ 15 leads = $20 per lead."},
+    {q:"Whose payment method runs the client's ads?",o:["Yours, then invoice the client","The client's, in their own ad account","VMA's"],a:1,w:"Ads always run on the client's own account and card."},
+    {q:"Your Google ad keeps showing for 'free medspa jobs'. What do you add?",o:["More budget","Negative keywords like 'free' and 'jobs'","A new headline"],a:1,w:"Negative keywords block irrelevant searches."}]},
+{n:"M9",up:9,t:"Bookkeeping Basics",l:[
+ {t:"The vocabulary",b:`<p>Bookkeeping support is one of the higher-paid VA skills. Start with the words: income and expenses, invoices (what customers owe) and bills (what the business owes), accounts receivable and payable, and reconciliation (matching the books to the bank statement).</p>`},
+ {t:"Everyday tasks",b:`<ul><li>Create and send invoices in QuickBooks, Xero or the client's tool.</li><li>Categorise transactions and attach receipts.</li><li>Chase overdue invoices with polite, dated reminders.</li><li>Prepare a monthly summary for the client or their accountant.</li></ul>`},
+ {t:"Where your role stops",b:`<div class="note"><b>VMA rule still applies:</b> no paying, moving or refunding money without written approval for that specific payment.</div>
+ <p>You record and organise; the client and their accountant make tax and financial decisions. If something doesn't add up, flag it rather than forcing it to balance.</p>
+ <p><b>This month's practice:</b> build an overdue-invoice tracker and reminder template for your client.</p>`}],
+ q:[{q:"What is reconciliation?",o:["Sending invoices","Matching the books to the bank statement","Paying bills"],a:1,w:"It confirms the records match reality."},
+    {q:"The books are off by a small amount. You…",o:["Add an adjustment so it balances","Flag it to the client or accountant","Ignore it"],a:1,w:"Never force numbers to balance."}]},
+{n:"M10",up:10,t:"Project & Executive Support",l:[
+ {t:"Running projects in a PM tool",b:`<p>Clients often use ClickUp, Asana, Trello, Monday or Notion. Whatever the tool, every task needs an owner, a due date and a clear "done". Run a weekly review: what's overdue, what's blocked, what's next.</p>`},
+ {t:"Calendar and inbox management",b:`<ul><li>Agree rules: which meetings to accept, buffers between calls, focus blocks.</li><li>Put time zones in every invite.</li><li>Sort the inbox into needs-reply, waiting-on and read-later, so only what needs the client stays in front of them.</li></ul>`},
+ {t:"Thinking one step ahead",b:`<p>Great executive support anticipates: the agenda goes out before the meeting, the travel options arrive with a recommendation, the follow-up email is drafted before the call ends.</p>
+ <p><b>This month's practice:</b> send your client a Monday brief: this week's meetings, deadlines and three things that need their decision.</p>`}],
+ q:[{q:"Every project task needs…",o:["An owner, a due date and a clear 'done'","A colour label","A comment"],a:0,w:"Owner, date, definition of done."},
+    {q:"What makes executive support stand out?",o:["Speed only","Anticipating the next step","Doing exactly what's asked"],a:1,w:"Be one step ahead."}]},
+{n:"M11",up:11,t:"Data & Reporting",l:[
+ {t:"Spreadsheet skills that matter",b:`<p>Most client reporting lives in Google Sheets or Excel. Learn these first: SUM, COUNTIF, SUMIF, VLOOKUP or XLOOKUP, filters, sorting, and pivot tables. AI tools can help you write formulas; you check that they're right.</p>`},
+ {t:"Building a simple dashboard",b:`<p>Pick three to five numbers that matter to the client (leads, bookings, revenue, response time). Show each one with last period beside it, and one chart for the trend. Keep raw data on a separate tab.</p>`},
+ {t:"Telling the story",b:`<p>Numbers alone don't help a busy client. Start every report with one sentence: what changed and why it matters. Then the numbers, then one recommendation.</p>
+ <p><b>This month's practice:</b> build a one-page weekly report for your client from data you already track.</p>`}],
+ q:[{q:"Which should come first in a report?",o:["The raw data","One sentence on what changed and why it matters","Every chart you can make"],a:1,w:"Lead with the finding."},
+    {q:"AI wrote you a formula. You…",o:["Trust it","Test it against a few rows you can check by hand","Hide the column"],a:1,w:"Always verify AI output."}]},
+{n:"M12",up:12,t:"AI Agents & Advanced Workflows",l:[
+ {t:"From prompts to systems",b:`<p>Beyond one-off chats, you can set up reusable AI helpers: custom GPTs, Claude Projects and Gemini Gems hold the client's instructions, tone and reference documents, so every draft starts with the right context. Clients increasingly also use AI chat and voice agents to answer customers.</p>`},
+ {t:"Your role next to AI agents",b:`<ul><li>Write and maintain the instructions and FAQs the agent uses.</li><li>Review conversations weekly; fix wrong answers at the source.</li><li>Handle the handoffs: anything the AI can't or shouldn't answer comes to a human.</li><li>Track what the agent resolves and what it escalates.</li></ul>`},
+ {t:"Keeping humans in the loop",b:`<p>Decide with the client what AI may do alone (draft, sort, summarise) and what always needs a person (sending money, sensitive replies, anything legal or medical). Write this down in an SOP.</p>
+ <p><b>This month's practice:</b> set up one reusable AI helper for a recurring task, with the client's approval, and document it.</p>`}],
+ q:[{q:"An AI chat agent keeps giving a wrong price. Best fix?",o:["Apologise to each customer","Correct the instructions or FAQ it uses","Turn it off forever"],a:1,w:"Fix the source, not just the symptom."},
+    {q:"Which task should always stay with a human?",o:["Summarising notes","Sending money","Sorting the inbox"],a:1,w:"Money, sensitive, legal and medical decisions stay human."}]},
+{n:"M13",up:13,t:"Niche Specialisation",l:[
+ {t:"Healthcare & medspa",b:`<p>Medspas and clinics need a front desk that answers first and books first.</p>
+ <ul><li>Reply to new enquiries within minutes during your hours, then offer two specific appointment times.</li><li>Book only into the clinic's own system; send reminders on the clinic's schedule.</li><li>Use approved scripts for prices and offers. Never give medical advice, say a treatment is right or safe for someone, or promise results; pass clinical questions to the provider.</li><li>Patient information is protected under HIPAA: it never leaves the clinic's systems.</li></ul>`},
+ {t:"Real estate",b:`<ul><li>Lead follow-up and showing scheduling for agents.</li><li>Transaction coordination: tracking contract dates, documents and signatures from offer to closing.</li><li>Listing support: descriptions, photos, MLS and social posts.</li><li>Tenant communication and maintenance scheduling for property managers.</li></ul>`},
+ {t:"Sales & SDR support",b:`<ul><li>Building prospect lists and researching accounts.</li><li>Cold calling and email outreach from approved scripts (see module 04).</li><li>Booking meetings onto the sales rep's calendar and keeping the CRM current (see M2).</li><li>Daily activity numbers: dials, conversations, meetings booked.</li></ul>`},
+ {t:"E-commerce & executive support",b:`<ul><li><b>E-commerce:</b> order and returns handling, customer service tickets, product listings in Shopify or Amazon, inventory updates.</li><li><b>Executive:</b> inbox and calendar ownership, travel, meeting prep and follow-ups (see M10).</li></ul>
+ <p><b>This month's practice:</b> pick the niche closest to your client (or the one you want next) and tell your virtual manager. VMA uses this when matching future pairings.</p>`}],
+ q:[{q:"A medspa patient asks if a treatment is safe for them. You…",o:["Answer from what you've read","Pass it to the provider using the approved script","Say yes to keep the booking"],a:1,w:"Clinical questions always go to the provider."},
+    {q:"What does a real estate transaction coordinator track?",o:["Social media likes","Contract dates, documents and signatures to closing","Office supplies"],a:1,w:"They keep the deal on schedule from offer to close."}]}
+];
+
+const LIST=[];M.forEach((m,mi)=>{m.l.forEach((l,li)=>LIST.push({mi,id:m.n+"."+(li+1),t:l.t,b:l.b}));LIST.push({mi,id:m.n+"."+(m.l.length+1),t:m.up?"Quiz & certificate":"Module quiz",quiz:true});});
+const PASS=80;
+const LOGO=`<img class="logo" src="https://virtualmomentsagency.com/img/logo.png" alt="Virtual Moments Agency" onerror="this.nextElementSibling.hidden=false;this.remove()"><span class="word" hidden><i>V</i>Virtual Moments Agency</span>`;
+
+/* ---------- dates ---------- */
+const parse=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
+const addMonths=(d,n)=>{const t=new Date(d.getFullYear(),d.getMonth()+n,1),last=new Date(t.getFullYear(),t.getMonth()+1,0).getDate();t.setDate(Math.min(d.getDate(),last));return t;};
+const fmt=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+const fmtL=d=>d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- state ---------- */
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+let who=null,U={},P={},done=new Set(),cur=0,open=0,view='lesson',sel={},showCert=null,asPartner=false,prevStart='';
+const $=id=>document.getElementById(id);
+const opens=m=>m.up?addMonths(U.start,m.up):U.start;
+const due=m=>m.up?addDays(addMonths(U.start,m.up+1),-1):addDays(U.start,13);
+const locked=mi=>!U.admin&&!!M[mi].up&&today<opens(M[mi]);
+const items=mi=>LIST.map((x,i)=>({x,i})).filter(o=>o.x.mi==mi);
+const lessonsLeft=mi=>U.admin?[]:items(mi).filter(o=>!o.x.quiz&&!done.has(o.x.id));
+const avail=()=>LIST.filter(x=>!locked(x.mi));
+const pct=()=>{const a=avail();return a.length?Math.round(a.filter(x=>done.has(x.id)).length/a.length*100):0;};
+const Q=m=>P.quiz[m.n]||(P.quiz[m.n]={att:0});
+const certs=()=>M.map((m,mi)=>({m,mi,r:P.quiz[m.n]&&P.quiz[m.n].pass})).filter(o=>o.r&&o.m.up);
+const corePassed=()=>coreMods().filter(mi=>P.quiz[M[mi].n]&&P.quiz[M[mi].n].pass).length;
+const certCount=()=>certs().length+(corePassed()==coreMods().length?1:0);
+const coreMods=()=>M.map((m,mi)=>mi).filter(mi=>!M[mi].up);
+const certId=(email,code,date,score)=>'VMA-'+sha256(email+'|'+code+'|'+date+'|'+score).slice(0,8).toUpperCase();
+function status(mi){const it=items(mi),n=it.filter(o=>done.has(o.x.id)).length,m=M[mi];
+ if(n==it.length)return['done',m.up?'Certified':'Passed'];
+ if(locked(mi))return['lock','Opens '+fmt(opens(m))];
+ if(today>due(m))return['late','Overdue'];
+ return n?['part','In progress']:['open','Open now'];}
+function rng(seed){let s=seed%2147483647;if(s<=0)s+=2147483646;return()=>(s=s*16807%2147483647)/2147483647;}
+function order(n,seed){const r=rng(seed),a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ---------- login art ---------- */
+(function art(){let s='',r=7;const rnd=()=>(r=r*16807%2147483647)/2147483647;
+ for(let i=0;i<9;i++){const x=20+i*46,h=50+rnd()*110,c=i==5?'#5CC8F2':(i%3==0?'#A8E3FA':'#1A67B2');
+  s+=`<rect x="${x}" y="${200-h}" width="34" height="${h}" rx="9" fill="${c}" opacity="${i==5?1:.85}"/><rect x="${x}" y="${200-h}" width="34" height="10" rx="5" fill="#fff" opacity=".22"/>`;}
+ s+='<line x1="0" y1="201" x2="440" y2="201" stroke="#5CC8F2" stroke-opacity=".4" stroke-width="2"/>';
+ $('art').innerHTML=s;})();
+$('brand1').innerHTML=LOGO;
+
+/* ---------- login ---------- */
+function enter(h,email){const a=ACCESS[h];who=h;U={email,admin:!!a.admin,start:parse(a.start)};
+ P=store.get('vma-prog-'+h)||{};P.quiz=P.quiz||{};done=new Set(P.done||[]);cur=Math.min(P.cur||0,LIST.length-1);open=LIST[cur].mi;view=U.admin?'admin':'lesson';if(U.admin&&!P.name)P.name='Admin preview';
+ $('login').classList.add('hide');$('app').classList.remove('hide');render();}
+$('f').addEventListener('submit',e=>{e.preventDefault();
+ const em=$('em').value.trim().toLowerCase(),cd=$('cd').value.trim().toUpperCase();
+ if(!em||!cd){$('err').textContent='Enter your email and access code.';return;}
+ const h=sha256(em+'|'+cd);
+ if(!ACCESS[h]){$('err').textContent="That email and code don't match. Check both, or ask your virtual manager.";return;}
+ $('err').textContent='';if($('rm').checked)store.set('vma-session',{h,em});enter(h,em);});
+const sess=store.get('vma-session');if(sess&&ACCESS[sess.h])enter(sess.h,sess.em);
+
+/* ---------- nav ---------- */
+function save(){P.done=[...done];P.cur=cur;store.set('vma-prog-'+who,P);}
+function modHTML(m,mi){const it=items(mi),n=it.filter(o=>done.has(o.x.id)).length,[st,lab]=status(mi),lk=st=='lock';
+ return `<div class="mod ${st} ${open==mi&&!lk&&view=='lesson'?'open':''}"><button class="mh" data-m="${mi}"><span class="num">${m.n}</span><span>${m.t}${m.up?`<small class="when">${lk?lab:'Month '+m.up+' · '+fmt(opens(m))}</small>`:''}</span><em>${lk?'<svg class="lk" viewBox="0 0 16 16" aria-label="Locked"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>':n+'/'+it.length}</em></button>
+ <div class="ls">${it.map(o=>`<button class="lb ${o.i==cur&&view=='lesson'?'cur':''} ${done.has(o.x.id)?'ok':''}" data-i="${o.i}"><small>${o.x.id}</small>${o.x.t}</button>`).join('')}</div></div>`;}
+function navHTML(){const all=M.map((m,mi)=>[m,mi]);
+ return `<div class="word" id="brand2">${LOGO}</div>
+ <div class="prog">${pct()}% of open courses complete<div class="bar"><b style="width:${pct()}%"></b></div></div>
+ ${U.admin?`<button class="navbtn ${view=='admin'?'on':''}" id="toadmin">Admin dashboard <span>Admin</span></button>`:''}
+ <button class="navbtn ${view=='plan'?'on':''}" id="toplan">Learning plan</button>
+ <button class="navbtn ${view=='certs'?'on':''}" id="tocerts">My certificates <span>${certCount()}</span></button>
+ <div class="grp">Onboarding · due ${fmt(addDays(U.start,13))}</div>`+all.filter(([m])=>!m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
+ `<div class="grp">Monthly upskilling</div>`+all.filter(([m])=>m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
+ `<button class="out" id="out">Log out (${esc(U.email)})</button>`;}
+
+/* ---------- plan ---------- */
+function ring(p){const r=56,c=2*Math.PI*r;return `<svg class="ring" viewBox="0 0 132 132"><circle cx="66" cy="66" r="${r}" fill="none" stroke="#ffffff22" stroke-width="12"/>${p?`<circle cx="66" cy="66" r="${r}" fill="none" stroke="#5CC8F2" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 66 66)"/>`:''}<text x="66" y="74" text-anchor="middle" font-size="24">${p}%</text></svg>`;}
+function coreSt(){const c=coreMods();if(c.every(mi=>status(mi)[0]=='done'))return['done','Certified'];if(today>addDays(U.start,13))return['late','Overdue'];return c.some(mi=>['part','done'].includes(status(mi)[0]))?['part','In progress']:['open','Open now'];}
+function planHTML(){
+ const rows=[{t:'Onboarding (modules 00–09)',d:U.start,e:addDays(U.start,13),mi:-1}].concat(M.map((m,mi)=>({m,mi})).filter(o=>o.m.up).map(o=>({t:o.m.n+' '+o.m.t,d:opens(o.m),e:due(o.m),mi:o.mi})));
+ const nx=avail().find(l=>!done.has(l.id));
+ return `<div class="welcome">${ring(pct())}<div><h2>${P.name?'Hi '+esc(P.name.split(' ')[0])+'!':'Welcome!'} ${nx?'Keep going.':'You’re all caught up.'}</h2><p>${nx?'Next up: '+nx.id+' '+nx.t+'.':'Your next course opens on its date below.'}</p>
+ <div class="stats"><span><b>${certCount()}</b> certificates</span><span><b>${coreMods().filter(mi=>status(mi)[0]=='done').length}/${coreMods().length}</b> onboarding modules</span></div>
+ ${nx?`<button class="btn" id="resume">Continue learning</button>`:''}</div></div>
+ <h2 class="ph">Your learning plan</h2><p class="pp">${U.admin?'Admin view: every course is unlocked. Dates show the schedule for a partner starting '+fmt(U.start)+'.':'Started '+fmt(U.start)+'. Each module ends with a quiz you pass with '+PASS+'% or more. Pass all 10 onboarding quizzes to earn your Onboarding certificate, then earn one certificate for each monthly course.'}</p>
+ <div class="plan">${rows.map(r=>{const [st,lab]=r.mi<0?coreSt():status(r.mi);return `<button class="row ${st}" data-go="${r.mi}"><span class="dt">${fmt(r.d)}</span><span class="nm">${r.t}<small>Finish by ${fmt(r.e)}</small></span><span class="chip">${st=='lock'?'Locked':lab}</span></button>`;}).join('')}</div>
+ <div class="tools"><button class="btn ghost" id="report">Copy progress report</button></div><p class="meta" id="repmsg">Send this to your virtual manager at each review.</p>`;}
+function reportText(){const L=['VMA Partner Academy progress','Partner: '+(P.name||'')+' ('+U.email+')','Start date: '+fmt(U.start),'Report date: '+fmt(today),''];
+ M.forEach((m,mi)=>{const [st,lab]=status(mi),q=P.quiz[m.n]||{};L.push(m.n+' '+m.t+': '+(st=='lock'?'Locked':lab)+(q.pass?' · '+q.pass.score+'% · cert '+q.pass.id:'')+(q.att?' · attempts '+q.att:''));});
+ return L.join('\n');}
+
+/* ---------- quiz ---------- */
+function keyHTML(mi){const m=M[mi];return `<div class="note"><b>Admin answer key.</b> Partners see these questions shuffled, without the answers, and need ${PASS}% to pass.${m.up?' Passing gives the Month '+m.up+' certificate.':' Passing all 10 onboarding quizzes gives the Onboarding certificate.'}</div>`+m.q.map((x,qi)=>`<div class="q"><h3>${qi+1}. ${x.q}</h3>${x.o.map((o,oi)=>`<div class="opt ${oi==x.a?'key':''}">${o}${oi==x.a?' <b class="ok">Correct answer</b>':''}</div>`).join('')}<p class="meta">Feedback shown to partners: ${x.w}</p></div>`).join('')+`<div class="tools"><button class="btn ghost" id="aspartner">Take this quiz as a partner</button></div>`;}
+function quizHTML(mi){const m=M[mi],q=Q(m),left=lessonsLeft(mi);if(U.admin&&!asPartner)return keyHTML(mi);
+ if(q.pass&&!q.retake)return m.up?`<div class="result pass"><h2>Passed with ${q.pass.score}%</h2><p class="meta">Certified ${fmtL(parse(q.pass.date))} · ${q.att} attempt${q.att==1?'':'s'} · ID ${q.pass.id}</p><div class="btns"><button class="btn" data-cert="${mi}">View certificate</button><button class="btn ghost" id="again">Practise again</button></div></div>`:coreDone(q);
+ if(left.length)return `<div class="note"><b>Finish the lessons first.</b> The quiz opens when every lesson in this module is complete.</div><ul class="gate">${left.map(o=>`<li><button data-i="${o.i}">${o.x.id} ${o.x.t}</button></li>`).join('')}</ul>`;
+ const seed=(q.att+1)*97+mi*13,qo=order(m.q.length,seed);let h=`<p>${m.q.length} questions. Score ${PASS}% or more to ${m.up?'earn this month\'s certificate':'pass this module'}. You can retake the quiz as many times as you need; questions and answers are shuffled each time.</p><p class="meta">Attempt ${q.att+1}${q.best!=null?' · best so far '+q.best+'%':''}</p>`;
+ h+=qo.map((qi,k)=>{const x=m.q[qi],oo=order(x.o.length,seed+qi*7+1),r=q.res&&q.res[qi];
+  return `<div class="q ${r==null?'':(r?'good':'badq')}" data-q="${qi}"><h3>${k+1}. ${x.q}</h3>${oo.map(oi=>`<button class="opt ${sel[qi]==oi?'sel':''}" data-o="${oi}" ${q.res?'disabled':''}>${x.o[oi]}</button>`).join('')}${r==null?'':`<div class="verdict">${r?'Correct':'Incorrect'}</div>`}</div>`;}).join('');
+ if(q.res)h+=`<div class="result fail"><h2>${q.last}%: not passed yet</h2><p>You need ${PASS}% to pass. Questions marked incorrect are worth reviewing in the lessons before you retake. The correct answers aren't shown, so the retake still counts.</p><div class="btns"><button class="btn" id="retake">Retake quiz</button><button class="btn ghost" data-i="${items(mi)[0].i}">Review lessons</button></div></div>`;
+ else h+=`<div class="foot" style="border:0;margin-top:10px;padding-top:0"><div><button class="btn" id="submit">Submit answers</button></div><div><span class="meta" id="qmsg"></span></div></div>`;
+ return h;}
+function grade(mi){const m=M[mi],q=Q(m);
+ if(m.q.some((x,qi)=>sel[qi]==null)){$('qmsg').textContent='Answer every question first.';return;}
+ const res=m.q.map((x,qi)=>sel[qi]===x.a),score=Math.round(res.filter(Boolean).length/m.q.length*100);
+ q.att++;q.last=score;q.best=Math.max(q.best||0,score);
+ if(score>=PASS){if(!q.pass||score>q.pass.score){const d=iso(today);q.pass={score,date:d,id:certId(U.email,m.n,d,score)};}delete q.res;delete q.retake;done.add(LIST.find(x=>x.mi==mi&&x.quiz).id);showCert=m.up||corePassed()==coreMods().length?mi:null;}
+ else q.res=res;
+ sel={};save();render();}
+
+function coreDone(q){const n=corePassed(),t=coreMods().length;return `<div class="result pass"><h2>Module passed with ${q.pass.score}%</h2><p>${n==t?'All onboarding modules passed. Your Onboarding certificate is ready.':n+' of '+t+' onboarding modules passed. Pass all '+t+' to earn your VMA Partner Onboarding certificate.'}</p><div class="btns">${n==t?'<button class="btn" data-cert="prog">View certificate</button>':''}<button class="btn ghost" id="again">Practise again</button></div></div>`;}
+
+/* ---------- certificates ---------- */
+const seal=`<svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#134DA2"/><circle cx="32" cy="32" r="24" fill="none" stroke="#5CC8F2" stroke-width="2" stroke-dasharray="3 3"/><path d="M21 33l7 7 15-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+function certHTML(title,what,date,score,id,key){return `<div class="cert" data-key="${key}"><div class="ch">${LOGO}<span>VMA Partner Academy</span></div><div class="cb">${seal}<div class="k">Certificate of completion</div><h2>${title}</h2><p>This certifies that</p><div class="who">${esc(P.name||U.email)}</div><p>has successfully completed <span class="cm">${what}</span>${score!=null?(key=='prog'?' with an average score of ':' with a score of ')+score+'%':''}.</p></div><div class="cf"><div><b>${fmtL(parse(date))}</b>Date awarded</div><div><b>${id}</b>Certificate ID</div><div><b>Virtual Moments Agency</b>Issued by</div></div></div>
+ <div class="tools" style="margin-top:-6px"><button class="btn ghost" data-print="${key}">Print or save as PDF</button></div>`;}
+function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi);}
+function programCert(){const c=coreMods();if(!c.every(mi=>P.quiz[M[mi].n]&&P.quiz[M[mi].n].pass))return '';const d=c.map(mi=>P.quiz[M[mi].n].pass.date).sort().pop(),avg=Math.round(c.reduce((s,mi)=>s+P.quiz[M[mi].n].pass.score,0)/c.length);
+ return certHTML('VMA Partner Onboarding','the VMA partner onboarding program (all 10 modules)',d,avg,certId(U.email,'ONBOARDING',d,avg),'prog');}
+function certsHTML(){const c=certs();let h=`<div class="crumb">Your achievements</div><h1>My certificates</h1>`;
+ if(!P.name)return h+nameForm('Add your full name so it appears on your certificates.');
+ h+=`<p class="meta">Name on certificates: <b>${esc(P.name)}</b> · <button class="btn ghost" id="rename" style="min-height:36px;padding:0 14px">Change</button></p>`;
+ const pc=programCert(),n=corePassed(),t=coreMods().length;
+ h+=pc||`<div class="certs-empty"><b>Onboarding certificate:</b> ${n} of ${t} module quizzes passed. Pass all ${t} to earn it.</div>`;
+ h+=c.length?c.map(o=>modCert(o.mi)).join(''):`<div class="certs-empty" style="margin-top:12px"><b>Monthly certificates:</b> none yet. Each monthly course gives one certificate when you pass its quiz with ${PASS}% or more.</div>`;
+ if(U.admin)h+=`<div class="ver"><h3>Verify a certificate</h3><p class="meta">Enter the details printed on a partner's certificate.</p><div class="grid"><div><label for="v1">Partner email</label><input id="v1" type="email"></div><div><label for="v2">Course (ONBOARDING or M1–M13)</label><input id="v2" type="text"></div><div><label for="v3">Date (YYYY-MM-DD)</label><input id="v3" type="text" placeholder="2026-11-15"></div><div><label for="v4">Score %</label><input id="v4" type="text"></div><div><label for="v5">Certificate ID</label><input id="v5" type="text"></div></div><div class="tools"><button class="btn" id="verify">Check</button></div><p class="meta" id="vmsg"></p></div>`;
+ return h;}
+function nameForm(msg){return `<div class="note">${msg}</div><label for="nm">Full name</label><input id="nm" type="text" autocomplete="name" value="${esc(P.name||'')}" placeholder="First and last name"><div class="tools"><button class="btn" id="savename">Save name</button></div>`;}
+
+/* ---------- admin ---------- */
+function adminHTML(){const core=M.filter(m=>!m.up),up=M.filter(m=>m.up),nL=M.reduce((s,m)=>s+m.l.length,0),nQ=M.reduce((s,m)=>s+m.q.length,0);
+ const st=prevStart?parse(prevStart):today;
+ const row=m=>{const mi=M.indexOf(m);return `<button class="row open" data-go="${mi}"><span class="dt">${m.up?fmt(addMonths(st,m.up)):fmt(st)}</span><span class="nm">${m.n} ${m.t}<small>${m.l.length} lessons · ${m.q.length} quiz questions${m.up?' · Month '+m.up+', finish by '+fmt(addDays(addMonths(st,m.up+1),-1)):' · finish by '+fmt(addDays(st,13))}</small></span><span class="chip">Open</span></button>`;};
+ return `<div class="crumb">Admin view · ${esc(U.email)}</div><h1>Admin dashboard</h1>
+ <div class="welcome"><div class="stats" style="margin:0;font-size:16px"><span><b>${core.length}</b> onboarding modules</span><span><b>${up.length}</b> monthly courses</span><span><b>${nL}</b> lessons</span><span><b>${nQ}</b> quiz questions</span><span><b>${Object.keys(ACCESS).length}</b> access codes</span></div></div>
+ <p>You can open any lesson or quiz without finishing anything first. Quizzes show you the answer key; use <b>Take this quiz as a partner</b> to test the partner experience. Your clicks here don't affect any partner.</p>
+ <h2 class="ph">Schedule preview</h2><p class="pp">Pick a partner's start date to see when each course opens for them.</p>
+ <div class="ver" style="margin:0 0 18px"><div class="grid"><div><label for="ps">Partner start date</label><input id="ps" type="date" value="${iso(st)}"></div></div></div>
+ <h2 class="ph">Onboarding (first two weeks)</h2><div class="plan">${core.map(row).join('')}</div>
+ <h2 class="ph" style="margin-top:26px">Monthly upskilling</h2><div class="plan">${up.map(row).join('')}</div>
+ <div class="ver"><h3>Add a partner</h3><p class="meta">Creates a login code. Send the details to Claude to add them to the academy, and send the email and code to your partner.</p>
+ <div class="grid"><div><label for="nn">Partner name</label><input id="nn" type="text"></div><div><label for="ne">Partner email</label><input id="ne" type="email"></div><div><label for="nd">Start date</label><input id="nd" type="date" value="${iso(today)}"></div></div>
+ <div class="tools"><button class="btn" id="mkcode">Create code</button></div><div id="newcode"></div></div>`;}
+function mkcode(){const n=$('nn').value.trim(),e=$('ne').value.trim().toLowerCase(),d=$('nd').value;if(!e||!d||e.indexOf('@')<1){$('newcode').innerHTML='<p class="err">Enter an email and start date.</p>';return;}
+ const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let c='VMA-';const rv=new Uint32Array(6);try{crypto.getRandomValues(rv)}catch(err){for(let i=0;i<6;i++)rv[i]=Math.floor(Math.random()*1e9)}for(let i=0;i<6;i++)c+=A[rv[i]%A.length];
+ const h=sha256(e+'|'+c),forClaude='Add partner to VMA Partner Academy: '+(n?n+', ':'')+e+', start '+d+', code '+c+', key "'+h+'": {start:"'+d+'"}',forPartner='Hi'+(n?' '+n.split(' ')[0]:'')+'! Welcome to VMA. Your Partner Academy login:\nEmail: '+e+'\nAccess code: '+c+'\nStart date: '+fmt(parse(d))+'. Please finish onboarding within your first two weeks.';
+ $('newcode').innerHTML=`<p><b>${c}</b> for ${esc(e)}</p><div class="tpl"><button type="button" class="cp">Copy</button>${esc(forClaude)}</div><div class="tpl"><button type="button" class="cp">Copy</button>${esc(forPartner)}</div><p class="meta">The code works only after the academy is updated with it.</p>`;}
+
+/* ---------- page ---------- */
+function lessonHTML(){const x=LIST[cur],m=M[x.mi];let h='';
+ h+=`<div class="crumb">${m.up?'Monthly upskilling · Month '+m.up:'Onboarding · Module '+m.n}${locked(x.mi)?'':' · '+m.t}</div><h1>${locked(x.mi)?m.t:x.t}</h1>`;
+ if(locked(x.mi))return h+`<div class="note"><b>This course opens on ${fmt(opens(m))}.</b> Each monthly course unlocks on your start date.</div><div class="foot"><div><button class="btn ghost" id="toplan2">← Learning plan</button></div><div></div></div>`;
+ if(x.quiz){if(showCert===x.mi&&P.quiz[m.n].pass){h+=`<div class="result pass"><h2>Passed! ${m.up?'Certificate earned.':'Onboarding complete: certificate earned.'}</h2></div>`+(m.up?modCert(x.mi):programCert());}else h+=`<div class="body">${quizHTML(x.mi)}</div>`;}
+ else h+=`<div class="body">${x.b}</div>`;
+ h+=`<div class="foot"><div>${cur>0?'<button class="btn ghost" id="prev">← Back</button>':''}</div><div>${x.quiz?'':`<button class="btn ghost" id="mark">${done.has(x.id)?'Completed ✓':'Mark complete'}</button>`}${cur<LIST.length-1?'<button class="btn" id="next">Next →</button>':''}</div></div>`;
+ return h;}
+function pageHTML(){if(!P.name&&view!='certs'&&!U.admin)return `<div class="crumb">Welcome to the VMA Partner Academy</div><h1>First, your name</h1>`+nameForm('This is the name printed on every certificate you earn. Use your full legal name.');
+ if(view=='admin')return adminHTML();if(view=='plan')return planHTML();if(view=='certs')return certsHTML();return lessonHTML();}
+function bars(){$('mini').style.width=pct()+'%';$('pct2').textContent=pct()+'%';}
+function render(){$('nav').innerHTML=navHTML();$('page').innerHTML=pageHTML();bars();}
+function top(){$('main').scrollTop=0;window.scrollTo(0,0);document.body.classList.remove('drawer');}
+function go(i){cur=i;open=LIST[i].mi;view='lesson';sel={};showCert=null;asPartner=false;save();render();top();}
+function show(v){view=v;showCert=null;render();top();}
+
+/* ---------- events ---------- */
+$('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.id=='out'){store.del('vma-session');who=null;$('app').classList.add('hide');$('login').classList.remove('hide');$('cd').value='';document.body.classList.remove('drawer');return;}
+ if(b.id=='toplan')return show('plan');
+ if(b.id=='toadmin')return show('admin');
+ if(b.id=='tocerts')return show('certs');
+ if(b.dataset.m!=null){const mi=+b.dataset.m;if(locked(mi)){go(items(mi)[0].i);return;}open=open==mi?-1:mi;$('nav').innerHTML=navHTML();return;}
+ if(b.dataset.i!=null)go(+b.dataset.i);});
+$('page').addEventListener('change',e=>{if(e.target.id=='ps'){prevStart=e.target.value;render();}});
+$('menu').addEventListener('click',()=>document.body.classList.toggle('drawer'));
+$('scrim').addEventListener('click',()=>document.body.classList.remove('drawer'));
+$('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const x=LIST[cur];
+ if(b.id=='aspartner'){asPartner=true;sel={};render();return;}
+ if(b.id=='mkcode'){mkcode();return;}
+ if(b.id=='savename'){const v=$('nm').value.trim().replace(/\s+/g,' ');if(v.length<2)return;P.name=v;save();render();return;}
+ if(b.id=='rename'){P.name='';render();return;}
+ if(b.dataset.go!=null){const mi=+b.dataset.go;go(mi<0?0:items(mi)[0].i);return;}
+ if(b.dataset.cert!=null){show('certs');const k=b.dataset.cert=='prog'?'prog':'m'+b.dataset.cert,el=document.querySelector('[data-key="'+k+'"]');if(el)el.scrollIntoView();return;}
+ if(b.dataset.print!=null){const el=document.querySelector('.cert[data-key="'+b.dataset.print+'"]');document.querySelectorAll('.cert.pt').forEach(c=>c.classList.remove('pt'));el.classList.add('pt');document.body.classList.add('printing');try{window.print()}catch(err){}setTimeout(()=>document.body.classList.remove('printing'),500);return;}
+ if(b.id=='report'){const t=reportText();try{navigator.clipboard.writeText(t).then(()=>{$('repmsg').textContent='Copied. Paste it into a message to your virtual manager.'},()=>{$('repmsg').textContent='Copy was blocked by this browser.'})}catch(err){$('repmsg').textContent='Copy was blocked by this browser.'}return;}
+ if(b.id=='verify'){const em=$('v1').value.trim().toLowerCase(),c=$('v2').value.trim().toUpperCase(),d=$('v3').value.trim(),s=$('v4').value.trim().replace('%',''),id=$('v5').value.trim().toUpperCase();$('vmsg').textContent=certId(em,c,d,s)===id?'Valid: this ID matches those details.':'No match: the details or ID have been changed, or were typed differently.';return;}
+ if(b.id=='toplan2'||b.id=='resume'){if(b.id=='resume'){const nx=avail().find(l=>!done.has(l.id));if(nx)go(LIST.indexOf(nx));}else show('plan');return;}
+ if(b.dataset.i!=null){go(+b.dataset.i);return;}
+ if(b.id=='next'){if(!x.quiz)done.add(x.id);go(cur+1);return;}
+ if(b.id=='prev'){go(cur-1);return;}
+ if(b.id=='mark'){done.has(x.id)?done.delete(x.id):done.add(x.id);save();render();return;}
+ if(b.id=='submit'){grade(x.mi);return;}
+ if(b.id=='retake'){const q=Q(M[x.mi]);delete q.res;sel={};save();render();top();return;}
+ if(b.id=='again'){Q(M[x.mi]).retake=true;sel={};render();return;}
+ if(b.classList.contains('cp')){const t=b.parentNode.textContent.replace(/^Copy(ed)?/,'');try{navigator.clipboard.writeText(t).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)},()=>{b.textContent='Select & copy'})}catch(err){b.textContent='Select & copy'}return;}
+ if(b.classList.contains('opt')){const qi=+b.closest('.q').dataset.q;sel[qi]=+b.dataset.o;b.closest('.q').querySelectorAll('.opt').forEach(o=>o.classList.toggle('sel',o===b));return;}});
+}
+</script>
+</body>
+</html>
