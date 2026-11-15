@@ -340,9 +340,9 @@ nav{background:linear-gradient(180deg,#06173A,#081d48)}
 {
 const ACCESS = {
   /* sha256(lowercase email + "|" + CODE): start date (YYYY-MM-DD), admin sees every course */
-  "6f4bcb6dd33fccfa6e5bd9971c265685c5d50e00fbbc5cec006d2e083aade627": {start:"2026-11-16", admin:true, name:"Hemer Joy Ante", mail:"hem•••@gmail.com", added:"2026-11-15"},
-  "54a5665c8d243a064b1f50597d574cc8257b5625f2e9e65a84a12e37c1290eee": {start:"2026-11-16", admin:true, name:"Marion", mail:"mar•••@virtualmomentsagency.com", added:"2026-11-15"},
-  "6cc73c4a16795709d2e1df71ae66b4ef0d4635e459b84fc57e58bb18ea85b837": {start:"2026-11-15", name:"Test Partner", mail:"inf•••@virtualmomentsagency.com", client:"Tab", added:"2026-11-15"}
+  "6f4bcb6dd33fccfa6e5bd9971c265685c5d50e00fbbc5cec006d2e083aade627": {start:"2026-11-16", admin:true, added:"2026-11-15"},
+  "54a5665c8d243a064b1f50597d574cc8257b5625f2e9e65a84a12e37c1290eee": {start:"2026-11-16", admin:true, added:"2026-11-15"},
+  "6cc73c4a16795709d2e1df71ae66b4ef0d4635e459b84fc57e58bb18ea85b837": {start:"2026-11-15", added:"2026-11-15"}
 };
 function sha256(ascii){
   function rr(v,a){return (v>>>a)|(v<<(32-a))}
@@ -749,7 +749,7 @@ const ACADEMY_URL='https://virtualmomentsagency.com/academy/';
 const roster=()=>store.get('vma-roster')||{};
 const setRoster=r=>store.set('vma-roster',r);
 const maskMail=e=>e.slice(0,3)+'•••'+e.slice(e.indexOf('@'));
-const students=()=>Object.entries(ACCESS).filter(([h,a])=>!a.admin).map(([h,a])=>({h,...a,st:parse(a.start),loc:roster()[h]}));
+const students=()=>Object.entries(ACCESS).filter(([h,a])=>!a.admin).map(([h,a])=>({h,...a,name:(roster()[h]||{}).name||'Student '+h.slice(0,6).toUpperCase(),st:parse(a.start),loc:roster()[h]}));
 const pending=()=>Object.entries(roster()).filter(([h])=>!ACCESS[h]).map(([h,r])=>({h,...r,st:parse(r.start)}));
 const MILES=[
  {k:'welcome',t:'Welcome message sent',d:0,how:'Send the login details privately, then tick this.'},
@@ -762,7 +762,7 @@ const MILES=[
 function stage(st){if(today<st)return['Starts '+fmt(st),'soon'];const day=Math.round((today-st)/864e5)+1;if(day<=14)return['Onboarding · day '+day+' of 14','on'];let k=0;M.forEach(m=>{if(m.up&&today>=addMonths(st,m.up))k=Math.max(k,m.up);});const m=M.find(m=>m.up==k);return m?['Month '+k+' · '+m.t,'on']:['Between onboarding and Month 1','on'];}
 function miles(h,st){const v=store.get('vma-enroll-'+h)||{};return MILES.map(x=>({...x,date:addDays(st,x.d),done:v[x.k]}));}
 function welcomeMsg(r){return 'Hi '+r.name.split(' ')[0]+'! Welcome to Virtual Moments Agency.\n\nYour VMA Partner Academy login:\n'+(ACADEMY_URL?'Link: '+ACADEMY_URL+'\n':'')+'Email: '+r.email+'\nAccess code: '+r.code+'\nStart date: '+fmt(parse(r.start))+'\n\nOn your first login, enter your full name (it goes on your certificates). Please finish the 10 onboarding modules within your first two weeks. Keep this code private.';}
-function activateMsg(h,r){return 'Add partner to VMA Partner Academy: '+r.name+', '+r.email+', start '+r.start+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'", name:"'+r.name.replace(/"/g,'')+'", mail:"'+maskMail(r.email)+'", added:"'+iso(today)+'"}';}
+function activateMsg(h,r){return 'Add partner to VMA Partner Academy: '+r.name+', '+r.email+', start '+r.start+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'", added:"'+iso(today)+'"}';}
 const tpl=t=>`<div class="tpl"><button type="button" class="cp">Copy</button>${esc(t)}</div>`;
 
 function adminNav(){return `<button class="navbtn ${view=='access'?'on':''}" id="toaccess">Students <span>${students().length}${pending().length?' + '+pending().length+' waiting':''}</span></button>
@@ -774,7 +774,7 @@ function studentCard(s){const [lab]=stage(s.st),ms=miles(s.h,s.st),dn=ms.filter(
  <div class="scb"><div class="nxt ${late?'late':''}">${nx?(late?'Overdue: ':'Next: ')+nx.t+' · '+fmt(nx.date):'All milestones done'} <span class="meta">${dn}/${ms.length}</span></div>
  ${openC?`<ol class="ms">${ms.map(x=>`<li class="${x.done?'ok':today>x.date?'late':''}"><label class="stp"><input type="checkbox" data-mile="${x.k}" data-h="${s.h}" ${x.done?'checked':''}><span><b>${x.t}</b><small class="dd">${x.done?'Done '+fmt(parse(x.done)):'Due '+fmt(x.date)}</small>${x.how}</span></label></li>`).join('')}</ol>
  <div class="tools">${s.loc?`<button class="btn ghost" data-copy="w" data-h="${s.h}">Copy welcome message</button>`:''}<button class="btn ghost" data-copy="chg" data-h="${s.h}">Request a change</button><button class="btn ghost" data-copy="rm" data-h="${s.h}">Request removal</button></div><div class="cpout" id="out-${s.h}"></div>
- ${s.loc?'':'<p class="meta">This student was added on another device, so their full email and code are not saved here.</p>'}`:''}</div></div>`;}
+ ${s.loc?'':'<p class="meta">This student was added on another device, so their name, email and code are not saved here. Names and emails are never stored on the website.</p>'}`:''}</div></div>`;}
 
 function accessHTML(){const S=students().sort((a,b)=>b.st-a.st),W=pending(),A=Object.values(ACCESS).filter(a=>a.admin);
  return `<div class="crumb">Admin</div><h1>Students</h1>
@@ -784,7 +784,7 @@ function accessHTML(){const S=students().sort((a,b)=>b.st-a.st),W=pending(),A=Ob
  ${W.map(r=>`<div class="sc wait"><div class="sch"><span class="av">${esc(r.name[0])}</span><span class="sn"><b>${esc(r.name)}</b><small>${esc(r.email)} · starts ${fmt(r.st)} · code ${r.code}</small></span><span class="chip warn">Not active yet</span></div><div class="scb">${tpl(activateMsg(r.h,r))}<div class="tools"><button class="btn ghost" data-cancel="${r.h}">Cancel this student</button></div></div></div>`).join('')}`:''}
  <h2 class="ph" style="margin-top:22px">Active students <span class="chip">${S.length}</span></h2><p class="pp">Tap a student to see their milestones. Ticks are saved on this device only.</p>
  ${S.length?S.map(studentCard).join(''):'<div class="certs-empty">No active students yet. Add one, then send the activation message to Claude.</div>'}
- <h2 class="ph" style="margin-top:26px">Admins</h2><p class="pp">${A.map(a=>esc(a.name)+' ('+esc(a.mail)+')').join(' · ')}</p>
+ <h2 class="ph" style="margin-top:26px">Admins</h2><p class="pp">${A.length} admin account${A.length==1?'':'s'}. Admin names and emails are not stored on this page.</p>
  <h2 class="ph" style="margin-top:26px">Troubleshooting</h2>
  <div class="faq">${FAQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div>`;}
 
@@ -796,7 +796,7 @@ const FAQ=[
  ['A student is leaving','Tap Request removal on their card and send it to Claude the same day. Also remove their access to client tools.'],
  ['A course opened on the wrong day','Courses open by the date on the student\'s device. Ask them to check their phone\'s date and time settings.'],
  ['A certificate fails Verify','The details must be typed exactly as printed: the student\'s login email, the course (ONBOARDING or M1 to M13), the date as YYYY-MM-DD and the score. If it still fails, the certificate may have been edited; ask for a progress report.'],
- ['Marion can\'t see my ticks or waiting students','Admin notes are saved per device. Active students show for every admin; waiting students and ticks only on the device that created them.']];
+ ['Another admin can\'t see my ticks or waiting students','Admin notes are saved per device. Active students show for every admin; waiting students and ticks only on the device that created them.']];
 
 function addHTML(){const r=lastAdded&&roster()[lastAdded];
  if(r){const active=!!ACCESS[lastAdded];return `<div class="crumb">Admin · Add a student</div><h1>${esc(r.name)} is ready to activate</h1>
@@ -820,7 +820,7 @@ function mkcode(){const n=$('nn').value.trim().replace(/\s+/g,' '),e=$('ne').val
  const R=roster();if(Object.values(R).some(x=>x.email==e)){$('nerr').textContent='This email was already added on this device. Check the Students page.';return;}
  const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',rv=new Uint32Array(6);try{crypto.getRandomValues(rv)}catch(err){for(let i=0;i<6;i++)rv[i]=Math.floor(Math.random()*1e9)}let c='VMA-';for(let i=0;i<6;i++)c+=A[rv[i]%A.length];
  const h=sha256(e+'|'+c);R[h]={name:n,email:e,start:d,client:c0,code:c,created:iso(today)};setRoster(R);lastAdded=h;render();top();}
-function reqMsg(h,kind){const s=students().find(x=>x.h==h)||{},who=(s.name||'')+' ('+(s.loc?s.loc.email:s.mail)+')';
+function reqMsg(h,kind){const s=students().find(x=>x.h==h)||{},who=(s.name||'')+(s.loc?' ('+s.loc.email+')':'');
  return kind=='rm'?'Remove from VMA Partner Academy: '+who+', key "'+h+'". Reason: ':'Change for VMA Partner Academy: '+who+', key "'+h+'". Change: ';}
 
 function adminHTML(){const core=M.filter(m=>!m.up),up=M.filter(m=>m.up),nL=M.reduce((s,m)=>s+m.l.length,0),nQ=M.reduce((s,m)=>s+m.q.length,0);
