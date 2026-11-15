@@ -789,3 +789,17 @@ html.leaving body > *:not(.curtain) { transition: opacity .35s var(--ease); opac
 .form-msg.is-error { background: #FDF0EE; color: #8A2A1C; }
 .form-msg a { color: inherit; font-weight: 700; text-decoration: underline; }
 .btn[disabled] { opacity: .7; cursor: progress; }
+
+/* Partner Academy */
+.academy { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.academy .h-lg { margin: 16px 0 18px; }
+.acad-h { font-size: 18px; margin: 28px 0 12px; }
+.acad-card { background: linear-gradient(140deg, #06173A, #0D4A94 70%, #134DA2); color: #C9D6EC; border-radius: 28px; padding: clamp(26px, 4vw, 40px); box-shadow: 0 30px 60px -30px rgba(6,23,58,.5); }
+.acad-card h3 { color: #fff; font-size: 24px; margin: 16px 0 6px; }
+.acad-card p { margin: 0 0 18px; }
+.acad-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #06173A; background: #5CC8F2; padding: 6px 14px; border-radius: 999px; }
+.acad-tag .i { width: 16px; height: 16px; }
+.acad-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.acad-chips li { font-size: 14px; font-weight: 600; color: #fff; border: 1.5px solid rgba(92,200,242,.45); border-radius: 999px; padding: 7px 14px; transition: background .25s, border-color .25s; }
+.acad-chips li:hover { background: rgba(92,200,242,.15); border-color: #5CC8F2; }
+@media (max-width: 860px) { .academy { grid-template-columns: minmax(0, 1fr); } }
