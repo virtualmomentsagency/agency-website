@@ -95,7 +95,7 @@ main{overflow-y:auto}
 .body b{color:var(--ink)}
 .note{background:var(--soft);border-left:4px solid var(--royal);border-radius:14px;padding:16px 18px;margin:20px 0}
 .note b{color:var(--act)}
-.tpl{position:relative;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;padding-top:50px;margin:18px 0;white-space:pre-wrap;font-size:15px;color:var(--ink)}
+.tpl{overflow-wrap:anywhere;position:relative;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;padding-top:50px;margin:18px 0;white-space:pre-wrap;font-size:15px;color:var(--ink)}
 .tpl button{position:absolute;top:10px;right:10px;min-height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:13px;font-weight:700}
 .terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:12px;margin:18px 0}
 .terms div{background:var(--soft);border-radius:16px;padding:14px 16px}
@@ -187,11 +187,71 @@ body.printing .cert.pt{position:absolute;left:0;top:0;width:100%;margin:0;box-sh
 }
 
 [hidden]{display:none!important}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:6px 0 16px}
+.flow div{display:flex;gap:10px;align-items:flex-start;background:var(--soft);border-radius:16px;padding:12px}
+.flow b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--royal);color:#fff;display:grid;place-items:center;font-size:13px}
+.flow span{font-size:13px;color:var(--mut);line-height:1.35}
+.flow strong{display:block;color:var(--ink);font-size:14px}
+.sc{border:1.5px solid var(--line);border-radius:18px;margin:10px 0;overflow:hidden}
+.sc.open{border-color:var(--royal)}
+.sc.wait{border-color:#f59e0b}
+.sch{display:flex;gap:12px;align-items:center;width:100%;padding:14px 16px;border:0;background:transparent;color:var(--ink);text-align:left}
+button.sch:hover{background:var(--soft)}
+.av{flex:none;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--royal),var(--cyan));color:#fff;font-weight:800;display:grid;place-items:center}
+.sn{flex:1 1 12em}
+.sch{flex-wrap:wrap}
+.sch .chip{white-space:normal;text-align:left}
+@media(max-width:600px){.sch .chip{margin-left:52px}}
+.sn b{display:block}
+.sn small{display:block;color:var(--mut);font-size:13px;overflow-wrap:anywhere}
+.chip.on{background:var(--soft);color:var(--royal)}
+.chip.warn{background:#fef3c7;color:#92400e}
+.scb{padding:0 16px 14px}
+.nxt{font-size:14px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;gap:10px}
+.nxt.late{color:var(--bad)}
+.ms{list-style:none;padding:0;margin:12px 0}
+.ms li{border:1.5px solid var(--line);border-radius:14px;margin:6px 0}
+.ms li.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 7%,var(--bg))}
+.ms li.late{border-color:var(--bad)}
+.ms .stp{grid-template-columns:auto minmax(0,1fr)}
+.ms .stp::before{display:none}
+.dd{color:var(--mut)!important;font-weight:600}
+.ms li.ok .dd{color:var(--good)!important}
+.ms li.late .dd{color:var(--bad)!important}
+.faq details{border:1.5px solid var(--line);border-radius:14px;margin:8px 0;padding:0 16px}
+.faq summary{cursor:pointer;font-weight:700;color:var(--ink);padding:14px 0;min-height:44px}
+.faq p{margin:0 0 14px}
+.wiz{display:grid;gap:10px;margin:10px 0 20px}
+.wz{display:flex;gap:14px;align-items:flex-start;border:1.5px solid var(--line);border-radius:18px;padding:16px}
+.wz>b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--royal);display:grid;place-items:center}
+.wz.done{border-color:var(--good)}
+.wz.done>b{background:var(--good);color:#fff}
+.wz.now{border-color:var(--royal);background:color-mix(in srgb,var(--royal) 5%,var(--bg))}
+.wz.now>b{background:var(--royal);color:#fff}
+.wz>span{flex:1;color:var(--mut);font-size:15px}
+.wz strong{display:block;color:var(--ink);font-size:16px;margin-bottom:2px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(15em,1fr))!important}
+@media(max-width:700px){.flow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.acc{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px}
+.acc th{text-align:left;font-size:13px;color:var(--mut);font-weight:700;padding:8px 10px;border-bottom:1.5px solid var(--line)}
+.acc td{padding:12px 10px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
+.acc td:nth-child(4){white-space:nowrap}
+.chip.adm{background:var(--rail);color:#fff}
+@media(max-width:600px){.stack thead{display:none}.stack tr{display:grid;padding:10px 0;border-bottom:1px solid var(--line)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:4px 0;text-align:right}.stack td::before{content:attr(data-l);color:var(--mut);font-size:13px;font-weight:600;text-align:left}}
+select{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 12px;font-size:16px;background:var(--bg);color:var(--ink)}
+.steps{list-style:none;counter-reset:s;padding:0;margin:14px 0}
+.steps li{counter-increment:s;border:1.5px solid var(--line);border-radius:16px;margin:8px 0}
+.steps li.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 7%,var(--bg))}
+.stp{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:12px;align-items:start;margin:0;padding:14px 16px;font-weight:400;cursor:pointer;color:var(--txt)}
+.stp::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--royal);font-weight:800;display:grid;place-items:center;font-size:13px}
+.steps li.ok .stp::before{background:var(--good);color:#fff}
+.stp input{width:20px;height:20px;margin-top:4px;accent-color:var(--good)}
+.stp b{display:block;color:var(--ink)}
+.stp small{display:block;color:var(--good);font-weight:700;margin-top:4px}
 div.opt{cursor:default}
 .opt.key{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,var(--bg))}
 .opt .ok{color:var(--good);margin-left:auto;font-size:13px}
 input[type=date]{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font-size:16px;background:var(--bg);color:var(--ink)}
-
 /* ---------- VMA brand layer ---------- */
 .cover{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 100% 0,#1A67B2 0,transparent 55%),linear-gradient(150deg,#06173A 0%,#0A2352 50%,#0D4A94 100%)}
 .cover::before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;background:linear-gradient(135deg,#5CC8F2,#134DA2);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.22}
@@ -280,9 +340,9 @@ nav{background:linear-gradient(180deg,#06173A,#081d48)}
 {
 const ACCESS = {
   /* sha256(lowercase email + "|" + CODE): start date (YYYY-MM-DD), admin sees every course */
-  "6f4bcb6dd33fccfa6e5bd9971c265685c5d50e00fbbc5cec006d2e083aade627": {start:"2026-11-16", admin:true},
-  "54a5665c8d243a064b1f50597d574cc8257b5625f2e9e65a84a12e37c1290eee": {start:"2026-11-16", admin:true},
-  "44f544da72a07f1005b7556948c24d2a0bdc7fbad031321e46998c03a239d160": {start:"2026-09-01"}
+  "6f4bcb6dd33fccfa6e5bd9971c265685c5d50e00fbbc5cec006d2e083aade627": {start:"2026-11-16", admin:true, name:"Hemer Joy Ante", mail:"hem•••@gmail.com", added:"2026-11-15"},
+  "54a5665c8d243a064b1f50597d574cc8257b5625f2e9e65a84a12e37c1290eee": {start:"2026-11-16", admin:true, name:"Marion", mail:"mar•••@virtualmomentsagency.com", added:"2026-11-15"},
+  "6cc73c4a16795709d2e1df71ae66b4ef0d4635e459b84fc57e58bb18ea85b837": {start:"2026-11-15", name:"Test Partner", mail:"inf•••@virtualmomentsagency.com", client:"Tab", added:"2026-11-15"}
 };
 function sha256(ascii){
   function rr(v,a){return (v>>>a)|(v<<(32-a))}
@@ -570,7 +630,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 /* ---------- state ---------- */
 const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
-let who=null,U={},P={},done=new Set(),cur=0,open=0,view='lesson',sel={},showCert=null,asPartner=false,prevStart='';
+let who=null,U={},P={},done=new Set(),cur=0,open=0,view='lesson',sel={},showCert=null,asPartner=false,prevStart='',trackFor='';
 const $=id=>document.getElementById(id);
 const opens=m=>m.up?addMonths(U.start,m.up):U.start;
 const due=m=>m.up?addDays(addMonths(U.start,m.up+1),-1):addDays(U.start,13);
@@ -606,7 +666,7 @@ $('brand1').innerHTML=LOGO;
 
 /* ---------- login ---------- */
 function enter(h,email){const a=ACCESS[h];who=h;U={email,admin:!!a.admin,start:parse(a.start)};
- P=store.get('vma-prog-'+h)||{};P.quiz=P.quiz||{};done=new Set(P.done||[]);cur=Math.min(P.cur||0,LIST.length-1);open=LIST[cur].mi;view=U.admin?'admin':'lesson';if(U.admin&&!P.name)P.name='Admin preview';
+ P=store.get('vma-prog-'+h)||{};P.quiz=P.quiz||{};done=new Set(P.done||[]);cur=Math.min(P.cur||0,LIST.length-1);open=LIST[cur].mi;view=U.admin?'access':'lesson';if(U.admin&&!P.name)P.name='Admin preview';
  $('login').classList.add('hide');$('app').classList.remove('hide');render();}
 $('f').addEventListener('submit',e=>{e.preventDefault();
  const em=$('em').value.trim().toLowerCase(),cd=$('cd').value.trim().toUpperCase();
@@ -614,21 +674,20 @@ $('f').addEventListener('submit',e=>{e.preventDefault();
  const h=sha256(em+'|'+cd);
  if(!ACCESS[h]){$('err').textContent="That email and code don't match. Check both, or ask your virtual manager.";return;}
  $('err').textContent='';if($('rm').checked)store.set('vma-session',{h,em});enter(h,em);});
-const sess=store.get('vma-session');if(sess&&ACCESS[sess.h])enter(sess.h,sess.em);
+
 
 /* ---------- nav ---------- */
 function save(){P.done=[...done];P.cur=cur;store.set('vma-prog-'+who,P);}
 function modHTML(m,mi){const it=items(mi),n=it.filter(o=>done.has(o.x.id)).length,[st,lab]=status(mi),lk=st=='lock';
- return `<div class="mod ${st} ${open==mi&&!lk&&view=='lesson'?'open':''}"><button class="mh" data-m="${mi}"><span class="num">${m.n}</span><span>${m.t}${m.up?`<small class="when">${lk?lab:'Month '+m.up+' · '+fmt(opens(m))}</small>`:''}</span><em>${lk?'<svg class="lk" viewBox="0 0 16 16" aria-label="Locked"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>':n+'/'+it.length}</em></button>
+ return `<div class="mod ${st} ${open==mi&&!lk&&view=='lesson'?'open':''}"><button class="mh" data-m="${mi}"><span class="num">${m.n}</span><span>${m.t}${m.up?`<small class="when">${lk?lab:'Month '+m.up+' · '+fmt(opens(m))}</small>`:''}</span><em>${lk?'<svg class="lk" viewBox="0 0 16 16" aria-label="Locked"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>':(U.admin?it.length+' parts':n+'/'+it.length)}</em></button>
  <div class="ls">${it.map(o=>`<button class="lb ${o.i==cur&&view=='lesson'?'cur':''} ${done.has(o.x.id)?'ok':''}" data-i="${o.i}"><small>${o.x.id}</small>${o.x.t}</button>`).join('')}</div></div>`;}
 function navHTML(){const all=M.map((m,mi)=>[m,mi]);
  return `<div class="railbrand"><a href="/" class="word" id="brand2" aria-label="Virtual Moments Agency home">${LOGO}</a><span class="pa">Partner Academy</span></div>
- <div class="prog">${pct()}% of open courses complete<div class="bar"><b style="width:${pct()}%"></b></div></div>
- ${U.admin?`<button class="navbtn ${view=='admin'?'on':''}" id="toadmin">Admin dashboard <span>Admin</span></button>`:''}
+ ${U.admin?`<div class="prog">Admin · ${esc(U.email)}</div>`+adminNav():`<div class="prog">${pct()}% of open courses complete<div class="bar"><b style="width:${pct()}%"></b></div></div>
  <button class="navbtn ${view=='plan'?'on':''}" id="toplan">Learning plan</button>
- <button class="navbtn ${view=='certs'?'on':''}" id="tocerts">My certificates <span>${certCount()}</span></button>
- <div class="grp">Onboarding · due ${fmt(addDays(U.start,13))}</div>`+all.filter(([m])=>!m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
- `<div class="grp">Monthly upskilling</div>`+all.filter(([m])=>m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
+ <button class="navbtn ${view=='certs'?'on':''}" id="tocerts">My certificates <span>${certCount()}</span></button>`}
+ <div class="grp">${U.admin?'Course preview · onboarding':'Onboarding · due '+fmt(addDays(U.start,13))}</div>`+all.filter(([m])=>!m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
+ `<div class="grp">${U.admin?'Course preview · ':''}Monthly upskilling</div>`+all.filter(([m])=>m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
  `<button class="out" id="out">Log out (${esc(U.email)})</button>`;}
 
 /* ---------- plan ---------- */
@@ -686,23 +745,94 @@ function certsHTML(){const c=certs();let h=`<div class="crumb">Your achievements
 function nameForm(msg){return `<div class="note">${msg}</div><label for="nm">Full name</label><input id="nm" type="text" autocomplete="name" value="${esc(P.name||'')}" placeholder="First and last name"><div class="tools"><button class="btn" id="savename">Save name</button></div>`;}
 
 /* ---------- admin ---------- */
+const ACADEMY_URL='https://virtualmomentsagency.com/academy/';
+const roster=()=>store.get('vma-roster')||{};
+const setRoster=r=>store.set('vma-roster',r);
+const maskMail=e=>e.slice(0,3)+'•••'+e.slice(e.indexOf('@'));
+const students=()=>Object.entries(ACCESS).filter(([h,a])=>!a.admin).map(([h,a])=>({h,...a,st:parse(a.start),loc:roster()[h]}));
+const pending=()=>Object.entries(roster()).filter(([h])=>!ACCESS[h]).map(([h,r])=>({h,...r,st:parse(r.start)}));
+const MILES=[
+ {k:'welcome',t:'Welcome message sent',d:0,how:'Send the login details privately, then tick this.'},
+ {k:'login',t:'Logged in and entered their name',d:1,how:'Ask the student to confirm they can see module 00.'},
+ {k:'d7',t:'Day 7 check-in',d:6,how:'Ask for their Copy progress report. About half of onboarding should be done.'},
+ {k:'onb',t:'Onboarding certificate checked',d:13,how:'All 10 module quizzes passed. Check the certificate ID with Verify a certificate below.'},
+ {k:'r30',t:'30-day review',d:30,how:'Progress report plus the Month 1 certificate.'},
+ {k:'r60',t:'60-day review',d:60,how:'Progress report plus the Month 2 certificate.'},
+ {k:'r90',t:'90-day review (end of first term)',d:90,how:'Progress report plus the Month 3 certificate.'}];
+function stage(st){if(today<st)return['Starts '+fmt(st),'soon'];const day=Math.round((today-st)/864e5)+1;if(day<=14)return['Onboarding · day '+day+' of 14','on'];let k=0;M.forEach(m=>{if(m.up&&today>=addMonths(st,m.up))k=Math.max(k,m.up);});const m=M.find(m=>m.up==k);return m?['Month '+k+' · '+m.t,'on']:['Between onboarding and Month 1','on'];}
+function miles(h,st){const v=store.get('vma-enroll-'+h)||{};return MILES.map(x=>({...x,date:addDays(st,x.d),done:v[x.k]}));}
+function welcomeMsg(r){return 'Hi '+r.name.split(' ')[0]+'! Welcome to Virtual Moments Agency.\n\nYour VMA Partner Academy login:\n'+(ACADEMY_URL?'Link: '+ACADEMY_URL+'\n':'')+'Email: '+r.email+'\nAccess code: '+r.code+'\nStart date: '+fmt(parse(r.start))+'\n\nOn your first login, enter your full name (it goes on your certificates). Please finish the 10 onboarding modules within your first two weeks. Keep this code private.';}
+function activateMsg(h,r){return 'Add partner to VMA Partner Academy: '+r.name+', '+r.email+', start '+r.start+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'", name:"'+r.name.replace(/"/g,'')+'", mail:"'+maskMail(r.email)+'", added:"'+iso(today)+'"}';}
+const tpl=t=>`<div class="tpl"><button type="button" class="cp">Copy</button>${esc(t)}</div>`;
+
+function adminNav(){return `<button class="navbtn ${view=='access'?'on':''}" id="toaccess">Students <span>${students().length}${pending().length?' + '+pending().length+' waiting':''}</span></button>
+ <button class="navbtn ${view=='add'?'on':''}" id="toadd">Add a student <span>+</span></button>
+ <button class="navbtn ${view=='admin'?'on':''}" id="toadmin">Courses &amp; schedule</button>`;}
+
+function studentCard(s){const [lab]=stage(s.st),ms=miles(s.h,s.st),dn=ms.filter(x=>x.done).length,nx=ms.find(x=>!x.done),late=nx&&today>nx.date,openC=trackFor==s.h;
+ return `<div class="sc ${openC?'open':''}"><button class="sch" data-card="${s.h}"><span class="av">${esc((s.name||'?')[0])}</span><span class="sn"><b>${esc(s.name||'Unnamed')}</b><small>${esc(s.loc?s.loc.email:(s.mail||''))} · starts ${fmt(s.st)}</small></span><span class="chip on">${lab}</span></button>
+ <div class="scb"><div class="nxt ${late?'late':''}">${nx?(late?'Overdue: ':'Next: ')+nx.t+' · '+fmt(nx.date):'All milestones done'} <span class="meta">${dn}/${ms.length}</span></div>
+ ${openC?`<ol class="ms">${ms.map(x=>`<li class="${x.done?'ok':today>x.date?'late':''}"><label class="stp"><input type="checkbox" data-mile="${x.k}" data-h="${s.h}" ${x.done?'checked':''}><span><b>${x.t}</b><small class="dd">${x.done?'Done '+fmt(parse(x.done)):'Due '+fmt(x.date)}</small>${x.how}</span></label></li>`).join('')}</ol>
+ <div class="tools">${s.loc?`<button class="btn ghost" data-copy="w" data-h="${s.h}">Copy welcome message</button>`:''}<button class="btn ghost" data-copy="chg" data-h="${s.h}">Request a change</button><button class="btn ghost" data-copy="rm" data-h="${s.h}">Request removal</button></div><div class="cpout" id="out-${s.h}"></div>
+ ${s.loc?'':'<p class="meta">This student was added on another device, so their full email and code are not saved here.</p>'}`:''}</div></div>`;}
+
+function accessHTML(){const S=students().sort((a,b)=>b.st-a.st),W=pending(),A=Object.values(ACCESS).filter(a=>a.admin);
+ return `<div class="crumb">Admin</div><h1>Students</h1>
+ <div class="flow"><div><b>1</b><span><strong>Add the student</strong>Name, email, start date</span></div><div><b>2</b><span><strong>Activate</strong>Send the activation message to Claude</span></div><div><b>3</b><span><strong>Welcome</strong>Send their login privately once active</span></div><div><b>4</b><span><strong>Track</strong>Tick milestones on their card</span></div></div>
+ <div class="tools" style="margin:0 0 26px"><button class="btn" id="toadd2">+ Add a student</button></div>
+ ${W.length?`<h2 class="ph">Waiting for activation <span class="chip warn">${W.length}</span></h2><p class="pp">These codes don't work yet. Send each activation message to Claude; the student moves to Active once the academy is updated.</p>
+ ${W.map(r=>`<div class="sc wait"><div class="sch"><span class="av">${esc(r.name[0])}</span><span class="sn"><b>${esc(r.name)}</b><small>${esc(r.email)} · starts ${fmt(r.st)} · code ${r.code}</small></span><span class="chip warn">Not active yet</span></div><div class="scb">${tpl(activateMsg(r.h,r))}<div class="tools"><button class="btn ghost" data-cancel="${r.h}">Cancel this student</button></div></div></div>`).join('')}`:''}
+ <h2 class="ph" style="margin-top:22px">Active students <span class="chip">${S.length}</span></h2><p class="pp">Tap a student to see their milestones. Ticks are saved on this device only.</p>
+ ${S.length?S.map(studentCard).join(''):'<div class="certs-empty">No active students yet. Add one, then send the activation message to Claude.</div>'}
+ <h2 class="ph" style="margin-top:26px">Admins</h2><p class="pp">${A.map(a=>esc(a.name)+' ('+esc(a.mail)+')').join(' · ')}</p>
+ <h2 class="ph" style="margin-top:26px">Troubleshooting</h2>
+ <div class="faq">${FAQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div>`;}
+
+const FAQ=[
+ ['"That email and code don\'t match"','Most often the code isn\'t active yet: check Waiting for activation above and send that message to Claude. Otherwise check the email is exactly the one you entered when adding them (no typos, the same address). Spaces and capital letters don\'t matter.'],
+ ['The student lost their progress or certificates','Progress is saved in the browser they use. A new phone, a different browser, private browsing or clearing browser data starts them at 0%. Ask them to always use the same browser. Their old certificates can still be checked with Verify a certificate if they send you the details.'],
+ ['The student forgot their code','If you added them on this device, open their card and tap Copy welcome message to resend it. If not, use Request a change and ask Claude for a new code.'],
+ ['Wrong start date, name or email','Open the student\'s card, tap Request a change, add what should change, and send it to Claude. A new email needs a new code.'],
+ ['A student is leaving','Tap Request removal on their card and send it to Claude the same day. Also remove their access to client tools.'],
+ ['A course opened on the wrong day','Courses open by the date on the student\'s device. Ask them to check their phone\'s date and time settings.'],
+ ['A certificate fails Verify','The details must be typed exactly as printed: the student\'s login email, the course (ONBOARDING or M1 to M13), the date as YYYY-MM-DD and the score. If it still fails, the certificate may have been edited; ask for a progress report.'],
+ ['Marion can\'t see my ticks or waiting students','Admin notes are saved per device. Active students show for every admin; waiting students and ticks only on the device that created them.']];
+
+function addHTML(){const r=lastAdded&&roster()[lastAdded];
+ if(r){const active=!!ACCESS[lastAdded];return `<div class="crumb">Admin · Add a student</div><h1>${esc(r.name)} is ready to activate</h1>
+ <div class="wiz"><div class="wz done"><b>1</b><span><strong>Details saved</strong>${esc(r.email)} · starts ${fmt(parse(r.start))}${r.client?' · '+esc(r.client):''}</span></div>
+ <div class="wz ${active?'done':'now'}"><b>2</b><span><strong>Send this to Claude to activate the code</strong>${active?'Activated.':'The code does not work until Claude updates the academy.'}${active?'':tpl(activateMsg(lastAdded,r))}</span></div>
+ <div class="wz ${active?'now':''}"><b>3</b><span><strong>When Claude confirms, send the student their login privately</strong>By direct message or email, never in a group chat.${tpl(welcomeMsg(r))}</span></div>
+ <div class="wz"><b>4</b><span><strong>Track their milestones</strong>They appear on the Students page under ${active?'Active students':'Waiting for activation'}.</span></div></div>
+ <div class="tools"><button class="btn" id="toaccess2">Go to Students</button><button class="btn ghost" id="another">Add another student</button></div>`;}
+ return `<div class="crumb">Admin</div><h1>Add a student</h1><p>Takes about a minute. You'll get one message to send to Claude (to activate the code) and one to send the student.</p>
+ <div class="ver" style="margin-top:12px"><div class="grid g2"><div><label for="nn">Full legal name *</label><input id="nn" type="text" autocomplete="off" placeholder="As it should print on certificates"></div>
+ <div><label for="ne">Email they'll log in with *</label><input id="ne" type="email" autocomplete="off" placeholder="name@example.com"></div>
+ <div><label for="nd">Start date *</label><input id="nd" type="date" value="${iso(today)}"></div>
+ <div><label for="nc">Client they're paired with</label><input id="nc" type="text" placeholder="Optional"></div></div>
+ <p class="meta" id="ndhelp">Onboarding is due 2 weeks after the start date; Month 1 opens one month after it.</p>
+ <div class="tools"><button class="btn" id="mkcode">Create student and code</button></div><p class="err" id="nerr"></p></div>`;}
+let lastAdded='';
+function mkcode(){const n=$('nn').value.trim().replace(/\s+/g,' '),e=$('ne').value.trim().toLowerCase(),d=$('nd').value,c0=$('nc').value.trim();
+ if(n.length<3||n.indexOf(' ')<0){$('nerr').textContent='Enter the student\'s full name (first and last).';return;}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){$('nerr').textContent='Enter a valid email address.';return;}
+ if(!d){$('nerr').textContent='Choose a start date.';return;}
+ const R=roster();if(Object.values(R).some(x=>x.email==e)){$('nerr').textContent='This email was already added on this device. Check the Students page.';return;}
+ const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',rv=new Uint32Array(6);try{crypto.getRandomValues(rv)}catch(err){for(let i=0;i<6;i++)rv[i]=Math.floor(Math.random()*1e9)}let c='VMA-';for(let i=0;i<6;i++)c+=A[rv[i]%A.length];
+ const h=sha256(e+'|'+c);R[h]={name:n,email:e,start:d,client:c0,code:c,created:iso(today)};setRoster(R);lastAdded=h;render();top();}
+function reqMsg(h,kind){const s=students().find(x=>x.h==h)||{},who=(s.name||'')+' ('+(s.loc?s.loc.email:s.mail)+')';
+ return kind=='rm'?'Remove from VMA Partner Academy: '+who+', key "'+h+'". Reason: ':'Change for VMA Partner Academy: '+who+', key "'+h+'". Change: ';}
+
 function adminHTML(){const core=M.filter(m=>!m.up),up=M.filter(m=>m.up),nL=M.reduce((s,m)=>s+m.l.length,0),nQ=M.reduce((s,m)=>s+m.q.length,0);
  const st=prevStart?parse(prevStart):today;
- const row=m=>{const mi=M.indexOf(m);return `<button class="row open" data-go="${mi}"><span class="dt">${m.up?fmt(addMonths(st,m.up)):fmt(st)}</span><span class="nm">${m.n} ${m.t}<small>${m.l.length} lessons · ${m.q.length} quiz questions${m.up?' · Month '+m.up+', finish by '+fmt(addDays(addMonths(st,m.up+1),-1)):' · finish by '+fmt(addDays(st,13))}</small></span><span class="chip">Open</span></button>`;};
- return `<div class="crumb">Admin view · ${esc(U.email)}</div><h1>Admin dashboard</h1>
- <div class="welcome"><div class="stats" style="margin:0;font-size:16px"><span><b>${core.length}</b> onboarding modules</span><span><b>${up.length}</b> monthly courses</span><span><b>${nL}</b> lessons</span><span><b>${nQ}</b> quiz questions</span><span><b>${Object.keys(ACCESS).length}</b> access codes</span></div></div>
- <p>You can open any lesson or quiz without finishing anything first. Quizzes show you the answer key; use <b>Take this quiz as a partner</b> to test the partner experience. Your clicks here don't affect any partner.</p>
- <h2 class="ph">Schedule preview</h2><p class="pp">Pick a partner's start date to see when each course opens for them.</p>
- <div class="ver" style="margin:0 0 18px"><div class="grid"><div><label for="ps">Partner start date</label><input id="ps" type="date" value="${iso(st)}"></div></div></div>
+ const row=m=>{const mi=M.indexOf(m);return `<button class="row open" data-go="${mi}"><span class="dt">${m.up?fmt(addMonths(st,m.up)):fmt(st)}</span><span class="nm">${m.n} ${m.t}<small>${m.l.length} lessons · ${m.q.length} quiz questions${m.up?' · finish by '+fmt(addDays(addMonths(st,m.up+1),-1)):' · finish by '+fmt(addDays(st,13))}</small></span><span class="chip">Preview</span></button>`;};
+ return `<div class="crumb">Admin</div><h1>Courses &amp; schedule</h1>
+ <div class="welcome"><div class="stats" style="margin:0;font-size:16px"><span><b>${core.length}</b> onboarding modules</span><span><b>${up.length}</b> monthly courses</span><span><b>${nL}</b> lessons</span><span><b>${nQ}</b> quiz questions</span></div></div>
+ <p>Open any lesson or quiz to preview it. Quizzes show the answer key; tap <b>Take this quiz as a partner</b> to test the student experience. Nothing you do here affects students.</p>
+ <h2 class="ph">Schedule for a start date</h2><div class="ver" style="margin:0 0 18px"><div class="grid"><div><label for="ps">Student start date</label><input id="ps" type="date" value="${iso(st)}"></div></div></div>
  <h2 class="ph">Onboarding (first two weeks)</h2><div class="plan">${core.map(row).join('')}</div>
  <h2 class="ph" style="margin-top:26px">Monthly upskilling</h2><div class="plan">${up.map(row).join('')}</div>
- <div class="ver"><h3>Add a partner</h3><p class="meta">Creates a login code. Send the details to Claude to add them to the academy, and send the email and code to your partner.</p>
- <div class="grid"><div><label for="nn">Partner name</label><input id="nn" type="text"></div><div><label for="ne">Partner email</label><input id="ne" type="email"></div><div><label for="nd">Start date</label><input id="nd" type="date" value="${iso(today)}"></div></div>
- <div class="tools"><button class="btn" id="mkcode">Create code</button></div><div id="newcode"></div></div>`;}
-function mkcode(){const n=$('nn').value.trim(),e=$('ne').value.trim().toLowerCase(),d=$('nd').value;if(!e||!d||e.indexOf('@')<1){$('newcode').innerHTML='<p class="err">Enter an email and start date.</p>';return;}
- const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let c='VMA-';const rv=new Uint32Array(6);try{crypto.getRandomValues(rv)}catch(err){for(let i=0;i<6;i++)rv[i]=Math.floor(Math.random()*1e9)}for(let i=0;i<6;i++)c+=A[rv[i]%A.length];
- const h=sha256(e+'|'+c),forClaude='Add partner to VMA Partner Academy: '+(n?n+', ':'')+e+', start '+d+', code '+c+', key "'+h+'": {start:"'+d+'"}',forPartner='Hi'+(n?' '+n.split(' ')[0]:'')+'! Welcome to VMA. Your Partner Academy login:\nEmail: '+e+'\nAccess code: '+c+'\nStart date: '+fmt(parse(d))+'. Please finish onboarding within your first two weeks.';
- $('newcode').innerHTML=`<p><b>${c}</b> for ${esc(e)}</p><div class="tpl"><button type="button" class="cp">Copy</button>${esc(forClaude)}</div><div class="tpl"><button type="button" class="cp">Copy</button>${esc(forPartner)}</div><p class="meta">The code works only after the academy is updated with it.</p>`;}
+ <div class="ver"><h3>Verify a certificate</h3><p class="meta">Type the details exactly as printed on the student's certificate.</p><div class="grid"><div><label for="v1">Student email</label><input id="v1" type="email"></div><div><label for="v2">Course (ONBOARDING or M1–M13)</label><input id="v2" type="text"></div><div><label for="v3">Date (YYYY-MM-DD)</label><input id="v3" type="text" placeholder="2026-11-15"></div><div><label for="v4">Score %</label><input id="v4" type="text"></div><div><label for="v5">Certificate ID</label><input id="v5" type="text"></div></div><div class="tools"><button class="btn" id="verify">Check</button></div><p class="meta" id="vmsg"></p></div>`;}
 
 /* ---------- page ---------- */
 function lessonHTML(){const x=LIST[cur],m=M[x.mi];let h='';
@@ -713,8 +843,8 @@ function lessonHTML(){const x=LIST[cur],m=M[x.mi];let h='';
  h+=`<div class="foot"><div>${cur>0?'<button class="btn ghost" id="prev">← Back</button>':''}</div><div>${x.quiz?'':`<button class="btn ghost" id="mark">${done.has(x.id)?'Completed ✓':'Mark complete'}</button>`}${cur<LIST.length-1?'<button class="btn" id="next">Next →</button>':''}</div></div>`;
  return h;}
 function pageHTML(){if(!P.name&&view!='certs'&&!U.admin)return `<div class="crumb">Welcome to the VMA Partner Academy</div><h1>First, your name</h1>`+nameForm('This is the name printed on every certificate you earn. Use your full legal name.');
- if(view=='admin')return adminHTML();if(view=='plan')return planHTML();if(view=='certs')return certsHTML();return lessonHTML();}
-function bars(){$('mini').style.width=pct()+'%';$('pct2').textContent=pct()+'%';}
+ if(view=='admin')return adminHTML();if(view=='access')return accessHTML();if(view=='add')return addHTML();if(view=='plan')return planHTML();if(view=='certs')return certsHTML();return lessonHTML();}
+function bars(){$('mini').style.width=(U.admin?0:pct())+'%';$('pct2').textContent=U.admin?'Admin':pct()+'%';$('menu').textContent=U.admin?'Menu':'Modules';}
 function render(){$('nav').innerHTML=navHTML();$('page').innerHTML=pageHTML();bars();}
 function top(){$('main').scrollTop=0;window.scrollTo(0,0);document.body.classList.remove('drawer');}
 function go(i){cur=i;open=LIST[i].mi;view='lesson';sel={};showCert=null;asPartner=false;save();render();top();}
@@ -725,15 +855,24 @@ $('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.id=='out'){store.del('vma-session');who=null;$('app').classList.add('hide');$('login').classList.remove('hide');$('cd').value='';document.body.classList.remove('drawer');return;}
  if(b.id=='toplan')return show('plan');
  if(b.id=='toadmin')return show('admin');
+ if(b.id=='toaccess')return show('access');
+ if(b.id=='toadd'){lastAdded='';return show('add');}
  if(b.id=='tocerts')return show('certs');
  if(b.dataset.m!=null){const mi=+b.dataset.m;if(locked(mi)){go(items(mi)[0].i);return;}open=open==mi?-1:mi;$('nav').innerHTML=navHTML();return;}
  if(b.dataset.i!=null)go(+b.dataset.i);});
-$('page').addEventListener('change',e=>{if(e.target.id=='ps'){prevStart=e.target.value;render();}});
+$('page').addEventListener('change',e=>{const t=e.target;if(t.id=='ps'){prevStart=t.value;render();}
+ if(t.id=='nd'&&t.value){const d=parse(t.value);$('ndhelp').textContent='Onboarding due '+fmt(addDays(d,13))+' · Month 1 opens '+fmt(addMonths(d,1))+' · 90-day review '+fmt(addDays(d,90))+'.';}
+ if(t.dataset.mile!=null){const k='vma-enroll-'+t.dataset.h,v=store.get(k)||{};v[t.dataset.mile]=t.checked?iso(today):'';store.set(k,v);render();}});
 $('menu').addEventListener('click',()=>document.body.classList.toggle('drawer'));
 $('scrim').addEventListener('click',()=>document.body.classList.remove('drawer'));
 $('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const x=LIST[cur];
  if(b.id=='aspartner'){asPartner=true;sel={};render();return;}
  if(b.id=='mkcode'){mkcode();return;}
+ if(b.id=='toadd2'||b.id=='another'){lastAdded='';show('add');return;}
+ if(b.id=='toaccess2'){show('access');return;}
+ if(b.dataset.card!=null){trackFor=trackFor==b.dataset.card?'':b.dataset.card;render();return;}
+ if(b.dataset.cancel!=null){const R=roster();if(b.dataset.confirm){delete R[b.dataset.cancel];setRoster(R);render();}else{b.dataset.confirm='1';b.textContent='Tap again to cancel '+R[b.dataset.cancel].name;}return;}
+ if(b.dataset.copy!=null){const h=b.dataset.h,k=b.dataset.copy,s0=students().find(x=>x.h==h),t=k=='w'?welcomeMsg(s0.loc):reqMsg(h,k);$('out-'+h).innerHTML=tpl(t)+(k=='w'?'':'<p class="meta">Copy, add the details at the end, and send it to Claude.</p>');return;}
  if(b.id=='savename'){const v=$('nm').value.trim().replace(/\s+/g,' ');if(v.length<2)return;P.name=v;save();render();return;}
  if(b.id=='rename'){P.name='';render();return;}
  if(b.dataset.go!=null){const mi=+b.dataset.go;go(mi<0?0:items(mi)[0].i);return;}
@@ -751,6 +890,8 @@ $('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)
  if(b.id=='again'){Q(M[x.mi]).retake=true;sel={};render();return;}
  if(b.classList.contains('cp')){const t=b.parentNode.textContent.replace(/^Copy(ed)?/,'');try{navigator.clipboard.writeText(t).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)},()=>{b.textContent='Select & copy'})}catch(err){b.textContent='Select & copy'}return;}
  if(b.classList.contains('opt')){const qi=+b.closest('.q').dataset.q;sel[qi]=+b.dataset.o;b.closest('.q').querySelectorAll('.opt').forEach(o=>o.classList.toggle('sel',o===b));return;}});
+/* auto-login runs last, after everything above is defined */
+try{const sess=store.get('vma-session');if(sess&&ACCESS[sess.h])enter(sess.h,sess.em);else if(sess)store.del('vma-session');}catch(err){store.del('vma-session');$('app').classList.add('hide');$('login').classList.remove('hide');}
 }
 </script>
 </body>
