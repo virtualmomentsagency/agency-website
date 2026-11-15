@@ -287,7 +287,7 @@
   /* ---------- Contact form: delivers to info@ via FormSubmit, falls back to email app ---------- */
   var form = $("[data-contact-form]");
   if (form) {
-    var ENDPOINT = "https://formsubmit.co/ajax/marion@virtualmomentsagency.com";
+    var ENDPOINT = "https://formsubmit.co/ajax/info@virtualmomentsagency.com";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var f = new FormData(form), msg = $(".form-msg", form), btn = $("button[type=submit]", form), label = $(".btn-label", btn);
