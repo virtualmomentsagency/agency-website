@@ -196,7 +196,12 @@ input[type=date]{width:100%;height:50px;border:1.5px solid var(--line);border-ra
 .cover{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 100% 0,#1A67B2 0,transparent 55%),linear-gradient(150deg,#06173A 0%,#0A2352 50%,#0D4A94 100%)}
 .cover::before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;background:linear-gradient(135deg,#5CC8F2,#134DA2);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.22}
 .cover::after{content:"";position:absolute;left:-60px;bottom:-60px;width:200px;height:200px;background:#5CC8F2;clip-path:polygon(0 100%,0 0,100% 100%);opacity:.08}
-.cover>*{position:relative;z-index:1}
+.cover>*{position:relative;z-index:2}
+.cover::before,.cover::after{z-index:1}
+.cover>.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;filter:saturate(.75) contrast(1.05);z-index:0;pointer-events:none}
+.cover>.bgshade{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(6,23,58,.72) 0%,rgba(6,23,58,.35) 45%,rgba(6,23,58,.8) 100%),linear-gradient(90deg,rgba(6,23,58,.55),rgba(6,23,58,0) 70%)}
+.inds{font-size:13px;font-weight:700;letter-spacing:.04em;color:#A8E3FA!important;margin:0!important;max-width:none!important}
+@media(prefers-reduced-motion:reduce){.cover>.bgv{display:none}}
 .brandrow,.railbrand{display:flex;align-items:center;gap:14px}
 .brandrow .logo{height:46px}
 .pa{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5CC8F2;padding-left:14px;border-left:1.5px solid rgba(168,227,250,.35);line-height:1.2}
@@ -236,6 +241,8 @@ nav{background:linear-gradient(180deg,#06173A,#081d48)}
 <body>
 <section id="login">
   <div class="cover">
+    <video class="bgv" autoplay muted loop playsinline preload="auto" poster="/img/academy-reel-poster.jpg" aria-hidden="true"><source src="/img/academy-reel.mp4" type="video/mp4"></video>
+    <div class="bgshade" aria-hidden="true"></div>
     <div class="brandrow"><a href="/" class="word" id="brand1" aria-label="Virtual Moments Agency home"></a><span class="pa">Partner Academy</span></div>
     <div>
       <span class="eyebrow">For active VMA virtual partners</span>
@@ -243,9 +250,7 @@ nav{background:linear-gradient(180deg,#06173A,#081d48)}
       <p>Two weeks of onboarding for every new VMA partner, then a new skill each month: AI, CRMs, automation, content, paid ads, bookkeeping and more, unlocked on your own schedule.</p>
       <ul class="facts"><li><b>10</b> onboarding modules</li><li><b>13</b> monthly courses</li><li><b>1</b> certificate per course</li></ul>
     </div>
-    <svg viewBox="0 0 440 200" aria-hidden="true">
-      <g id="art"></g>
-    </svg>
+    <p class="inds">Medspas · Healthcare · Sales &amp; SDR · Real estate · Construction · SaaS &amp; tech · Executives</p>
   </div>
   <div class="formside">
     <form id="f" novalidate>
@@ -596,7 +601,7 @@ function order(n,seed){const r=rng(seed),a=[...Array(n).keys()];for(let i=n-1;i>
  s+=`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#A8E3FA" stroke-width="2" stroke-dasharray="4 6"/>`;
  pts.forEach(([x,y],i)=>{const last=i==pts.length-1;s+=`<circle cx="${x}" cy="${y}" r="${last?9:5}" fill="${last?'#5CC8F2':'#fff'}"/>${last?`<circle cx="${x}" cy="${y}" r="16" fill="none" stroke="#5CC8F2" stroke-opacity=".5" stroke-width="2"/>`:''}<text x="${x}" y="${y-14-(last?8:0)}" text-anchor="middle" font-size="11" font-weight="800" fill="#C9D6EC" font-family="Plus Jakarta Sans,sans-serif">${steps[i][0]}</text>`;});
  s+='<line x1="0" y1="187" x2="440" y2="187" stroke="#5CC8F2" stroke-opacity=".35" stroke-width="2"/>';
- $('art').innerHTML=s;})();
+ if($('art'))$('art').innerHTML=s;})();
 $('brand1').innerHTML=LOGO;
 
 /* ---------- login ---------- */
