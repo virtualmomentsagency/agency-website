@@ -147,18 +147,30 @@ main{overflow-y:auto}
 .tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .sep{border:0;border-top:1.5px solid var(--line);margin:32px 0}
 /* certificates */
-.cert{background:#fff;color:#33415C;border-radius:22px;overflow:hidden;border:1.5px solid #DCE5F2;margin:18px 0;box-shadow:0 18px 40px -24px rgba(6,23,58,.35)}
-.cert .ch{background:linear-gradient(120deg,#06173A,#0A2352 60%,#134DA2);padding:18px 26px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff}
-.cert .ch span{font-size:13px;font-weight:600;color:#A8E3FA}
-.cert .cb{padding:clamp(22px,4vw,40px) clamp(20px,4vw,44px);text-align:center;background:radial-gradient(circle at 50% 0,#EEF4FB,#fff 70%)}
-.cert .k{font-size:13px;font-weight:700;color:#134DA2}
-.cert h2{color:#06173A;font-size:clamp(24px,3.6vw,34px);margin:6px 0 16px}
-.cert .who{font-size:clamp(26px,4.6vw,40px);font-weight:800;color:#06173A;border-bottom:2px solid #5CC8F2;display:inline-block;padding:0 12px 4px;margin:6px 0 14px;letter-spacing:-.02em}
-.cert p{margin:6px auto;max-width:52ch}
-.cert .cm{font-weight:800;color:#06173A}
-.cert .cf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:1.5px solid #DCE5F2;padding:16px 26px;font-size:13px}
-.cert .cf b{display:block;color:#06173A;font-size:14px}
-.cert .seal{width:64px;height:64px;margin:4px auto 0}
+.cert{background:#fff;color:#33415C;margin:18px 0;padding:10px;border-radius:6px;box-shadow:0 18px 40px -24px rgba(6,23,58,.35);border:1px solid #DCE5F2}
+.cert .cfr{position:relative;overflow:hidden;border:2px solid #134DA2;outline:1px solid #5CC8F2;outline-offset:-7px;background:radial-gradient(ellipse at 50% 30%,#F4F8FE,#fff 70%)}
+.cert .ct{position:absolute;width:76px;height:76px;pointer-events:none}
+.cert .ct.tl{left:0;top:0;background:linear-gradient(135deg,#134DA2 0 50%,transparent 50%)}
+.cert .ct.tl::after{content:"";position:absolute;left:0;top:0;width:104px;height:104px;background:linear-gradient(135deg,transparent 0 46%,#5CC8F2 46% 50%,transparent 50%)}
+.cert .ct.br{right:0;bottom:0;background:linear-gradient(315deg,#134DA2 0 50%,transparent 50%)}
+.cert .ct.br::after{content:"";position:absolute;right:0;bottom:0;width:104px;height:104px;background:linear-gradient(315deg,transparent 0 46%,#5CC8F2 46% 50%,transparent 50%)}
+.cert .ctop{display:flex;justify-content:center;padding:26px 20px 0}
+.cert .ctop .clogo{background:#06173A;border-radius:12px;padding:10px 18px;display:inline-flex}
+.cert .ctop img{height:30px;width:auto;display:block}
+.cert .cb{padding:16px clamp(24px,6vw,70px) 8px;text-align:center}
+.cert .k{font-size:13px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#134DA2}
+.cert .kk{font-size:13px;font-weight:600;color:#6B7A99;margin-top:6px}
+.cert h2{color:#06173A;font-size:clamp(26px,4vw,40px);margin:6px 0 14px;letter-spacing:-.02em;line-height:1.1}
+.cert .who{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(30px,5vw,48px);color:#06173A;border-bottom:2px solid #5CC8F2;display:inline-block;padding:0 22px 6px;margin:4px 0 12px}
+.cert p{margin:6px auto;max-width:56ch;line-height:1.5}
+.cert .sk b{color:#06173A}
+.cert .crow{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:18px;padding:14px clamp(24px,6vw,70px) 8px}
+.cert .sig{text-align:center}
+.cert .sig i{display:block;white-space:nowrap;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(17px,2.2vw,22px);color:#0A2352;padding-bottom:6px;border-bottom:1.5px solid #9FB2D2}
+.cert .sig b{display:block;color:#06173A;font-size:13px;margin-top:6px}.cert .sig span{font-size:12px;color:#6B7A99}
+.cert .seal{width:104px;height:104px;display:block}
+.cert .cf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;border-top:1px solid #DCE5F2;margin:10px clamp(28px,7vw,80px) 0;padding:14px 0 30px;font-size:12px;text-align:center;color:#6B7A99}
+.cert .cf b{display:block;color:#06173A;font-size:13px;overflow-wrap:anywhere}
 .certs-empty{background:var(--soft);border-radius:18px;padding:20px}
 .ver{border:1.5px solid var(--line);border-radius:18px;padding:18px;margin-top:24px}
 .ver .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:10px}
@@ -178,11 +190,13 @@ body.drawer nav{transform:none}
 body.drawer #scrim{display:block;position:fixed;inset:0;background:#0008;z-index:15}
 .welcome{grid-template-columns:minmax(0,1fr);justify-items:start}
 }
-@media(max-width:560px){.row{grid-template-columns:minmax(0,1fr) max-content}.row .dt{grid-column:1/-1;font-size:13px}.cert .cf{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.row{grid-template-columns:minmax(0,1fr) max-content}.row .dt{grid-column:1/-1;font-size:13px}.cert .cf{grid-template-columns:1fr 1fr}.cert .crow{grid-template-columns:1fr 1fr}.cert .crow .seal{grid-row:1;grid-column:1/-1;margin:0 auto}.cert .ct{width:70px;height:70px}.cert .ct::after{width:96px!important;height:96px!important}}
 @media print{
 body.printing *{visibility:hidden}
 body.printing .cert.pt,body.printing .cert.pt *{visibility:visible}
-body.printing .cert.pt{position:absolute;left:0;top:0;width:100%;margin:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body.printing .cert.pt{opacity:1!important;animation:none!important;transform:none!important;position:absolute;left:0;top:0;width:100%;margin:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body.printing>*:not(#printbox){display:none!important}
+body.printing #printbox .cert.pt{position:static}
 @page{size:landscape;margin:12mm}
 }
 
@@ -406,7 +420,7 @@ input[type=date]{width:100%;height:50px;border:1.5px solid var(--line);border-ra
 .cheat b{color:#134DA2}.cheat span{color:#4A5878}
 .cheat.lock{background:#F4F7FC}
 
-/* ---------- VMA brand layer ---------- */
+#printbox{display:none}@media print{body.printing #printbox{display:block}}/* ---------- VMA brand layer ---------- */
 .cover{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 100% 0,#1A67B2 0,transparent 55%),linear-gradient(150deg,#06173A 0%,#0A2352 50%,#0D4A94 100%)}
 .cover::before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;background:linear-gradient(135deg,#5CC8F2,#134DA2);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.22}
 .cover::after{content:"";position:absolute;left:-60px;bottom:-60px;width:200px;height:200px;background:#5CC8F2;clip-path:polygon(0 100%,0 0,100% 100%);opacity:.08}
@@ -1194,18 +1208,40 @@ function grade(mi){const m=M[mi],q=Q(m),D=order(m.q.length,(q.att+1)*97+mi*13).s
 function coreDone(q){const n=corePassed(),t=coreMods().length;return `<div class="result pass"><h2>Module passed with ${q.pass.score}%</h2><p>${n==t?'All onboarding modules passed. Your Onboarding certificate is ready.':n+' of '+t+' onboarding modules passed. Pass all '+t+' to earn your VMA Partner Onboarding certificate.'}</p><div class="btns">${n==t?'<button class="btn" data-cert="prog">View certificate</button>':''}<button class="btn ghost" id="again">Practise again</button></div></div>`;}
 
 /* ---------- certificates ---------- */
-const seal=`<svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#134DA2"/><circle cx="32" cy="32" r="24" fill="none" stroke="#5CC8F2" stroke-width="2" stroke-dasharray="3 3"/><path d="M21 33l7 7 15-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-function certHTML(title,what,date,score,id,key){return `<div class="cert" data-key="${key}"><div class="ch">${LOGO}<span>VMA Partner Academy</span></div><div class="cb"><i class="tri tl"></i><i class="tri br"></i>${seal}<div class="k">Certificate of completion</div><h2>${title}</h2><p>This certifies that</p><div class="who">${esc(P.name||U.email)}</div><p>has successfully completed <span class="cm">${what}</span>${score!=null?(key=='prog'?' with an average score of ':' with a score of ')+score+'%':''}.</p></div><div class="cf"><div><b>${fmtL(parse(date))}</b>Date awarded</div><div><b>${id}</b>Certificate ID</div><div><b>Virtual Moments Agency</b>Issued by</div></div></div>
+const seal=`<svg class="seal" viewBox="0 0 128 128" aria-hidden="true"><defs><path id="sealc" d="M64 64 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs><polygon points="124.0,64.0 118.5,71.2 122.0,79.5 114.8,85.0 116.0,94.0 107.6,97.5 106.4,106.4 97.5,107.6 94.0,116.0 85.0,114.8 79.5,122.0 71.2,118.5 64.0,124.0 56.8,118.5 48.5,122.0 43.0,114.8 34.0,116.0 30.5,107.6 21.6,106.4 20.4,97.5 12.0,94.0 13.2,85.0 6.0,79.5 9.5,71.2 4.0,64.0 9.5,56.8 6.0,48.5 13.2,43.0 12.0,34.0 20.4,30.5 21.6,21.6 30.5,20.4 34.0,12.0 43.0,13.2 48.5,6.0 56.8,9.5 64.0,4.0 71.2,9.5 79.5,6.0 85.0,13.2 94.0,12.0 97.5,20.4 106.4,21.6 107.6,30.5 116.0,34.0 114.8,43.0 122.0,48.5 118.5,56.8" fill="#134DA2"/><circle cx="64" cy="64" r="50" fill="#0A2352" stroke="#5CC8F2" stroke-width="2"/><circle cx="64" cy="64" r="30" fill="#134DA2" stroke="#A8E3FA" stroke-width="1.5" stroke-dasharray="2 3"/><text font-size="9.2" font-weight="800" fill="#A8E3FA" letter-spacing="1.6"><textPath href="#sealc" startOffset="0">VMA PARTNER ACADEMY · CERTIFIED ·</textPath></text><path d="M51 65l9 9 18-20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const SKILLS={ONB:'the VMA standard, client communication, phone support, tools and time tracking, SOPs, security and data protection, and professional escalation',
+M1:'prompt writing, AI-assisted drafting and summaries, checking AI output, and safe, ethical AI use',
+M2:'CRM record keeping, pipeline management, weekly CRM health checks, and pipeline reporting',
+M3:'automation triggers and actions, spotting tasks to automate, and building automations safely',
+M4:'working from a brand kit, simple design principles, and reusable Canva templates',
+M5:'content calendars, community management, and reading social media results',
+M6:'short-form video editing, captions and pacing, and repurposing content',
+M7:'simple funnels, writing and sending email campaigns, and email reporting',
+M8:'how paid ads work, Meta, Google and TikTok ads basics, and running ads safely',
+M9:'bookkeeping vocabulary, everyday bookkeeping tasks, and knowing where the role stops',
+M10:'project management tools, calendar and inbox management, and proactive executive support',
+M11:'practical spreadsheet skills, simple dashboards, and presenting data clearly',
+M12:'AI-powered workflows, working alongside AI agents, and keeping humans in the loop',
+M13:'niche-specific workflows for their chosen industry'};
+const SIGN=[['Vener Marion Andres','Founder &amp; CEO'],['Sheryl','Virtual Manager']];
+function certHTML(title,what,date,score,id,key,code){const prog=key=='prog'||key=='pv-prog',sk=SKILLS[code||(prog?'ONB':'')];
+ return `<div class="cert" data-key="${key}"><div class="cfr"><i class="ct tl"></i><i class="ct br"></i>
+ <div class="ctop"><span class="clogo">${LOGO}</span></div>
+ <div class="cb"><div class="k">Certificate of completion</div><div class="kk">VMA Partner Academy · ${title}</div><h2>${prog?'Partner Onboarding Program':what}</h2>
+ <p>This certifies that</p><div class="who">${esc(P.name||U.email)}</div>
+ <p class="sk">has successfully completed ${prog?'the VMA partner onboarding program (all 10 modules)':'this course'}${sk?` and demonstrated skill in <b>${sk}</b>`:''}.</p></div>
+ <div class="crow"><div class="sig"><i>${SIGN[0][0]}</i><b>${SIGN[0][1]}</b><span>VMA</span></div>${seal}<div class="sig"><i>${SIGN[1][0]}</i><b>${SIGN[1][1]}</b><span>VMA</span></div></div>
+ <div class="cf"><div><b>${fmtL(parse(date))}</b>Date awarded</div><div><b>${id}</b>Certificate ID</div><div><b>${score!=null?score+'%':'Passed'}</b>${prog?'Average score':'Final score'}</div><div><b>virtualmomentsagency.com</b>Verify at /academy</div></div></div></div>
  <div class="tools" style="margin-top:-6px"><button class="btn ghost" data-print="${key}">Print or save as PDF</button></div>`;}
 function previewCert(x){const m=x=='prog'?null:M[x],d=iso(today);
- const h=x=='prog'?certHTML('VMA Partner Onboarding','the VMA partner onboarding program (all 10 modules)',d,95,'SAMPLE-ONBOARDING','pv-prog'):certHTML('Month '+m.up+' upskilling',m.t,d,92,'SAMPLE-'+m.n,'pv-'+x);
+ const h=x=='prog'?certHTML('Onboarding','the VMA partner onboarding program (all 10 modules)',d,95,'SAMPLE-ONBOARDING','pv-prog'):certHTML('Month '+m.up+' upskilling',m.t,d,92,'SAMPLE-'+m.n,'pv-'+x,m.n);
  return h.replace(/<div class="who">[\s\S]*?<\/div>/,'<div class="who">Partner Name</div>');}
 function previewsHTML(){const ms=M.map((m,mi)=>[m,mi]).filter(([m])=>m.up);
  return `<div class="ver"><h3>Certificate previews (admin only)</h3><p class="meta">Sample certificates exactly as partners receive them, with a placeholder name, today's date and a sample score and ID. Partners never see this section.</p>
  <details class="faq"><summary>Onboarding certificate</summary>${previewCert('prog')}</details>${ms.map(([m,mi])=>`<details class="faq"><summary>Month ${m.up} · ${m.t}</summary>${previewCert(mi)}</details>`).join('')}</div>`;}
-function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi);}
+function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi,m.n);}
 function programCert(){const c=coreMods();if(!c.every(mi=>P.quiz[M[mi].n]&&P.quiz[M[mi].n].pass))return '';const d=c.map(mi=>P.quiz[M[mi].n].pass.date).sort().pop(),avg=Math.round(c.reduce((s,mi)=>s+P.quiz[M[mi].n].pass.score,0)/c.length);
- return certHTML('VMA Partner Onboarding','the VMA partner onboarding program (all 10 modules)',d,avg,certId(U.email,'ONBOARDING',d,avg),'prog');}
+ return certHTML('Onboarding','the VMA partner onboarding program (all 10 modules)',d,avg,certId(U.email,'ONBOARDING',d,avg),'prog');}
 function certsHTML(){if(!(U.admin&&!U.preview))return certsHTML0();const c0=certsHTML0(),i=c0.indexOf('<div class="ver"><h3>Verify');return `<div class="crumb">Admin</div><h1>Certificates</h1>`+previewsHTML()+(i>=0?c0.slice(i):'');}
 function certsHTML0(){const c=certs();let h=`<div class="crumb">Your achievements</div><h1>My certificates</h1>`;
  if(!P.name)return h+nameForm('Add your full name so it appears on your certificates.');
@@ -1487,7 +1523,7 @@ $('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)
  if(b.id=='rename'){P.name='';render();return;}
  if(b.dataset.go!=null){const mi=+b.dataset.go;go(mi<0?0:items(mi)[0].i);return;}
  if(b.dataset.cert!=null){show('certs');const k=b.dataset.cert=='prog'?'prog':'m'+b.dataset.cert,el=document.querySelector('[data-key="'+k+'"]');if(el)el.scrollIntoView();return;}
- if(b.dataset.print!=null){const el=document.querySelector('.cert[data-key="'+b.dataset.print+'"]');document.querySelectorAll('.cert.pt').forEach(c=>c.classList.remove('pt'));el.classList.add('pt');document.body.classList.add('printing');try{window.print()}catch(err){}setTimeout(()=>document.body.classList.remove('printing'),500);return;}
+ if(b.dataset.print!=null){const el=document.querySelector('.cert[data-key="'+b.dataset.print+'"]');document.querySelectorAll('.cert.pt').forEach(c=>c.classList.remove('pt'));el.classList.add('pt');let pb=$('printbox');if(!pb){pb=document.createElement('div');pb.id='printbox';document.body.appendChild(pb);}pb.innerHTML=el.outerHTML;document.body.classList.add('printing');try{window.print()}catch(err){}setTimeout(()=>{document.body.classList.remove('printing');pb.innerHTML='';},800);return;}
  if(b.id=='report'){const t=reportText();try{navigator.clipboard.writeText(t).then(()=>{$('repmsg').textContent='Copied. Paste it into a message to your virtual manager.'},()=>{$('repmsg').textContent='Copy was blocked by this browser.'})}catch(err){$('repmsg').textContent='Copy was blocked by this browser.'}return;}
  if(b.id=='verify'){const em=$('v1').value.trim().toLowerCase(),c=$('v2').value.trim().toUpperCase(),d=$('v3').value.trim(),s=$('v4').value.trim().replace('%',''),id=$('v5').value.trim().toUpperCase();$('vmsg').textContent=certId(em,c,d,s)===id?'Valid: this ID matches those details.':'No match: the details or ID have been changed, or were typed differently.';return;}
  if(b.id=='toplan2'||b.id=='resume'){if(b.id=='resume'){const nx=avail().find(l=>!done.has(l.id));if(nx)go(LIST.indexOf(nx));}else show('plan');return;}
