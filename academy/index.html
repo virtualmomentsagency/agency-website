@@ -243,7 +243,7 @@ body.printing #printbox .cert.pt{position:static;width:10.9in;margin:0 auto}body
 .vbtn.on{border-color:#5CC8F2;color:#5CC8F2}
 #vplay{background:#5CC8F2;border-color:#5CC8F2;color:#06173A;min-width:78px}
 .vtime{color:#c9d6ec;font-size:13px;font-variant-numeric:tabular-nums;margin-right:auto}
-.kch{font-size:20px;margin:30px 0 4px}
+.kch{font-size:20px;margin:30px 0 4px}.vnext{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0 6px;padding:12px 16px;border-radius:12px;background:#E9F3FF;border:1px solid #BFD9F5;color:#0D4A94;font-weight:600}.vnext[hidden],#kcsec[hidden],#kclock[hidden]{display:none}.vnext .btn{font-size:16px}#kclock{margin-top:26px}.cheat.fresh{animation:cfr 1.2s ease}@keyframes cfr{0%{box-shadow:0 0 0 0 rgba(26,103,178,.5)}100%{box-shadow:0 0 0 14px rgba(26,103,178,0)}}
 .kc .verdict{color:var(--mut)}
 .rub li::marker{content:"✓  ";color:var(--good)}
 textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;font-size:16px;background:var(--bg);color:var(--ink)}
@@ -1656,7 +1656,6 @@ function mp4HTML(x){const u=x.u,m=u.mp4,w=P.watch&&P.watch[x.id],lite=liteOn()&&
  return `<div class="vp"><video id="vmp4" controls playsinline preload="metadata" poster="${m.poster}" style="display:block;width:100%;aspect-ratio:16/9;background:#06173A" src="${lite?m.lite:m.src}"><track kind="captions" src="${m.vttU||(m.vttU=URL.createObjectURL(new Blob([m.vtt],{type:'text/vtt'})))}" srclang="en" label="English" default></video></div>
  <div class="vtools"><p class="meta" id="vmeta">${w?'Watched ✓':''}</p>${m.lite?`<button class="vsave${lite?' on':''}" id="vlite" aria-pressed="${lite?'true':'false'}">Data saver: ${lite?'On':'Off'}</button>`:''}</div>
  <div id="vtry" class="vtry" hidden></div>
- ${m.cheat?cheatHTML(m):''}
  <details class="faq"><summary>Transcript</summary>${m.tr.map(t=>`<p>${t}</p>`).join('')}</details>`;}
 function showTry(x,i){const c=x.u.mp4.try[i],box=$('vtry'),key=x.id+'#'+i;if(!box)return;box.hidden=false;
  box.innerHTML=`<div class="tk2">Pause and try · ${i+1} of ${x.u.mp4.try.length}</div><h3>${c.q}</h3>${c.ctx?`<div class="tctx">${c.ctx}</div>`:''}<div class="topts">${c.o.map((o,k)=>`<button class="topt" data-k="${k}">${o}</button>`).join('')}</div><div id="tfb"></div><div class="tact"><button class="btn" id="tgo" hidden>Continue the video ▶</button><button class="btn ghost" id="tskip">Skip for now</button></div>`;
@@ -1666,7 +1665,7 @@ function showTry(x,i){const c=x.u.mp4.try[i],box=$('vtry'),key=x.id+'#'+i;if(!bo
  const go=()=>{box.hidden=true;box.innerHTML='';const v=$('vmp4');if(v){v.scrollIntoView({behavior:'smooth',block:'center'});v.play().catch(()=>{});}};
  $('tgo').onclick=go;$('tskip').onclick=go;setTimeout(()=>{const r=box.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)box.scrollIntoView({behavior:'smooth',block:'center'});},120);}
 function hookMp4(x){const mv=$('vmp4');if(!mv||!x)return;const m=x.u.mp4,shown={};
- mv.addEventListener('ended',()=>{P.watch=P.watch||{};P.watch[x.id]=iso(today);save();const e=$('vmeta');if(e&&e.textContent.indexOf('Watched')<0)e.textContent='Watched ✓';});
+ mv.addEventListener('ended',()=>{P.watch=P.watch||{};P.watch[x.id]=iso(today);save();const e=$('vmeta');if(e&&e.textContent.indexOf('Watched')<0)e.textContent='Watched ✓';vDoneUI();});
  if(m.try)mv.addEventListener('timeupdate',()=>{const ct=mv.currentTime;m.try.forEach((c,i)=>{if(!shown[i]&&ct>=c.t&&ct<c.t+1.5){shown[i]=1;mv.pause();try{if(document.fullscreenElement)document.exitFullscreen();if(mv.webkitDisplayingFullscreen&&mv.webkitExitFullscreen)mv.webkitExitFullscreen();}catch(e){}showTry(x,i);}});});
  const lb=$('vlite');if(lb)lb.onclick=()=>{const t=mv.currentTime,pl=!mv.paused;P.lite=!(liteOn());save();mv.src=P.lite?m.lite:m.src;mv.addEventListener('loadedmetadata',()=>{mv.currentTime=t;if(pl)mv.play().catch(()=>{});},{once:true});lb.textContent='Data saver: '+(P.lite?'On':'Off');lb.classList.toggle('on',P.lite);lb.setAttribute('aria-pressed',P.lite?'true':'false');};}
 function videoHTML(x){if(x.u.mp4)return mp4HTML(x);const u=x.u,tot=u.video.reduce((s,c)=>s+vDur(c),0),w=P.watch&&P.watch[x.id];
@@ -1700,13 +1699,20 @@ function vPlay(){if(!V)return;if(V.playing){V.el+=(Date.now()-V.t0)/1000;V.playi
  if(V.done){V.done=false;V.i=0;V.el=0;}
  V.playing=true;V.t0=Date.now();if(V.voice)V.el=0;vSpeak();clearInterval(V.tick);V.tick=setInterval(vSync,250);vSync();}
 function vJump(i){const was=V.playing;vStop();V.done=false;V.i=Math.max(0,Math.min(V.x.u.video.length-1,i));V.el=0;if(was){V.playing=false;vPlay();}else vSync();}
-function vEnd(){vStop();V.el=vDur(V.x.u.video[V.i]);V.done=true;P.watch=P.watch||{};P.watch[V.x.id]=iso(today);save();vSync();const m=document.querySelector('.vp+.meta');if(m&&m.textContent.indexOf('Watched')<0)m.textContent='Watched ✓ · '+m.textContent;}
+function vEnd(){vStop();V.el=vDur(V.x.u.video[V.i]);V.done=true;P.watch=P.watch||{};P.watch[V.x.id]=iso(today);save();vSync();const m=document.querySelector('.vp+.meta');if(m&&m.textContent.indexOf('Watched')<0)m.textContent='Watched ✓ · '+m.textContent;vDoneUI();}
 
 /* unit page */
-function unitHTML(x){const u=x.u,m=M[x.mi],units=m.l.filter(l=>l.video||l.mp4),k=units.indexOf(u)+1;
+function kcDone(x){return !!(P.kc&&P.kc[x.id]);}
+function unitCheat(x){const m=x.u.mp4;if(!m||!m.cheat)return '';return (U.admin||kcDone(x)||!x.u.check)?`<a class="cheat" href="${m.cheat}" target="_blank" rel="noopener" download><b>Cheat sheet</b><span>One-page summary of this unit (PDF) · keep it beside you while you work</span></a>`:`<div class="cheat lock"><b>Cheat sheet (locked)</b><span>Unlocks when you get every knowledge check question right.</span></div>`;}
+function vDoneUI(){const n=$('vnextw');if(n)n.hidden=false;}
+function unitHTML(x){const u=x.u,m=M[x.mi],units=m.l.filter(l=>l.video||l.mp4),k=units.indexOf(u)+1,w=!!(P.watch&&P.watch[x.id]),open=w||U.admin;
  return `<p class="ustat"><span>Unit ${k} of ${units.length}</span><span>Video ${Math.round(vidMin(u))} min</span><span>Reading ${Math.max(1,Math.round(readMin(u)))} min</span>${u.ex?`<span>Practice ${u.ex} min</span>`:''}</p>
- ${videoHTML(x)}<div class="body">${u.b}</div>
- ${u.check?`<h3 class="kch">Knowledge check</h3><p class="meta">Not graded. Check you've got it before moving on.</p>${u.check.map((q,qi)=>`<div class="q kc" data-kc="${qi}"><h3>${qi+1}. ${q.q}</h3>${q.o.map((o,oi)=>`<button class="opt" data-ko="${oi}">${o}</button>`).join('')}<div class="verdict"></div></div>`).join('')}`:''}`;}
+ ${videoHTML(x)}
+ ${u.check?`<div class="vnext" id="vnextw"${w?'':' hidden'}><span>Video complete ✓</span><button class="btn" id="tokc">Next: Knowledge check <span aria-hidden="true">→</span></button></div>`:''}
+ <div class="body">${u.b}</div>
+ ${u.check?`<div id="kclock" class="cheat lock"${open?' hidden':''}><b>Knowledge check (locked)</b><span>Finish the video, then tap Next to start the knowledge check.</span></div>
+ <section id="kcsec"${open?'':' hidden'}><h3 class="kch">Knowledge check</h3><p class="meta">Not graded. Get every question right to unlock this unit's cheat sheet.</p>${u.check.map((q,qi)=>`<div class="q kc" data-kc="${qi}"><h3>${qi+1}. ${q.q}</h3>${q.o.map((o,oi)=>`<button class="opt" data-ko="${oi}">${o}</button>`).join('')}<div class="verdict"></div></div>`).join('')}</section>`:''}
+ <div id="ucheat">${unitCheat(x)}</div>`;}
 
 /* project page */
 function projectHTML(x){const u=x.u,m=M[x.mi],pj=(P.proj||{})[m.n];
@@ -1800,6 +1806,7 @@ $('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)
   if(boxes.some(c=>!c.checked)){$('kmsg').textContent='Tick every statement to agree.';return;}
   if(!P.name||nm.toLowerCase()!=P.name.toLowerCase()){$('kmsg').textContent='Type your full name exactly as it appears on your certificates: '+(P.name||'');return;}
   const d=iso(today);P.sign={name:P.name,date:d,at:new Date().toISOString(),id:'SIGN-'+sha256(U.email+'|SIGN|'+d).slice(0,8).toUpperCase()};done.add(x.id);save();render();return;}
+ if(b.id=='tokc'){const k=$('kcsec');if(k){k.hidden=false;const l=$('kclock');if(l)l.hidden=true;setTimeout(()=>k.scrollIntoView({behavior:'smooth',block:'start'}),40);}return;}
  if(b.id=='toniche'){show('niche');return;}
  if(b.id=='pvgo'){startPreview($('pvd').value||iso(addMonths(today,-1)));return;}
  if(b.id=='pvreset'){store.del('vma-prev-'+who);$('pvmsg').textContent='Preview progress cleared.';return;}
@@ -1811,7 +1818,7 @@ $('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)
  if(b.id=='vrate'){V.rate=V.rate==1?1.25:V.rate==1.25?1.5:1;if(V.playing){vPlay();vPlay();}else vSync();return;}
  if(b.id=='vcc'){V.cc=!V.cc;vSync();return;}
  if(b.id=='vvoice'){V.voice=!V.voice;if(!V.voice)try{speechSynthesis.cancel()}catch(e){}if(V.playing){vPlay();vPlay();}else vSync();return;}
- if(b.dataset.ko!=null){const qd=b.closest('.kc'),q=x.u.check[+qd.dataset.kc],ok=+b.dataset.ko===q.a;qd.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));b.classList.add('sel');qd.classList.toggle('good',ok);qd.classList.toggle('badq',!ok);qd.querySelector('.verdict').textContent=(ok?'Correct. ':'Not quite. ')+q.w;return;}
+ if(b.dataset.ko!=null){const qd=b.closest('.kc'),q=x.u.check[+qd.dataset.kc],ok=+b.dataset.ko===q.a;qd.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));b.classList.add('sel');qd.classList.toggle('good',ok);qd.classList.toggle('badq',!ok);qd.querySelector('.verdict').textContent=(ok?'Correct. ':'Not quite. ')+q.w;const all=[...document.querySelectorAll('.kc')];if(!kcDone(x)&&all.length&&all.every(d=>d.classList.contains('good'))){P.kc=P.kc||{};P.kc[x.id]=iso(today);save();const c=$('ucheat');if(c){c.innerHTML=unitCheat(x);c.querySelector('.cheat').classList.add('fresh');}}return;}
  if(b.id=='projsub'){const t=$('projtxt').value.trim();if(t.length<20){$('kmsg').textContent='Add the links to your files and a short note.';return;}P.proj=P.proj||{};P.proj[M[x.mi].n]={text:t,date:iso(today)};done.add(x.id);save();render();return;}
  if(b.id=='projedit'){const m=M[x.mi],old=P.proj[m.n].text;delete P.proj[m.n];done.delete(x.id);save();render();$('projtxt').value=old;return;}
  if(b.id=='aprok'){const m=M[x.mi],c=$('aprc').value.trim().toUpperCase();if(c!==apr(U.email,m.n)){$('kmsg').textContent="That code doesn't match. Check it with your virtual manager.";return;}P.proj[m.n].ok=iso(today);save();if(Q(m).pass)showCert=null;render();return;}
