@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>VMA Partner Academy</title>
+<title>VMAcademy</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -480,7 +480,7 @@ nav{background:linear-gradient(180deg,#06173A,#081d48)}
   <div class="cover">
     <video class="bgv" autoplay muted loop playsinline preload="auto" poster="/img/academy-reel-poster.jpg" aria-hidden="true"><source src="/img/academy-reel.mp4" type="video/mp4"></video>
     <div class="bgshade" aria-hidden="true"></div>
-    <div class="brandrow"><a href="/" class="word" id="brand1" aria-label="Virtual Moments Agency home"></a><span class="pa">Partner Academy</span></div>
+    <div class="brandrow"><a href="/" class="word" id="brand1" aria-label="Virtual Moments Agency home"></a><span class="pa">VMAcademy</span></div>
     <div>
       <span class="eyebrow">For active VMA virtual partners</span>
       <h1>Learn it once<br><mark>deliver it every day</mark></h1>
@@ -637,7 +637,7 @@ const M = [
     {q:"A contact asks you to stop calling. What do you do?",o:["Call back next month","Mark it in the CRM straight away","Ask a colleague to call instead"],a:1,w:"Honour opt-outs immediately and record them."}]},
 {n:"05",t:"Tools & Workspace",l:[
  {t:"Your core setup",b:`<p>Every VMA partner works from the same base setup, so any virtual manager can support you.</p>
- <ul><li>A <b>dedicated email address for your VMA work</b>, separate from your personal email. Use it for VMA's communication platform, the Partner Academy and client tool invitations.</li><li>A dedicated work browser profile for each client.</li><li>A password manager (see module 07) for every client login.</li><li>The client's own tools for their work: their email, drive and task board.</li></ul>`},
+ <ul><li>A <b>dedicated email address for your VMA work</b>, separate from your personal email. Use it for VMA's communication platform, VMAcademy and client tool invitations.</li><li>A dedicated work browser profile for each client.</li><li>A password manager (see module 07) for every client login.</li><li>The client's own tools for their work: their email, drive and task board.</li></ul>`},
  {t:"Your hours",b:`<p>Clients pay for retainer hours, so how you report your time is part of the product.</p>
  <ul><li>Your “Good morning” and “Good night” in VMA's communication platform record when you log in and log out (see module 03).</li><li>In your EOD report, describe each task clearly ("Replied to 14 customer emails"), not "admin", and include your hours for the day.</li><li>Tell your virtual manager when you reach 80% of the client's hours for the period.</li></ul>`},
  {t:"Keeping files findable",b:`<p>Keep everything in the client's shared drive, never your personal drive. Use one simple folder structure for every client:</p>
@@ -1421,7 +1421,7 @@ function modHTML(m,mi){const it=items(mi),n=it.filter(o=>done.has(o.x.id)).lengt
  return `<div class="mod ${st} ${open==mi&&!lk&&view=='lesson'?'open':''}"><button class="mh" data-m="${mi}"><span class="num">${m.n}</span><span>${m.t}${m.up?`<small class="when">${lk?lab:'Month '+m.up+' · '+fmt(opens(m))}</small>`:''}</span><em>${lk?'<svg class="lk" viewBox="0 0 16 16" aria-label="Locked"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>':(U.admin?it.length+' parts':n+'/'+it.length)}</em></button>
  <div class="ls">${it.map(o=>`<button class="lb ${o.i==cur&&view=='lesson'?'cur':''} ${done.has(o.x.id)?'ok':''}" data-i="${o.i}"><small>${o.x.id}</small>${o.x.t}</button>`).join('')}</div></div>`;}
 function navHTML(){const all=M.map((m,mi)=>[m,mi]);
- return `<div class="railbrand"><a href="/" class="word" id="brand2" aria-label="Virtual Moments Agency home">${LOGO}</a><span class="pa">Partner Academy</span></div>
+ return `<div class="railbrand"><a href="/" class="word" id="brand2" aria-label="Virtual Moments Agency home">${LOGO}</a><span class="pa">VMAcademy</span></div>
  ${U.admin?`<div class="prog">Admin · ${esc(U.email)}</div>`+adminNav():`<div class="prog">${pct()}% of open courses complete<div class="bar"><b style="width:${pct()}%"></b></div></div>
  ${U.preview?'<button class="navbtn on" id="pvexit">Exit partner preview <span>Admin</span></button>':''}
  <button class="navbtn ${view=='plan'?'on':''}" id="toplan">Learning plan</button>
@@ -1442,7 +1442,7 @@ function planHTML(){
  <h2 class="ph">Your learning plan</h2><p class="pp">${U.admin?'Admin view: every course is unlocked. Dates show the schedule for a partner starting '+fmt(U.start)+'.':'Started '+fmt(U.start)+'. Each module ends with a quiz you pass with '+PASS+'% or more. Pass all 10 onboarding quizzes to earn your Onboarding certificate, then earn one certificate for each monthly course.'}</p>
  <div class="plan">${rows.map(r=>{const [st,lab]=r.mi<0?coreSt():status(r.mi);return `<button class="row ${st}" data-go="${r.mi}"><span class="dt">${fmt(r.d)}</span><span class="nm">${r.t}<small>Finish by ${fmt(r.e)}${r.mi>=0&&M[r.mi].project?' · about '+hrs(courseMin(M[r.mi]))+' · video lessons + project':''}</small></span><span class="chip">${st=='lock'?'Locked':lab}</span></button>`;}).join('')}</div>
  <div class="tools"><button class="btn ghost" id="report">Copy progress report</button></div><p class="meta" id="repmsg">Send this to your virtual manager at each review.</p>`;}
-function reportText(){const L=['VMA Partner Academy progress','Partner: '+(P.name||'')+' ('+U.email+')','Start date: '+fmt(U.start),'Report date: '+fmt(today),'Niche track: '+(P.track?TRACKS.find(t=>t[0]==P.track)[1]:'not chosen'),'Partner agreements: '+(P.sign?'signed '+fmt(parse(P.sign.date))+' (ref '+P.sign.id+')':'not signed yet'),''];
+function reportText(){const L=['VMAcademy progress','Partner: '+(P.name||'')+' ('+U.email+')','Start date: '+fmt(U.start),'Report date: '+fmt(today),'Niche track: '+(P.track?TRACKS.find(t=>t[0]==P.track)[1]:'not chosen'),'Partner agreements: '+(P.sign?'signed '+fmt(parse(P.sign.date))+' (ref '+P.sign.id+')':'not signed yet'),''];
  M.forEach((m,mi)=>{const [st,lab]=status(mi),q=P.quiz[m.n]||{};const pj=(P.proj||{})[m.n];L.push(m.n+' '+m.t+': '+(st=='lock'?'Locked':lab)+(q.pass?' · '+q.pass.score+'%'+(projOk(m)?' · cert '+q.pass.id:''):'')+(q.att?' · attempts '+q.att:'')+(m.project?' · project '+(pj?(pj.ok?'approved':'submitted, awaiting approval'):'not submitted'):''));});
  return L.join('\n');}
 
@@ -1534,8 +1534,8 @@ const MILES=[
  {k:'r90',t:'90-day review (end of first term)',d:90,how:'Progress report plus the Month 3 certificate.'}];
 function stage(st){if(today<st)return['Starts '+fmt(st),'soon'];const day=Math.round((today-st)/864e5)+1;if(day<=14)return['Onboarding · day '+day+' of 14','on'];let k=0;M.forEach(m=>{if(m.up&&today>=addMonths(st,m.up))k=Math.max(k,m.up);});const m=M.find(m=>m.up==k);return m?['Month '+k+' · '+m.t,'on']:['Between onboarding and Month 1','on'];}
 function miles(h,st){const v=store.get('vma-enroll-'+h)||{};return MILES.map(x=>({...x,date:addDays(st,x.d),done:v[x.k]}));}
-function welcomeMsg(r){return 'Hi '+r.name.split(' ')[0]+'! Welcome to Virtual Moments Agency.\n\nYour VMA Partner Academy login:\n'+(ACADEMY_URL?'Link: '+ACADEMY_URL+'\n':'')+'Email: '+r.email+'\nAccess code: '+r.code+'\nStart date: '+fmt(parse(r.start))+'\n\nOn your first login, enter your full name (it goes on your certificates). Please finish the 10 onboarding modules within your first two weeks. Keep this code private.';}
-function activateMsg(h,r){return 'Add partner to VMA Partner Academy: '+r.name+', '+r.email+', start '+r.start+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'", added:"'+iso(today)+'"}';}
+function welcomeMsg(r){return 'Hi '+r.name.split(' ')[0]+'! Welcome to Virtual Moments Agency.\n\nYour VMAcademy login:\n'+(ACADEMY_URL?'Link: '+ACADEMY_URL+'\n':'')+'Email: '+r.email+'\nAccess code: '+r.code+'\nStart date: '+fmt(parse(r.start))+'\n\nOn your first login, enter your full name (it goes on your certificates). Please finish the 10 onboarding modules within your first two weeks. Keep this code private.';}
+function activateMsg(h,r){return 'Add partner to VMAcademy: '+r.name+', '+r.email+', start '+r.start+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'", added:"'+iso(today)+'"}';}
 const tpl=t=>`<div class="tpl"><button type="button" class="cp">Copy</button>${esc(t)}</div>`;
 
 function adminNav(){return `<button class="navbtn ${view=='access'?'on':''}" id="toaccess">Students <span>${students().length}${pending().length?' + '+pending().length+' waiting':''}</span></button>
@@ -1597,7 +1597,7 @@ function mkcode(){const n=$('nn').value.trim().replace(/\s+/g,' '),e=$('ne').val
  const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',rv=new Uint32Array(6);try{crypto.getRandomValues(rv)}catch(err){for(let i=0;i<6;i++)rv[i]=Math.floor(Math.random()*1e9)}let c='VMA-';for(let i=0;i<6;i++)c+=A[rv[i]%A.length];
  const h=sha256(e+'|'+c);R[h]={name:n,email:e,start:d,client:c0,code:c,created:iso(today)};setRoster(R);lastAdded=h;render();top();}
 function reqMsg(h,kind){const s=students().find(x=>x.h==h)||{},who=(s.name||'')+(s.loc?' ('+s.loc.email+')':'');
- return kind=='rm'?'Remove from VMA Partner Academy: '+who+', key "'+h+'". Reason: ':'Change for VMA Partner Academy: '+who+', key "'+h+'". Change: ';}
+ return kind=='rm'?'Remove from VMAcademy: '+who+', key "'+h+'". Reason: ':'Change for VMAcademy: '+who+', key "'+h+'". Change: ';}
 
 function adminHTML(){const core=M.filter(m=>!m.up),up=M.filter(m=>m.up),nL=M.reduce((s,m)=>s+m.l.length,0),nQ=M.reduce((s,m)=>s+m.q.length,0);
  const st=prevStart?parse(prevStart):today;
@@ -1681,7 +1681,7 @@ function vTotal(){return V.x.u.video.reduce((s,c)=>s+vDur(c),0);}
 function vSync(){if(!V||!$('vp'))return;const sc=V.x.u.video,c=sc[V.i],d=vDur(c),el=V.playing?(Date.now()-V.t0)/1000+V.el:V.el,f=Math.min(1,el/d),scr=$('vscr');
  const started=V.playing||V.el>0||V.i>0||V.done,kind=V.done?'done':sk(V.i,sc.length,c),key=kind+'|'+V.i+'|'+(started?1:0);
  if(scr.dataset.key!==key){scr.dataset.key=key;scr.className='vscr fx-'+kind+' k-'+(V.done?'done':c.k)+(started?'':' poster');
-  scr.innerHTML=`<div class="vfx">${fxHTML(kind)}</div>${started&&V.i>0&&!V.done?'<div class="vwave"></div>':''}<div class="vbrand">${LOGO}<span>VMA Academy</span></div><div class="vcon">${V.done?'<div class="vt"><h2>Unit complete</h2><p>Nice work. Try the knowledge check below.</p></div>':bodyHTML(c,kind)}</div><button class="vbig" id="vbig" aria-label="Play video">${PLAYI}<span></span></button>`;}
+  scr.innerHTML=`<div class="vfx">${fxHTML(kind)}</div>${started&&V.i>0&&!V.done?'<div class="vwave"></div>':''}<div class="vbrand">${LOGO}<span>VMAcademy</span></div><div class="vcon">${V.done?'<div class="vt"><h2>Unit complete</h2><p>Nice work. Try the knowledge check below.</p></div>':bodyHTML(c,kind)}</div><button class="vbig" id="vbig" aria-label="Play video">${PLAYI}<span></span></button>`;}
  const n=c.k=='list'?c.p.length:c.k=='compare'?Math.max(c.a.length,c.b.length):0,shown=(V.playing||V.el>0)&&!V.done?Math.ceil(f*(n+0.3)*1.15):99;
  scr.querySelectorAll('.vcon ul').forEach(u=>[...u.children].forEach((e,i)=>e.classList.toggle('in',i<shown)));
  scr.querySelectorAll('.vcmp>div').forEach(col=>col.querySelectorAll('span').forEach((e,i)=>e.classList.toggle('in',i<shown)));
@@ -1722,7 +1722,7 @@ function projectHTML(x){const u=x.u,m=M[x.mi],pj=(P.proj||{})[m.n];
  <div class="note"><b>Keep it safe:</b> share Google Docs or Drive links set to "anyone with the link can view" and never include passwords, payment, health or customer personal details.</div>`;
  if(U.admin)return h+`<p class="meta">Admin preview: partners submit here. Review their work against the checklist above, then create their approval code on the Students page.</p>`;
  if(!pj)return h+`<h3>Submit your project</h3><label for="projtxt">Links to your files and a short note</label><textarea id="projtxt" rows="5" placeholder="Prompt kit: https://docs.google.com/…&#10;Before-and-after: …&#10;AI SOP: …&#10;Client approval: …"></textarea><div class="tools"><button class="btn" id="projsub">Submit project</button></div><p class="err" id="kmsg"></p>`;
- const sub='VMA Partner Academy project submission\nPartner: '+(P.name||'')+' ('+U.email+')\nCourse: '+m.n+' '+m.t+'\nSubmitted: '+fmt(parse(pj.date))+'\n\n'+pj.text;
+ const sub='VMAcademy project submission\nPartner: '+(P.name||'')+' ('+U.email+')\nCourse: '+m.n+' '+m.t+'\nSubmitted: '+fmt(parse(pj.date))+'\n\n'+pj.text;
  h+=`<div class="result ${pj.ok?'pass':''}"><h2>${pj.ok?'Project approved':'Project submitted'}</h2><p>${pj.ok?'Approved '+fmt(parse(pj.ok))+'. '+(Q(m).pass?'Your certificate is in My certificates.':'Pass the final assessment to get your certificate.'):'Submitted '+fmt(parse(pj.date))+'. Send the message below to your virtual manager. When they approve it, they\'ll give you an approval code to enter here.'}</p></div>`;
  if(!pj.ok)h+=`${tpl(sub)}<label for="aprc">Approval code from your virtual manager</label><input id="aprc" type="text" autocapitalize="characters" placeholder="APR-XXXXXX"><div class="tools"><button class="btn" id="aprok">Unlock</button><button class="btn ghost" id="projedit">Edit submission</button></div><p class="err" id="kmsg"></p>`;
  return h;}
@@ -1756,7 +1756,7 @@ function lessonHTML(){const x=LIST[cur],m=M[x.mi];let h='';
 function pvHTML(){const d=iso(addMonths(today,-1));return `<div class="crumb">Admin</div><h1>View as a partner</h1><p>See the academy exactly as a virtual partner does: locked courses, quizzes without answers, the 30-minute retake break, agreements, projects and certificates. Your preview progress is kept separate and never affects real students.</p><div class="ver" style="margin-top:10px"><div class="grid"><div><label for="pvd">Pretend start date</label><input id="pvd" type="date" value="${d}"></div></div><p class="meta">A start date one month ago opens onboarding and Month 1. Pick an older date to open more months.</p><div class="tools"><button class="btn" id="pvgo">Start partner view</button><button class="btn ghost" id="pvreset">Reset preview progress</button></div><p class="meta" id="pvmsg"></p></div>`;}
 function pvBar(){return U.preview?`<div class="pvbar"><span><b>Partner preview</b> · start date ${fmt(U.start)}</span><button id="pvexit2">Exit preview</button></div>`:'';}
 function pageHTML(){if(U.preview)return pvBar()+pageInner();return pageInner();}
-function pageInner(){if(!P.name&&view!='certs'&&!U.admin)return `<div class="crumb">Welcome to the VMA Partner Academy</div><h1>First, your name</h1>`+nameForm('This is the name printed on every certificate you earn. Use your full legal name.');
+function pageInner(){if(!P.name&&view!='certs'&&!U.admin)return `<div class="crumb">Welcome to VMAcademy</div><h1>First, your name</h1>`+nameForm('This is the name printed on every certificate you earn. Use your full legal name.');
  if(view=='pv')return pvHTML();if(view=='admin')return adminHTML();if(view=='access')return accessHTML();if(view=='add')return addHTML();if(view=='plan')return planHTML();if(view=='niche')return nicheHTML();if(view=='certs')return certsHTML();return lessonHTML();}
 function bars(){$('mini').style.width=(U.admin?0:pct())+'%';$('pct2').textContent=U.admin?'Admin':pct()+'%';$('menu').textContent=U.admin?'Menu':'Modules';}
 function render(){vStop();$('nav').innerHTML=navHTML();$('page').innerHTML=pageHTML();bars();const x=LIST[cur];if(view=='lesson'&&x&&x.u&&x.u.video&&!x.u.mp4&&!locked(x.mi)&&$('vp'))vInit(x);
