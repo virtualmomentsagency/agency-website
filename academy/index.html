@@ -156,21 +156,21 @@ main{overflow-y:auto}
 .cert .c2t.tl2{left:0;top:0;width:21cqw;height:21cqw;background:linear-gradient(135deg,#1A67B2,#5CC8F2);clip-path:polygon(0 0,100% 0,0 100%);opacity:.35}
 .cert .c2t.br{right:0;bottom:0;width:16cqw;height:16cqw;background:linear-gradient(315deg,#0A2352,#134DA2);clip-path:polygon(100% 0,100% 100%,0 100%)}
 .cert .c2t.br2{right:0;bottom:0;width:22cqw;height:22cqw;background:linear-gradient(315deg,#1A67B2,#5CC8F2);clip-path:polygon(100% 0,100% 100%,0 100%);opacity:.35}
-.cert .c2m{position:absolute;left:9cqw;top:6.6cqw;width:57cqw;bottom:4cqw;display:flex;flex-direction:column}
-.cert .c2brand{font-size:2.3cqw;font-weight:800;color:#06173A;letter-spacing:-.02em;display:flex;align-items:center;gap:.8cqw}
+.cert .c2m{position:absolute;left:9cqw;top:6.4cqw;width:56cqw;bottom:5.4cqw;display:flex;flex-direction:column}
+.cert .c2brand{font-size:2.4cqw;font-weight:800;color:#06173A;letter-spacing:-.02em;line-height:1.1}
 .cert .c2brand i{width:2.2cqw;height:1.9cqw;background:linear-gradient(135deg,#134DA2,#5CC8F2);clip-path:polygon(0 0,100% 0,50% 100%)}
-.cert .c2date{font-size:1.25cqw;color:#6B7A99;margin-top:.6cqw}
+.cert .c2date{font-size:1.25cqw;color:#6B7A99;margin-top:.5cqw}
 .cert .c2mid{margin:auto 0}.cert .c2k span{display:inline-block;background:linear-gradient(90deg,#0D4A94,#1A67B2);color:#fff;font-size:1.15cqw;font-weight:800;letter-spacing:.3em;padding:.55cqw 1.4cqw .55cqw 1.6cqw;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}
-.cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:7cqw;line-height:1.15;color:#06173A;margin:1cqw 0 .6cqw;font-weight:400}
+.cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:7cqw;line-height:1.15;color:#06173A;margin:1.4cqw 0 .8cqw;font-weight:400}
 .cert .c2s{font-size:1.45cqw;line-height:1.5;color:#33415C;margin:0}
 .cert .c2s b{color:#06173A}
-.cert h2.c2c{font-size:3.8cqw;line-height:1.12;font-weight:800;color:#06173A;margin:1.6cqw 0 .4cqw;letter-spacing:-.02em}
+.cert h2.c2c{font-size:3.8cqw;line-height:1.12;font-weight:800;color:#06173A;margin:1.8cqw 0 .5cqw;letter-spacing:-.02em}
 .cert .c2mo{font-size:1.45cqw;font-weight:700;color:#1A67B2;margin:0}
-.cert .c2sk{font-size:1.25cqw;line-height:1.55;color:#6B7A99;margin:1.4cqw 0 0;max-width:52cqw}
-.cert .c2sig{display:flex;gap:3cqw;padding-bottom:1.4cqw}
-.cert .c2sig div{width:24cqw}
+.cert .c2sk{font-size:1.25cqw;line-height:1.55;color:#6B7A99;margin:1.2cqw 0 0;max-width:52cqw}
+.cert .c2sig{display:flex;gap:4cqw;padding-bottom:1.8cqw}
+.cert .c2sig div{width:22cqw}
 .cert .c2sig i{display:block;font-family:VMAScript,"Brush Script MT",cursive;font-style:normal;font-size:2.6cqw;line-height:1.1;color:#0A2352;border-bottom:.12cqw solid #9FB2D2;padding-bottom:.3cqw;white-space:nowrap}
-.cert .c2sig b{display:block;font-size:1.15cqw;color:#06173A;margin-top:.5cqw}
+.cert .c2sig b{display:block;font-size:1.15cqw;color:#06173A;margin-top:.7cqw}
 .cert .c2sig span{display:block;font-size:1.05cqw;color:#6B7A99;margin-top:.1cqw}
 .cert .c2f{font-size:1cqw;color:#6B7A99}
 .cert .c2f b{color:#06173A}
@@ -1236,7 +1236,7 @@ M13:'niche-specific workflows for their chosen industry'};
 const SIGN=[['Vener Marion Andres','Founder &amp; CEO'],['Sheryl','Virtual Manager']];
 function certHTML(title,what,date,score,id,key,code){const prog=key=='prog'||key=='pv-prog',sk=SKILLS[code||(prog?'ONB':'')];
  return `<div class="cert" data-key="${key}"><div class="c2"><i class="c2t tl2"></i><i class="c2t tl"></i><i class="c2t br2"></i><i class="c2t br"></i>
- <div class="c2m"><div class="c2brand"><i></i>VMA Academy</div><div class="c2date">${fmtL(parse(date))}</div>
+ <div class="c2m"><div class="c2brand">VMA Academy</div><div class="c2date">${fmtL(parse(date))}</div>
  <div class="c2mid"><div class="c2k"><span>CERTIFICATE OF COMPLETION</span></div>
  <div class="who">${esc(P.name||U.email)}</div>
  <p class="c2s">has successfully completed the following ${prog?'program':'course'}${score!=null?` with ${prog?'an average':'a final'} score of <b>${score}%</b>`:''}:</p>
