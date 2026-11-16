@@ -161,11 +161,11 @@ main{overflow-y:auto}
 .cert .c2brand i{width:2.2cqw;height:1.9cqw;background:linear-gradient(135deg,#134DA2,#5CC8F2);clip-path:polygon(0 0,100% 0,50% 100%)}
 .cert .c2date{font-size:1.25cqw;color:#6B7A99;margin-top:.5cqw}
 .cert .c2mid{margin:auto 0}.cert .c2k span{display:inline-block;background:linear-gradient(90deg,#0D4A94,#1A67B2);color:#fff;font-size:1.15cqw;font-weight:800;letter-spacing:.3em;padding:.55cqw 1.4cqw .55cqw 1.6cqw;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}
-.cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:7cqw;line-height:1.15;color:#06173A;margin:1.4cqw 0 .4cqw;font-weight:400}
+.cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:5.2cqw;line-height:1.15;color:#06173A;margin:.2cqw 0 .4cqw;font-weight:400}
 .cert .c2s{font-size:1.45cqw;line-height:1.5;color:#33415C;margin:0}
 .cert .c2s b{color:#06173A}
-.cert h2.c2c span{background:linear-gradient(180deg,transparent 62%,#CFEBFB 62%,#CFEBFB 92%,transparent 92%);padding:0 .4cqw;margin:0 -.4cqw;-webkit-box-decoration-break:clone;box-decoration-break:clone}.cert h2.c2c{font-size:3.8cqw;line-height:1.12;font-weight:800;color:#06173A;margin:.6cqw 0 .8cqw;letter-spacing:-.02em}
-.cert .c2mo{font-size:1.45cqw;font-weight:700;color:#1A67B2;margin:0}.cert .c2mo b{color:#06173A}
+.cert h2.c2c{font-size:4.7cqw;line-height:1.08;font-weight:800;color:#06173A;margin:1.6cqw 0 .5cqw;letter-spacing:-.025em}.cert .c2aw{font-size:1.25cqw;color:#6B7A99;margin:2cqw 0 0}
+.cert .c2mo{font-size:1.6cqw;font-weight:700;color:#1A67B2;margin:0}.cert .c2mo b{color:#06173A}
 .cert .c2sk{font-size:1.3cqw;line-height:1.55;color:#33415C;margin:1.2cqw 0 0;max-width:52cqw}
 .cert .c2sig{display:flex;gap:4cqw;padding-bottom:1.8cqw}
 .cert .c2sig div{width:22cqw}
@@ -1234,26 +1234,25 @@ M11:'practical spreadsheet skills, simple dashboards, and presenting data clearl
 M12:'AI-powered workflows, working alongside AI agents, and keeping humans in the loop',
 M13:'niche-specific workflows for their chosen industry'};
 const SIGN=[['Vener Marion Andres','Founder &amp; CEO'],['Sheryl','Virtual Manager']];
-function certHTML(title,what,date,score,id,key,code){const prog=key=='prog'||key=='pv-prog',sk=SKILLS[code||(prog?'ONB':'')];
+function certHTML(title,what,date,score,id,key,code,proj){const prog=key=='prog'||key=='pv-prog',sk=SKILLS[code||(prog?'ONB':'')];
  return `<div class="cert" data-key="${key}"><div class="c2"><i class="c2t tl2"></i><i class="c2t tl"></i><i class="c2t br2"></i><i class="c2t br"></i>
  <div class="c2m"><div class="c2brand">VMA Academy</div><div class="c2date">${fmtL(parse(date))}</div>
  <div class="c2mid"><div class="c2k"><span>CERTIFICATE OF COMPLETION</span></div>
- <div class="who">${esc(P.name||U.email)}</div>
- <p class="c2s">has successfully completed</p>
- <h2 class="c2c"><span>${prog?'Partner Onboarding Program':what}</span></h2>
- <p class="c2mo">${prog?'Onboarding · all 10 modules':title}${score!=null?` · ${prog?'Average':'Final'} score <b>${score}%</b>`:''}</p>
+ <h2 class="c2c">${prog?'Partner Onboarding Program':what}</h2><p class="c2mo">${prog?'Onboarding · all 10 modules':title}</p>
+ <p class="c2aw">Awarded to</p><div class="who">${esc(P.name||U.email)}</div>
+ <p class="c2s">${prog?'has successfully completed all 10 onboarding modules':'has successfully completed this course'+(proj?', including an approved hands-on project,':'')}${score!=null?` with ${prog?'an average':'a passing'} score of <b>${score}%</b>`:''}.</p>
  ${sk?`<p class="c2sk">Skills: ${sk}</p>`:''}</div>
  <div class="c2sig"><div><i>${SIGN[0][0]}</i><b>${SIGN[0][0]}</b><span>${SIGN[0][1]}</span></div><div><i>${SIGN[1][0]}</i><b>${SIGN[1][0]}</b><span>${SIGN[1][1]}</span></div></div>
  <div class="c2f">Certificate ID <b>${id}</b> · Verify at virtualmomentsagency.com/academy</div></div>
  <div class="c2r"><div class="lgc">${LOGO}</div><div class="r1">VMA ACADEMY</div><hr><div class="r2">${prog?'PROGRAM':'COURSE'}<br>CERTIFICATE</div>${sealSVG(key)}</div></div></div>
  <div class="tools" style="margin-top:-6px"><button class="btn ghost" data-print="${key}">Print or save as PDF</button></div>`;}
 function previewCert(x){const m=x=='prog'?null:M[x],d=iso(today);
- const h=x=='prog'?certHTML('Onboarding','the VMA partner onboarding program (all 10 modules)',d,95,'SAMPLE-ONBOARDING','pv-prog'):certHTML('Month '+m.up+' upskilling',m.t,d,92,'SAMPLE-'+m.n,'pv-'+x,m.n);
+ const h=x=='prog'?certHTML('Onboarding','the VMA partner onboarding program (all 10 modules)',d,95,'SAMPLE-ONBOARDING','pv-prog'):certHTML('Month '+m.up+' upskilling',m.t,d,92,'SAMPLE-'+m.n,'pv-'+x,m.n,!!m.project);
  return h.replace(/<div class="who">[\s\S]*?<\/div>/,'<div class="who">Partner Name</div>');}
 function previewsHTML(){const ms=M.map((m,mi)=>[m,mi]).filter(([m])=>m.up);
  return `<div class="ver"><h3>Certificate previews (admin only)</h3><p class="meta">Sample certificates exactly as partners receive them, with a placeholder name, today's date and a sample score and ID. Partners never see this section.</p>
  <details class="faq"><summary>Onboarding certificate</summary>${previewCert('prog')}</details>${ms.map(([m,mi])=>`<details class="faq"><summary>Month ${m.up} · ${m.t}</summary>${previewCert(mi)}</details>`).join('')}</div>`;}
-function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi,m.n);}
+function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi,m.n,!!m.project);}
 function programCert(){const c=coreMods();if(!c.every(mi=>P.quiz[M[mi].n]&&P.quiz[M[mi].n].pass))return '';const d=c.map(mi=>P.quiz[M[mi].n].pass.date).sort().pop(),avg=Math.round(c.reduce((s,mi)=>s+P.quiz[M[mi].n].pass.score,0)/c.length);
  return certHTML('Onboarding','the VMA partner onboarding program (all 10 modules)',d,avg,certId(U.email,'ONBOARDING',d,avg),'prog');}
 function certsHTML(){if(!(U.admin&&!U.preview))return certsHTML0();const c0=certsHTML0(),i=c0.indexOf('<div class="ver"><h3>Verify');return `<div class="crumb">Admin</div><h1>Certificates</h1>`+previewsHTML()+(i>=0?c0.slice(i):'');}
