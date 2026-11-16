@@ -1344,7 +1344,7 @@ function cheatOpen(c){const r=/m(\d+)-u\d/.exec(c||''),k=r?'M'+r[1]:'M1';return 
 function cheatHTML(m){const r=/m(\d+)-u\d/.exec(m.cheat||''),mm=M.find(x=>x.n==(r?'M'+r[1]:'M1'));return cheatOpen(m.cheat)?`<a class="cheat" href="${m.cheat}" target="_blank" rel="noopener" download><b>Cheat sheet</b><span>One-page summary of this unit (PDF) · keep it beside you while you work</span></a>`:`<div class="cheat lock"><b>Cheat sheet (locked)</b><span>Unlocks when you complete ${mm?mm.t:'this course'} (pass the course quiz).</span></div>`;}
 function mp4HTML(x){const u=x.u,m=u.mp4,w=P.watch&&P.watch[x.id],lite=liteOn()&&m.lite;
  return `<div class="vp"><video id="vmp4" controls playsinline preload="metadata" poster="${m.poster}" style="display:block;width:100%;aspect-ratio:16/9;background:#06173A" src="${lite?m.lite:m.src}"><track kind="captions" src="${m.vttU||(m.vttU=URL.createObjectURL(new Blob([m.vtt],{type:'text/vtt'})))}" srclang="en" label="English" default></video></div>
- <div class="vtools"><p class="meta" id="vmeta">${w?'Watched ✓ · ':''}Animated lesson · captions (CC)${m.try?' · '+m.try.length+' pause-and-try questions':''}</p>${m.lite?`<button class="vsave${lite?' on':''}" id="vlite" aria-pressed="${lite?'true':'false'}">Data saver: ${lite?'On':'Off'}</button>`:''}</div>
+ <div class="vtools"><p class="meta" id="vmeta">${w?'Watched ✓':''}</p>${m.lite?`<button class="vsave${lite?' on':''}" id="vlite" aria-pressed="${lite?'true':'false'}">Data saver: ${lite?'On':'Off'}</button>`:''}</div>
  <div id="vtry" class="vtry" hidden></div>
  ${m.cheat?cheatHTML(m):''}
  <details class="faq"><summary>Transcript</summary>${m.tr.map(t=>`<p>${t}</p>`).join('')}</details>`;}
@@ -1354,9 +1354,9 @@ function showTry(x,i){const c=x.u.mp4.try[i],box=$('vtry'),key=x.id+'#'+i;if(!bo
  box.querySelectorAll('.topt').forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==c.a;box.querySelectorAll('.topt').forEach((bb,j)=>{bb.disabled=true;bb.classList.toggle('good',j==c.a);bb.classList.toggle('bad',j==k&&!ok);});
   $('tfb').innerHTML=`<p class="tres ${ok?'ok':'no'}"><b>${ok?'Nice catch.':'Not quite.'}</b> ${c.why}</p>`;P.tries=P.tries||{};P.tries[key]=ok;save();$('tgo').hidden=false;$('tskip').hidden=true;});
  const go=()=>{box.hidden=true;box.innerHTML='';const v=$('vmp4');if(v){v.scrollIntoView({behavior:'smooth',block:'center'});v.play().catch(()=>{});}};
- $('tgo').onclick=go;$('tskip').onclick=go;}
+ $('tgo').onclick=go;$('tskip').onclick=go;setTimeout(()=>{const r=box.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)box.scrollIntoView({behavior:'smooth',block:'center'});},120);}
 function hookMp4(x){const mv=$('vmp4');if(!mv||!x)return;const m=x.u.mp4,shown={};
- mv.addEventListener('ended',()=>{P.watch=P.watch||{};P.watch[x.id]=iso(today);save();const e=$('vmeta');if(e&&e.textContent.indexOf('Watched')<0)e.textContent='Watched ✓ · '+e.textContent;});
+ mv.addEventListener('ended',()=>{P.watch=P.watch||{};P.watch[x.id]=iso(today);save();const e=$('vmeta');if(e&&e.textContent.indexOf('Watched')<0)e.textContent='Watched ✓';});
  if(m.try)mv.addEventListener('timeupdate',()=>{const ct=mv.currentTime;m.try.forEach((c,i)=>{if(!shown[i]&&ct>=c.t&&ct<c.t+1.5){shown[i]=1;mv.pause();try{if(document.fullscreenElement)document.exitFullscreen();if(mv.webkitDisplayingFullscreen&&mv.webkitExitFullscreen)mv.webkitExitFullscreen();}catch(e){}showTry(x,i);}});});
  const lb=$('vlite');if(lb)lb.onclick=()=>{const t=mv.currentTime,pl=!mv.paused;P.lite=!(liteOn());save();mv.src=P.lite?m.lite:m.src;mv.addEventListener('loadedmetadata',()=>{mv.currentTime=t;if(pl)mv.play().catch(()=>{});},{once:true});lb.textContent='Data saver: '+(P.lite?'On':'Off');lb.classList.toggle('on',P.lite);lb.setAttribute('aria-pressed',P.lite?'true':'false');};}
 function videoHTML(x){if(x.u.mp4)return mp4HTML(x);const u=x.u,tot=u.video.reduce((s,c)=>s+vDur(c),0),w=P.watch&&P.watch[x.id];
