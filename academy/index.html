@@ -1172,7 +1172,7 @@ function reportText(){const L=['VMA Partner Academy progress','Partner: '+(P.nam
  return L.join('\n');}
 
 /* ---------- quiz ---------- */
-function keyHTML(mi){const m=M[mi];return `<div class="note"><b>Admin answer key.</b> Each attempt, partners get ${DRAWN(m)} random questions from this bank of ${m.q.length}, with answers shuffled and hidden. They need ${PASS}% to pass, and wait 30 minutes before a retake.${m.up?' Passing gives the Month '+m.up+' certificate.':' Passing all 10 onboarding quizzes gives the Onboarding certificate.'}</div>`+m.q.map((x,qi)=>`<div class="q"><h3>${qi+1}. ${x.q}</h3>${x.o.map((o,oi)=>`<div class="opt ${oi==x.a?'key':''}">${o}${oi==x.a?' <b class="ok">Correct answer</b>':''}</div>`).join('')}${x.w?`<p class="meta">Explanation: ${x.w}</p>`:''}</div>`).join('')+`<div class="tools"><button class="btn ghost" id="aspartner">Take this quiz as a partner</button></div>`;}
+function keyHTML(mi){const m=M[mi];return `<div class="note"><b>Admin answer key.</b> Each attempt, partners get ${DRAWN(m)} random questions from this bank of ${m.q.length}, with answers shuffled and hidden. They need ${PASS}% to pass, and wait 30 minutes before a retake.${m.up?' Passing gives the Month '+m.up+' certificate.':' Passing all 10 onboarding quizzes gives the Onboarding certificate.'}</div>`+m.q.map((x,qi)=>`<div class="q"><h3>${qi+1}. ${x.q}</h3>${x.o.map((o,oi)=>`<div class="opt ${oi==x.a?'key':''}">${o}${oi==x.a?' <b class="ok">Correct answer</b>':''}</div>`).join('')}${x.w?`<p class="meta">Explanation: ${x.w}</p>`:''}</div>`).join('')+`<div class="tools"><button class="btn ghost" id="aspartner">Take this quiz as a partner</button></div>`+(M[mi].up?`<details class="faq"><summary>Preview the Month ${M[mi].up} certificate</summary>${previewCert(mi)}</details>`:`<details class="faq"><summary>Preview the Onboarding certificate</summary>${previewCert('prog')}</details>`);}
 function quizHTML(mi){const m=M[mi],q=Q(m),left=lessonsLeft(mi);if(U.admin&&!asPartner)return keyHTML(mi);
  if(q.pass&&!q.retake&&m.up&&!projOk(m))return `<div class="result pass"><h2>Assessment passed with ${q.pass.score}%</h2><p>Your Month ${m.up} certificate unlocks when your virtual manager approves your hands-on project.</p><div class="btns"><button class="btn" data-i="${LIST.findIndex(l=>l.mi==mi&&l.k=='project')}">Go to my project</button></div></div>`+cheatList(m);
  if(q.pass&&!q.retake)return m.up?`<div class="result pass"><h2>Passed with ${q.pass.score}%</h2><p class="meta">Certified ${fmtL(parse(q.pass.date))} · ${q.att} attempt${q.att==1?'':'s'} · ID ${q.pass.id}</p><div class="btns"><button class="btn" data-cert="${mi}">View certificate</button><button class="btn ghost" id="again">Practise again</button></div></div>`:coreDone(q);
@@ -1197,10 +1197,17 @@ function coreDone(q){const n=corePassed(),t=coreMods().length;return `<div class
 const seal=`<svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#134DA2"/><circle cx="32" cy="32" r="24" fill="none" stroke="#5CC8F2" stroke-width="2" stroke-dasharray="3 3"/><path d="M21 33l7 7 15-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 function certHTML(title,what,date,score,id,key){return `<div class="cert" data-key="${key}"><div class="ch">${LOGO}<span>VMA Partner Academy</span></div><div class="cb"><i class="tri tl"></i><i class="tri br"></i>${seal}<div class="k">Certificate of completion</div><h2>${title}</h2><p>This certifies that</p><div class="who">${esc(P.name||U.email)}</div><p>has successfully completed <span class="cm">${what}</span>${score!=null?(key=='prog'?' with an average score of ':' with a score of ')+score+'%':''}.</p></div><div class="cf"><div><b>${fmtL(parse(date))}</b>Date awarded</div><div><b>${id}</b>Certificate ID</div><div><b>Virtual Moments Agency</b>Issued by</div></div></div>
  <div class="tools" style="margin-top:-6px"><button class="btn ghost" data-print="${key}">Print or save as PDF</button></div>`;}
+function previewCert(x){const m=x=='prog'?null:M[x],d=iso(today);
+ const h=x=='prog'?certHTML('VMA Partner Onboarding','the VMA partner onboarding program (all 10 modules)',d,95,'SAMPLE-ONBOARDING','pv-prog'):certHTML('Month '+m.up+' upskilling',m.t,d,92,'SAMPLE-'+m.n,'pv-'+x);
+ return h.replace(/<div class="who">[\s\S]*?<\/div>/,'<div class="who">Partner Name</div>');}
+function previewsHTML(){const ms=M.map((m,mi)=>[m,mi]).filter(([m])=>m.up);
+ return `<div class="ver"><h3>Certificate previews (admin only)</h3><p class="meta">Sample certificates exactly as partners receive them, with a placeholder name, today's date and a sample score and ID. Partners never see this section.</p>
+ <details class="faq"><summary>Onboarding certificate</summary>${previewCert('prog')}</details>${ms.map(([m,mi])=>`<details class="faq"><summary>Month ${m.up} · ${m.t}</summary>${previewCert(mi)}</details>`).join('')}</div>`;}
 function modCert(mi){const m=M[mi],r=P.quiz[m.n].pass;return certHTML('Month '+m.up+' upskilling',m.t,r.date,r.score,r.id,'m'+mi);}
 function programCert(){const c=coreMods();if(!c.every(mi=>P.quiz[M[mi].n]&&P.quiz[M[mi].n].pass))return '';const d=c.map(mi=>P.quiz[M[mi].n].pass.date).sort().pop(),avg=Math.round(c.reduce((s,mi)=>s+P.quiz[M[mi].n].pass.score,0)/c.length);
  return certHTML('VMA Partner Onboarding','the VMA partner onboarding program (all 10 modules)',d,avg,certId(U.email,'ONBOARDING',d,avg),'prog');}
-function certsHTML(){const c=certs();let h=`<div class="crumb">Your achievements</div><h1>My certificates</h1>`;
+function certsHTML(){if(!(U.admin&&!U.preview))return certsHTML0();const c0=certsHTML0(),i=c0.indexOf('<div class="ver"><h3>Verify');return `<div class="crumb">Admin</div><h1>Certificates</h1>`+previewsHTML()+(i>=0?c0.slice(i):'');}
+function certsHTML0(){const c=certs();let h=`<div class="crumb">Your achievements</div><h1>My certificates</h1>`;
  if(!P.name)return h+nameForm('Add your full name so it appears on your certificates.');
  h+=`<p class="meta">Name on certificates: <b>${esc(P.name)}</b> · <button class="btn ghost" id="rename" style="min-height:36px;padding:0 14px">Change</button></p>`;
  const pc=programCert(),n=corePassed(),t=coreMods().length;
@@ -1234,7 +1241,8 @@ const tpl=t=>`<div class="tpl"><button type="button" class="cp">Copy</button>${e
 function adminNav(){return `<button class="navbtn ${view=='access'?'on':''}" id="toaccess">Students <span>${students().length}${pending().length?' + '+pending().length+' waiting':''}</span></button>
  <button class="navbtn ${view=='add'?'on':''}" id="toadd">Add a student <span>+</span></button>
  <button class="navbtn ${view=='admin'?'on':''}" id="toadmin">Courses &amp; schedule</button>
- <button class="navbtn ${view=='pv'?'on':''}" id="topv">View as a partner <span>Preview</span></button>`;}
+ <button class="navbtn ${view=='pv'?'on':''}" id="topv">View as a partner <span>Preview</span></button>
+ <button class="navbtn ${view=='certs'?'on':''}" id="tocerts">Certificates <span>Preview</span></button>`;}
 
 function studentCard(s){const [lab]=stage(s.st),ms=miles(s.h,s.st),dn=ms.filter(x=>x.done).length,nx=ms.find(x=>!x.done),late=nx&&today>nx.date,openC=trackFor==s.h;
  return `<div class="sc ${openC?'open':''}"><button class="sch" data-card="${s.h}"><span class="av">${esc((s.name||'?')[0])}</span><span class="sn"><b>${esc(s.name||'Unnamed')}</b><small>${esc(s.loc?s.loc.email:(s.mail||''))} · starts ${fmt(s.st)}</small></span><span class="chip on">${lab}</span></button>
@@ -1516,6 +1524,13 @@ $('page').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)
 /* auto-login runs last, after everything above is defined */
 try{const sess=store.get('vma-session');if(sess&&ACCESS[sess.h])enter(sess.h,sess.em);else if(sess)store.del('vma-session');}catch(err){store.del('vma-session');$('app').classList.add('hide');$('login').classList.remove('hide');}
 }
+
+/* cheat sheet downloads inside the Claude artifact viewer */
+(function(){let DL=null;if(window.claude&&window.claude.use)window.claude.use('downloads').then(d=>{DL=d;}).catch(()=>{});
+ document.addEventListener('click',async e=>{const a=e.target.closest&&e.target.closest('a.cheat[href]');if(!a||!DL)return;e.preventDefault();
+  const b=a.querySelector('b'),old=b?b.textContent:'';try{if(b)b.textContent='Preparing download…';const r=await fetch(a.getAttribute('href'));if(!r.ok)throw 0;const blob=await r.blob();
+   await DL.save({filename:a.getAttribute('href').split('/').pop(),data:blob});if(b)b.textContent='Saved ✓';}catch(err){if(b)b.textContent=(err&&err.code=='declined')?old:'Download not available here';}
+  setTimeout(()=>{if(b)b.textContent=old;},2500);},true);})();
 </script>
 </body>
 </html>
