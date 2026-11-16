@@ -484,7 +484,7 @@ nav{background:linear-gradient(180deg,#06173A,#081d48)}
     <div>
       <span class="eyebrow">For active VMA virtual partners</span>
       <h1>Learn it once<br><mark>deliver it every day</mark></h1>
-      <p>Two weeks of onboarding for every new VMA partner, then a new skill each month: AI, CRMs, automation, content, paid ads, bookkeeping and more, unlocked on your own schedule.</p>
+      <p>Onboarding finished on or before your first client day, then a new skill each month: AI, CRMs, automation, content, paid ads, bookkeeping and more, unlocked on your own schedule.</p>
       <ul class="facts"><li><b>10</b> onboarding modules</li><li><b>13</b> monthly courses</li><li><b>1</b> certificate per course</li></ul>
     </div>
     <p class="inds">Medspas · Healthcare · Sales &amp; SDR · Real estate · Construction · SaaS &amp; tech · Executives</p>
@@ -547,7 +547,7 @@ const M = [
 {n:"00",t:"Welcome",l:[
  {t:"Start here",b:`<p>Welcome to Virtual Moments Agency. You have been selected to be paired with a VMA client, and this academy is how we make sure every client gets the same reliable, professional experience no matter which partner they work with.</p>
  <p>Go through the modules in order. Each one ends with a short quick check. Most partners finish in two to three sittings.</p>
- <div class="note"><b>Before your first client day,</b> you should have completed the full onboarding (modules 00 to 09) within your first two weeks, starting with 00 to 04 and 07 (Security &amp; Privacy). Your virtual manager will check your progress before the pairing goes live.</div>`},
+ <div class="note"><b>On or before your first client day,</b> you should have completed the full onboarding (modules 00 to 09). Start with 00 to 04 and 07 (Security &amp; Privacy). Your virtual manager will check your progress before the pairing goes live.</div>`},
  {t:"How the program works",b:`<p>VMA places trained virtual partners with growing businesses: medspas and healthcare practices, sales teams, real estate, construction, SaaS and tech companies, and busy executives. Each client gets one dedicated partner, and a VMA virtual manager supports both of you from day one.</p>
  <p>The basics in this onboarding work for every niche. Niche-specific skills come later, in your monthly upskilling.</p>
  <h3>How a pairing starts</h3>
@@ -568,7 +568,7 @@ const M = [
  <div><b>Retainer hours</b>The hours per week or month the client has booked with VMA.</div>
  </div>`}],
  q:[{q:"Who approves anything involving the client's money or account access?",o:["You, if it seems urgent","The client","Any VMA partner"],a:1,w:"Money, access and public posts always need the client's own approval, in writing."},
-    {q:"Which modules must be complete before your first client day?",o:["Only module 00","00 to 04 plus 07 (Security & Privacy)","All modules"],a:1,w:"Security is non-negotiable before you touch a client's accounts."}]},
+    {q:"Which modules must be complete on or before your first client day?",o:["Only module 00","00 to 04 plus 07 (Security & Privacy)","All 10 onboarding modules (00 to 09)"],a:2,w:"The full onboarding is due on or before your first client day."}]},
 {n:"01",t:"The VMA Standard",l:[
  {t:"You represent two names",b:`<p>Every email you send carries the client's name and VMA's reputation. Clients don't judge an agency by its website; they judge it by how their partner shows up on a Tuesday afternoon.</p>
  <ul><li>Write as if the client's own customer might read it, because sometimes they will.</li><li>Use the client's tone in their channels, and VMA's professional tone with VMA.</li><li>Never discuss one client's business with another client.</li></ul>`},
@@ -1370,7 +1370,8 @@ const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){retu
 let who=null,U={},P={},done=new Set(),cur=0,open=0,view='lesson',sel={},showCert=null,asPartner=false,prevStart='',trackFor='';
 const $=id=>document.getElementById(id);
 const opens=m=>m.up?addMonths(U.start,m.up):U.start;
-const due=m=>m.up?addDays(addMonths(U.start,m.up+1),-1):addDays(U.start,13);
+const obDue=()=>U.day1||addDays(U.start,13);
+const due=m=>m.up?addDays(addMonths(U.start,m.up+1),-1):obDue();
 const locked=mi=>!U.admin&&!!M[mi].up&&today<opens(M[mi]);
 const items=mi=>LIST.map((x,i)=>({x,i})).filter(o=>o.x.mi==mi);
 const lessonsLeft=mi=>U.admin?[]:items(mi).filter(o=>!o.x.quiz&&!done.has(o.x.id));
@@ -1402,7 +1403,7 @@ function order(n,seed){const r=rng(seed),a=[...Array(n).keys()];for(let i=n-1;i>
 $('brand1').innerHTML=LOGO;
 
 /* ---------- login ---------- */
-function enter(h,email){const a=ACCESS[h];who=h;U={email,admin:!!a.admin,start:parse(a.start)};
+function enter(h,email){const a=ACCESS[h];who=h;U={email,admin:!!a.admin,start:parse(a.start),day1:a.day1?parse(a.day1):null};
  P=store.get('vma-prog-'+h)||{};P.quiz=P.quiz||{};done=new Set(P.done||[]);cur=Math.min(P.cur||0,LIST.length-1);open=LIST[cur].mi;view=U.admin?'access':'lesson';if(U.admin&&!P.name)P.name='Admin preview';
  $('login').classList.add('hide');$('app').classList.remove('hide');render();}
 $('f').addEventListener('submit',e=>{e.preventDefault();
@@ -1426,15 +1427,15 @@ function navHTML(){const all=M.map((m,mi)=>[m,mi]);
  ${U.preview?'<button class="navbtn on" id="pvexit">Exit partner preview <span>Admin</span></button>':''}
  <button class="navbtn ${view=='plan'?'on':''}" id="toplan">Learning plan</button>
  <button class="navbtn ${view=='certs'?'on':''}" id="tocerts">My certificates <span>${certCount()}</span></button>${P.track&&P.track!='general'?`<button class="navbtn ${view=='niche'?'on':''}" id="toniche">My niche track <span>${TRACKS.find(t=>t[0]==P.track)[1].split(' ')[0]}</span></button>`:''}`}
- <div class="grp">${U.admin?'Course preview · onboarding':'Onboarding · due '+fmt(addDays(U.start,13))}</div>`+all.filter(([m])=>!m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
+ <div class="grp">${U.admin?'Course preview · onboarding':'Onboarding · due '+fmt(obDue())+(U.day1?' (first client day)':'')}</div>`+all.filter(([m])=>!m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
  `<div class="grp">${U.admin?'Course preview · ':''}Monthly upskilling</div>`+all.filter(([m])=>m.up).map(([m,mi])=>modHTML(m,mi)).join('')+
  `<button class="out" id="out">Log out (${esc(U.email)})</button>`;}
 
 /* ---------- plan ---------- */
 function ring(p){const r=56,c=2*Math.PI*r;return `<svg class="ring" viewBox="0 0 132 132"><circle cx="66" cy="66" r="${r}" fill="none" stroke="#ffffff22" stroke-width="12"/>${p?`<circle cx="66" cy="66" r="${r}" fill="none" stroke="#5CC8F2" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 66 66)"/>`:''}<text x="66" y="74" text-anchor="middle" font-size="24">${p}%</text></svg>`;}
-function coreSt(){const c=coreMods();if(c.every(mi=>status(mi)[0]=='done'))return['done','Certified'];if(today>addDays(U.start,13))return['late','Overdue'];return c.some(mi=>['part','done'].includes(status(mi)[0]))?['part','In progress']:['open','Open now'];}
+function coreSt(){const c=coreMods();if(c.every(mi=>status(mi)[0]=='done'))return['done','Certified'];if(today>obDue())return['late','Overdue'];return c.some(mi=>['part','done'].includes(status(mi)[0]))?['part','In progress']:['open','Open now'];}
 function planHTML(){
- const rows=[{t:'Onboarding (modules 00–09)',d:U.start,e:addDays(U.start,13),mi:-1}].concat(M.map((m,mi)=>({m,mi})).filter(o=>o.m.up).map(o=>({t:o.m.n+' '+o.m.t,d:opens(o.m),e:due(o.m),mi:o.mi})));
+ const rows=[{t:'Onboarding (modules 00–09)'+(U.day1?' · due by your first client day':''),d:U.start,e:obDue(),mi:-1}].concat(M.map((m,mi)=>({m,mi})).filter(o=>o.m.up).map(o=>({t:o.m.n+' '+o.m.t,d:opens(o.m),e:due(o.m),mi:o.mi})));
  const nx=avail().find(l=>!done.has(l.id));
  return `<div class="welcome">${ring(pct())}<div><h2>${P.name?'Hi '+esc(P.name.split(' ')[0])+'!':'Welcome!'} ${nx?'Keep going.':'You’re all caught up.'}</h2><p>${nx?'Next up: '+nx.id+' '+nx.t+'.':'Your next course opens on its date below.'}</p>
  <div class="stats"><span><b>${certCount()}</b> certificates</span><span><b>${coreMods().filter(mi=>status(mi)[0]=='done').length}/${coreMods().length}</b> onboarding modules</span></div>
@@ -1442,7 +1443,7 @@ function planHTML(){
  <h2 class="ph">Your learning plan</h2><p class="pp">${U.admin?'Admin view: every course is unlocked. Dates show the schedule for a partner starting '+fmt(U.start)+'.':'Started '+fmt(U.start)+'. Each module ends with a quiz you pass with '+PASS+'% or more. Pass all 10 onboarding quizzes to earn your Onboarding certificate, then earn one certificate for each monthly course.'}</p>
  <div class="plan">${rows.map(r=>{const [st,lab]=r.mi<0?coreSt():status(r.mi);return `<button class="row ${st}" data-go="${r.mi}"><span class="dt">${fmt(r.d)}</span><span class="nm">${r.t}<small>Finish by ${fmt(r.e)}${r.mi>=0&&M[r.mi].project?' · about '+hrs(courseMin(M[r.mi]))+' · video lessons + project':''}</small></span><span class="chip">${st=='lock'?'Locked':lab}</span></button>`;}).join('')}</div>
  <div class="tools"><button class="btn ghost" id="report">Copy progress report</button></div><p class="meta" id="repmsg">Send this to your virtual manager at each review.</p>`;}
-function reportText(){const L=['VMAcademy progress','Partner: '+(P.name||'')+' ('+U.email+')','Start date: '+fmt(U.start),'Report date: '+fmt(today),'Niche track: '+(P.track?TRACKS.find(t=>t[0]==P.track)[1]:'not chosen'),'Partner agreements: '+(P.sign?'signed '+fmt(parse(P.sign.date))+' (ref '+P.sign.id+')':'not signed yet'),''];
+function reportText(){const L=['VMAcademy progress','Partner: '+(P.name||'')+' ('+U.email+')','Start date: '+fmt(U.start),'First client day: '+(U.day1?fmt(U.day1):'not set'),'Report date: '+fmt(today),'Niche track: '+(P.track?TRACKS.find(t=>t[0]==P.track)[1]:'not chosen'),'Partner agreements: '+(P.sign?'signed '+fmt(parse(P.sign.date))+' (ref '+P.sign.id+')':'not signed yet'),''];
  M.forEach((m,mi)=>{const [st,lab]=status(mi),q=P.quiz[m.n]||{};const pj=(P.proj||{})[m.n];L.push(m.n+' '+m.t+': '+(st=='lock'?'Locked':lab)+(q.pass?' · '+q.pass.score+'%'+(projOk(m)?' · cert '+q.pass.id:''):'')+(q.att?' · attempts '+q.att:'')+(m.project?' · project '+(pj?(pj.ok?'approved':'submitted, awaiting approval'):'not submitted'):''));});
  return L.join('\n');}
 
@@ -1522,20 +1523,20 @@ const ACADEMY_URL='https://virtualmomentsagency.com/academy/';
 const roster=()=>store.get('vma-roster')||{};
 const setRoster=r=>store.set('vma-roster',r);
 const maskMail=e=>e.slice(0,3)+'•••'+e.slice(e.indexOf('@'));
-const students=()=>Object.entries(ACCESS).filter(([h,a])=>!a.admin).map(([h,a])=>({h,...a,name:(roster()[h]||{}).name||'Student '+h.slice(0,6).toUpperCase(),st:parse(a.start),loc:roster()[h]}));
+const students=()=>Object.entries(ACCESS).filter(([h,a])=>!a.admin).map(([h,a])=>({h,...a,name:(roster()[h]||{}).name||'Student '+h.slice(0,6).toUpperCase(),st:parse(a.start),d1:a.day1?parse(a.day1):null,loc:roster()[h]}));
 const pending=()=>Object.entries(roster()).filter(([h])=>!ACCESS[h]).map(([h,r])=>({h,...r,st:parse(r.start)}));
 const MILES=[
  {k:'welcome',t:'Welcome message sent',d:0,how:'Send the login details privately, then tick this.'},
  {k:'login',t:'Logged in and entered their name',d:1,how:'Ask the student to confirm they can see module 00.'},
- {k:'d7',t:'Day 7 check-in',d:6,how:'Ask for their Copy progress report. About half of onboarding should be done.'},
- {k:'onb',t:'Onboarding certificate checked',d:13,how:'All 10 module quizzes passed. Check the certificate ID with Verify a certificate below.'},
+ {k:'d7',t:'Mid-onboarding check-in',d:6,how:'Ask for their Copy progress report. About half of onboarding should be done.'},
+ {k:'onb',t:'Onboarding certificate checked (by first client day)',d:13,how:'All 10 module quizzes passed on or before the first client day. Check the certificate ID with Verify a certificate below.'},
  {k:'r30',t:'30-day review',d:30,how:'Progress report plus the Month 1 certificate.'},
  {k:'r60',t:'60-day review',d:60,how:'Progress report plus the Month 2 certificate.'},
  {k:'r90',t:'90-day review (end of first term)',d:90,how:'Progress report plus the Month 3 certificate.'}];
-function stage(st){if(today<st)return['Starts '+fmt(st),'soon'];const day=Math.round((today-st)/864e5)+1;if(day<=14)return['Onboarding · day '+day+' of 14','on'];let k=0;M.forEach(m=>{if(m.up&&today>=addMonths(st,m.up))k=Math.max(k,m.up);});const m=M.find(m=>m.up==k);return m?['Month '+k+' · '+m.t,'on']:['Between onboarding and Month 1','on'];}
-function miles(h,st){const v=store.get('vma-enroll-'+h)||{};return MILES.map(x=>({...x,date:addDays(st,x.d),done:v[x.k]}));}
-function welcomeMsg(r){return 'Hi '+r.name.split(' ')[0]+'! Welcome to Virtual Moments Agency.\n\nYour VMAcademy login:\n'+(ACADEMY_URL?'Link: '+ACADEMY_URL+'\n':'')+'Email: '+r.email+'\nAccess code: '+r.code+'\nStart date: '+fmt(parse(r.start))+'\n\nOn your first login, enter your full name (it goes on your certificates). Please finish the 10 onboarding modules within your first two weeks. Keep this code private.';}
-function activateMsg(h,r){return 'Add partner to VMAcademy: '+r.name+', '+r.email+', start '+r.start+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'", added:"'+iso(today)+'"}';}
+function stage(st,d1){if(today<st)return['Starts '+fmt(st),'soon'];const day=Math.round((today-st)/864e5)+1;if(d1&&today<=d1)return['Onboarding · client day '+fmt(d1),'on'];if(!d1&&day<=14)return['Onboarding · day '+day+' of 14','on'];let k=0;M.forEach(m=>{if(m.up&&today>=addMonths(st,m.up))k=Math.max(k,m.up);});const m=M.find(m=>m.up==k);return m?['Month '+k+' · '+m.t,'on']:['Between onboarding and Month 1','on'];}
+function miles(h,st,d1){const v=store.get('vma-enroll-'+h)||{},mid=d1?addDays(st,Math.max(1,Math.floor((d1-st)/864e5/2))):null;return MILES.map(x=>({...x,date:x.k=='onb'&&d1?d1:x.k=='d7'&&mid?mid:addDays(st,x.d),done:v[x.k]}));}
+function welcomeMsg(r){return 'Hi '+r.name.split(' ')[0]+'! Welcome to Virtual Moments Agency.\n\nYour VMAcademy login:\n'+(ACADEMY_URL?'Link: '+ACADEMY_URL+'\n':'')+'Email: '+r.email+'\nAccess code: '+r.code+'\nStart date: '+fmt(parse(r.start))+(r.day1?'\nFirst client day: '+fmt(parse(r.day1)):'')+'\n\nOn your first login, enter your full name (it goes on your certificates). Please finish all 10 onboarding modules on or before your first client day. Keep this code private.';}
+function activateMsg(h,r){return 'Add partner to VMAcademy: '+r.name+', '+r.email+', start '+r.start+(r.day1?', first client day '+r.day1:'')+(r.client?', client '+r.client:'')+', code '+r.code+', key "'+h+'": {start:"'+r.start+'"'+(r.day1?', day1:"'+r.day1+'"':'')+', added:"'+iso(today)+'"}';}
 const tpl=t=>`<div class="tpl"><button type="button" class="cp">Copy</button>${esc(t)}</div>`;
 
 function adminNav(){return `<button class="navbtn ${view=='access'?'on':''}" id="toaccess">Students <span>${students().length}${pending().length?' + '+pending().length+' waiting':''}</span></button>
@@ -1544,8 +1545,8 @@ function adminNav(){return `<button class="navbtn ${view=='access'?'on':''}" id=
  <button class="navbtn ${view=='pv'?'on':''}" id="topv">View as a partner <span>Preview</span></button>
  <button class="navbtn ${view=='certs'?'on':''}" id="tocerts">Certificates <span>Preview</span></button>`;}
 
-function studentCard(s){const [lab]=stage(s.st),ms=miles(s.h,s.st),dn=ms.filter(x=>x.done).length,nx=ms.find(x=>!x.done),late=nx&&today>nx.date,openC=trackFor==s.h;
- return `<div class="sc ${openC?'open':''}"><button class="sch" data-card="${s.h}"><span class="av">${esc((s.name||'?')[0])}</span><span class="sn"><b>${esc(s.name||'Unnamed')}</b><small>${esc(s.loc?s.loc.email:(s.mail||''))} · starts ${fmt(s.st)}</small></span><span class="chip on">${lab}</span></button>
+function studentCard(s){const [lab]=stage(s.st,s.d1),ms=miles(s.h,s.st,s.d1),dn=ms.filter(x=>x.done).length,nx=ms.find(x=>!x.done),late=nx&&today>nx.date,openC=trackFor==s.h;
+ return `<div class="sc ${openC?'open':''}"><button class="sch" data-card="${s.h}"><span class="av">${esc((s.name||'?')[0])}</span><span class="sn"><b>${esc(s.name||'Unnamed')}</b><small>${esc(s.loc?s.loc.email:(s.mail||''))} · starts ${fmt(s.st)}${s.d1?' · client day '+fmt(s.d1):''}</small></span><span class="chip on">${lab}</span></button>
  <div class="scb"><div class="nxt ${late?'late':''}">${nx?(late?'Overdue: ':'Next: ')+nx.t+' · '+fmt(nx.date):'All milestones done'} <span class="meta">${dn}/${ms.length}</span></div>
  ${openC?`<ol class="ms">${ms.map(x=>`<li class="${x.done?'ok':today>x.date?'late':''}"><label class="stp"><input type="checkbox" data-mile="${x.k}" data-h="${s.h}" ${x.done?'checked':''}><span><b>${x.t}</b><small class="dd">${x.done?'Done '+fmt(parse(x.done)):'Due '+fmt(x.date)}</small>${x.how}</span></label></li>`).join('')}</ol>
  <div class="tools">${s.loc?`<button class="btn ghost" data-copy="w" data-h="${s.h}">Copy welcome message</button>`:''}<button class="btn ghost" data-copy="chg" data-h="${s.h}">Request a change</button><button class="btn ghost" data-copy="rm" data-h="${s.h}">Request removal</button></div><div class="cpout" id="out-${s.h}"></div>
@@ -1576,7 +1577,7 @@ const FAQ=[
 
 function addHTML(){const r=lastAdded&&roster()[lastAdded];
  if(r){const active=!!ACCESS[lastAdded];return `<div class="crumb">Admin · Add a student</div><h1>${esc(r.name)} is ready to activate</h1>
- <div class="wiz"><div class="wz done"><b>1</b><span><strong>Details saved</strong>${esc(r.email)} · starts ${fmt(parse(r.start))}${r.client?' · '+esc(r.client):''}</span></div>
+ <div class="wiz"><div class="wz done"><b>1</b><span><strong>Details saved</strong>${esc(r.email)} · starts ${fmt(parse(r.start))}${r.day1?' · first client day '+fmt(parse(r.day1)):''}${r.client?' · '+esc(r.client):''}</span></div>
  <div class="wz ${active?'done':'now'}"><b>2</b><span><strong>Send this to Claude to activate the code</strong>${active?'Activated.':'The code does not work until Claude updates the academy.'}${active?'':tpl(activateMsg(lastAdded,r))}</span></div>
  <div class="wz ${active?'now':''}"><b>3</b><span><strong>When Claude confirms, send the student their login privately</strong>By direct message or email, never in a group chat.${tpl(welcomeMsg(r))}</span></div>
  <div class="wz"><b>4</b><span><strong>Track their milestones</strong>They appear on the Students page under ${active?'Active students':'Waiting for activation'}.</span></div></div>
@@ -1585,28 +1586,31 @@ function addHTML(){const r=lastAdded&&roster()[lastAdded];
  <div class="ver" style="margin-top:12px"><div class="grid g2"><div><label for="nn">Full legal name *</label><input id="nn" type="text" autocomplete="off" placeholder="As it should print on certificates"></div>
  <div><label for="ne">Email they'll log in with *</label><input id="ne" type="email" autocomplete="off" placeholder="name@example.com"></div>
  <div><label for="nd">Start date *</label><input id="nd" type="date" value="${iso(today)}"></div>
+ <div><label for="n1">First client day *</label><input id="n1" type="date"></div>
  <div><label for="nc">Client they're paired with</label><input id="nc" type="text" placeholder="Optional"></div></div>
- <p class="meta" id="ndhelp">Onboarding is due 2 weeks after the start date; Month 1 opens one month after it.</p>
+ <p class="meta" id="ndhelp">Onboarding is due on or before the first client day. Month 1 opens one month after the start date.</p>
  <div class="tools"><button class="btn" id="mkcode">Create student and code</button></div><p class="err" id="nerr"></p></div>`;}
 let lastAdded='';
-function mkcode(){const n=$('nn').value.trim().replace(/\s+/g,' '),e=$('ne').value.trim().toLowerCase(),d=$('nd').value,c0=$('nc').value.trim();
+function mkcode(){const n=$('nn').value.trim().replace(/\s+/g,' '),e=$('ne').value.trim().toLowerCase(),d=$('nd').value,d1=$('n1').value,c0=$('nc').value.trim();
  if(n.length<3||n.indexOf(' ')<0){$('nerr').textContent='Enter the student\'s full name (first and last).';return;}
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){$('nerr').textContent='Enter a valid email address.';return;}
  if(!d){$('nerr').textContent='Choose a start date.';return;}
+ if(!d1){$('nerr').textContent='Choose their first day with the client.';return;}
+ if(d1<d){$('nerr').textContent='The first client day can\'t be before the start date.';return;}
  const R=roster();if(Object.values(R).some(x=>x.email==e)){$('nerr').textContent='This email was already added on this device. Check the Students page.';return;}
  const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',rv=new Uint32Array(6);try{crypto.getRandomValues(rv)}catch(err){for(let i=0;i<6;i++)rv[i]=Math.floor(Math.random()*1e9)}let c='VMA-';for(let i=0;i<6;i++)c+=A[rv[i]%A.length];
- const h=sha256(e+'|'+c);R[h]={name:n,email:e,start:d,client:c0,code:c,created:iso(today)};setRoster(R);lastAdded=h;render();top();}
+ const h=sha256(e+'|'+c);R[h]={name:n,email:e,start:d,day1:d1,client:c0,code:c,created:iso(today)};setRoster(R);lastAdded=h;render();top();}
 function reqMsg(h,kind){const s=students().find(x=>x.h==h)||{},who=(s.name||'')+(s.loc?' ('+s.loc.email+')':'');
  return kind=='rm'?'Remove from VMAcademy: '+who+', key "'+h+'". Reason: ':'Change for VMAcademy: '+who+', key "'+h+'". Change: ';}
 
 function adminHTML(){const core=M.filter(m=>!m.up),up=M.filter(m=>m.up),nL=M.reduce((s,m)=>s+m.l.length,0),nQ=M.reduce((s,m)=>s+m.q.length,0);
  const st=prevStart?parse(prevStart):today;
- const row=m=>{const mi=M.indexOf(m);return `<button class="row open" data-go="${mi}"><span class="dt">${m.up?fmt(addMonths(st,m.up)):fmt(st)}</span><span class="nm">${m.n} ${m.t}<small>${m.project?m.l.filter(l=>l.video||l.mp4).length+' video units · project · about '+hrs(courseMin(m))+' · ':m.l.length+' lessons · '}${m.q.length} quiz questions${m.up?' · finish by '+fmt(addDays(addMonths(st,m.up+1),-1)):' · finish by '+fmt(addDays(st,13))}</small></span><span class="chip">Preview</span></button>`;};
+ const row=m=>{const mi=M.indexOf(m);return `<button class="row open" data-go="${mi}"><span class="dt">${m.up?fmt(addMonths(st,m.up)):fmt(st)}</span><span class="nm">${m.n} ${m.t}<small>${m.project?m.l.filter(l=>l.video||l.mp4).length+' video units · project · about '+hrs(courseMin(m))+' · ':m.l.length+' lessons · '}${m.q.length} quiz questions${m.up?' · finish by '+fmt(addDays(addMonths(st,m.up+1),-1)):' · finish by the first client day'}</small></span><span class="chip">Preview</span></button>`;};
  return `<div class="crumb">Admin</div><h1>Courses &amp; schedule</h1>
  <div class="welcome"><div class="stats" style="margin:0;font-size:16px"><span><b>${core.length}</b> onboarding modules</span><span><b>${up.length}</b> monthly courses</span><span><b>${nL}</b> lessons</span><span><b>${nQ}</b> quiz questions</span></div></div>
  <p>Open any lesson or quiz to preview it. Quizzes show the answer key; tap <b>Take this quiz as a partner</b> to test the student experience. Nothing you do here affects students.</p>
  <h2 class="ph">Schedule for a start date</h2><div class="ver" style="margin:0 0 18px"><div class="grid"><div><label for="ps">Student start date</label><input id="ps" type="date" value="${iso(st)}"></div></div></div>
- <h2 class="ph">Onboarding (first two weeks)</h2><div class="plan">${core.map(row).join('')}</div>
+ <h2 class="ph">Onboarding (on or before the first client day)</h2><div class="plan">${core.map(row).join('')}</div>
  <h2 class="ph" style="margin-top:26px">Monthly upskilling</h2><div class="plan">${up.map(row).join('')}</div>
  <div class="ver"><h3>Verify a certificate</h3><p class="meta">Type the details exactly as printed on the student's certificate.</p><div class="grid"><div><label for="v1">Student email</label><input id="v1" type="email"></div><div><label for="v2">Course (ONBOARDING or M1–M13)</label><input id="v2" type="text"></div><div><label for="v3">Date (YYYY-MM-DD)</label><input id="v3" type="text" placeholder="2026-11-15"></div><div><label for="v4">Score %</label><input id="v4" type="text"></div><div><label for="v5">Certificate ID</label><input id="v5" type="text"></div></div><div class="tools"><button class="btn" id="verify">Check</button></div><p class="meta" id="vmsg"></p></div>`;}
 
@@ -1779,7 +1783,7 @@ $('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.dataset.m!=null){const mi=+b.dataset.m;if(locked(mi)){go(items(mi)[0].i);return;}open=open==mi?-1:mi;$('nav').innerHTML=navHTML();return;}
  if(b.dataset.i!=null)go(+b.dataset.i);});
 $('page').addEventListener('change',e=>{const t=e.target;if(t.id=='ps'){prevStart=t.value;render();}
- if(t.id=='nd'&&t.value){const d=parse(t.value);$('ndhelp').textContent='Onboarding due '+fmt(addDays(d,13))+' · Month 1 opens '+fmt(addMonths(d,1))+' · 90-day review '+fmt(addDays(d,90))+'.';}
+ if((t.id=='nd'||t.id=='n1')&&$('nd').value){const d=parse($('nd').value),d1=$('n1').value?parse($('n1').value):null;$('ndhelp').textContent='Onboarding due '+(d1?fmt(d1)+' (first client day)':'on or before the first client day')+' · Month 1 opens '+fmt(addMonths(d,1))+' · 90-day review '+fmt(addDays(d,90))+'.';}
  if(t.dataset.mile!=null){const k='vma-enroll-'+t.dataset.h,v=store.get(k)||{};v[t.dataset.mile]=t.checked?iso(today):'';store.set(k,v);render();}});
 $('menu').addEventListener('click',()=>document.body.classList.toggle('drawer'));
 $('scrim').addEventListener('click',()=>document.body.classList.remove('drawer'));
