@@ -161,7 +161,7 @@ main{overflow-y:auto}
 .cert .c2brand i{width:2.2cqw;height:1.9cqw;background:linear-gradient(135deg,#134DA2,#5CC8F2);clip-path:polygon(0 0,100% 0,50% 100%)}
 .cert .c2date{font-size:1.25cqw;color:#6B7A99;margin-top:.5cqw}
 .cert .c2mid{margin:auto 0}.cert .c2k span{display:inline-block;background:linear-gradient(90deg,#0D4A94,#1A67B2);color:#fff;font-size:1.15cqw;font-weight:800;letter-spacing:.3em;padding:.55cqw 1.4cqw .55cqw 1.6cqw;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}
-.cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:5.2cqw;line-height:1.15;color:#06173A;margin:.2cqw 0 .4cqw;font-weight:400}
+.cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:5.2cqw;line-height:1.15;color:#06173A;margin:2cqw 0 .4cqw;font-weight:400}
 .cert .c2s{font-size:1.45cqw;line-height:1.5;color:#33415C;margin:0}
 .cert .c2s b{color:#06173A}
 .cert h2.c2c{font-size:4.7cqw;line-height:1.08;font-weight:800;color:#06173A;margin:0 0 .5cqw;letter-spacing:-.025em}.cert .c2aw{font-size:1.25cqw;color:#6B7A99;margin:2cqw 0 0}
@@ -1238,7 +1238,7 @@ function certHTML(title,what,date,score,id,key,code,proj){const prog=key=='prog'
  return `<div class="cert" data-key="${key}"><div class="c2"><i class="c2t tl2"></i><i class="c2t tl"></i><i class="c2t br2"></i><i class="c2t br"></i>
  <div class="c2m"><div class="c2k"><span>CERTIFICATE OF COMPLETION</span></div>
  <div class="c2mid"><h2 class="c2c">${prog?'Partner Onboarding Program':what}</h2><p class="c2mo">${prog?'Onboarding · all 10 modules':title}</p>
- <p class="c2aw">Awarded to</p><div class="who">${esc(P.name||U.email)}</div>
+ <div class="who">${esc(P.name||U.email)}</div>
  <p class="c2s">${prog?'has successfully completed all 10 onboarding modules':'has successfully completed this course'+(proj?', including an approved hands-on project,':'')}${score!=null?` with ${prog?'an average':'a passing'} score of <b>${score}%</b>`:''} on <b>${fmtL(parse(date))}</b>.</p>
  ${sk?`<p class="c2sk">Skills: ${sk}</p>`:''}</div>
  <div class="c2sig"><div><i>${SIGN[0][0]}</i><b>${SIGN[0][0]}</b><span>${SIGN[0][1]}</span></div><div><i>${SIGN[1][0]}</i><b>${SIGN[1][0]}</b><span>${SIGN[1][1]}</span></div></div>
