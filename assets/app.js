@@ -282,6 +282,7 @@
     }
     input.addEventListener("input", filter);
     chips.forEach(function (c) { c.addEventListener("click", function () { cat = c.dataset.cat; chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); }); filter(); }); });
+    $$("[data-faq-cat]", faq).forEach(function (b) { b.addEventListener("click", function () { var c = chips.filter(function (x) { return x.dataset.cat === b.dataset.faqCat; })[0]; if (c) { c.click(); var t = $(".faq-tools", faq); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); } }); });
   }
 
   /* ---------- Contact form: delivers to info@ via FormSubmit, falls back to email app ---------- */
