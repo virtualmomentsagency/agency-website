@@ -164,7 +164,7 @@ main{overflow-y:auto}
 .cert .who{font-family:VMAScript,"Brush Script MT",cursive;font-size:5.2cqw;line-height:1.15;color:#06173A;margin:.2cqw 0 .4cqw;font-weight:400}
 .cert .c2s{font-size:1.45cqw;line-height:1.5;color:#33415C;margin:0}
 .cert .c2s b{color:#06173A}
-.cert h2.c2c{font-size:4.7cqw;line-height:1.08;font-weight:800;color:#06173A;margin:1.6cqw 0 .5cqw;letter-spacing:-.025em}.cert .c2aw{font-size:1.25cqw;color:#6B7A99;margin:2cqw 0 0}
+.cert h2.c2c{font-size:4.7cqw;line-height:1.08;font-weight:800;color:#06173A;margin:0 0 .5cqw;letter-spacing:-.025em}.cert .c2aw{font-size:1.25cqw;color:#6B7A99;margin:2cqw 0 0}
 .cert .c2mo{font-size:1.6cqw;font-weight:700;color:#1A67B2;margin:0}.cert .c2mo b{color:#06173A}
 .cert .c2sk{font-size:1.3cqw;line-height:1.55;color:#33415C;margin:1.2cqw 0 0;max-width:52cqw}
 .cert .c2sig{display:flex;gap:4cqw;padding-bottom:1.8cqw}
@@ -1236,11 +1236,10 @@ M13:'niche-specific workflows for their chosen industry'};
 const SIGN=[['Vener Marion Andres','Founder &amp; CEO'],['Sheryl','Virtual Manager']];
 function certHTML(title,what,date,score,id,key,code,proj){const prog=key=='prog'||key=='pv-prog',sk=SKILLS[code||(prog?'ONB':'')];
  return `<div class="cert" data-key="${key}"><div class="c2"><i class="c2t tl2"></i><i class="c2t tl"></i><i class="c2t br2"></i><i class="c2t br"></i>
- <div class="c2m"><div class="c2brand">VMA Academy</div><div class="c2date">${fmtL(parse(date))}</div>
- <div class="c2mid"><div class="c2k"><span>CERTIFICATE OF COMPLETION</span></div>
- <h2 class="c2c">${prog?'Partner Onboarding Program':what}</h2><p class="c2mo">${prog?'Onboarding · all 10 modules':title}</p>
+ <div class="c2m"><div class="c2k"><span>CERTIFICATE OF COMPLETION</span></div>
+ <div class="c2mid"><h2 class="c2c">${prog?'Partner Onboarding Program':what}</h2><p class="c2mo">${prog?'Onboarding · all 10 modules':title}</p>
  <p class="c2aw">Awarded to</p><div class="who">${esc(P.name||U.email)}</div>
- <p class="c2s">${prog?'has successfully completed all 10 onboarding modules':'has successfully completed this course'+(proj?', including an approved hands-on project,':'')}${score!=null?` with ${prog?'an average':'a passing'} score of <b>${score}%</b>`:''}.</p>
+ <p class="c2s">${prog?'has successfully completed all 10 onboarding modules':'has successfully completed this course'+(proj?', including an approved hands-on project,':'')}${score!=null?` with ${prog?'an average':'a passing'} score of <b>${score}%</b>`:''} on <b>${fmtL(parse(date))}</b>.</p>
  ${sk?`<p class="c2sk">Skills: ${sk}</p>`:''}</div>
  <div class="c2sig"><div><i>${SIGN[0][0]}</i><b>${SIGN[0][0]}</b><span>${SIGN[0][1]}</span></div><div><i>${SIGN[1][0]}</i><b>${SIGN[1][0]}</b><span>${SIGN[1][1]}</span></div></div>
  <div class="c2f">Certificate ID <b>${id}</b> · Verify at virtualmomentsagency.com/academy</div></div>
